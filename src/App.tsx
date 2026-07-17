@@ -17,13 +17,13 @@ type Page =
 type SortMode = "number" | "name" | "rarity" | "breeding" | "work" | "owned" | "favourite";
 
 const navItems = [
-  { hash: "#/", label: "Home", icon: "⌂" },
-  { hash: "#/pals", label: "Pals", icon: "◈" },
-  { hash: "#/breeding", label: "Breed", icon: "◇" },
-  { hash: "#/resources", label: "Items", icon: "⬡" },
-  { hash: "#/owned", label: "Owned", icon: "✓" },
+  { hash: "#/", label: "Home", icon: "H" },
+  { hash: "#/pals", label: "Pals", icon: "P" },
+  { hash: "#/breeding", label: "Breed", icon: "B" },
+  { hash: "#/resources", label: "Items", icon: "I" },
+  { hash: "#/owned", label: "Owned", icon: "O" },
   { hash: "#/favourites", label: "Saved", icon: "★" },
-  { hash: "#/settings", label: "More", icon: "☰" },
+  { hash: "#/settings", label: "More", icon: "M" },
 ];
 
 function parseHash(): Page {
@@ -322,21 +322,28 @@ function PalCard({ pal, compact }: { pal: Pal; compact?: boolean }) {
   const strongest = strongestWork(pal);
   return (
     <article className={compact ? "pal-card compact-card" : "pal-card"}>
+      <button
+        type="button"
+        className={isFavourite(pal.id) ? "star-button active" : "star-button"}
+        onClick={() => toggleFavourite(pal.id)}
+        aria-pressed={isFavourite(pal.id)}
+        aria-label={isFavourite(pal.id) ? `Remove ${pal.name} from favourites` : `Add ${pal.name} to favourites`}
+        title={isFavourite(pal.id) ? "Remove favourite" : "Add favourite"}
+      >
+        {isFavourite(pal.id) ? "★" : "☆"}
+      </button>
       <a className="pal-link" href={`#/pals/${pal.key}`}>
         <Avatar text={pal.image} label={pal.name} />
         <div>
           <span className="number">#{pal.id.toString().padStart(3, "0")}</span>
           <h3>{pal.name}</h3>
-          <p>{pal.elements.join(" / ")} · {strongest ? `${strongest.type} ${strongest.level}` : "No work data"}</p>
+          <p>{pal.elements.join(" / ")} - {strongest ? `${strongest.type} ${strongest.level}` : "No work data"}</p>
           <HabitatBadges pal={pal} />
         </div>
       </a>
       <div className="card-actions">
         <button type="button" className={isOwned(pal.id) ? "toggle active" : "toggle"} onClick={() => toggleOwned(pal.id)} aria-pressed={isOwned(pal.id)} title={`Toggle owned for ${pal.name}`}>
           ✓ <span>{isOwned(pal.id) ? "Owned" : "Own"}</span>
-        </button>
-        <button type="button" className={isFavourite(pal.id) ? "toggle active favourite" : "toggle"} onClick={() => toggleFavourite(pal.id)} aria-pressed={isFavourite(pal.id)} title={`Toggle favourite for ${pal.name}`}>
-          ★ <span>{isFavourite(pal.id) ? "Saved" : "Save"}</span>
         </button>
       </div>
     </article>
@@ -367,7 +374,7 @@ function PalDetailsPage({ palKey }: { palKey: string }) {
           <p>{pal.variant || pal.elements.join(" / ")}</p>
           <div className="card-actions">
             <button className={isOwned(pal.id) ? "toggle active" : "toggle"} onClick={() => toggleOwned(pal.id)} aria-pressed={isOwned(pal.id)}>✓ {isOwned(pal.id) ? "Owned" : "Mark owned"}</button>
-            <button className={isFavourite(pal.id) ? "toggle active favourite" : "toggle"} onClick={() => toggleFavourite(pal.id)} aria-pressed={isFavourite(pal.id)}>★ {isFavourite(pal.id) ? "Favourite" : "Add favourite"}</button>
+            <button className={isFavourite(pal.id) ? "toggle active favourite" : "toggle"} onClick={() => toggleFavourite(pal.id)} aria-pressed={isFavourite(pal.id)}>{isFavourite(pal.id) ? "★ Favourite" : "☆ Add favourite"}</button>
           </div>
           <div className="prev-next">
             {previous && <a href={`#/pals/${previous.key}`}>Previous: {previous.name}</a>}
@@ -442,7 +449,7 @@ function BreedingPage() {
   return (
     <>
       <Hero title="Breeding" eyebrow="Sample calculator">
-        <p>Combinations are sample data unless verified in `DATA_SOURCES.md`.</p>
+        <p>Combinations are sample data unless verified in DATA_SOURCES.md.</p>
       </Hero>
       <section className="split">
         <Panel title="Two Parents to Child">
@@ -498,8 +505,8 @@ function BreedingResult({ comboId, childId }: { comboId: string; childId: number
       <div>
         <p>Result from {comboId}</p>
         <h3><a href={`#/pals/${child.key}`}>{child.name}</a></h3>
-        <p>{child.elements.join(" / ")} · {child.eggType || "Egg unknown"}</p>
-        <p>{isOwned(child.id) ? "Owned" : "Not owned"} · {isFavourite(child.id) ? "Favourite" : "Not favourite"}</p>
+        <p>{child.elements.join(" / ")} - {child.eggType || "Egg unknown"}</p>
+        <p>{isOwned(child.id) ? "Owned" : "Not owned"} - {isFavourite(child.id) ? "Favourite" : "Not favourite"}</p>
       </div>
     </div>
   );
@@ -549,14 +556,14 @@ function ResourceDetailsPage({ resourceId }: { resourceId: string }) {
           {resource.obtainedFrom.map((entry) => (
             <p key={`${entry.type}-${entry.name}`}>
               {entry.name}
-              {entry.palId && findPal(entry.palId) ? <> · <a href={`#/pals/${findPal(entry.palId)?.key}`}>{findPal(entry.palId)?.name}</a></> : null}
-              {entry.locationId && findLocation(entry.locationId) ? <> · {findLocation(entry.locationId)?.name}</> : null}
-              {entry.notes ? ` · ${entry.notes}` : ""}
+              {entry.palId && findPal(entry.palId) ? <> - <a href={`#/pals/${findPal(entry.palId)?.key}`}>{findPal(entry.palId)?.name}</a></> : null}
+              {entry.locationId && findLocation(entry.locationId) ? <> - {findLocation(entry.locationId)?.name}</> : null}
+              {entry.notes ? ` - ${entry.notes}` : ""}
             </p>
           ))}
         </Panel>
         <Panel title="Uses">
-          {resource.usedFor.length ? resource.usedFor.map((use) => <p key={`${use.type}-${use.name}`}>{use.name}{use.quantity ? ` x${use.quantity}` : ""} · {use.type}</p>) : <p>Information not currently available.</p>}
+          {resource.usedFor.length ? resource.usedFor.map((use) => <p key={`${use.type}-${use.name}`}>{use.name}{use.quantity ? ` x${use.quantity}` : ""} - {use.type}</p>) : <p>Information not currently available.</p>}
         </Panel>
       </section>
     </>
@@ -620,7 +627,7 @@ function PalSelect({ label, value, onChange }: { label: string; value: number; o
     <label className="field">
       {label}
       <select value={value} onChange={(event) => onChange(Number(event.target.value))}>
-        {pals.map((pal) => <option key={pal.id} value={pal.id}>{pal.id.toString().padStart(3, "0")} · {pal.name}</option>)}
+        {pals.map((pal) => <option key={pal.id} value={pal.id}>{pal.id.toString().padStart(3, "0")} - {pal.name}</option>)}
       </select>
     </label>
   );
@@ -662,7 +669,12 @@ function EmptyState({ text }: { text: string }) {
 }
 
 function Avatar({ text, label, large }: { text: string; label: string; large?: boolean }) {
-  return <span className={large ? "avatar large" : "avatar"} aria-label={label}>{text}</span>;
+  const isUrl = /^https?:\/\//.test(text);
+  return (
+    <span className={large ? "avatar large" : "avatar"} aria-label={label}>
+      {isUrl ? <img src={text} alt={label} loading="lazy" /> : text}
+    </span>
+  );
 }
 
 function HabitatBadges({ pal }: { pal: Pal }) {
@@ -716,9 +728,9 @@ function textOrUnknown(value: unknown) {
 }
 
 function timeLabel(time: HabitatTime) {
-  if (time === "day") return "☀ Day";
-  if (time === "night") return "☾ Night";
-  return "☀/☾ Both";
+  if (time === "day") return "Day";
+  if (time === "night") return "Night";
+  return "Day/Night";
 }
 
 function sameParents(a: number, b: number, selectedA: number, selectedB: number) {
