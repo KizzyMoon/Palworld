@@ -8,7 +8,14 @@ export const metadata = {
 };
 
 export const locations: Location[] = [
-  { id: "unknown", name: "Information not currently available.", description: "Habitat import is not complete yet." },
+  {
+    id: "palpagos-island",
+    name: "Palpagos Island",
+    region: "World Map",
+    island: "Palpagos Island",
+    description: "Imported spawn marker map from TH.GL. Area labels and day/night restrictions still need separate verification.",
+    mapImage: "https://cdn.th.gl/palworld/map-tiles/default-733001e0986faa3f88b0a970412d7fb9/0/0/0.webp",
+  },
 ];
 
 export const resources: Resource[] = [
@@ -1598,13 +1605,26 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "A walk up a hill tends to end with this Pal tumbling back down. This causes it to become dizzy and unable to move, making it easy to capture and kill. As a result, this Pal has tumbled down to the very bottom of the food chain itself.",
     workSuitability: [
+      { type: "Handiwork", level: 1 },
+      { type: "Transporting", level: 1 },
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Fluffy Shield", description: "When activated, equips to the player and becomes a shield. Sometimes drops wool| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "wool", notes: "1-3, 100%" },
       { resourceId: "meat-sheepball", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 140,
+        sourceUrl: "https://palworld.th.gl/guides/Lamball",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-254664,"y":277931},{"x":-251512,"y":306124},{"x":-234033,"y":302456},{"x":-237980,"y":285251},{"x":-252481,"y":331185},{"x":-234416,"y":327984},{"x":-253002,"y":356855},{"x":-234629,"y":359507},{"x":-247827,"y":374165},{"x":-229499,"y":380874},{"x":-271921,"y":262312},{"x":-277581,"y":305229},{"x":-277341,"y":289366},{"x":-274984,"y":333457},{"x":-265808,"y":318815},{"x":-278544,"y":356522},{"x":-273000,"y":26957},{"x":-272323,"y":43880},{"x":-277995,"y":58659},{"x":-289500,"y":24699},{"x":-305481,"y":308024},{"x":-303623,"y":330436},{"x":-291507,"y":318465},{"x":-289710,"y":343027},{"x":-306346,"y":29948},{"x":-288900,"y":43631},{"x":-306224,"y":49358},{"x":-294713,"y":64387},{"x":-300004,"y":152686},{"x":-286104,"y":135589},{"x":-306054,"y":166598},{"x":-288080,"y":163574},{"x":-305945,"y":212725},{"x":-297800,"y":228330},{"x":-306025,"y":248065},{"x":-290705,"y":243310},{"x":-330908,"y":50420},{"x":-325173,"y":67494},{"x":-327350,"y":138838},{"x":-315216,"y":151566},{"x":-327427,"y":170473},{"x":-328375,"y":201065},{"x":-328675,"y":228050},{"x":-328850,"y":244180},{"x":-315255,"y":236115},{"x":-357194,"y":267413},{"x":-346780,"y":256120},{"x":-343705,"y":275164},{"x":-332961,"y":26046},{"x":-346429,"y":43197},{"x":-353709,"y":57653},{"x":-342596,"y":73170},{"x":-355366,"y":153075},{"x":-351679,"y":135272},{"x":-348590,"y":170119},{"x":-335425,"y":184540},{"x":-338045,"y":213905},{"x":-374586,"y":22504},{"x":-374278,"y":259397},{"x":-367288,"y":37048},{"x":-382295,"y":40480},{"x":-379977,"y":75700},{"x":-362063,"y":73958},{"x":-371090,"y":53256},{"x":-365043,"y":91953},{"x":-379461,"y":95980},{"x":-380026,"y":118008},{"x":-361372,"y":118070},{"x":-361783,"y":189148},{"x":-365518,"y":206911},{"x":-376410,"y":227210},{"x":-383600,"y":210110},{"x":-393850,"y":12170},{"x":-407479,"y":12029},{"x":-402573,"y":30270},{"x":-398918,"y":47657},{"x":-403472,"y":75854},{"x":-386431,"y":59316},{"x":-403642,"y":93709},{"x":-403612,"y":123968}],
+      },
+    ],
   },
   {
     id: 2,
@@ -1615,12 +1635,26 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "At a glance it appears full of confidence, but it is in fact weak and cowardly. Being toyed with by a Cattiva is in many ways the greatest of disgraces.",
     workSuitability: [
+      { type: "Handiwork", level: 1 },
+      { type: "Gathering", level: 1 },
+      { type: "Mining", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Cat Helper", description: "While in party, Cattiva helps carry supplies, increasing the player's max carrying capacity by <Status_Up>{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "berries", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 131,
+        sourceUrl: "https://palworld.th.gl/guides/Cattiva",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-257164,"y":277931},{"x":-254012,"y":306124},{"x":-247954,"y":292223},{"x":-235283,"y":304621},{"x":-254981,"y":331185},{"x":-239701,"y":330836},{"x":-255502,"y":356855},{"x":-230879,"y":361672},{"x":-247827,"y":378495},{"x":-230749,"y":378709},{"x":-232348,"y":394136},{"x":-274421,"y":262312},{"x":-280081,"y":305229},{"x":-274841,"y":289366},{"x":-277484,"y":333457},{"x":-266895,"y":316929},{"x":-281044,"y":356522},{"x":-264408,"y":345234},{"x":-279403,"y":206923},{"x":-307981,"y":308024},{"x":-306123,"y":330436},{"x":-291375,"y":323966},{"x":-290960,"y":345193},{"x":-302865,"y":217390},{"x":-289830,"y":228190},{"x":-306025,"y":243735},{"x":-288205,"y":243310},{"x":-321240,"y":178740},{"x":-310335,"y":164865},{"x":-332370,"y":167335},{"x":-332125,"y":203230},{"x":-322425,"y":230215},{"x":-317295,"y":209345},{"x":-327600,"y":246345},{"x":-355944,"y":269578},{"x":-344280,"y":256120},{"x":-332925,"y":184540},{"x":-339101,"y":228921},{"x":-346696,"y":206943},{"x":-351761,"y":240507},{"x":-378336,"y":24669},{"x":-373028,"y":261562},{"x":-369788,"y":37048},{"x":-378520,"y":48626},{"x":-378727,"y":73535},{"x":-364563,"y":73958},{"x":-367543,"y":91953},{"x":-382789,"y":100529},{"x":-378776,"y":115843},{"x":-360122,"y":115904},{"x":-369213,"y":128176},{"x":-378319,"y":205101},{"x":-382928,"y":227258},{"x":-393850,"y":16500},{"x":-406229,"y":9864},{"x":-402796,"y":31302},{"x":-393538,"y":46651},{"x":-406714,"y":50646},{"x":-402222,"y":73689},{"x":-402392,"y":91544},{"x":-402362,"y":121803},{"x":-398565,"y":212633},{"x":-420938,"y":10831},{"x":-418672,"y":27376},{"x":-430253,"y":38573},{"x":-419095,"y":65731},{"x":-432173,"y":73493},{"x":-417810,"y":84661},{"x":-424825,"y":97317},{"x":-410430,"y":104264},{"x":-449289,"y":58690},{"x":-448239,"y":74789},{"x":-437299,"y":89987},{"x":-456245,"y":90960},{"x":-446880,"y":102941},{"x":-4875,"y":-101427},{"x":-21928,"y":-124177},{"x":-21026,"y":-107665},{"x":-1985,"y":-126091},{"x":-20308,"y":-144809}],
+      },
+    ],
   },
   {
     id: 3,
@@ -1631,13 +1665,25 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "Extremely weak and far too delicious. It is one of the weakest Pals alongside Lamball. No matter how many are hunted, they just keep appearing.",
     workSuitability: [
+      { type: "Gathering", level: 1 },
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Egg Layer", description: "Sometimes lays an egg| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "egg", notes: "1-1, 100%" },
       { resourceId: "meat-chickenpal", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 125,
+        sourceUrl: "https://palworld.th.gl/guides/Chikipi",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-258414,"y":275766},{"x":-255262,"y":303959},{"x":-239380,"y":299424},{"x":-240871,"y":282712},{"x":-256231,"y":329020},{"x":-237201,"y":330836},{"x":-232329,"y":315841},{"x":-256752,"y":354690},{"x":-233379,"y":361672},{"x":-249077,"y":376330},{"x":-228249,"y":378709},{"x":-229848,"y":394136},{"x":-275671,"y":260147},{"x":-281331,"y":303064},{"x":-270894,"y":286496},{"x":-278734,"y":331292},{"x":-268145,"y":319095},{"x":-282294,"y":354357},{"x":-278153,"y":209088},{"x":-282444,"y":276491},{"x":-309231,"y":305859},{"x":-307373,"y":328270},{"x":-292202,"y":316229},{"x":-296970,"y":342582},{"x":-302195,"y":214890},{"x":-296335,"y":231955},{"x":-307275,"y":245900},{"x":-288280,"y":245925},{"x":-323740,"y":178740},{"x":-312835,"y":164865},{"x":-329625,"y":203230},{"x":-326175,"y":228050},{"x":-326350,"y":244180},{"x":-354694,"y":267413},{"x":-341382,"y":257206},{"x":-340430,"y":178715},{"x":-339335,"y":212280},{"x":-341669,"y":228809},{"x":-350511,"y":242672},{"x":-377086,"y":22504},{"x":-371778,"y":259397},{"x":-376193,"y":273841},{"x":-366891,"y":33807},{"x":-381045,"y":38315},{"x":-365813,"y":71793},{"x":-373590,"y":53256},{"x":-381307,"y":66868},{"x":-379226,"y":82878},{"x":-367292,"y":94004},{"x":-380289,"y":100529},{"x":-371957,"y":127030},{"x":-366359,"y":112210},{"x":-359283,"y":189148},{"x":-363018,"y":206911},{"x":-373910,"y":227210},{"x":-381100,"y":210110},{"x":-395100,"y":14335},{"x":-404826,"y":24000},{"x":-398298,"y":39370},{"x":-407964,"y":52811},{"x":-399714,"y":66149},{"x":-397737,"y":84079},{"x":-408679,"y":95113},{"x":-407581,"y":124074},{"x":-393752,"y":106291},{"x":-388892,"y":126138},{"x":-397406,"y":214578},{"x":-408065,"y":4427},{"x":-422188,"y":12996},{"x":-421081,"y":30464},{"x":-425475,"y":46568},{"x":-420345,"y":67896},{"x":-431038,"y":77397},{"x":-426849,"y":92213},{"x":-450539,"y":56525},{"x":-445533,"y":70703},{"x":-441877,"y":89145},{"x":-457495,"y":93125},{"x":-100273,"y":-1699},{"x":-82173,"y":16772}],
+      },
+    ],
   },
   {
     id: 4,
@@ -1648,13 +1694,28 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "Intelligent as a five to seven-year-old human child. It makes a wonderful partner, but there have been more than a few cases where they've killed their master after learning to use weapons.",
     workSuitability: [
+      { type: "Planting", level: 1 },
+      { type: "Handiwork", level: 1 },
+      { type: "Gathering", level: 1 },
+      { type: "Lumbering", level: 1 },
+      { type: "Medicine Production", level: 1 },
     ],
     partnerSkill: { name: "Lifmunk Recoil", description: "When activated, leaps onto the player's head and uses a submachine gun to follows up player attacks. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
       { resourceId: "wheatseeds", notes: "1-1, 100%" },
       { resourceId: "herbs", notes: "1-1, 20%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 110,
+        sourceUrl: "https://palworld.th.gl/guides/Lifmunk",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-258935,"y":2006},{"x":-235619,"y":-4020},{"x":-248579,"y":24784},{"x":-230261,"y":15948},{"x":-258414,"y":280096},{"x":-252762,"y":308959},{"x":-245454,"y":292223},{"x":-234265,"y":303267},{"x":-256231,"y":333350},{"x":-240951,"y":333001},{"x":-251752,"y":359020},{"x":-254240,"y":40205},{"x":-229246,"y":34070},{"x":-239910,"y":50252},{"x":-254706,"y":59786},{"x":-272935,"y":11944},{"x":-275671,"y":264477},{"x":-281331,"y":307394},{"x":-278554,"y":294368},{"x":-261297,"y":298163},{"x":-278734,"y":335622},{"x":-266175,"y":322898},{"x":-282294,"y":358687},{"x":-269079,"y":348531},{"x":-267100,"y":31269},{"x":-277963,"y":183921},{"x":-278868,"y":196935},{"x":-256782,"y":203547},{"x":-309231,"y":310189},{"x":-293198,"y":300142},{"x":-307373,"y":332601},{"x":-291939,"y":321562},{"x":-293460,"y":340862},{"x":-296037,"y":173215},{"x":-307488,"y":190147},{"x":-294432,"y":200433},{"x":-301628,"y":228904},{"x":-302275,"y":245900},{"x":-284395,"y":248360},{"x":-321600,"y":181453},{"x":-327574,"y":200672},{"x":-324925,"y":230215},{"x":-317690,"y":247530},{"x":-339602,"y":174145},{"x":-354867,"y":208504},{"x":-352055,"y":187719},{"x":-373303,"y":35372},{"x":-381020,"y":48626},{"x":-369292,"y":70915},{"x":-375622,"y":94719},{"x":-357730,"y":83116},{"x":-357939,"y":100687},{"x":-383982,"y":81186},{"x":-368877,"y":127365},{"x":-370711,"y":111615},{"x":-374192,"y":203346},{"x":-368836,"y":184341},{"x":-406801,"y":22449},{"x":-391107,"y":31234},{"x":-404152,"y":40638},{"x":-395602,"y":58784},{"x":-404430,"y":79533},{"x":-391341,"y":98414},{"x":-407429,"y":97278},{"x":-404501,"y":124409},{"x":-384984,"y":129024},{"x":-421238,"y":17276},{"x":-410565,"y":4427},{"x":-419377,"y":36381},{"x":-420345,"y":63566},{"x":-430923,"y":75658},{"x":-419089,"y":89078},{"x":-430245,"y":100936},{"x":-450539,"y":60855},{"x":-461022,"y":75473},{"x":-444056,"y":85151},{"x":-459995,"y":88795},{"x":-444380,"y":102941},{"x":-120081,"y":-14841},{"x":-127246,"y":-43844}],
+      },
+    ],
   },
   {
     id: 5,
@@ -1665,13 +1726,26 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "Using its own body water, this Pal can create waves anywhere. It body surfs when in a hurry, but the resulting speed often ends in a fatal collision.",
     workSuitability: [
+      { type: "Watering", level: 1 },
+      { type: "Handiwork", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Surfing Slam", description: "When activated, Fuack body surfs towards an enemy and slams into them. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
       { resourceId: "leather", notes: "1-1, 100%" },
       { resourceId: "palfluid", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 82,
+        sourceUrl: "https://palworld.th.gl/guides/Fuack",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-255914,"y":280766},{"x":-245271,"y":295179},{"x":-235515,"y":305432},{"x":-252558,"y":309763},{"x":-253731,"y":334020},{"x":-242857,"y":323545},{"x":-249922,"y":357190},{"x":-237716,"y":342420},{"x":-273171,"y":265147},{"x":-278831,"y":308064},{"x":-277304,"y":292203},{"x":-260047,"y":295998},{"x":-276234,"y":336292},{"x":-268675,"y":322898},{"x":-279794,"y":359357},{"x":-266097,"y":350430},{"x":-262763,"y":369014},{"x":-276373,"y":85285},{"x":-275938,"y":106606},{"x":-277963,"y":179591},{"x":-277618,"y":199101},{"x":-258612,"y":201047},{"x":-306731,"y":310859},{"x":-295698,"y":300142},{"x":-304873,"y":333270},{"x":-294439,"y":321562},{"x":-294710,"y":343027},{"x":-302704,"y":69623},{"x":-302882,"y":90643},{"x":-301206,"y":124579},{"x":-307061,"y":107484},{"x":-300849,"y":140470},{"x":-294787,"y":175380},{"x":-304988,"y":190147},{"x":-326832,"y":75483},{"x":-328236,"y":99586},{"x":-324821,"y":116182},{"x":-315757,"y":132732},{"x":-331868,"y":131646},{"x":-321600,"y":177123},{"x":-329992,"y":190140},{"x":-326055,"y":204649},{"x":-343838,"y":98721},{"x":-340512,"y":114962},{"x":-338352,"y":176311},{"x":-354867,"y":204174},{"x":-358313,"y":71793},{"x":-371498,"y":78746},{"x":-368542,"y":96169},{"x":-368207,"y":124865},{"x":-382832,"y":104955},{"x":-376022,"y":200846},{"x":-371336,"y":184341},{"x":-388490,"y":80986},{"x":-403180,"y":77368},{"x":-398901,"y":92824},{"x":-403831,"y":121909},{"x":-383734,"y":126859},{"x":-422845,"y":63566},{"x":-419471,"y":80313},{"x":-430787,"y":91176},{"x":-413659,"y":100200},{"x":-448039,"y":61525},{"x":-458522,"y":75473},{"x":-442880,"y":80414},{"x":-461245,"y":90960},{"x":-445408,"y":98027},{"x":-119820,"y":-20679},{"x":-124746,"y":-44513},{"x":-108231,"y":-34246},{"x":-125355,"y":-70383},{"x":-114397,"y":-55934},{"x":-107816,"y":-73369},{"x":-117689,"y":-100521},{"x":-150813,"y":-36262},{"x":-136184,"y":-27148},{"x":-141207,"y":-50141},{"x":-148247,"y":-67095},{"x":-167918,"y":-44183},{"x":-166447,"y":-62201}],
+      },
+    ],
   },
   {
     id: 6,
@@ -1682,6 +1756,10 @@ export const pals: Pal[] = [
     elements: ["Water", "Fire"],
     description: "With a belly built for friction, this Pal sparks flames as it body surfs. But when it gets carried away, it often ends up a rolling fireball.",
     workSuitability: [
+      { type: "Kindling", level: 2 },
+      { type: "Watering", level: 2 },
+      { type: "Handiwork", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Fire Tackle", description: "When activated, Fuack Ignis fire surfs towards an enemy and slams into them. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
@@ -1689,7 +1767,17 @@ export const pals: Pal[] = [
       { resourceId: "palfluid", notes: "1-1, 100%" },
       { resourceId: "fireorgan", notes: "1-2, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 4,
+        sourceUrl: "https://palworld.th.gl/guides/Fuack%20Ignis",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-301310,"y":-223111},{"x":-331449,"y":-229432},{"x":-324963,"y":-213121},{"x":-342137,"y":-217710}],
+      },
+    ],
   },
   {
     id: 7,
@@ -1700,13 +1788,25 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "The idol of Palpagos Island. If you bully a Vixy, you best be prepared to become enemies with the whole world.",
     workSuitability: [
+      { type: "Gathering", level: 1 },
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Dig Here!", description: "Sometimes digs up items from the ground when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "leather", notes: "1-1, 100%" },
       { resourceId: "bone", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 21,
+        sourceUrl: "https://palworld.th.gl/guides/Vixy",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-280463,"y":179591},{"x":-280118,"y":199101},{"x":-261112,"y":201047},{"x":-305814,"y":179540},{"x":-302129,"y":200457},{"x":-304695,"y":214890},{"x":-295085,"y":229790},{"x":-324100,"y":177123},{"x":-329579,"y":193216},{"x":-328635,"y":218730},{"x":-340852,"y":176311},{"x":-357367,"y":204174},{"x":-350805,"y":189884},{"x":-378522,"y":200846},{"x":-373836,"y":184341},{"x":-409365,"y":76575},{"x":-434890,"y":86305},{"x":-423535,"y":101975},{"x":-460725,"y":72935},{"x":-448105,"y":55970},{"x":-459020,"y":90590}],
+      },
+    ],
   },
   {
     id: 8,
@@ -1717,12 +1817,24 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "Riding the wind, this Pal travels where it pleases. Should it find a partner along the way, the encounter will mark its journey's end.",
     workSuitability: [
+      { type: "Watering", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Zephyr Glider", description: "While in party, modifies the performance of the equipped glider. <Status_Keyword>Prevents fall damage</> and extends the duration of high-speed gliding. {ReferenceMsgId_GriderPerformanceUp}" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 59,
+        sourceUrl: "https://palworld.th.gl/guides/Celaray",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-242188,"y":359066},{"x":-236383,"y":344240},{"x":-242651,"y":374576},{"x":-281571,"y":267437},{"x":-276184,"y":283425},{"x":-264045,"y":356425},{"x":-260390,"y":204760},{"x":-271825,"y":219470},{"x":-303809,"y":260847},{"x":-299020,"y":302785},{"x":-304046,"y":319544},{"x":-291305,"y":343520},{"x":-304580,"y":127095},{"x":-287245,"y":242115},{"x":-328595,"y":133875},{"x":-342235,"y":226975},{"x":-351860,"y":210490},{"x":-379355,"y":275585},{"x":-361400,"y":81995},{"x":-362760,"y":110775},{"x":-381495,"y":131995},{"x":-380480,"y":203820},{"x":-381640,"y":219657},{"x":-367110,"y":214953},{"x":-378930,"y":238292},{"x":-407005,"y":70610},{"x":-387986,"y":76156},{"x":-397055,"y":131870},{"x":-401335,"y":224540},{"x":-418243,"y":6288},{"x":-429381,"y":20770},{"x":-429977,"y":53103},{"x":-429118,"y":110024},{"x":-410799,"y":107996},{"x":-435650,"y":34943},{"x":-458835,"y":102011},{"x":-443289,"y":111414},{"x":-102320,"y":-73505},{"x":-107905,"y":-51124},{"x":-110059,"y":-33154},{"x":-127516,"y":-26338},{"x":-117840,"y":-83210},{"x":-126425,"y":-99700},{"x":-148975,"y":-10785},{"x":-152158,"y":-26601},{"x":-150806,"y":-75329},{"x":-134136,"y":-81571},{"x":-148335,"y":40945},{"x":-134670,"y":53550},{"x":-166373,"y":-15195},{"x":-169543,"y":-32200},{"x":-174442,"y":-51631},{"x":-170185,"y":-70335},{"x":-159195,"y":6100},{"x":-163929,"y":23293},{"x":-186753,"y":-22735},{"x":-201237,"y":-33489},{"x":-212944,"y":307286},{"x":-229299,"y":330870}],
+      },
+    ],
   },
   {
     id: 9,
@@ -1733,12 +1845,25 @@ export const pals: Pal[] = [
     elements: ["Water", "Electric"],
     description: "Its flashy patterns help it attract a partner. But after a long history of electrocution incidents involving Celaray Lux, yellow-and-black stripes are now seen across the island as a sign of danger.",
     workSuitability: [
+      { type: "Watering", level: 1 },
+      { type: "Generating Electricity", level: 2 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Jolt Glider", description: "While in party, modifies the performance of the equipped glider. <Status_Keyword>Prevents fall damage</> and extends the duration of high-speed gliding. {ReferenceMsgId_GriderPerformanceUp}" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 45,
+        sourceUrl: "https://palworld.th.gl/guides/Celaray%20Lux",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-19069,"y":264244},{"x":-19647,"y":474643},{"x":-1310,"y":470744},{"x":-21294,"y":502082},{"x":-16862,"y":226306},{"x":-17360,"y":210499},{"x":1769,"y":231978},{"x":-31702,"y":280273},{"x":-47870,"y":305516},{"x":-33578,"y":331712},{"x":-32350,"y":349758},{"x":-48419,"y":353219},{"x":-43042,"y":476338},{"x":-37133,"y":506631},{"x":-34237,"y":532135},{"x":-64408,"y":472745},{"x":-83263,"y":358335},{"x":-99215,"y":481701},{"x":-79861,"y":470089},{"x":-83066,"y":483437},{"x":-98956,"y":502177},{"x":27777,"y":458124},{"x":24869,"y":475737},{"x":27630,"y":240158},{"x":50554,"y":262211},{"x":39913,"y":443682},{"x":39778,"y":481488},{"x":42740,"y":496687},{"x":35270,"y":256323},{"x":71940,"y":402410},{"x":73602,"y":419764},{"x":70037,"y":453588},{"x":72675,"y":437658},{"x":58102,"y":442367},{"x":83632,"y":275915},{"x":95954,"y":394709},{"x":122793,"y":407460},{"x":154290,"y":396476},{"x":143400,"y":415521},{"x":172371,"y":267330},{"x":174970,"y":295389},{"x":191550,"y":311476},{"x":202154,"y":326196},{"x":206488,"y":363426},{"x":208886,"y":346396}],
+      },
+    ],
   },
   {
     id: 10,
@@ -1749,12 +1874,24 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "Compared to Lamball, it has finer wool and a temperament more suited for domestication. However, it has historically always been kept as a pet. Cuteness is considered a virtue.",
     workSuitability: [
+      { type: "Gathering", level: 1 },
+      { type: "Farming", level: 2 },
     ],
     partnerSkill: { name: "Fluffy Wool", description: "While in party, increases Attack of <img id=|ElemIcon_Neutral|/>Unknown Status (COMMON_ELEMENT_NAME_Normal| style=|Elem_Neutral) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack) Sometimes drops wool| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "wool", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 103,
+        sourceUrl: "https://palworld.th.gl/guides/Cremis",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-260914,"y":275766},{"x":-257092,"y":306459},{"x":-241910,"y":303394},{"x":-251665,"y":289409},{"x":-234749,"y":287844},{"x":-258731,"y":329020},{"x":-240951,"y":328671},{"x":-229829,"y":315841},{"x":-256752,"y":359020},{"x":-252332,"y":343833},{"x":-239401,"y":50498},{"x":-250542,"y":62529},{"x":-236643,"y":66199},{"x":-242495,"y":86342},{"x":-254088,"y":96440},{"x":-230662,"y":101100},{"x":-278171,"y":260147},{"x":-283831,"y":303064},{"x":-278591,"y":291531},{"x":-281234,"y":331292},{"x":-274721,"y":317032},{"x":-284794,"y":354357},{"x":-271935,"y":345179},{"x":-272136,"y":363855},{"x":-268031,"y":72723},{"x":-282963,"y":183921},{"x":-275118,"y":199101},{"x":-281194,"y":278656},{"x":-311731,"y":305859},{"x":-309873,"y":328270},{"x":-295074,"y":318903},{"x":-299664,"y":343203},{"x":-307064,"y":181705},{"x":-303379,"y":198292},{"x":-305491,"y":211369},{"x":-287018,"y":213752},{"x":-326600,"y":181453},{"x":-331324,"y":202837},{"x":-331690,"y":220312},{"x":-335852,"y":176311},{"x":-359867,"y":208504},{"x":-345805,"y":189884},{"x":-342074,"y":225928},{"x":-349261,"y":244838},{"x":-381227,"y":73535},{"x":-360813,"y":76123},{"x":-375291,"y":87563},{"x":-362401,"y":100858},{"x":-381276,"y":115843},{"x":-362622,"y":115904},{"x":-372540,"y":129063},{"x":-378522,"y":205846},{"x":-371336,"y":188671},{"x":-380428,"y":231588},{"x":-404722,"y":73689},{"x":-404892,"y":91544},{"x":-387309,"y":97706},{"x":-404862,"y":121803},{"x":-389395,"y":129572},{"x":-396065,"y":216963},{"x":-416595,"y":65731},{"x":-431372,"y":69161},{"x":-422810,"y":84661},{"x":-425379,"y":104204},{"x":-453039,"y":56525},{"x":-443669,"y":74847},{"x":-462272,"y":73308},{"x":-438549,"y":92152},{"x":-453745,"y":90960},{"x":-85143,"y":743},{"x":-94321,"y":-11632},{"x":-100012,"y":16249},{"x":-80181,"y":16147},{"x":-100903,"y":40390},{"x":-82874,"y":32236},{"x":-125753,"y":-10184},{"x":-122320,"y":-20009},{"x":-126543,"y":-35722},{"x":-111070,"y":-46445},{"x":-126247,"y":-61047}],
+      },
+    ],
   },
   {
     id: 11,
@@ -1765,13 +1902,27 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "Those who disgrace the honor of the herd are forced to take their own life. By piercing their inflated vocal sac with a tree branch, they are blown away into the atmosphere and return to the afterlife.",
     workSuitability: [
+      { type: "Watering", level: 1 },
+      { type: "Handiwork", level: 1 },
+      { type: "Gathering", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Leap Stance", description: "When activated, Croajiro Noct channels its loyalty and puffs up its abdomen to store energy. Climbing on top will propel the player high into the air. While airborne before landing, the player's Attack is increased by <Status_Up>{ReferencePassive1_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "palfluid", notes: "1-2, 100%" },
       { resourceId: "cloth", notes: "1-2, 25%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 92,
+        sourceUrl: "https://palworld.th.gl/guides/Croajiro",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-242771,"y":295179},{"x":-250058,"y":309763},{"x":-244688,"y":354736},{"x":-229710,"y":346210},{"x":-248614,"y":369701},{"x":-228906,"y":365832},{"x":-239690,"y":382496},{"x":-306309,"y":256517},{"x":-287605,"y":258737},{"x":-309695,"y":214890},{"x":-294050,"y":226165},{"x":-301245,"y":239720},{"x":-328675,"y":232380},{"x":-330135,"y":215365},{"x":-326630,"y":250280},{"x":-353924,"y":209970},{"x":-371505,"y":22169},{"x":-368758,"y":40316},{"x":-374311,"y":58325},{"x":-378784,"y":210340},{"x":-366999,"y":220397},{"x":-380180,"y":240457},{"x":-395100,"y":10005},{"x":-398948,"y":24591},{"x":-384650,"y":43454},{"x":-398709,"y":44137},{"x":-410755,"y":72775},{"x":-391173,"y":75557},{"x":-399058,"y":64063},{"x":-399928,"y":215222},{"x":-389959,"y":227220},{"x":-411815,"y":2261},{"x":-412725,"y":20120},{"x":-428131,"y":22936},{"x":-432477,"y":48773},{"x":-413486,"y":38019},{"x":-416006,"y":53979},{"x":-432868,"y":112189},{"x":-415798,"y":107670},{"x":-461335,"y":97681},{"x":-449074,"y":111427},{"x":-23009,"y":-43865},{"x":-25222,"y":-62805},{"x":-40373,"y":-14820},{"x":-47395,"y":-29791},{"x":-40163,"y":-44334},{"x":-40931,"y":-74099},{"x":-51014,"y":-55669},{"x":-64965,"y":-241},{"x":-72216,"y":-66165},{"x":-59102,"y":-75091},{"x":-71825,"y":-90591},{"x":-104023,"y":-3864},{"x":-88926,"y":-2125},{"x":-85253,"y":12107},{"x":-106357,"y":16208},{"x":-106066,"y":45874},{"x":-99064,"y":31217},{"x":-82700,"y":29093},{"x":-127991,"y":-3823},{"x":-126171,"y":-94240},{"x":-108496,"y":-80687},{"x":-131574,"y":13789},{"x":-131112,"y":40153},{"x":-119447,"y":30854},{"x":-152668,"y":-24931},{"x":-151758,"y":-3059},{"x":-140335,"y":-72857},{"x":-150512,"y":16706},{"x":-149509,"y":357339},{"x":-150730,"y":33121},{"x":-156754,"y":-72952},{"x":-172860,"y":-68204},{"x":-166315,"y":13016},{"x":-172855,"y":343238},{"x":-175525,"y":358173},{"x":-170996,"y":373397},{"x":-156947,"y":378040},{"x":-177832,"y":384508},{"x":-176087,"y":397454}],
+      },
+    ],
   },
   {
     id: 12,
@@ -1782,6 +1933,10 @@ export const pals: Pal[] = [
     elements: ["Water", "Dark"],
     description: "The Croajiro who have forsaken their honor gather and form splinter groups. They will use any underhanded means to take down their chosen prey. If you encounter a pack of Croajiro Noct in the dead of the night, it's your life that's on the line.",
     workSuitability: [
+      { type: "Watering", level: 1 },
+      { type: "Handiwork", level: 2 },
+      { type: "Gathering", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Shadow Stance", description: "When activated, Croajiro Noct channels its loyalty and puffs up its abdomen to store energy. Climbing on top will propel the player high into the air. While in party, improves player's and Pals' <img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark) damage to enemy weak points by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -1789,7 +1944,17 @@ export const pals: Pal[] = [
       { resourceId: "cloth", notes: "1-2, 25%" },
       { resourceId: "venom", notes: "2-4, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 75,
+        sourceUrl: "https://palworld.th.gl/guides/Croajiro%20Noct",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-544140,"y":-306591},{"x":-547798,"y":-290433},{"x":-560786,"y":-302663},{"x":-555636,"y":-320970},{"x":-551977,"y":-356317},{"x":-561264,"y":-341961},{"x":-547013,"y":-380371},{"x":-561712,"y":-371318},{"x":-558290,"y":-391919},{"x":-576515,"y":-299306},{"x":-580615,"y":-314640},{"x":-579653,"y":-329917},{"x":-576996,"y":-346645},{"x":-581681,"y":-365106},{"x":-576743,"y":-383423},{"x":-608715,"y":-302276},{"x":-599109,"y":-320102},{"x":-595942,"y":-336175},{"x":-613894,"y":-348258},{"x":-600603,"y":-357442},{"x":-596705,"y":-375258},{"x":-613101,"y":-375507},{"x":-599247,"y":-394258},{"x":-627066,"y":-258122},{"x":-624997,"y":-276170},{"x":-635465,"y":-293019},{"x":-632167,"y":-309304},{"x":-615094,"y":-329129},{"x":-633602,"y":-332674},{"x":-629959,"y":-353603},{"x":-636867,"y":-368864},{"x":-633653,"y":-386940},{"x":-637944,"y":-404057},{"x":-637173,"y":-419383},{"x":-646390,"y":-250204},{"x":-662539,"y":-243931},{"x":-654258,"y":-302940},{"x":-648010,"y":-283887},{"x":-664158,"y":-323707},{"x":-659757,"y":-356167},{"x":-655323,"y":-339030},{"x":-662789,"y":-383366},{"x":-664667,"y":-407250},{"x":-655527,"y":-422175},{"x":-690594,"y":-232243},{"x":-670665,"y":-230651},{"x":-686748,"y":-293573},{"x":-687508,"y":-331123},{"x":-670703,"y":-345869},{"x":-685812,"y":-357174},{"x":-672326,"y":-367864},{"x":-685242,"y":-382607},{"x":-685804,"y":-406091},{"x":-675868,"y":-425919},{"x":-696569,"y":-249389},{"x":-709884,"y":-240543},{"x":-709575,"y":-278812},{"x":-696055,"y":-306838},{"x":-716134,"y":-304875},{"x":-704993,"y":-331879},{"x":-697673,"y":-347813},{"x":-702444,"y":-380710},{"x":-709289,"y":-362338},{"x":-704564,"y":-409084},{"x":-697378,"y":-395736},{"x":-714257,"y":-391950},{"x":-699942,"y":-218839},{"x":-727563,"y":-237050},{"x":-737312,"y":-276361},{"x":-726126,"y":-289808},{"x":-721915,"y":-404918},{"x":-742105,"y":-408403},{"x":-718320,"y":-221094},{"x":-737781,"y":-224712},{"x":-743958,"y":-291572}],
+      },
+    ],
   },
   {
     id: 13,
@@ -1800,13 +1965,26 @@ export const pals: Pal[] = [
     elements: ["Grass", "Neutral"],
     description: "When in doubt, punch it till it works—that’s Herbil's approach to fixing things. With strength perfectly tuned for humans, sometimes just one punch is enough to restart a stopped heart.",
     workSuitability: [
+      { type: "Planting", level: 1 },
+      { type: "Gathering", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Herbil Pulse", description: "While in party, Herbil uses its healing powers to <Status_Keyword>restore</> <Status_Up>{ActiveSkillMainValueByRank}%</> of the player's Max Health when incapacitated. {ReferenceMsgId_CooldownReduction}" },
     possibleDrops: [
       { resourceId: "leather", notes: "1-1, 100%" },
       { resourceId: "wheatseeds", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 21,
+        sourceUrl: "https://palworld.th.gl/guides/Herbil",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-307195,"y":214890},{"x":-296550,"y":226165},{"x":-326396,"y":347096},{"x":-331135,"y":218730},{"x":-344886,"y":345000},{"x":-24580,"y":562690},{"x":-497160,"y":-36430},{"x":-39341,"y":566396},{"x":-169898,"y":-13414},{"x":-170259,"y":8444},{"x":-172984,"y":49615},{"x":-176542,"y":29312},{"x":-158413,"y":60762},{"x":-172314,"y":70262},{"x":-185724,"y":-4683},{"x":-194895,"y":-21566},{"x":-203885,"y":-8297},{"x":-193324,"y":22772},{"x":-202401,"y":10199},{"x":-193549,"y":45832},{"x":-187545,"y":70858}],
+      },
+    ],
   },
   {
     id: 14,
@@ -1817,12 +1995,23 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "Large amounts of water pour from what is thought to be its nose, though some say that it is, in fact, just snot. This has sparked a fierce debate among Pal scholars.",
     workSuitability: [
+      { type: "Watering", level: 1 },
     ],
     partnerSkill: { name: "Soothing Shower", description: "While in party, restores <Status_Up>{Passive1_EffectValue1}%</> of the player's Health when Health falls below 30%. (Does not stack) ({ReferencePassive1_EffectValue1}-second cooldown after activation)" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 91,
+        sourceUrl: "https://palworld.th.gl/guides/Teafant",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-253352,"y":315262},{"x":-239718,"y":328325},{"x":-243438,"y":356901},{"x":-232210,"y":346210},{"x":-255617,"y":339097},{"x":-247330,"y":372011},{"x":-233249,"y":378709},{"x":-234848,"y":394136},{"x":-280039,"y":333024},{"x":-305059,"y":258682},{"x":-284590,"y":258819},{"x":-302878,"y":231069},{"x":-294167,"y":243667},{"x":-326194,"y":226176},{"x":-326272,"y":243013},{"x":-348680,"y":263235},{"x":-356424,"y":209970},{"x":-378336,"y":28999},{"x":-374046,"y":49483},{"x":-376227,"y":73535},{"x":-376276,"y":115843},{"x":-381284,"y":210340},{"x":-381430,"y":238292},{"x":-390100,"y":18665},{"x":-406551,"y":13927},{"x":-401546,"y":33467},{"x":-389973,"y":48692},{"x":-411714,"y":50646},{"x":-399722,"y":73689},{"x":-399892,"y":91544},{"x":-399862,"y":121803},{"x":-401178,"y":213057},{"x":-399407,"y":229110},{"x":-425938,"y":10831},{"x":-431227,"y":50938},{"x":-417422,"y":29541},{"x":-421508,"y":62512},{"x":-407939,"y":103748},{"x":-431618,"y":110024},{"x":-417619,"y":116765},{"x":-460085,"y":99846},{"x":-94693,"y":-1364},{"x":-76593,"y":17107},{"x":-97027,"y":18708},{"x":-96736,"y":48374},{"x":-82807,"y":34425},{"x":-124241,"y":-10318},{"x":-109809,"y":-4660},{"x":-126543,"y":-40053},{"x":-111070,"y":-50776},{"x":-126247,"y":-65377},{"x":-114325,"y":-96660},{"x":-122905,"y":-81630},{"x":-107246,"y":-82852},{"x":-122914,"y":13789},{"x":-121782,"y":42653},{"x":-110540,"y":25602},{"x":-150168,"y":-24931},{"x":-152697,"y":-9978},{"x":-146844,"y":-43180},{"x":-151100,"y":-65914},{"x":-139085,"y":-75022},{"x":-131944,"y":-99843},{"x":-153012,"y":26036},{"x":-152978,"y":6633},{"x":-139686,"y":16670},{"x":-136381,"y":1124},{"x":-152009,"y":366669},{"x":-142875,"y":42227},{"x":-162791,"y":-54617},{"x":-168685,"y":-70248},{"x":-175355,"y":352568},{"x":-174178,"y":370486},{"x":-163510,"y":381976},{"x":-181582,"y":386673},{"x":-172546,"y":404245},{"x":-203971,"y":323748},{"x":-179447,"y":330469},{"x":-193349,"y":337161},{"x":-199784,"y":353303}],
+      },
+    ],
   },
   {
     id: 15,
@@ -1833,13 +2022,24 @@ export const pals: Pal[] = [
     elements: ["Grass", "Ground"],
     description: "A strange Pal with a body resembling tree sap. It gradually loses strength if it has nothing to cover its body with, eventually rotting away.",
     workSuitability: [
+      { type: "Planting", level: 1 },
     ],
     partnerSkill: { name: "Logging Assistance", description: "While in party, improves logging efficiency by <Status_Up>{Passive1_EffectValue1}%</> and reduces weight of <Status_Keyword>all types of wood</> by <Status_Up>{Passive2_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "berryseeds", notes: "1-1, 100%" },
       { resourceId: "palitem-plantslime", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 86,
+        sourceUrl: "https://palworld.th.gl/guides/Gumoss",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-255914,"y":275766},{"x":-252762,"y":303959},{"x":-236533,"y":302456},{"x":-245745,"y":289300},{"x":-253731,"y":329020},{"x":-236916,"y":327984},{"x":-254252,"y":354690},{"x":-228654,"y":379361},{"x":-239401,"y":54828},{"x":-256792,"y":64695},{"x":-230699,"y":72347},{"x":-248745,"y":88507},{"x":-230535,"y":96467},{"x":-273171,"y":260147},{"x":-281486,"y":272971},{"x":-278831,"y":303064},{"x":-273394,"y":286496},{"x":-276234,"y":331292},{"x":-269395,"y":316929},{"x":-279794,"y":354357},{"x":-266908,"y":345234},{"x":-274281,"y":74888},{"x":-280653,"y":209088},{"x":-306731,"y":305859},{"x":-304873,"y":328270},{"x":-294702,"y":316229},{"x":-299470,"y":342582},{"x":-306741,"y":213534},{"x":-304775,"y":245900},{"x":-293300,"y":233285},{"x":-286895,"y":248360},{"x":-327425,"y":230215},{"x":-331181,"y":206931},{"x":-327880,"y":248115},{"x":-353287,"y":256114},{"x":-343904,"y":223428},{"x":-345446,"y":209108},{"x":-344167,"y":241824},{"x":-363313,"y":71793},{"x":-378803,"y":78308},{"x":-366293,"y":89788},{"x":-381961,"y":95980},{"x":-373207,"y":124865},{"x":-365429,"y":107967},{"x":-377069,"y":207266},{"x":-381678,"y":229423},{"x":-396949,"y":79341},{"x":-407800,"y":91164},{"x":-408831,"y":121909},{"x":-396252,"y":106291},{"x":-391392,"y":126138},{"x":-397315,"y":214798},{"x":-413554,"y":67766},{"x":-430522,"y":64595},{"x":-424096,"y":78827},{"x":-427325,"y":97317},{"x":-448039,"y":56525},{"x":-446169,"y":74847},{"x":-448378,"y":90202},{"x":-122320,"y":-25009},{"x":-127246,"y":-48844},{"x":-112489,"y":-42985},{"x":-127855,"y":-74713},{"x":-116505,"y":-64586},{"x":-122689,"y":-100521},{"x":-106222,"y":-79933},{"x":-153313,"y":-40592},{"x":-141414,"y":-28258},{"x":-153247,"y":-67095},{"x":-142291,"y":-56205},{"x":-170777,"y":-64701},{"x":-175421,"y":357055},{"x":-172866,"y":46607},{"x":-164134,"y":60891},{"x":-200585,"y":353739},{"x":-189267,"y":368456},{"x":-185255,"y":35501},{"x":-192764,"y":52126},{"x":-205718,"y":63761},{"x":-179471,"y":64882}],
+      },
+    ],
   },
   {
     id: 16,
@@ -1850,12 +2050,25 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "Pupperai territorial disputes begin with a staredown and end in a single, quick strike. Training them to |stay| is risky business, as the |go| command triggers that same attack instinct.",
     workSuitability: [
+      { type: "Gathering", level: 1 },
+      { type: "Lumbering", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Best Boy", description: "While in party, increases the player's <Status_Keyword>melee weapon</> damage by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "bone", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 3,
+        sourceUrl: "https://palworld.th.gl/guides/Pupperai",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-352037,"y":258279},{"x":-337851,"y":226756},{"x":-342917,"y":243989}],
+      },
+    ],
   },
   {
     id: 17,
@@ -1866,12 +2079,24 @@ export const pals: Pal[] = [
     elements: ["Grass", "Neutral"],
     description: "Some individuals once had three or more leaves on their foreheads. Regarded as symbols of good fortune, those with more leaves were heavily hunted, leading the species to evolve fewer leaves over time.",
     workSuitability: [
+      { type: "Planting", level: 1 },
+      { type: "Gathering", level: 1 },
     ],
     partnerSkill: { name: "Happy Clover", description: "While at a base, increases the Unknown Status (COMMON_WORK_SUITABILITY_Collection| style=|Status_Keyword) Work Suitability Level for all other Base Pals by <Status_Keyword>+{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "berryseeds", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 8,
+        sourceUrl: "https://palworld.th.gl/guides/Clovee",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-309695,"y":219220},{"x":-293835,"y":227625},{"x":-322490,"y":180905},{"x":-321160,"y":165120},{"x":-332125,"y":198900},{"x":-326135,"y":218730},{"x":-339180,"y":180880},{"x":-340585,"y":214445}],
+      },
+    ],
   },
   {
     id: 18,
@@ -1882,12 +2107,23 @@ export const pals: Pal[] = [
     elements: ["Electric"],
     description: "It releases the electricity stored in its body when under attack. The voltage it generates exceeds 10 million volts, making it more lethal than any conventional heavy firearms when thrown.",
     workSuitability: [
+      { type: "Generating Electricity", level: 1 },
     ],
     partnerSkill: { name: "Jolt Bomb", description: "When activated, equips Jolthog to the player to be thrown at an enemy, causing an <img id=|ElemIcon_Electric|/>Unknown Status (COMMON_ELEMENT_NAME_Electricity| style=|Elem_Electric) explosion upon impact. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
       { resourceId: "electricorgan", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 13,
+        sourceUrl: "https://palworld.th.gl/guides/Jolthog",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-302504,"y":152686},{"x":-288604,"y":135589},{"x":-301896,"y":170524},{"x":-288091,"y":159789},{"x":-329850,"y":138838},{"x":-317716,"y":151566},{"x":-329927,"y":170473},{"x":-357866,"y":153075},{"x":-354179,"y":135272},{"x":-340936,"y":152653},{"x":-351090,"y":170119},{"x":-354727,"y":189919},{"x":-342068,"y":201375}],
+      },
+    ],
   },
   {
     id: 19,
@@ -1898,12 +2134,23 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "It releases the cold air stored in its body when under attack. The frigid blast it radiates is cold enough to freeze the surrounding air and easily pierces through any attacker's body.",
     workSuitability: [
+      { type: "Cooling", level: 1 },
     ],
     partnerSkill: { name: "Cold Bomb", description: "When activated, equips Jolthog Cryst to the player to be thrown at an enemy, causing an <img id=|ElemIcon_Ice|/>Unknown Status (COMMON_ELEMENT_NAME_Ice| style=|Elem_Ice) explosion upon impact. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
       { resourceId: "iceorgan", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 15,
+        sourceUrl: "https://palworld.th.gl/guides/Jolthog%20Cryst",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-253043,"y":62529},{"x":-278941,"y":28293},{"x":-273694,"y":45993},{"x":-270532,"y":72723},{"x":-275675,"y":93901},{"x":-277384,"y":109855},{"x":-294200,"y":26760},{"x":-300233,"y":61874},{"x":-284877,"y":62748},{"x":-293489,"y":91148},{"x":-304861,"y":80487},{"x":-293782,"y":109105},{"x":-560198,"y":115933},{"x":-575924,"y":117410},{"x":-566319,"y":131808}],
+      },
+    ],
   },
   {
     id: 20,
@@ -1914,12 +2161,26 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "It has few friends because of the perpetually grouchy look on its face, but it is in fact kindhearted. Some have seen it feeding Vixy who have strayed from their pack.",
     workSuitability: [
+      { type: "Handiwork", level: 1 },
+      { type: "Mining", level: 1 },
+      { type: "Transporting", level: 1 },
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Caffeine Inoculation", description: "When activated, Depresso chugs an entire energy drink, increasing its Movement Speed and Work Speed by <Status_Up>{ReferencePassive1_EffectValue1}%</>. Sometimes drops venom| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "venom", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 195,
+        sourceUrl: "https://palworld.th.gl/guides/Depresso",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-255855,"y":-2659},{"x":-244914,"y":-15426},{"x":-231709,"y":7531},{"x":-251079,"y":19784},{"x":-235463,"y":23189},{"x":-251584,"y":278266},{"x":-248432,"y":306459},{"x":-231765,"y":307597},{"x":-236730,"y":287416},{"x":-249401,"y":331520},{"x":-234711,"y":322030},{"x":-245938,"y":356901},{"x":-228038,"y":352966},{"x":-231410,"y":338878},{"x":-244830,"y":372011},{"x":-229499,"y":376544},{"x":-234532,"y":393573},{"x":-254518,"y":38360},{"x":-244037,"y":50734},{"x":-230594,"y":41128},{"x":-256793,"y":60364},{"x":-272621,"y":8656},{"x":-268580,"y":24750},{"x":-268841,"y":262647},{"x":-282736,"y":270806},{"x":-266570,"y":280102},{"x":-274501,"y":305564},{"x":-262547,"y":295998},{"x":-271904,"y":333792},{"x":-263308,"y":318815},{"x":-275464,"y":356857},{"x":-260463,"y":344404},{"x":-259013,"y":366849},{"x":-271073,"y":46045},{"x":-271782,"y":70558},{"x":-276925,"y":91736},{"x":-282384,"y":109855},{"x":-275463,"y":179591},{"x":-279405,"y":195874},{"x":-259862,"y":198882},{"x":-272377,"y":213804},{"x":-288250,"y":26864},{"x":-307559,"y":258682},{"x":-302401,"y":308359},{"x":-284884,"y":295797},{"x":-300543,"y":330770},{"x":-284835,"y":323914},{"x":-289523,"y":346654},{"x":-307596,"y":32113},{"x":-290150,"y":45796},{"x":-308724,"y":49358},{"x":-283627,"y":60583},{"x":-300395,"y":66415},{"x":-285898,"y":76624},{"x":-307639,"y":97676},{"x":-299766,"y":84311},{"x":-303047,"y":118935},{"x":-301254,"y":150521},{"x":-283604,"y":135589},{"x":-296037,"y":177545},{"x":-290591,"y":159789},{"x":-303738,"y":192312},{"x":-305378,"y":226739},{"x":-300070,"y":210071},{"x":-300772,"y":243149},{"x":-289836,"y":254356},{"x":-330571,"y":27232},{"x":-333408,"y":50420},{"x":-327673,"y":67494},{"x":-333856,"y":97264},{"x":-315796,"y":76968},{"x":-331750,"y":113461},{"x":-321636,"y":124587},{"x":-328600,"y":136673},{"x":-318966,"y":153731},{"x":-319100,"y":177123},{"x":-329870,"y":167335},{"x":-331242,"y":192305},{"x":-329944,"y":228341},{"x":-324200,"y":214240}],
+      },
+    ],
   },
   {
     id: 21,
@@ -1930,13 +2191,27 @@ export const pals: Pal[] = [
     elements: ["Water", "Ice"],
     description: "The feathers of this Pal have all but disappeared, but sadly, its desire to fly has remained as strong as ever. Even now, it tries to fly again in any way it can.",
     workSuitability: [
+      { type: "Watering", level: 1 },
+      { type: "Handiwork", level: 1 },
+      { type: "Cooling", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Pengullet Launcher", description: "When activated, the player equips a Rocket Launcher to fire Pengullet as ammunition. Pengullet explodes on impact and is incapacitated. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
       { resourceId: "iceorgan", notes: "1-2, 100%" },
       { resourceId: "palfluid", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 102,
+        sourceUrl: "https://palworld.th.gl/guides/Pengullet",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-240938,"y":356901},{"x":-233910,"y":338878},{"x":-251114,"y":369701},{"x":-237627,"y":383797},{"x":-261640,"y":206925},{"x":-280653,"y":204758},{"x":-273075,"y":221635},{"x":-302559,"y":258682},{"x":-282090,"y":258819},{"x":-308445,"y":217055},{"x":-293835,"y":231955},{"x":-306825,"y":242325},{"x":-326175,"y":232380},{"x":-324560,"y":213695},{"x":-325380,"y":248115},{"x":-341835,"y":212280},{"x":-339169,"y":228809},{"x":-352217,"y":240258},{"x":-340572,"y":250798},{"x":-380819,"y":205101},{"x":-385428,"y":227258},{"x":-371616,"y":220432},{"x":-409505,"y":70610},{"x":-392423,"y":73392},{"x":-401065,"y":212633},{"x":-402943,"y":232506},{"x":-428727,"y":50938},{"x":-436140,"y":88470},{"x":-423670,"y":79310},{"x":-424785,"y":104140},{"x":-413490,"y":94025},{"x":-411502,"y":113416},{"x":-461975,"y":75100},{"x":-449355,"y":58135},{"x":-457585,"y":99846},{"x":-445789,"y":111414},{"x":-24761,"y":101876},{"x":-12036,"y":115049},{"x":-11635,"y":132766},{"x":-13928,"y":154925},{"x":-24245,"y":174282},{"x":-565198,"y":115933},{"x":-570069,"y":133973},{"x":-32609,"y":36630},{"x":-43369,"y":59710},{"x":-31983,"y":71297},{"x":-30094,"y":51441},{"x":-26756,"y":88925},{"x":-47653,"y":86916},{"x":-44961,"y":102071},{"x":-48838,"y":126753},{"x":-32637,"y":120096},{"x":-48224,"y":152497},{"x":-50252,"y":174982},{"x":-33550,"y":162342},{"x":-60431,"y":102003},{"x":-71109,"y":129896},{"x":-72151,"y":145471},{"x":-73342,"y":167822},{"x":-85143,"y":-3587},{"x":-100012,"y":11919},{"x":-86366,"y":25855},{"x":-100903,"y":36060},{"x":-91826,"y":125416},{"x":-85628,"y":110273},{"x":-94541,"y":148204},{"x":-125753,"y":-14514},{"x":-115491,"y":1590},{"x":-108139,"y":-12478},{"x":-124921,"y":-96405},{"x":-124267,"y":-80455},{"x":-104746,"y":-82852},{"x":-119863,"y":19242},{"x":-129276,"y":39781},{"x":-104701,"y":126925},{"x":-124814,"y":143199},{"x":-147668,"y":-24931},{"x":-150197,"y":-9978},{"x":-136585,"y":-75022},{"x":-152742,"y":-70531}],
+      },
+    ],
   },
   {
     id: 22,
@@ -1947,6 +2222,10 @@ export const pals: Pal[] = [
     elements: ["Water", "Electric"],
     description: "The feathers of this Pal have all but disappeared, and it can no longer fly. Yet its longing for the sky has turned to jealousy— so it harnessed electricity to strike down those who still soar.",
     workSuitability: [
+      { type: "Watering", level: 1 },
+      { type: "Generating Electricity", level: 2 },
+      { type: "Handiwork", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Pengullet Lux Launcher", description: "When activated, the player equips Pengullet Lux to fire Rocket Launcher as ammunition. Pengullet Lux explodes on impact and is incapacitated. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
@@ -1964,13 +2243,28 @@ export const pals: Pal[] = [
     elements: ["Water", "Ice"],
     description: "Surprisingly, it is unrelated to Pengullet. However, since this Pal gets pampered as it pleases, for now, it's doing its best to strut arrogantly.",
     workSuitability: [
+      { type: "Watering", level: 2 },
+      { type: "Handiwork", level: 2 },
+      { type: "Mining", level: 3 },
+      { type: "Cooling", level: 2 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Brave Sailor", description: "While in party, <img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) Pals drop <Status_Up>{Passive1_EffectValue1}%</> more items when defeated. (Does not stack)" },
     possibleDrops: [
       { resourceId: "iceorgan", notes: "1-3, 100%" },
       { resourceId: "palitem-captainpenguin", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 24,
+        sourceUrl: "https://palworld.th.gl/guides/Penking",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-427366,"y":166066},{"x":-432537,"y":185204},{"x":-446288,"y":168747},{"x":-454833,"y":183221},{"x":-455562,"y":201851},{"x":-23511,"y":104041},{"x":-10786,"y":117214},{"x":-11517,"y":142042},{"x":-26134,"y":166469},{"x":-563948,"y":118098},{"x":-31359,"y":38795},{"x":-40869,"y":59710},{"x":-30733,"y":73463},{"x":-46403,"y":89081},{"x":-38688,"y":109028},{"x":-46974,"y":154662},{"x":-26514,"y":147560},{"x":-49002,"y":177147},{"x":-70901,"y":147636},{"x":-54641,"y":136554},{"x":-72092,"y":169987},{"x":-99507,"y":133114},{"x":-93235,"y":149644},{"x":-123564,"y":145364}],
+      },
+    ],
   },
   {
     id: 24,
@@ -1981,6 +2275,11 @@ export const pals: Pal[] = [
     elements: ["Water", "Electric"],
     description: "Its body changed color after gaining electricity to improve underwater hunting. As a result, it lost the affection of Pengullet— but strangely enough, it now has a loyal follower: Pengullet Lux.",
     workSuitability: [
+      { type: "Watering", level: 2 },
+      { type: "Generating Electricity", level: 3 },
+      { type: "Handiwork", level: 2 },
+      { type: "Mining", level: 3 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Unyielding Storm Commander", description: "While in party, improves player's and Pals' <img id=|ElemIcon_Water|/>Unknown Status (COMMON_ELEMENT_NAME_Water| style=|Elem_Water) damage to enemy weak points by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -1998,13 +2297,24 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Often lost in thought, it sometimes finds it difficult to sleep. |I think, therefore I am.|",
     workSuitability: [
+      { type: "Gathering", level: 1 },
     ],
     partnerSkill: { name: "Dark Knowledge", description: "While in party, increases Attack of <img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "fiber", notes: "5-10, 100%" },
       { resourceId: "technologybook-g1", notes: "1-1, 1%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 146,
+        sourceUrl: "https://palworld.th.gl/guides/Hoocrates",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-257105,"y":-494},{"x":-244604,"y":-10296},{"x":-230459,"y":5366},{"x":-249829,"y":21949},{"x":-228039,"y":20796},{"x":-250914,"y":275766},{"x":-247762,"y":303959},{"x":-230678,"y":301488},{"x":-235480,"y":285251},{"x":-248731,"y":329020},{"x":-230847,"y":327663},{"x":-244688,"y":359066},{"x":-230538,"y":352966},{"x":-254832,"y":343833},{"x":-240151,"y":374576},{"x":-253268,"y":40525},{"x":-229344,"y":38963},{"x":-241476,"y":57334},{"x":-273871,"y":10821},{"x":-268171,"y":260147},{"x":-283986,"y":272971},{"x":-269070,"y":280102},{"x":-273831,"y":303064},{"x":-259540,"y":293677},{"x":-271234,"y":331292},{"x":-278316,"y":317611},{"x":-260399,"y":316127},{"x":-274794,"y":354357},{"x":-261513,"y":366849},{"x":-265850,"y":29104},{"x":-268573,"y":46045},{"x":-281441,"y":28293},{"x":-276745,"y":60824},{"x":-259784,"y":65276},{"x":-272600,"y":77553},{"x":-279425,"y":91736},{"x":-281134,"y":112020},{"x":-279213,"y":177426},{"x":-278155,"y":193709},{"x":-262362,"y":198882},{"x":-271127,"y":211639},{"x":-306309,"y":260847},{"x":-290105,"y":258737},{"x":-301731,"y":305859},{"x":-287384,"y":295797},{"x":-299873,"y":328270},{"x":-293460,"y":345193},{"x":-305096,"y":32113},{"x":-287650,"y":45796},{"x":-307474,"y":51523},{"x":-295963,"y":66552},{"x":-297239,"y":88983},{"x":-294701,"y":105185},{"x":-303754,"y":150521},{"x":-287354,"y":133423},{"x":-293537,"y":177545},{"x":-303554,"y":166598},{"x":-289341,"y":161954},{"x":-302488,"y":190147},{"x":-306628,"y":228904},{"x":-309241,"y":213534},{"x":-291111,"y":220289},{"x":-300445,"y":248400},{"x":-332158,"y":52585},{"x":-326423,"y":69659},{"x":-331100,"y":136673},{"x":-322980,"y":149663},{"x":-322850,"y":174958},{"x":-328742,"y":192305},{"x":-327425,"y":235215},{"x":-329345,"y":217354},{"x":-315190,"y":247530},{"x":-353406,"y":257583},{"x":-352266,"y":273038},{"x":-334211,"y":28211},{"x":-343929,"y":43197},{"x":-351209,"y":57653},{"x":-340096,"y":73170},{"x":-359116,"y":150910},{"x":-355429,"y":133107}],
+      },
+    ],
   },
   {
     id: 26,
@@ -2015,13 +2325,24 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "Don't be fooled by this Pal's fluffy appearance. A hypersonic kick from one of its long legs may send you flying to the other side of the world.",
     workSuitability: [
+      { type: "Farming", level: 2 },
     ],
     partnerSkill: { name: "Pacapaca Wool", description: "Can be ridden. While in party, increases Kingpaca's Defense and Movement Speed. Sometimes drops wool| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "wool", notes: "2-5, 100%" },
       { resourceId: "leather", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 114,
+        sourceUrl: "https://palworld.th.gl/guides/Melpaca",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-260244,"y":273266},{"x":-257762,"y":303959},{"x":-239410,"y":303394},{"x":-249165,"y":289409},{"x":-258061,"y":326520},{"x":-238451,"y":328671},{"x":-258582,"y":357190},{"x":-252194,"y":340792},{"x":-229925,"y":365242},{"x":-239967,"y":380104},{"x":-228566,"y":395330},{"x":-277501,"y":257647},{"x":-280236,"y":270806},{"x":-283162,"y":300564},{"x":-272144,"y":288661},{"x":-280564,"y":328792},{"x":-269756,"y":314123},{"x":-284124,"y":351857},{"x":-267259,"y":342079},{"x":-269636,"y":363855},{"x":-280123,"y":83120},{"x":-275938,"y":102276},{"x":-278823,"y":182539},{"x":-280413,"y":197782},{"x":-273627,"y":211639},{"x":-311061,"y":303359},{"x":-309203,"y":325770},{"x":-293189,"y":323727},{"x":-302096,"y":339123},{"x":-298954,"y":67458},{"x":-308154,"y":103501},{"x":-302265,"y":84311},{"x":-293782,"y":109105},{"x":-303754,"y":154851},{"x":-291104,"y":135589},{"x":-300646,"y":172689},{"x":-285591,"y":159789},{"x":-307161,"y":190904},{"x":-307991,"y":215699},{"x":-293611,"y":220289},{"x":-326832,"y":71152},{"x":-329150,"y":86136},{"x":-326224,"y":102957},{"x":-327266,"y":121306},{"x":-305552,"y":120781},{"x":-318399,"y":132068},{"x":-330398,"y":149039},{"x":-332427,"y":170473},{"x":-316244,"y":170607},{"x":-330875,"y":201065},{"x":-323540,"y":187470},{"x":-331845,"y":217354},{"x":-341338,"y":98721},{"x":-359116,"y":155240},{"x":-355429,"y":137437},{"x":-336768,"y":134752},{"x":-352340,"y":172284},{"x":-343938,"y":156067},{"x":-347654,"y":225593},{"x":-345446,"y":204778},{"x":-353011,"y":238342},{"x":-338072,"y":250798},{"x":-382477,"y":71370},{"x":-363313,"y":76793},{"x":-372791,"y":87563},{"x":-385289,"y":100529},{"x":-382526,"y":113678},{"x":-374821,"y":127803},{"x":-365122,"y":115904},{"x":-373319,"y":205101},{"x":-377928,"y":227258},{"x":-405972,"y":71524},{"x":-406142,"y":89379},{"x":-388816,"y":85446},{"x":-404514,"y":104300},{"x":-406112,"y":119637},{"x":-392642,"y":128303},{"x":-390437,"y":206640},{"x":-417264,"y":68231},{"x":-433423,"y":75658}],
+      },
+    ],
   },
   {
     id: 27,
@@ -2032,12 +2353,23 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "Melpaca serve this Pal. Contests between Kingpaca offer up their vassals as a wager. Those seen alone are losers of such contests.",
     workSuitability: [
+      { type: "Gathering", level: 2 },
     ],
     partnerSkill: { name: "King of Muscles", description: "Can be ridden. This Pal's Defense and Movement Speed increase by <Status_Up>{Passive1_EffectValue1}%</> for each Unknown Character (Alpaca| style=|Status_Keyword) in party." },
     possibleDrops: [
       { resourceId: "wool", notes: "5-5, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 1,
+        sourceUrl: "https://palworld.th.gl/guides/Kingpaca",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-177090,"y":-146542}],
+      },
+    ],
   },
   {
     id: 28,
@@ -2048,6 +2380,8 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "With a heart of ice, this Pal is terrible at expressing its emotions. A solitary individual is pitiable, seen as too clumsy in the eyes of a Melpaca.",
     workSuitability: [
+      { type: "Gathering", level: 2 },
+      { type: "Cooling", level: 4 },
     ],
     partnerSkill: { name: "Coldhearted King", description: "Can be ridden. This Pal's Defense and Movement Speed increase by <Status_Up>{Passive1_EffectValue1}%</> for each Unknown Character (Alpaca| style=|Status_Keyword) in party." },
     possibleDrops: [
@@ -2065,13 +2399,26 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "It puts those it is interested in to sleep and shows them an endless stream of happy dreams. Those who fall under its spell are never to wake until death takes them.",
     workSuitability: [
+      { type: "Handiwork", level: 1 },
+      { type: "Gathering", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Dream Chaser", description: "While in party, appears near the player. Attacks hostile enemies with <img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark) magic bullets. These bullets will not reduce the target's Health below 1. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
       { resourceId: "venom", notes: "1-1, 100%" },
       { resourceId: "palupgradestone", notes: "1-1, 1%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 79,
+        sourceUrl: "https://palworld.th.gl/guides/Daedream",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-234629,"y":363837},{"x":-250907,"y":378830},{"x":-231999,"y":376544},{"x":-233282,"y":391408},{"x":-276133,"y":182091},{"x":-281368,"y":196935},{"x":-256112,"y":201047},{"x":-274877,"y":213804},{"x":-297504,"y":152686},{"x":-286104,"y":139919},{"x":-297287,"y":175380},{"x":-306238,"y":192312},{"x":-307991,"y":211369},{"x":-292361,"y":222454},{"x":-325520,"y":141338},{"x":-313118,"y":152593},{"x":-319770,"y":179623},{"x":-330829,"y":195381},{"x":-330595,"y":219519},{"x":-358444,"y":265248},{"x":-343985,"y":274669},{"x":-338882,"y":257206},{"x":-352866,"y":153075},{"x":-349179,"y":135272},{"x":-342102,"y":174145},{"x":-353037,"y":206674},{"x":-353305,"y":189884},{"x":-345154,"y":221263},{"x":-345417,"y":239659},{"x":-380166,"y":22169},{"x":-375528,"y":257232},{"x":-373693,"y":273841},{"x":-373690,"y":41870},{"x":-382325,"y":63878},{"x":-371702,"y":196714},{"x":-377660,"y":225045},{"x":-386100,"y":210110},{"x":-398881,"y":12830},{"x":-401323,"y":28105},{"x":-390903,"y":42694},{"x":-408752,"y":42188},{"x":-395308,"y":61897},{"x":-399383,"y":220804},{"x":-415225,"y":20120},{"x":-426693,"y":32011},{"x":-99023,"y":1136},{"x":-80923,"y":19607},{"x":-101357,"y":21208},{"x":-83387,"y":3706},{"x":-101066,"y":50874},{"x":-87198,"y":36001},{"x":-121161,"y":-5653},{"x":-127244,"y":16289},{"x":-126112,"y":45153},{"x":-115297,"y":29163},{"x":-155723,"y":-605},{"x":-138546,"y":-1319},{"x":-158012,"y":21036},{"x":-142696,"y":21576},{"x":-157009,"y":361669},{"x":-150730,"y":37452},{"x":-141832,"y":51296},{"x":-180355,"y":347568},{"x":-169730,"y":368780},{"x":-153197,"y":380205},{"x":-180332,"y":384508},{"x":-178587,"y":401784},{"x":-208971,"y":318748},{"x":-194135,"y":329318},{"x":-200319,"y":345983},{"x":-201947,"y":365892},{"x":-187399,"y":361436},{"x":-203063,"y":384533},{"x":-203906,"y":403349},{"x":-184203,"y":417628},{"x":-212096,"y":335127},{"x":-222239,"y":351657},{"x":-215587,"y":370505},{"x":-220703,"y":401808}],
+      },
+    ],
   },
   {
     id: 30,
@@ -2082,12 +2429,27 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "Long ago, this Pal used long objects like tree branches as weapons. After coming into contact with humans, however, it found something slightly more effective: guns.",
     workSuitability: [
+      { type: "Planting", level: 1 },
+      { type: "Handiwork", level: 1 },
+      { type: "Gathering", level: 1 },
+      { type: "Lumbering", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Cheery Rifle", description: "When activated, Tanzee will mercilessly fire an assault rifle at nearby enemies for a limited time. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
       { resourceId: "mushroom", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 74,
+        sourceUrl: "https://palworld.th.gl/guides/Tanzee",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-229629,"y":363837},{"x":-246577,"y":381330},{"x":-234386,"y":390157},{"x":-275073,"y":184704},{"x":-277474,"y":205534},{"x":-301254,"y":154851},{"x":-287354,"y":137754},{"x":-299396,"y":170524},{"x":-302601,"y":186178},{"x":-293369,"y":203027},{"x":-304128,"y":228904},{"x":-304283,"y":246659},{"x":-328600,"y":141003},{"x":-316466,"y":153731},{"x":-328677,"y":172638},{"x":-328694,"y":226176},{"x":-328772,"y":243013},{"x":-356616,"y":155240},{"x":-352929,"y":137437},{"x":-338436,"y":152653},{"x":-349840,"y":172284},{"x":-380166,"y":27169},{"x":-371258,"y":40316},{"x":-375561,"y":56160},{"x":-392600,"y":19335},{"x":-411229,"y":9864},{"x":-404046,"y":33467},{"x":-389653,"y":44859},{"x":-410464,"y":48481},{"x":-392603,"y":61217},{"x":-424574,"y":16486},{"x":-416877,"y":36381},{"x":-430626,"y":35533},{"x":-425355,"y":73305},{"x":-443790,"y":74495},{"x":-436710,"y":99070},{"x":-449495,"y":89725},{"x":-96523,"y":466},{"x":-78423,"y":18937},{"x":-98857,"y":20538},{"x":-98566,"y":50204},{"x":-89698,"y":36001},{"x":-120491,"y":-8153},{"x":-120845,"y":-43115},{"x":-124744,"y":15619},{"x":-123612,"y":44483},{"x":-115226,"y":31625},{"x":-151393,"y":1895},{"x":-134796,"y":-3484},{"x":-145435,"y":-47457},{"x":-129638,"y":-56210},{"x":-155512,"y":25366},{"x":-138972,"y":20382},{"x":-154509,"y":365999},{"x":-146208,"y":38093},{"x":-137799,"y":51101},{"x":-177855,"y":351898},{"x":-162506,"y":353308},{"x":-175428,"y":372651},{"x":-161010,"y":381976},{"x":-174884,"y":389465},{"x":-206471,"y":323079},{"x":-175697,"y":332634},{"x":-204864,"y":337871},{"x":-192088,"y":346513},{"x":-200845,"y":359664},{"x":-196847,"y":375592},{"x":-199157,"y":388754},{"x":-200797,"y":406682},{"x":-184126,"y":409998},{"x":-223205,"y":344881},{"x":-214773,"y":373448},{"x":-214148,"y":389488},{"x":-221561,"y":403241}],
+      },
+    ],
   },
   {
     id: 31,
@@ -2098,13 +2460,27 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "Its palms have evolved to handle burning objects without getting scorched. When its gun runs out of ammo, it may grab the heated barrel with its bare hands and use it to club its foes.",
     workSuitability: [
+      { type: "Kindling", level: 1 },
+      { type: "Handiwork", level: 1 },
+      { type: "Lumbering", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Chipper Chimp Gunfire", description: "When activated, Tanzee Ignis will mercilessly fire a <img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) assault rifle at nearby enemies for a limited time. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
       { resourceId: "mushroom", notes: "1-1, 100%" },
       { resourceId: "fireorgan", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 5,
+        sourceUrl: "https://palworld.th.gl/guides/Tanzee%20Ignis",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-277573,"y":184704},{"x":-279974,"y":205534},{"x":-299959,"y":165344},{"x":-307015,"y":182205},{"x":-293781,"y":194761}],
+      },
+    ],
   },
   {
     id: 32,
@@ -2115,13 +2491,24 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "If you find Nox hair in your bedding, you should leave it where it lays and leave immediately. Picking it up is a one-way-ticket to a never ending night.",
     workSuitability: [
+      { type: "Gathering", level: 1 },
     ],
     partnerSkill: { name: "Kuudere", description: "When activated, detects the location of nearby <Status_Keyword>Pal Effigies</>. {ReferenceMsgId_SearchAreaCoolTime}" },
     possibleDrops: [
       { resourceId: "leather", notes: "1-1, 100%" },
       { resourceId: "palupgradestone", notes: "1-1, 40%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 140,
+        sourceUrl: "https://palworld.th.gl/guides/Nox",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-253414,"y":271436},{"x":-252762,"y":298959},{"x":-239033,"y":302456},{"x":-242121,"y":284877},{"x":-251231,"y":324690},{"x":-234375,"y":324764},{"x":-256752,"y":350360},{"x":-238428,"y":339985},{"x":-236459,"y":362007},{"x":-251577,"y":376330},{"x":-225749,"y":378709},{"x":-237032,"y":393573},{"x":-270671,"y":255816},{"x":-279398,"y":268535},{"x":-270320,"y":282267},{"x":-276331,"y":298733},{"x":-273734,"y":326962},{"x":-263586,"y":313610},{"x":-277294,"y":350026},{"x":-266334,"y":366730},{"x":-284793,"y":182091},{"x":-275788,"y":201601},{"x":-304231,"y":301529},{"x":-302373,"y":323940},{"x":-289214,"y":312807},{"x":-303346,"y":341288},{"x":-298174,"y":155186},{"x":-288604,"y":140589},{"x":-304396,"y":170524},{"x":-303738,"y":187982},{"x":-293182,"y":202598},{"x":-307195,"y":219890},{"x":-296335,"y":227625},{"x":-306783,"y":246659},{"x":-327350,"y":143168},{"x":-313087,"y":149535},{"x":-328430,"y":179623},{"x":-320736,"y":163228},{"x":-332574,"y":200672},{"x":-329885,"y":216565},{"x":-326074,"y":239549},{"x":-354656,"y":259748},{"x":-352350,"y":278837},{"x":-338938,"y":259901},{"x":-353536,"y":155575},{"x":-349848,"y":137772},{"x":-347951,"y":170002},{"x":-361697,"y":206674},{"x":-346475,"y":192384},{"x":-343904,"y":227758},{"x":-344195,"y":210414},{"x":-347970,"y":242543},{"x":-375836,"y":19669},{"x":-373372,"y":260727},{"x":-364391,"y":33807},{"x":-381455,"y":34357},{"x":-367643,"y":74293},{"x":-372340,"y":55421},{"x":-384007,"y":79050},{"x":-365043,"y":87623},{"x":-378772,"y":98868},{"x":-377538,"y":127365},{"x":-361790,"y":103713},{"x":-381022,"y":205177},{"x":-373836,"y":189341},{"x":-382928,"y":232258},{"x":-397600,"y":14335},{"x":-404046,"y":29137},{"x":-387473,"y":48692},{"x":-399787,"y":45589},{"x":-391212,"y":64254},{"x":-408180,"y":77368},{"x":-397651,"y":94989},{"x":-413161,"y":124409},{"x":-395773,"y":119734},{"x":-404484,"y":109135},{"x":-398565,"y":217633},{"x":-411815,"y":6592},{"x":-428324,"y":14321},{"x":-422331,"y":32629}],
+      },
+    ],
   },
   {
     id: 33,
@@ -2132,13 +2519,27 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "When it starts crying, this Pal produces magma in place of tears. The magma that pours out is absorbed back into its body, causing it to get hotter and hotter. The more it cries, the stronger it becomes.",
     workSuitability: [
+      { type: "Kindling", level: 1 },
+      { type: "Handiwork", level: 1 },
+      { type: "Transporting", level: 1 },
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Magma Tears", description: "While in party, recovers Health of the player and Party Pals by <Status_Up>{Passive1_EffectValue1}%</> per second outside of combat. (Does not stack) Sometimes drops fireorgan| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "fireorgan", notes: "2-3, 100%" },
       { resourceId: "paloil", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 78,
+        sourceUrl: "https://palworld.th.gl/guides/Flambelle",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-251219,"y":-42644},{"x":-232236,"y":-72728},{"x":-245274,"y":-57213},{"x":-235164,"y":-95838},{"x":-247862,"y":-85401},{"x":-245046,"y":-129526},{"x":-235130,"y":-111845},{"x":-231154,"y":379361},{"x":-262873,"y":-20773},{"x":-265526,"y":-48378},{"x":-279019,"y":-40202},{"x":-267157,"y":-68840},{"x":-280464,"y":-60972},{"x":-268674,"y":-89958},{"x":-254943,"y":-119553},{"x":-298276,"y":-24799},{"x":-283670,"y":-18326},{"x":-300777,"y":-44908},{"x":-288760,"y":-74334},{"x":-301998,"y":-66621},{"x":-304182,"y":-87323},{"x":-285854,"y":-117206},{"x":-302560,"y":-225276},{"x":-332699,"y":-231597},{"x":-329978,"y":-14511},{"x":-311105,"y":-3037},{"x":-314911,"y":-50611},{"x":-327564,"y":-35719},{"x":-312929,"y":-30101},{"x":-322977,"y":-63962},{"x":-312012,"y":-100383},{"x":-325713,"y":-92469},{"x":-331146,"y":-77547},{"x":-320767,"y":-113486},{"x":-326106,"y":-217622},{"x":-325845,"y":4312},{"x":-344880,"y":-20134},{"x":-356636,"y":-7783},{"x":-355269,"y":-33888},{"x":-335337,"y":-49450},{"x":-352657,"y":-75788},{"x":-358205,"y":-60996},{"x":-353634,"y":-96446},{"x":-355863,"y":-118234},{"x":-333865,"y":-105948},{"x":-343387,"y":-219875},{"x":-352785,"y":7276},{"x":-366147,"y":-25347},{"x":-380124,"y":-16708},{"x":-372503,"y":-67104},{"x":-369438,"y":-109973},{"x":-374794,"y":-204162},{"x":-368228,"y":-217760},{"x":-383180,"y":-219415},{"x":-378261,"y":3428},{"x":-366325,"y":14032},{"x":-371792,"y":70915},{"x":-378122,"y":94719},{"x":-360230,"y":83116},{"x":-360439,"y":100687},{"x":-398483,"y":-9861},{"x":-385357,"y":-204457},{"x":-97306,"y":327873},{"x":-123345,"y":-43115},{"x":-111936,"y":319634},{"x":-125853,"y":325285},{"x":-147935,"y":-47457},{"x":-132138,"y":-56210},{"x":-143375,"y":321203},{"x":-177921,"y":357055},{"x":-203085,"y":353739},{"x":-191767,"y":368456},{"x":-220951,"y":-24672},{"x":-222737,"y":-44839},{"x":-217642,"y":-66388},{"x":-221789,"y":-99328},{"x":-225253,"y":-138219},{"x":-213961,"y":377561}],
+      },
+    ],
   },
   {
     id: 34,
@@ -2149,13 +2550,25 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "Wild Rooby surprisingly never get sick. Eating one piece of charcoal a day, made by burning a branch, is the secret to its eternal health.",
     workSuitability: [
+      { type: "Kindling", level: 1 },
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Tiny Spark", description: "While in party, increases Defense of <img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack) Sometimes drops fireorgan| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "fireorgan", notes: "2-3, 100%" },
       { resourceId: "leather", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 72,
+        sourceUrl: "https://palworld.th.gl/guides/Rooby",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-260244,"y":278266},{"x":-255262,"y":308289},{"x":-254562,"y":292953},{"x":-236880,"y":299424},{"x":-239621,"y":284877},{"x":-258061,"y":331520},{"x":-242201,"y":330836},{"x":-240994,"y":313887},{"x":-254252,"y":359690},{"x":-243929,"y":348462},{"x":-277501,"y":262647},{"x":-283162,"y":305564},{"x":-276091,"y":291531},{"x":-280564,"y":333792},{"x":-270645,"y":319095},{"x":-284124,"y":356857},{"x":-266579,"y":348531},{"x":-280073,"y":184704},{"x":-278724,"y":207699},{"x":-311061,"y":308359},{"x":-309203,"y":330770},{"x":-297574,"y":318903},{"x":-298220,"y":344747},{"x":-302459,"y":165344},{"x":-308265,"y":184370},{"x":-295031,"y":196926},{"x":-358983,"y":74293},{"x":-372748,"y":80911},{"x":-361151,"y":98693},{"x":-376272,"y":98868},{"x":-370707,"y":129195},{"x":-375680,"y":114995},{"x":-385990,"y":80986},{"x":-406930,"y":79533},{"x":-396401,"y":92824},{"x":-406331,"y":126239},{"x":-387484,"y":129024},{"x":-406055,"y":105273},{"x":-427855,"y":73305},{"x":-420339,"y":91243},{"x":-431495,"y":103101},{"x":-446290,"y":74495},{"x":-452369,"y":59025},{"x":-446570,"y":101355},{"x":-435200,"y":86530},{"x":-457495,"y":88795},{"x":-98556,"y":330038},{"x":-122581,"y":-14841},{"x":-129746,"y":-44513},{"x":-113183,"y":-32832},{"x":-107214,"y":-46253},{"x":-130355,"y":-70383},{"x":-119005,"y":-64586},{"x":-120189,"y":-96191},{"x":-108722,"y":-79933},{"x":-126263,"y":6126},{"x":-124834,"y":23826},{"x":-113186,"y":321799},{"x":-122841,"y":47318},{"x":-151850,"y":-9628},{"x":-155813,"y":-36262},{"x":-142664,"y":-26093},{"x":-144957,"y":-47976},{"x":-150747,"y":-62765},{"x":-150141,"y":8088},{"x":-148612,"y":25562},{"x":-128362,"y":320272},{"x":-140875,"y":321203},{"x":-146488,"y":44145},{"x":-170777,"y":-59701},{"x":-220466,"y":305912},{"x":-224260,"y":329087}],
+      },
+    ],
   },
   {
     id: 35,
@@ -2166,6 +2579,8 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Its hard tail does not deteriorate even when cut off. Some believed these severed tails bring good luck, but for the innumerable Mau who were poached as a result, they were anything but.",
     workSuitability: [
+      { type: "Gathering", level: 1 },
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Gold Digger", description: "Sometimes digs up money| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
@@ -2183,13 +2598,25 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "Its crystalline tail is beautiful, but shatters when this Pal dies. Some believe it is good luck to raise them, so Mau Cryst in captivity are treated with great care.",
     workSuitability: [
+      { type: "Cooling", level: 1 },
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Icy Whispers", description: "Sometimes drops iceorgan| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "iceorgan", notes: "1-2, 100%" },
       { resourceId: "sapphire", notes: "1-1, 1%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 78,
+        sourceUrl: "https://palworld.th.gl/guides/Mau%20Cryst",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-2131,"y":16813},{"x":-1869,"y":30030},{"x":-16496,"y":33566},{"x":-5834,"y":52182},{"x":-5227,"y":67654},{"x":-3921,"y":82914},{"x":-3587,"y":98461},{"x":-23636,"y":77744},{"x":-21722,"y":93659},{"x":-2019,"y":114384},{"x":-25473,"y":120576},{"x":-741,"y":129713},{"x":-40532,"y":41546},{"x":-45520,"y":61435},{"x":-50389,"y":101594},{"x":-45095,"y":81207},{"x":-47588,"y":124588},{"x":-45724,"y":157497},{"x":-42155,"y":175244},{"x":-26258,"y":163194},{"x":-69859,"y":127731},{"x":-70287,"y":111912},{"x":-73415,"y":148513},{"x":-58006,"y":143628},{"x":-63408,"y":171544},{"x":-90576,"y":123251},{"x":-103356,"y":152632},{"x":-86246,"y":138961},{"x":-78547,"y":164687},{"x":-102921,"y":114501},{"x":-114717,"y":140447},{"x":23855,"y":-4271},{"x":3927,"y":-2417},{"x":28059,"y":20892},{"x":12539,"y":30997},{"x":16031,"y":47208},{"x":13531,"y":105005},{"x":21738,"y":122556},{"x":21711,"y":140930},{"x":9786,"y":154920},{"x":48315,"y":-17992},{"x":52676,"y":-33815},{"x":49987,"y":4455},{"x":48099,"y":33590},{"x":50544,"y":51704},{"x":46974,"y":101652},{"x":38948,"y":114595},{"x":26434,"y":178365},{"x":45621,"y":183206},{"x":50669,"y":204544},{"x":75880,"y":-3330},{"x":76605,"y":-34384},{"x":76578,"y":11754},{"x":75032,"y":37889},{"x":57747,"y":119934},{"x":66236,"y":204620},{"x":70582,"y":225906},{"x":94915,"y":-21035},{"x":98178,"y":17570},{"x":92508,"y":44986},{"x":102157,"y":70526},{"x":91808,"y":66043},{"x":88109,"y":101992},{"x":104896,"y":-36778},{"x":126916,"y":15996},{"x":127572,"y":52975},{"x":113402,"y":34076},{"x":126717,"y":71894},{"x":151630,"y":-1713},{"x":147390,"y":17278},{"x":152947,"y":32871},{"x":144683,"y":46089},{"x":133856,"y":37278},{"x":145392,"y":61940},{"x":150719,"y":98636},{"x":139812,"y":80435},{"x":163341,"y":50786},{"x":163663,"y":64652}],
+      },
+    ],
   },
   {
     id: 37,
@@ -2200,6 +2627,7 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "Being an extremely aggressive Pal, it often picks fights before gauging its opponents' strength. Though small, its powerful charge can even send boulders flying.",
     workSuitability: [
+      { type: "Mining", level: 1 },
     ],
     partnerSkill: { name: "Hard Head", description: "Can be ridden. While mounted, increases efficiency of destroying Stone by <Status_Up>{Passive1_EffectValue1}%</>." },
     possibleDrops: [
@@ -2207,7 +2635,17 @@ export const pals: Pal[] = [
       { resourceId: "leather", notes: "1-1, 100%" },
       { resourceId: "bone", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 116,
+        sourceUrl: "https://palworld.th.gl/guides/Rushoar",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-258414,"y":271436},{"x":-257092,"y":301459},{"x":-240660,"y":305559},{"x":-246049,"y":286308},{"x":-256231,"y":324690},{"x":-234701,"y":330836},{"x":-259252,"y":354690},{"x":-249694,"y":340792},{"x":-233379,"y":357341},{"x":-245327,"y":374165},{"x":-231999,"y":380874},{"x":-275671,"y":255816},{"x":-276486,"y":272971},{"x":-281331,"y":298733},{"x":-266379,"y":286045},{"x":-278734,"y":326962},{"x":-269918,"y":310953},{"x":-282294,"y":350026},{"x":-267352,"y":339569},{"x":-270886,"y":366020},{"x":-281713,"y":181756},{"x":-281368,"y":201266},{"x":-262362,"y":203212},{"x":-309231,"y":301529},{"x":-307373,"y":323940},{"x":-289007,"y":318465},{"x":-299596,"y":339123},{"x":-301209,"y":167509},{"x":-302956,"y":183409},{"x":-300879,"y":202622},{"x":-325350,"y":179288},{"x":-317135,"y":165555},{"x":-330074,"y":200672},{"x":-315649,"y":194136},{"x":-339602,"y":178476},{"x":-358617,"y":206339},{"x":-349555,"y":192049},{"x":-370836,"y":24669},{"x":-376190,"y":41870},{"x":-381075,"y":61712},{"x":-365813,"y":76123},{"x":-380257,"y":76885},{"x":-369792,"y":94004},{"x":-373207,"y":129865},{"x":-380332,"y":104955},{"x":-363859,"y":112210},{"x":-379772,"y":203011},{"x":-375086,"y":186506},{"x":-397631,"y":10665},{"x":-406076,"y":26165},{"x":-386720,"y":27484},{"x":-394755,"y":40732},{"x":-409214,"y":50646},{"x":-397808,"y":61897},{"x":-399449,"y":79341},{"x":-390829,"y":94150},{"x":-409929,"y":97278},{"x":-408831,"y":126909},{"x":-395773,"y":124064},{"x":-422242,"y":24631},{"x":-412635,"y":5421},{"x":-427753,"y":38573},{"x":-416054,"y":67766},{"x":-428872,"y":69161},{"x":-421560,"y":82496},{"x":-428575,"y":99482},{"x":-450539,"y":52195},{"x":-445133,"y":66643},{"x":-461022,"y":71143},{"x":-438092,"y":81352},{"x":-456245,"y":95290},{"x":-100273,"y":-6029},{"x":-82173,"y":12442},{"x":-102607,"y":14043},{"x":-102316,"y":43709},{"x":-94186,"y":29761},{"x":-126650,"y":-22509},{"x":-117193,"y":-5866},{"x":-132246,"y":-48844},{"x":-120104,"y":-37086}],
+      },
+    ],
   },
   {
     id: 38,
@@ -2218,13 +2656,24 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "It is unskilled at controlling fire from the moment it is born and tends to choke on the flames it breathes unintentionally. Foxparks sneezes are one of the leading causes of forest fires.",
     workSuitability: [
+      { type: "Kindling", level: 1 },
     ],
     partnerSkill: { name: "Huggy Fire", description: "When activated, equips to the player and transforms into a flamethrower. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
       { resourceId: "leather", notes: "1-1, 100%" },
       { resourceId: "fireorgan", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 71,
+        sourceUrl: "https://palworld.th.gl/guides/Foxparks",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-227798,"y":362007},{"x":-244077,"y":380660},{"x":-233598,"y":396301},{"x":-276903,"y":206923},{"x":-305945,"y":217055},{"x":-292585,"y":229790},{"x":-302275,"y":250230},{"x":-288145,"y":250525},{"x":-324990,"y":180905},{"x":-318660,"y":165120},{"x":-329625,"y":198900},{"x":-329925,"y":234545},{"x":-329885,"y":220895},{"x":-316440,"y":249695},{"x":-341680,"y":180880},{"x":-346404,"y":223428},{"x":-344196,"y":206943},{"x":-349261,"y":240507},{"x":-375836,"y":29669},{"x":-372796,"y":47318},{"x":-384825,"y":59547},{"x":-375819,"y":205101},{"x":-380428,"y":227258},{"x":-388270,"y":16835},{"x":-404051,"y":13927},{"x":-400296,"y":31302},{"x":-392288,"y":48816},{"x":-410464,"y":52811},{"x":-397214,"y":66149},{"x":-396065,"y":212633},{"x":-419915,"y":12317},{"x":-412935,"y":29047},{"x":-427681,"y":30071},{"x":-422975,"y":46568},{"x":-438955,"y":40077},{"x":-94023,"y":-3864},{"x":-75923,"y":14607},{"x":-96357,"y":16208},{"x":-96066,"y":45874},{"x":-101564,"y":31217},{"x":-85307,"y":34425},{"x":-126741,"y":-10318},{"x":-110479,"y":-8814},{"x":-122244,"y":11289},{"x":-107834,"y":319419},{"x":-124628,"y":318981},{"x":-121112,"y":40153},{"x":-127315,"y":26310},{"x":-148893,"y":1225},{"x":-150512,"y":25366},{"x":-140554,"y":319334},{"x":-149509,"y":365999},{"x":-145375,"y":42227},{"x":-131542,"y":51801},{"x":-172855,"y":351898},{"x":-176678,"y":370486},{"x":-161545,"y":380299},{"x":-180332,"y":388838},{"x":-201471,"y":323079},{"x":-181947,"y":330469},{"x":-195849,"y":337161},{"x":-198534,"y":355468},{"x":-197158,"y":373829},{"x":-202907,"y":386588},{"x":-196958,"y":401112},{"x":-185376,"y":412164},{"x":-216674,"y":329975},{"x":-221955,"y":347046},{"x":-209791,"y":364083},{"x":-224462,"y":377377},{"x":-212651,"y":399502}],
+      },
+    ],
   },
   {
     id: 39,
@@ -2235,13 +2684,24 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "It is unskilled at controlling cold air from the moment it is born and tends to choke on the frost it breathes unintentionally. When Foxparks Cryst catches a cold, its nasal discharge freezes, making it difficult to breathe and causing it to panic.",
     workSuitability: [
+      { type: "Cooling", level: 2 },
     ],
     partnerSkill: { name: "Huggy Frost", description: "When activated, equips to the player and attacks using frigid air. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
       { resourceId: "leather", notes: "1-2, 100%" },
       { resourceId: "iceorgan", notes: "1-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 62,
+        sourceUrl: "https://palworld.th.gl/guides/Foxparks%20Cryst",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-21782,"y":64843},{"x":-3210,"y":60697},{"x":-11614,"y":75890},{"x":-22972,"y":95824},{"x":-6008,"y":92616},{"x":-535,"y":116175},{"x":-737410,"y":-332669},{"x":-723018,"y":-328036},{"x":-739902,"y":-358106},{"x":-724832,"y":-349265},{"x":-720110,"y":-431080},{"x":-754498,"y":-332594},{"x":-759342,"y":-349408},{"x":-767643,"y":-381680},{"x":-757208,"y":-370742},{"x":-759219,"y":-397355},{"x":-766325,"y":-412375},{"x":-785774,"y":-350211},{"x":-789627,"y":-379767},{"x":-771910,"y":-363114},{"x":-775018,"y":-401005},{"x":-791910,"y":-404435},{"x":-790631,"y":-431028},{"x":-771684,"y":-427787},{"x":-788165,"y":-457864},{"x":-772778,"y":-446736},{"x":-812389,"y":-357043},{"x":-814580,"y":-376214},{"x":-815861,"y":-391249},{"x":-814397,"y":-424410},{"x":-800359,"y":-417396},{"x":-809968,"y":-456025},{"x":-798796,"y":-444096},{"x":-814821,"y":-473015},{"x":-828602,"y":-328396},{"x":-834623,"y":-353105},{"x":-831556,"y":-371240},{"x":-841418,"y":-391012},{"x":-838190,"y":-431384},{"x":-841988,"y":-412403},{"x":-842797,"y":-446994},{"x":-823030,"y":-445904},{"x":-862437,"y":-354616},{"x":-849616,"y":-340639},{"x":-859981,"y":-381315},{"x":-867205,"y":-406388},{"x":-865422,"y":-432965},{"x":-867167,"y":-454180},{"x":-890171,"y":-377580},{"x":-879076,"y":-366240},{"x":-892017,"y":-399394},{"x":-872442,"y":-389928},{"x":-881877,"y":-429045},{"x":-885758,"y":-458008},{"x":-881617,"y":-476968},{"x":-915149,"y":-406509},{"x":-918961,"y":-387792},{"x":-900361,"y":-413481},{"x":7830,"y":93718},{"x":19283,"y":122512},{"x":26222,"y":100537},{"x":36271,"y":114794}],
+      },
+    ],
   },
   {
     id: 40,
@@ -2252,6 +2712,9 @@ export const pals: Pal[] = [
     elements: ["Dark", "Water"],
     description: "It wraps itself around an enemy's head, sucking out their insides. Pal mummies are occasionally found, but these are in fact Killamari victims.",
     workSuitability: [
+      { type: "Watering", level: 1 },
+      { type: "Gathering", level: 1 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Fried Squid", description: "While in party, modifies the performance of the equipped glider. Enables gentle floating while gliding for an extended time. {ReferenceMsgId_GriderPerformanceUp}" },
     possibleDrops: [
@@ -2259,7 +2722,17 @@ export const pals: Pal[] = [
       { resourceId: "palitem-negativeoctopus", notes: "1-1, 50%" },
       { resourceId: "palfluid", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 33,
+        sourceUrl: "https://palworld.th.gl/guides/Killamari",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-502880,"y":-234337},{"x":-506985,"y":-264605},{"x":-511809,"y":-279930},{"x":-509855,"y":-211869},{"x":-524613,"y":-233103},{"x":-528705,"y":-249327},{"x":-528143,"y":-215086},{"x":-561118,"y":-231401},{"x":-550708,"y":-164341},{"x":-541308,"y":-179780},{"x":-553964,"y":-193926},{"x":-559430,"y":-209849},{"x":-544569,"y":-223679},{"x":-587272,"y":-444588},{"x":-569799,"y":-452756},{"x":-586878,"y":-463647},{"x":-570896,"y":-470051},{"x":-582419,"y":-485238},{"x":-565564,"y":-173837},{"x":-571021,"y":-189895},{"x":-583954,"y":-202535},{"x":-580207,"y":-221438},{"x":-610112,"y":-424651},{"x":-613489,"y":-450407},{"x":-613549,"y":-467462},{"x":-605258,"y":-484366},{"x":-629957,"y":-424563},{"x":-635904,"y":-440742},{"x":-638183,"y":-464852},{"x":-651038,"y":-447584},{"x":-96163,"y":109319},{"x":-115201,"y":122294},{"x":-125411,"y":139103}],
+      },
+    ],
   },
   {
     id: 41,
@@ -2270,13 +2743,26 @@ export const pals: Pal[] = [
     elements: ["Neutral", "Water"],
     description: "It sinks its fangs into the enemy’s neck, draining every last drop of blood. When two Killamari Primos latch onto each other, they become locked in a relentless struggle—each trying to suck the other dry until one withers away.",
     workSuitability: [
+      { type: "Watering", level: 1 },
+      { type: "Gathering", level: 1 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Fried Killamari", description: "While in party, modifies the performance of the equipped glider. Enables gentle floating while gliding for an extended time. {ReferenceMsgId_GriderPerformanceUp}" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "1-2, 100%" },
       { resourceId: "palitem-negativeoctopus", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 46,
+        sourceUrl: "https://palworld.th.gl/guides/Killamari%20Primo",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-22819,"y":266409},{"x":-23397,"y":476808},{"x":-9185,"y":473409},{"x":-26294,"y":502082},{"x":-20612,"y":228471},{"x":-22360,"y":210499},{"x":-18968,"y":249544},{"x":-1981,"y":234143},{"x":-35452,"y":282438},{"x":-51620,"y":307681},{"x":-37328,"y":333877},{"x":-36100,"y":351924},{"x":-46792,"y":478503},{"x":-39423,"y":499741},{"x":-36486,"y":520792},{"x":-59059,"y":351616},{"x":-68158,"y":474910},{"x":-87013,"y":360501},{"x":-102965,"y":483866},{"x":-87829,"y":478599},{"x":-102706,"y":504342},{"x":24027,"y":460289},{"x":21119,"y":477902},{"x":23880,"y":242323},{"x":46804,"y":264376},{"x":34353,"y":447964},{"x":37948,"y":474658},{"x":34545,"y":497665},{"x":68190,"y":404575},{"x":69852,"y":421929},{"x":65037,"y":453588},{"x":71425,"y":439823},{"x":82382,"y":278080},{"x":86870,"y":394408},{"x":103140,"y":396716},{"x":117793,"y":407460},{"x":149290,"y":396476},{"x":146480,"y":420186},{"x":167371,"y":267330},{"x":169970,"y":295389},{"x":168501,"y":394118},{"x":180835,"y":274310},{"x":180937,"y":306920},{"x":197154,"y":326196},{"x":201488,"y":363426},{"x":207636,"y":348561}],
+      },
+    ],
   },
   {
     id: 42,
@@ -2287,12 +2773,25 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "Its large claws boast of diamond-like hardness. However, sharpening these claws consumes most of its energy, leading it to sometimes spending entire days doing nothing else.",
     workSuitability: [
+      { type: "Handiwork", level: 1 },
+      { type: "Mining", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Mining Assistance", description: "While in party, improves player mining efficiency by <Status_Up>{Passive1_EffectValue1}%</> and reduces stone| style=|status_keyword weight by <Status_Up>{Passive2_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "leather", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 96,
+        sourceUrl: "https://palworld.th.gl/guides/Fuddler",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-1133,"y":280157},{"x":-1947,"y":260710},{"x":-17335,"y":285418},{"x":-13973,"y":304209},{"x":-9194,"y":389660},{"x":-16017,"y":403463},{"x":-2221,"y":404974},{"x":356,"y":434371},{"x":-20225,"y":424304},{"x":-31389,"y":375238},{"x":-40775,"y":387802},{"x":-43374,"y":405841},{"x":-35220,"y":427476},{"x":-41583,"y":449866},{"x":-65859,"y":379280},{"x":-75711,"y":392084},{"x":-76252,"y":407113},{"x":-58549,"y":408056},{"x":-62887,"y":429575},{"x":-64160,"y":445596},{"x":-87365,"y":380558},{"x":-94985,"y":396430},{"x":-150034,"y":50506},{"x":-150478,"y":70502},{"x":-150940,"y":91200},{"x":-151036,"y":111364},{"x":-162417,"y":60917},{"x":-163038,"y":80874},{"x":-175604,"y":80763},{"x":-175943,"y":96481},{"x":-178438,"y":111473},{"x":-195889,"y":80852},{"x":-196032,"y":101355},{"x":11162,"y":280339},{"x":15815,"y":256973},{"x":5111,"y":302486},{"x":20837,"y":293957},{"x":12809,"y":393741},{"x":14111,"y":419492},{"x":22449,"y":432504},{"x":29653,"y":276880},{"x":52840,"y":383173},{"x":31287,"y":383218},{"x":43299,"y":395467},{"x":29925,"y":404460},{"x":48371,"y":414948},{"x":40292,"y":432675},{"x":44778,"y":477158},{"x":37045,"y":492665},{"x":71195,"y":320484},{"x":77797,"y":379416},{"x":73126,"y":362791},{"x":68849,"y":391640},{"x":61253,"y":405320},{"x":66785,"y":422795},{"x":59081,"y":440681},{"x":68143,"y":454197},{"x":77936,"y":297372},{"x":97757,"y":300935},{"x":86575,"y":330115},{"x":103030,"y":336810},{"x":99577,"y":352113},{"x":98421,"y":368273},{"x":97271,"y":384219},{"x":126843,"y":294470},{"x":114789,"y":290407},{"x":116974,"y":313322},{"x":121812,"y":331319},{"x":119064,"y":348126},{"x":123177,"y":366574},{"x":122447,"y":382030},{"x":121429,"y":397548},{"x":144157,"y":280154},{"x":146656,"y":298595},{"x":145410,"y":314192},{"x":144342,"y":329789},{"x":136683,"y":348156},{"x":138914,"y":367807},{"x":138237,"y":383009},{"x":137854,"y":398689}],
+      },
+    ],
   },
   {
     id: 43,
@@ -2303,6 +2802,7 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "The one who possesses the most impressive antlers becomes the leader of the herd. If their antlers are broken, they become depressed and leave the herd never to be seen again.",
     workSuitability: [
+      { type: "Lumbering", level: 2 },
     ],
     partnerSkill: { name: "Guardian of the Forest", description: "Can be ridden. Can perform a <Status_Keyword>double jump</> while mounted and increases lumbering efficiency by <Status_Up>{Passive1_EffectValue1}%</>." },
     possibleDrops: [
@@ -2310,7 +2810,17 @@ export const pals: Pal[] = [
       { resourceId: "leather", notes: "2-3, 100%" },
       { resourceId: "horn", notes: "2-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 130,
+        sourceUrl: "https://palworld.th.gl/guides/Eikthyrdeer",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-257164,"y":273601},{"x":-254012,"y":301793},{"x":-237783,"y":304621},{"x":-248549,"y":286308},{"x":-254981,"y":326855},{"x":-238451,"y":333001},{"x":-255502,"y":352525},{"x":-229629,"y":359507},{"x":-245327,"y":378495},{"x":-231886,"y":390157},{"x":-274421,"y":257981},{"x":-280236,"y":275136},{"x":-280081,"y":300898},{"x":-269028,"y":288468},{"x":-277484,"y":329127},{"x":-272256,"y":314123},{"x":-281044,"y":352191},{"x":-269759,"y":342079},{"x":-262584,"y":364565},{"x":-276323,"y":186869},{"x":-278153,"y":204758},{"x":-307981,"y":303694},{"x":-306123,"y":326105},{"x":-293452,"y":318394},{"x":-300914,"y":341038},{"x":-306389,"y":99841},{"x":-301797,"y":121100},{"x":-297459,"y":165344},{"x":-304515,"y":182205},{"x":-291281,"y":194761},{"x":-308445,"y":212725},{"x":-295300,"y":228330},{"x":-301783,"y":246659},{"x":-317905,"y":23632},{"x":-332606,"y":99429},{"x":-327967,"y":81771},{"x":-320895,"y":110171},{"x":-327816,"y":124901},{"x":-313735,"y":146995},{"x":-332385,"y":220895},{"x":-314680,"y":229252},{"x":-328574,"y":239549},{"x":-347474,"y":26590},{"x":-357976,"y":37653},{"x":-346429,"y":49110},{"x":-349786,"y":65476},{"x":-348369,"y":84494},{"x":-343251,"y":114763},{"x":-349196,"y":206943},{"x":-353011,"y":242672},{"x":-377086,"y":26834},{"x":-369609,"y":47790},{"x":-368161,"y":70265},{"x":-381135,"y":57729},{"x":-382757,"y":76885},{"x":-368793,"y":89788},{"x":-381539,"y":102694},{"x":-374457,"y":127030},{"x":-364179,"y":110132},{"x":-379569,"y":202936},{"x":-384178,"y":225093},{"x":-391350,"y":16500},{"x":-408729,"y":9864},{"x":-400073,"y":30270},{"x":-385900,"y":41289},{"x":-402287,"y":45589},{"x":-396558,"y":64063},{"x":-405680,"y":77368},{"x":-394441,"y":89142},{"x":-406179,"y":95113},{"x":-410081,"y":124074},{"x":-394523,"y":121899},{"x":-399815,"y":210467},{"x":-425824,"y":14321},{"x":-415435,"y":29047},{"x":-431876,"y":33368},{"x":-417125,"y":50235},{"x":-422845,"y":67896},{"x":-419060,"y":86826},{"x":-434258,"y":82405}],
+      },
+    ],
   },
   {
     id: 44,
@@ -2321,6 +2831,7 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "The individual with the hardest horns becomes the leader. Once the horns are lost, so too is its leadership status. It leaves the herd amidst farewell glances and quietly returns to the earth.",
     workSuitability: [
+      { type: "Lumbering", level: 2 },
     ],
     partnerSkill: { name: "Guardian of the Golden Forest", description: "Can be ridden. Can perform a <Status_Keyword>double jump</> while mounted. While at a base, increases the Unknown Status (COMMON_WORK_SUITABILITY_Deforest| style=|Status_Keyword) Work Suitability Level for all other Base Pals by <Status_Up>+{Passive1_EffectValue1}</> (Does not stack)" },
     possibleDrops: [
@@ -2328,7 +2839,17 @@ export const pals: Pal[] = [
       { resourceId: "leather", notes: "2-3, 100%" },
       { resourceId: "horn", notes: "2-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 6,
+        sourceUrl: "https://palworld.th.gl/guides/Eikthyrdeer%20Terra",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-426116,"y":168231},{"x":-430037,"y":185204},{"x":-443788,"y":168747},{"x":-456083,"y":185386},{"x":-456812,"y":204016},{"x":-443911,"y":196266}],
+      },
+    ],
   },
   {
     id: 45,
@@ -2339,6 +2860,7 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "Long ago Direhowl would hunt alongside humans but over the years this bond faded.",
     workSuitability: [
+      { type: "Gathering", level: 1 },
     ],
     partnerSkill: { name: "Direhowl Rider", description: "Can be ridden. Moves slightly faster than most mounts. {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
@@ -2346,7 +2868,17 @@ export const pals: Pal[] = [
       { resourceId: "ruby", notes: "1-1, 3%" },
       { resourceId: "money", notes: "10-20, 3%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 154,
+        sourceUrl: "https://palworld.th.gl/guides/Direhowl",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-255914,"y":270766},{"x":-255262,"y":299628},{"x":-238130,"y":301589},{"x":-246421,"y":283810},{"x":-253731,"y":324020},{"x":-235371,"y":333336},{"x":-231079,"y":318006},{"x":-258582,"y":352190},{"x":-241429,"y":348462},{"x":-246577,"y":376330},{"x":-231406,"y":365832},{"x":-233136,"y":387992},{"x":-236901,"y":54828},{"x":-254292,"y":64695},{"x":-233199,"y":72347},{"x":-246245,"y":88507},{"x":-229285,"y":94301},{"x":-273171,"y":255147},{"x":-277156,"y":275471},{"x":-278831,"y":298064},{"x":-266139,"y":287908},{"x":-276234,"y":326292},{"x":-267418,"y":310953},{"x":-279794,"y":349357},{"x":-264852,"y":339569},{"x":-273386,"y":366020},{"x":-271781,"y":74888},{"x":-258922,"y":96611},{"x":-280806,"y":88148},{"x":-278438,"y":106606},{"x":-306731,"y":300859},{"x":-304873,"y":323270},{"x":-291714,"y":312807},{"x":-300846,"y":341288},{"x":-305204,"y":69623},{"x":-303889,"y":99841},{"x":-298515,"y":86476},{"x":-299297,"y":121100},{"x":-297775,"y":148895},{"x":-289854,"y":137754},{"x":-307105,"y":161540},{"x":-285580,"y":163574},{"x":-315405,"y":23632},{"x":-331821,"y":25067},{"x":-329332,"y":75483},{"x":-330106,"y":99429},{"x":-313509,"y":87600},{"x":-327322,"y":116182},{"x":-314649,"y":134234},{"x":-331100,"y":141003},{"x":-331177,"y":172638},{"x":-344974,"y":26590},{"x":-355476,"y":37653},{"x":-357354,"y":58398},{"x":-346672,"y":75273},{"x":-347398,"y":98381},{"x":-340751,"y":114763},{"x":-350012,"y":152844},{"x":-354526,"y":128636},{"x":-348951,"y":170814},{"x":-373336,"y":24669},{"x":-367109,"y":47790},{"x":-383545,"y":38315},{"x":-383575,"y":61712},{"x":-366911,"y":72430},{"x":-381507,"y":79050},{"x":-367543,"y":87623},{"x":-384461,"y":95980},{"x":-375707,"y":129195},{"x":-364290,"y":103713},{"x":-380239,"y":114531},{"x":-365432,"y":149386},{"x":-374020,"y":162650},{"x":-400131,"y":10665},{"x":-388652,"y":21956},{"x":-407326,"y":24000},{"x":-399959,"y":41972},{"x":-401233,"y":60576},{"x":-398199,"y":77176},{"x":-403458,"y":92127}],
+      },
+    ],
   },
   {
     id: 46,
@@ -2357,6 +2889,8 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "The shrub on this Pal's back produces berries as long as it is properly fed. It offers these berries to potential mates, and if the flavor is to their liking, romance blossoms.",
     workSuitability: [
+      { type: "Planting", level: 2 },
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Berry Picker", description: "Sometimes drops berries| style=|status_keyword from its back when assigned to Ranch. While in party, restores <Status_Up>{Passive1_EffectValue1}</> Pal’s Hunger to the Pal with the lowest Hunger every 5 minutes. (Does not stack)" },
     possibleDrops: [
@@ -2364,7 +2898,17 @@ export const pals: Pal[] = [
       { resourceId: "berries", notes: "2-4, 100%" },
       { resourceId: "horn", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 114,
+        sourceUrl: "https://palworld.th.gl/guides/Caprity",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-238226,"y":257351},{"x":-233873,"y":275677},{"x":-227129,"y":359507},{"x":-242247,"y":378830},{"x":-231098,"y":396301},{"x":-232496,"y":240495},{"x":-282963,"y":179591},{"x":-282618,"y":199101},{"x":-263612,"y":201047},{"x":-303314,"y":179540},{"x":-303379,"y":202622},{"x":-306690,"y":217815},{"x":-297585,"y":229790},{"x":-299775,"y":245900},{"x":-326600,"y":177123},{"x":-311585,"y":167030},{"x":-328329,"y":195381},{"x":-324925,"y":234545},{"x":-332385,"y":216565},{"x":-314809,"y":247037},{"x":-359694,"y":267413},{"x":-345530,"y":258285},{"x":-346485,"y":274669},{"x":-359867,"y":204174},{"x":-352055,"y":192049},{"x":-346667,"y":241824},{"x":-373336,"y":28999},{"x":-376778,"y":259397},{"x":-375296,"y":47318},{"x":-386075,"y":61712},{"x":-381022,"y":200846},{"x":-376336,"y":184341},{"x":-387600,"y":14335},{"x":-402801,"y":11762},{"x":-388709,"y":30412},{"x":-406859,"y":29302},{"x":-391038,"y":46651},{"x":-407017,"y":47399},{"x":-415542,"y":9592},{"x":-419742,"y":24631},{"x":-429003,"y":40739},{"x":-27973,"y":120576},{"x":-11635,"y":128436},{"x":-41782,"y":43711},{"x":-46770,"y":63600},{"x":-27921,"y":71808},{"x":-51639,"y":103759},{"x":-51554,"y":88766},{"x":-33036,"y":96215},{"x":-48838,"y":122423},{"x":-50724,"y":152497},{"x":-43405,"y":177409},{"x":-32300,"y":164507},{"x":-71109,"y":125566},{"x":-74665,"y":150678},{"x":-58391,"y":138719},{"x":-64658,"y":173709},{"x":-87643,"y":743},{"x":-95571,"y":-9467},{"x":-102512,"y":16249},{"x":-85116,"y":23690},{"x":-103403,"y":40390},{"x":-91826,"y":121086},{"x":-100856,"y":148302},{"x":-87496,"y":141126},{"x":-128253,"y":-10184},{"x":-112991,"y":1590},{"x":-129043,"y":-35722},{"x":-113570,"y":-46445},{"x":-128747,"y":-61047},{"x":-122306,"y":-76248},{"x":-116825,"y":-92330},{"x":-117363,"y":19242},{"x":-125526,"y":41946},{"x":-112217,"y":140447},{"x":-147063,"y":-605},{"x":-153042,"y":-30179},{"x":-145594,"y":-45345},{"x":-153600,"y":-61584},{"x":-141890,"y":-72339}],
+      },
+    ],
   },
   {
     id: 47,
@@ -2375,6 +2919,8 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "The berries that grow on its back change flavor according to its emotions. The harsher the environment it grows in, the sweeter the berries become. This is why most Caprity Noct raised in captivity have never known love.",
     workSuitability: [
+      { type: "Planting", level: 2 },
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Venom Picker", description: "Sometimes drops venom| style=|status_keyword from its back when assigned to Ranch. While in party, restores <Status_Up>{Passive1_EffectValue1}</> Pal’s Hunger to the Pal with the lowest Hunger every 5 minutes. (Does not stack)" },
     possibleDrops: [
@@ -2383,7 +2929,17 @@ export const pals: Pal[] = [
       { resourceId: "horn", notes: "1-2, 100%" },
       { resourceId: "venom", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 59,
+        sourceUrl: "https://palworld.th.gl/guides/Caprity%20Noct",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-638236,"y":-376031},{"x":-633213,"y":-407374},{"x":-638346,"y":-391045},{"x":-637533,"y":-423818},{"x":-661334,"y":-265751},{"x":-657705,"y":-306291},{"x":-661702,"y":-322907},{"x":-642263,"y":-332395},{"x":-657107,"y":-354945},{"x":-655773,"y":-381233},{"x":-662249,"y":-406571},{"x":-662156,"y":-430742},{"x":-686071,"y":-260136},{"x":-676501,"y":-273029},{"x":-680884,"y":-292373},{"x":-678443,"y":-309816},{"x":-685298,"y":-329939},{"x":-684484,"y":-356143},{"x":-671332,"y":-347050},{"x":-682740,"y":-383148},{"x":-669371,"y":-374075},{"x":-683266,"y":-404341},{"x":-674325,"y":-419954},{"x":-711051,"y":-249252},{"x":-696465,"y":-237836},{"x":-707182,"y":-279499},{"x":-691599,"y":-275791},{"x":-714048,"y":-304099},{"x":-692368,"y":-305607},{"x":-707051,"y":-327554},{"x":-705306,"y":-354604},{"x":-712195,"y":-380002},{"x":-695930,"y":-375875},{"x":-710204,"y":-406275},{"x":-697433,"y":-396922},{"x":-712494,"y":-227281},{"x":-735715,"y":-248079},{"x":-736379,"y":-228549},{"x":-734208,"y":-281479},{"x":-736688,"y":-301167},{"x":-740870,"y":-317314},{"x":-720672,"y":-329303},{"x":-723473,"y":-348400},{"x":-739804,"y":-378901},{"x":-736878,"y":-407901},{"x":-725943,"y":-391603},{"x":-736310,"y":-212004},{"x":-763341,"y":-241513},{"x":-755190,"y":-303964},{"x":-765283,"y":-324151},{"x":-750064,"y":-330449},{"x":-765391,"y":-339431},{"x":-765435,"y":-407184},{"x":-752849,"y":-393715},{"x":-763367,"y":-211660},{"x":-753384,"y":-223062},{"x":-781799,"y":-319343},{"x":-782801,"y":-341052},{"x":-880160,"y":-376490}],
+      },
+    ],
   },
   {
     id: 48,
@@ -2394,13 +2950,25 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "Crawling along the ground, it eats microscopic organic matter. After a while, it discharges any substances that provide no nutrition. By using it as a mop for cleaning, everyone wins!",
     workSuitability: [
+      { type: "Gathering", level: 1 },
+      { type: "Cooling", level: 1 },
     ],
     partnerSkill: { name: "Fluffy", description: "While in party, increases Attack and Defense of Unknown Character (MopKing| style=|Status_Keyword)." },
     possibleDrops: [
       { resourceId: "wool", notes: "1-1, 100%" },
       { resourceId: "palitem-mopbaby", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 32,
+        sourceUrl: "https://palworld.th.gl/guides/Swee",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-238151,"y":52663},{"x":-255542,"y":62529},{"x":-235393,"y":68364},{"x":-247495,"y":86342},{"x":-232306,"y":83500},{"x":-233162,"y":101100},{"x":-273031,"y":72723},{"x":-260172,"y":94446},{"x":-393503,"y":53772},{"x":-23032,"y":67008},{"x":-5710,"y":60697},{"x":-22188,"y":86092},{"x":214,"y":86796},{"x":-1785,"y":118340},{"x":-95832,"y":259985},{"x":-96205,"y":232943},{"x":-117829,"y":249760},{"x":-174116,"y":44442},{"x":-162234,"y":54822},{"x":-172737,"y":66059},{"x":-186505,"y":33336},{"x":-194014,"y":49961},{"x":-204468,"y":61596},{"x":-187975,"y":69802},{"x":-201079,"y":77248},{"x":-222297,"y":60909},{"x":-216185,"y":80213},{"x":-213683,"y":95801},{"x":4453,"y":102000},{"x":16334,"y":91940},{"x":15037,"y":122969},{"x":32248,"y":115296}],
+      },
+    ],
   },
   {
     id: 49,
@@ -2411,12 +2979,24 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "While hibernating, a large number of Swee hide within its voluminous body hair. The most ever recorded is 101.",
     workSuitability: [
+      { type: "Gathering", level: 2 },
+      { type: "Cooling", level: 3 },
     ],
     partnerSkill: { name: "King of Fluff", description: "Can be ridden. This Pal's Attack and Defense increase by <Status_Up>{Passive1_EffectValue1}%</> for each Unknown Character (MopBaby| style=|Status_Keyword) in party." },
     possibleDrops: [
       { resourceId: "wool", notes: "3-5, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 30,
+        sourceUrl: "https://palworld.th.gl/guides/Sweepa",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-235651,"y":52663},{"x":-253042,"y":62529},{"x":-232893,"y":68364},{"x":-244995,"y":86342},{"x":-231785,"y":94301},{"x":-270531,"y":72723},{"x":-257672,"y":94446},{"x":-20532,"y":67008},{"x":-4460,"y":62862},{"x":-19688,"y":86092},{"x":1464,"y":84631},{"x":715,"y":118340},{"x":-5812,"y":104394},{"x":-97082,"y":262150},{"x":-79001,"y":261774},{"x":-97455,"y":235108},{"x":-119079,"y":251925},{"x":-171616,"y":44442},{"x":-171060,"y":59960},{"x":-184005,"y":33336},{"x":-191514,"y":49961},{"x":-201968,"y":61596},{"x":-185475,"y":69802},{"x":-198579,"y":77248},{"x":-218275,"y":58345},{"x":-213685,"y":80213},{"x":-211183,"y":95801},{"x":20533,"y":124677},{"x":27472,"y":102702},{"x":35082,"y":119994}],
+      },
+    ],
   },
   {
     id: 50,
@@ -2427,13 +3007,26 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "To protect its fragile body, it developed an incredibly tough shell. Unfortunately, it's utterly defenseless underneath. Even a little tickle could knock it out cold.",
     workSuitability: [
+      { type: "Watering", level: 2 },
+      { type: "Mining", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Spikey Carrier", description: "While in party, reduces copperore| style=|status_keyword weight by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "1-2, 100%" },
       { resourceId: "bone", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 13,
+        sourceUrl: "https://palworld.th.gl/guides/Turtacle",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-230413,"y":-199809},{"x":-244901,"y":-204794},{"x":-305237,"y":-230392},{"x":-322023,"y":-233604},{"x":-355102,"y":-221794},{"x":-370255,"y":-220521},{"x":-384976,"y":-221927},{"x":-394847,"y":-213137},{"x":-94913,"y":107154},{"x":-113951,"y":120129},{"x":-126661,"y":136938},{"x":-201275,"y":436070},{"x":-192797,"y":450623}],
+      },
+    ],
   },
   {
     id: 51,
@@ -2444,13 +3037,26 @@ export const pals: Pal[] = [
     elements: ["Water", "Ground"],
     description: "To protect its fragile body, it developed an incredibly tough shell. With most of its senses concentrated in its limbs and shell, it can’t even tell if someone quietly touches its core.",
     workSuitability: [
+      { type: "Watering", level: 2 },
+      { type: "Mining", level: 3 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Shiny Hauler", description: "While in party, reduces weight of sulfur| style=|status_keyword and coal| style=|status_keyword by <Status_Up>{Passive1_EffectValue1}%</>. Also improves player's and Pals' <img id=|ElemIcon_Ground|/>Unknown Status (COMMON_ELEMENT_NAME_Earth| style=|Elem_Ground) damage to enemy weak points by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "1-2, 100%" },
       { resourceId: "bone", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 21,
+        sourceUrl: "https://palworld.th.gl/guides/Turtacle%20Terra",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-232913,"y":-199809},{"x":-247401,"y":-204794},{"x":-307737,"y":-230392},{"x":-324523,"y":-233604},{"x":-357602,"y":-221794},{"x":-381038,"y":-221744},{"x":-394811,"y":-214598},{"x":-28630,"y":-170098},{"x":-51173,"y":-181415},{"x":-52338,"y":-91829},{"x":-54132,"y":-108363},{"x":-55183,"y":-126057},{"x":-63570,"y":-138077},{"x":-74100,"y":-149235},{"x":-58071,"y":-156006},{"x":-72420,"y":-166620},{"x":-78125,"y":-133076},{"x":-91101,"y":-141258},{"x":-85314,"y":-156518},{"x":-112217,"y":-135947},{"x":-219575,"y":-186636}],
+      },
+    ],
   },
   {
     id: 52,
@@ -2461,13 +3067,26 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "Its gigantic arms can rip apart even iron. As a particularly cruel form of execution, serious criminals would be strung up in a public square, and a Hangyu would tear the skin right from their bones.",
     workSuitability: [
+      { type: "Handiwork", level: 1 },
+      { type: "Gathering", level: 1 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Flying Trapeze", description: "While in party, modifies the performance of the equipped glider. Enables slow ascension while gliding. {ReferenceMsgId_GriderPerformanceUp}" },
     possibleDrops: [
       { resourceId: "fiber", notes: "5-10, 100%" },
       { resourceId: "wheatseeds", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 86,
+        sourceUrl: "https://palworld.th.gl/guides/Hangyu",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-254605,"y":-494},{"x":-246164,"y":-17591},{"x":-232959,"y":5366},{"x":-248579,"y":19784},{"x":-252018,"y":38360},{"x":-240226,"y":55169},{"x":-231949,"y":74512},{"x":-249578,"y":93154},{"x":-232891,"y":92601},{"x":-236811,"y":108032},{"x":-271371,"y":10821},{"x":-262006,"y":26850},{"x":-269823,"y":43880},{"x":-295275,"y":148895},{"x":-304605,"y":161540},{"x":-311235,"y":146995},{"x":-152534,"y":50506},{"x":-152978,"y":70502},{"x":-153440,"y":91200},{"x":-153536,"y":111364},{"x":-178104,"y":80763},{"x":-178443,"y":96481},{"x":-178300,"y":121045},{"x":-204040,"y":17483},{"x":-198389,"y":80852},{"x":-198532,"y":101355},{"x":-193497,"y":115492},{"x":-212393,"y":-17766},{"x":-229893,"y":-12535},{"x":-209429,"y":-3029},{"x":-221876,"y":15788},{"x":-205271,"y":44349},{"x":-219525,"y":60510},{"x":-214935,"y":82378},{"x":-218999,"y":101692},{"x":50838,"y":422069},{"x":40588,"y":439785},{"x":42278,"y":477158},{"x":34545,"y":492665},{"x":75297,"y":379416},{"x":65094,"y":397581},{"x":63917,"y":413305},{"x":71176,"y":431645},{"x":56581,"y":440681},{"x":65643,"y":454197},{"x":100530,"y":336810},{"x":97077,"y":352113},{"x":86429,"y":366080},{"x":91927,"y":380091},{"x":99747,"y":393224},{"x":124343,"y":294470},{"x":114474,"y":313322},{"x":119312,"y":331319},{"x":113374,"y":345772},{"x":117177,"y":362742},{"x":116864,"y":378866},{"x":115213,"y":394468},{"x":141657,"y":280154},{"x":140860,"y":295570},{"x":139604,"y":310807},{"x":138803,"y":326636},{"x":134183,"y":348156},{"x":133661,"y":363873},{"x":132254,"y":379679},{"x":148715,"y":365325},{"x":147460,"y":380849},{"x":130881,"y":395150},{"x":147070,"y":396835},{"x":142150,"y":417686},{"x":160442,"y":275046},{"x":173273,"y":266164},{"x":159124,"y":289991},{"x":158479,"y":306344},{"x":177899,"y":300814},{"x":158021,"y":321657},{"x":176847,"y":315961},{"x":176149,"y":331810},{"x":159507,"y":346408},{"x":175131,"y":347479},{"x":164473,"y":366288}],
+      },
+    ],
   },
   {
     id: 53,
@@ -2478,13 +3097,27 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "Its gigantic arms can tear through blocks of ice. There were times when great sinners were tied in the town square and had their hair torn out by Hangyu Cryst as a brutal form of public humiliation.",
     workSuitability: [
+      { type: "Handiwork", level: 3 },
+      { type: "Gathering", level: 2 },
+      { type: "Cooling", level: 2 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Winter Trapeze", description: "While in party, modifies the performance of the equipped glider. Enables slow ascension while gliding. {ReferenceMsgId_GriderPerformanceUp}" },
     possibleDrops: [
       { resourceId: "fiber", notes: "5-10, 100%" },
       { resourceId: "iceorgan", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 91,
+        sourceUrl: "https://palworld.th.gl/guides/Hangyu%20Cryst",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-3611,"y":8236},{"x":-4024,"y":23882},{"x":-1982,"y":44033},{"x":-18739,"y":39568},{"x":-13371,"y":57531},{"x":-18509,"y":76953},{"x":-113,"y":67829},{"x":-21011,"y":99711},{"x":-5171,"y":85079},{"x":-8286,"y":112884},{"x":-24223,"y":118411},{"x":-15385,"y":130601},{"x":-17678,"y":152760},{"x":1964,"y":146488},{"x":-22995,"y":176447},{"x":-10557,"y":171036},{"x":492,"y":184174},{"x":-37032,"y":43455},{"x":-48020,"y":61435},{"x":-30814,"y":80652},{"x":-46403,"y":84751},{"x":-51639,"y":99429},{"x":-46289,"y":116847},{"x":-44474,"y":150332},{"x":-40894,"y":134709},{"x":-46502,"y":172817},{"x":-31925,"y":163611},{"x":-69828,"y":110121},{"x":-70349,"y":125008},{"x":-68401,"y":143305},{"x":-69592,"y":165657},{"x":-97413,"y":107154},{"x":-93165,"y":123599},{"x":-87134,"y":140078},{"x":-99606,"y":150467},{"x":-79473,"y":156196},{"x":-116451,"y":120129},{"x":-127911,"y":139103},{"x":11411,"y":-7594},{"x":21229,"y":18392},{"x":22581,"y":3086},{"x":26255,"y":36557},{"x":10330,"y":93718},{"x":26738,"y":122556},{"x":11235,"y":123111},{"x":17689,"y":150056},{"x":22481,"y":165840},{"x":4607,"y":164781},{"x":16968,"y":185227},{"x":36071,"y":-11945},{"x":52065,"y":-20157},{"x":45846,"y":-36315},{"x":36715,"y":14175},{"x":46849,"y":35755},{"x":51794,"y":49539},{"x":51974,"y":101652},{"x":24972,"y":102702},{"x":37295,"y":111875},{"x":31208,"y":191118},{"x":41809,"y":181504},{"x":55669,"y":204544},{"x":63898,"y":-8062},{"x":59362,"y":-40755},{"x":74105,"y":-34384},{"x":56494,"y":18752},{"x":75951,"y":6401},{"x":76282,"y":35724},{"x":62747,"y":119934},{"x":73168,"y":204099},{"x":61915,"y":189446},{"x":69332,"y":223741},{"x":82046,"y":-16171},{"x":97415,"y":-21035},{"x":95695,"y":-39608},{"x":94428,"y":15404},{"x":98758,"y":42821},{"x":100907,"y":68361},{"x":93109,"y":101992},{"x":124416,"y":15996},{"x":118912,"y":52975}],
+      },
+    ],
   },
   {
     id: 54,
@@ -2495,13 +3128,24 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "Its entire body is 18,000 times sweeter than sugar. Carnivorous Pals lured by its scent will find themselves overwhelmed by sweetness and even pass out should they take a bite of this Pal.",
     workSuitability: [
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Candy Pop", description: "Sometimes drops sweet| style=|status_keyword when assigned to Ranch. While at a base, reduces Hunger depletion rate of Base Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "sweet", notes: "1-2, 100%" },
       { resourceId: "paloil", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 20,
+        sourceUrl: "https://palworld.th.gl/guides/Woolipop",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-277623,"y":83120},{"x":-277188,"y":104441},{"x":-303954,"y":67458},{"x":-305139,"y":102006},{"x":-299765,"y":84311},{"x":-300547,"y":123265},{"x":-316655,"y":25797},{"x":-329321,"y":25067},{"x":-328082,"y":73318},{"x":-331356,"y":101594},{"x":-323707,"y":88246},{"x":-324822,"y":116182},{"x":-315899,"y":132068},{"x":-346224,"y":28755},{"x":-343929,"y":49110},{"x":-354854,"y":58398},{"x":-344172,"y":75273},{"x":-344898,"y":98381},{"x":-342001,"y":116928},{"x":-359601,"y":42307}],
+      },
+    ],
   },
   {
     id: 55,
@@ -2512,13 +3156,24 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "Its fur emits a sweet smell, but its meat is disgustingly bitter. Carnivorous Pals lured by its scent into taking a bite will find themselves overwhelmed by the foul taste and pass out.",
     workSuitability: [
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Bitter Pop", description: "Sometimes drops sweet_caramel| style=|status_keyword when assigned to Ranch. While at a base, reduces Hunger depletion rate of Base Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "sweet-caramel", notes: "1-2, 100%" },
       { resourceId: "wool", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 4,
+        sourceUrl: "https://palworld.th.gl/guides/Woolipop%20Terra",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-71914,"y":-245035},{"x":-55183,"y":-251172},{"x":-70294,"y":-260342},{"x":-86178,"y":-255345}],
+      },
+    ],
   },
   {
     id: 56,
@@ -2529,13 +3184,24 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "Milk pours from this Pal like water from an open faucet, regardless of its gender. It's truly a mystery of life, although this mystery may be better left unsolved.",
     workSuitability: [
+      { type: "Farming", level: 2 },
     ],
     partnerSkill: { name: "Milk Maker", description: "Sometimes drops milk| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "meat-cowpal", notes: "2-3, 100%" },
       { resourceId: "milk", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 31,
+        sourceUrl: "https://palworld.th.gl/guides/Mozzarina",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-248414,"y":275766},{"x":-252710,"y":295763},{"x":-228178,"y":301488},{"x":-246530,"y":315083},{"x":-231285,"y":322035},{"x":-279075,"y":266147},{"x":-271570,"y":280102},{"x":-275215,"y":299669},{"x":-271895,"y":316929},{"x":-275123,"y":83120},{"x":-274688,"y":104441},{"x":-291719,"y":302618},{"x":-296324,"y":321068},{"x":-290498,"y":335472},{"x":-301454,"y":67458},{"x":-306904,"y":101336},{"x":-297265,"y":84311},{"x":-290618,"y":104013},{"x":-295513,"y":122208},{"x":-303525,"y":248065},{"x":-290800,"y":233285},{"x":-285645,"y":250525},{"x":-325582,"y":73318},{"x":-330736,"y":99586},{"x":-316009,"y":87600},{"x":-327321,"y":116182},{"x":-313399,"y":132068},{"x":-329925,"y":230215},{"x":-329130,"y":250280},{"x":-317125,"y":238615},{"x":-347157,"y":103944}],
+      },
+    ],
   },
   {
     id: 57,
@@ -2546,13 +3212,24 @@ export const pals: Pal[] = [
     elements: ["Water", "Dragon"],
     description: "This Pal's white ribbon turns black if doused with impure water. Given its usefulness in detecting poison, this Pal was once overhunted. This past has left them bitter towards humanity.",
     workSuitability: [
+      { type: "Watering", level: 4 },
     ],
     partnerSkill: { name: "Waterwing Dance", description: "Can be ridden to travel on water. While mounted, changes the player's attack type to <img id=|ElemIcon_Water|/>Unknown Status (COMMON_ELEMENT_NAME_Water| style=|Elem_Water) and increases Attack by <Status_Up>{Passive2_EffectValue1}%</>. {ReferenceMsgId_SwimSpeedUp}" },
     possibleDrops: [
       { resourceId: "cloth", notes: "1-3, 100%" },
       { resourceId: "palfluid", notes: "2-4, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 4,
+        sourceUrl: "https://palworld.th.gl/guides/Azurobe",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-249738,"y":65470},{"x":-251594,"y":81396},{"x":-454833,"y":187552},{"x":-455562,"y":206181}],
+      },
+    ],
   },
   {
     id: 58,
@@ -2563,6 +3240,7 @@ export const pals: Pal[] = [
     elements: ["Ice", "Dragon"],
     description: "This Pal’s white ribbon continuously absorbs heat from its surroundings, yet its temperature remains curiously unchanged. This strange ability once made it a target of relentless hunting, leaving it with a deep mistrust of humans to this day.",
     workSuitability: [
+      { type: "Cooling", level: 4 },
     ],
     partnerSkill: { name: "Icewing Dance", description: "Can be ridden to travel on water. While mounted, changes the player’s attack type to <img id=|ElemIcon_Ice|/>Unknown Status (COMMON_ELEMENT_NAME_Ice| style=|Elem_Ice) and increases Attack by <Status_Up>{Passive2_EffectValue1}%</>. {ReferenceMsgId_SwimSpeedUp}" },
     possibleDrops: [
@@ -2570,7 +3248,17 @@ export const pals: Pal[] = [
       { resourceId: "palfluid", notes: "1-2, 100%" },
       { resourceId: "iceorgan", notes: "1-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 1,
+        sourceUrl: "https://palworld.th.gl/guides/Azurobe%20Cryst",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":172715,"y":220979}],
+      },
+    ],
   },
   {
     id: 59,
@@ -2581,12 +3269,26 @@ export const pals: Pal[] = [
     elements: ["Electric"],
     description: "During the dry season, this Pal is always on the verge of blowing a fuse. Sparks can fly with even the slightest provocation, even amongst allies.",
     workSuitability: [
+      { type: "Generating Electricity", level: 1 },
+      { type: "Handiwork", level: 1 },
+      { type: "Transporting", level: 1 },
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Static Electricity", description: "While in party, increases Attack of <img id=|ElemIcon_Electric|/>Unknown Status (COMMON_ELEMENT_NAME_Electricity| style=|Elem_Electric) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack) Sometimes drops electricorgan| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "electricorgan", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 27,
+        sourceUrl: "https://palworld.th.gl/guides/Sparkit",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-279213,"y":181756},{"x":-278868,"y":201266},{"x":-259862,"y":203212},{"x":-292287,"y":175380},{"x":-305456,"y":183409},{"x":-299629,"y":200457},{"x":-322850,"y":179288},{"x":-327079,"y":193216},{"x":-342656,"y":125013},{"x":-352512,"y":152844},{"x":-354668,"y":136932},{"x":-351451,"y":170814},{"x":-338450,"y":160960},{"x":-356117,"y":206339},{"x":-348305,"y":189884},{"x":-366525,"y":162542},{"x":-377272,"y":203011},{"x":-372586,"y":186506},{"x":-151284,"y":52671},{"x":-151728,"y":72667},{"x":-152190,"y":93365},{"x":-152286,"y":113529},{"x":-176854,"y":82928},{"x":-178454,"y":101381},{"x":-175800,"y":121045},{"x":-197139,"y":83018},{"x":-197282,"y":103520}],
+      },
+    ],
   },
   {
     id: 60,
@@ -2597,13 +3299,25 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "Its personality changes depending on the quality of the water it was born into. Kelpsea born into polluted waters are generally ill-tempered and quickly become delinquents.",
     workSuitability: [
+      { type: "Watering", level: 1 },
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Aqua Spout", description: "While in party, increases Attack of <img id=|ElemIcon_Water|/>Unknown Status (COMMON_ELEMENT_NAME_Water| style=|Elem_Water) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack) Sometimes drops palfluid| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "meat-kelpie", notes: "1-1, 100%" },
       { resourceId: "palfluid", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 23,
+        sourceUrl: "https://palworld.th.gl/guides/Kelpsea",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-255679,"y":262251},{"x":-247874,"y":275480},{"x":-233079,"y":292631},{"x":-272849,"y":256638},{"x":-262890,"y":204760},{"x":-274325,"y":219470},{"x":-303706,"y":124579},{"x":-303349,"y":140470},{"x":-331511,"y":128042},{"x":-375836,"y":24669},{"x":-371259,"y":40316},{"x":-375032,"y":57749},{"x":-392600,"y":14335},{"x":-405679,"y":65998},{"x":-392424,"y":73392},{"x":-433299,"y":44538},{"x":-417677,"y":56332},{"x":-162961,"y":-19718},{"x":-176558,"y":-35662},{"x":-188003,"y":-20570},{"x":-202487,"y":-31324},{"x":-190469,"y":25314},{"x":-218340,"y":299637}],
+      },
+    ],
   },
   {
     id: 61,
@@ -2614,13 +3328,25 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "Its personality changes depending on the temperature of the water it was born into. Kelpsea born in warm waters generally have a passionate, motivated personality.",
     workSuitability: [
+      { type: "Kindling", level: 1 },
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Lava Spout", description: "While in party, increases Attack of <img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack) Sometimes drops fireorgan| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "meat-kelpie", notes: "1-1, 100%" },
       { resourceId: "fireorgan", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 60,
+        sourceUrl: "https://palworld.th.gl/guides/Kelpsea%20Ignis",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-233486,"y":-74893},{"x":-246524,"y":-59378},{"x":-231414,"y":-89343},{"x":-249112,"y":-87567},{"x":-241296,"y":-123031},{"x":-233814,"y":-104663},{"x":-249238,"y":-134124},{"x":-264123,"y":-22938},{"x":-257529,"y":-47195},{"x":-270684,"y":-38188},{"x":-268407,"y":-71006},{"x":-277964,"y":-60972},{"x":-271174,"y":-89958},{"x":-256193,"y":-117388},{"x":-299526,"y":-26964},{"x":-284920,"y":-16161},{"x":-285525,"y":-43929},{"x":-303277,"y":-44908},{"x":-287510,"y":-72169},{"x":-301805,"y":-70859},{"x":-302932,"y":-85158},{"x":-287104,"y":-119371},{"x":-334978,"y":-10181},{"x":-321614,"y":-50399},{"x":-328814,"y":-33554},{"x":-313633,"y":-65080},{"x":-327712,"y":-63358},{"x":-313262,"y":-98218},{"x":-324975,"y":-85585},{"x":-312233,"y":-111926},{"x":-349935,"y":-20371},{"x":-359572,"y":-47501},{"x":-344142,"y":-74034},{"x":-343110,"y":-55383},{"x":-354884,"y":-98612},{"x":-357113,"y":-120399},{"x":-336365,"y":-105948},{"x":-366147,"y":-21017},{"x":-377624,"y":-16708},{"x":-356916,"y":-74873},{"x":-371253,"y":-64939},{"x":-370688,"y":-107808},{"x":-432330,"y":-28551},{"x":-433340,"y":-202330},{"x":-420114,"y":-211182},{"x":-449580,"y":-44575},{"x":-457598,"y":-108463},{"x":-458024,"y":-174631},{"x":-443943,"y":-190879},{"x":-467640,"y":-73256},{"x":-477610,"y":-99537},{"x":-474757,"y":-121227},{"x":-472651,"y":-149702},{"x":-109084,"y":317254},{"x":-125878,"y":316816},{"x":-141804,"y":317169},{"x":-222201,"y":-26837},{"x":-223987,"y":-47004},{"x":-216942,"y":-71687},{"x":-221503,"y":-131724}],
+      },
+    ],
   },
   {
     id: 62,
@@ -2631,6 +3357,9 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "A Pal that's never without a bright smile. Occasionally, its tentacles get tied up in knots by Cattiva's pranks. During those moments, its expression turns demonic.",
     workSuitability: [
+      { type: "Handiwork", level: 1 },
+      { type: "Gathering", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Happy-Go-Lucky Bunny", description: "While in party, increases Attack of <img id=|ElemIcon_Neutral|/>Unknown Status (COMMON_ELEMENT_NAME_Normal| style=|Elem_Neutral) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack) While at a base, increases the Unknown Status (COMMON_WORK_SUITABILITY_Handcraft| style=|Status_Keyword) Work Suitability Level for all other Base Pals by <Status_Keyword>+{Passive2_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
@@ -2639,7 +3368,17 @@ export const pals: Pal[] = [
       { resourceId: "palitem-pinkrabbit", notes: "1-1, 100%" },
       { resourceId: "berryseeds", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 115,
+        sourceUrl: "https://palworld.th.gl/guides/Ribbuny",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-252105,"y":-494},{"x":-243664,"y":-17591},{"x":-252102,"y":313097},{"x":-238468,"y":326160},{"x":-254367,"y":336932},{"x":-232129,"y":364507},{"x":-249077,"y":380660},{"x":-235636,"y":387992},{"x":-268871,"y":10821},{"x":-278789,"y":330859},{"x":-274250,"y":29122},{"x":-271073,"y":41715},{"x":-275495,"y":58659},{"x":-287000,"y":24699},{"x":-303846,"y":29948},{"x":-286400,"y":43631},{"x":-303724,"y":49358},{"x":-292213,"y":64387},{"x":-315265,"y":39706},{"x":-328408,"y":50420},{"x":-322673,"y":67494},{"x":-330461,"y":26046},{"x":-340538,"y":41353},{"x":-358094,"y":46586},{"x":-340322,"y":60363},{"x":-347895,"y":76605},{"x":-333796,"y":82681},{"x":-380836,"y":24669},{"x":-365709,"y":29924},{"x":-377440,"y":44035},{"x":-377527,"y":60353},{"x":-360533,"y":191313},{"x":-364268,"y":209076},{"x":-375160,"y":229375},{"x":-382350,"y":212275},{"x":-395100,"y":18665},{"x":-409979,"y":7699},{"x":-404359,"y":29302},{"x":-394788,"y":48816},{"x":-393712,"y":64254},{"x":-398656,"y":216743},{"x":-427074,"y":16486},{"x":-419831,"y":32629},{"x":-413875,"y":47260},{"x":-432319,"y":42643},{"x":-6125,"y":-99261},{"x":-24428,"y":-124177},{"x":-22276,"y":-105500},{"x":-3235,"y":-123926},{"x":-21558,"y":-142644},{"x":-6541,"y":-139379},{"x":-40918,"y":-125031},{"x":-83893,"y":-1422},{"x":-96821,"y":-11632},{"x":-98762,"y":14084},{"x":-82681,"y":16147},{"x":-99653,"y":38225},{"x":-85374,"y":32236},{"x":-124503,"y":-12349},{"x":-111741,"y":-575},{"x":-125293,"y":-37888},{"x":-109820,"y":-48611},{"x":-124997,"y":-63212},{"x":-116983,"y":-77754},{"x":-113075,"y":-94495},{"x":-116113,"y":17077},{"x":-124276,"y":39781},{"x":-153893,"y":1225},{"x":-136046,"y":-1319},{"x":-149292,"y":-32344},{"x":-139990,"y":-47682},{"x":-149850,"y":-63749},{"x":-136210,"y":-73816},{"x":-157342,"y":23536},{"x":-137186,"y":16670},{"x":-156339,"y":364169},{"x":-145852,"y":39217},{"x":-135299,"y":51101},{"x":-150721,"y":157676},{"x":-145528,"y":176762}],
+      },
+    ],
   },
   {
     id: 63,
@@ -2650,6 +3389,10 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "Always wears a cheerful smile. Sometimes, thanks to Cattiva's pranks, they end up tangled in tentacles and have to fight their way out! Even in tough situations, they keep smiling cheerfully.",
     workSuitability: [
+      { type: "Planting", level: 2 },
+      { type: "Handiwork", level: 2 },
+      { type: "Gathering", level: 2 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Ground 'n' Pound", description: "While in party, improves player's and Pals' <img id=|ElemIcon_Grass|/>Unknown Status (COMMON_ELEMENT_NAME_Leaf| style=|Elem_Grass) damage to enemy weak points by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack) Increases efficiency by <Status_Up>{Passive2_EffectValue1}%</> when working at a Weapon Workbench, Weapon Assembly Line, or other related facilities." },
     possibleDrops: [
@@ -2658,7 +3401,17 @@ export const pals: Pal[] = [
       { resourceId: "carrotseeds", notes: "1-1, 100%" },
       { resourceId: "carrot", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 52,
+        sourceUrl: "https://palworld.th.gl/guides/Ribbuny%20Botan",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-253355,"y":1671},{"x":-245854,"y":-12461},{"x":-254293,"y":64695},{"x":-270121,"y":12986},{"x":-280191,"y":30458},{"x":-274944,"y":48158},{"x":-271782,"y":74888},{"x":-276925,"y":96066},{"x":-302895,"y":27633},{"x":-301483,"y":64039},{"x":-286127,"y":60583},{"x":-288398,"y":76624},{"x":-294739,"y":93313},{"x":-302361,"y":80487},{"x":-282883,"y":110023},{"x":-686584,"y":-265167},{"x":-676771,"y":-278901},{"x":-667893,"y":-262113},{"x":-675055,"y":-306627},{"x":-690505,"y":-316272},{"x":-715233,"y":-254078},{"x":-709905,"y":-273265},{"x":-740496,"y":-255723},{"x":-736683,"y":-274513},{"x":-765826,"y":-253617},{"x":-765315,"y":-235489},{"x":-763058,"y":-277317},{"x":-753382,"y":-265648},{"x":-762977,"y":-301236},{"x":-751532,"y":-331375},{"x":-742680,"y":-398020},{"x":-765464,"y":-217213},{"x":-787041,"y":-253620},{"x":-787334,"y":-271149},{"x":-786795,"y":-301662},{"x":-778070,"y":-283482},{"x":-787770,"y":-325395},{"x":-774963,"y":-313864},{"x":-801944,"y":-277717},{"x":-802016,"y":-259188},{"x":-802070,"y":-295830},{"x":-146971,"y":159841},{"x":-146778,"y":178927},{"x":-179032,"y":148078},{"x":-163525,"y":149821},{"x":-176737,"y":172186},{"x":-199571,"y":166426},{"x":-194506,"y":184881},{"x":-211143,"y":-15601},{"x":-227393,"y":-12535},{"x":-228882,"y":162428},{"x":-216471,"y":176948}],
+      },
+    ],
   },
   {
     id: 64,
@@ -2669,13 +3422,26 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "A Pal that closely resembles Jellroy. It’s very social, so when plans overlap, it asks its good friend Jellroy to go in its place. As thanks, one date.",
     workSuitability: [
+      { type: "Watering", level: 2 },
+      { type: "Handiwork", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Jelliette Drop", description: "While in party, increases items obtained from fishing by <Status_Up>{Passive1_EffectValue1}%</>. While Jelliette and Jellroy are in your base, Jelliette's watering speed increases by <Status_Up>{Passive3_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "1-2, 100%" },
       { resourceId: "meat-jellyfishfairy", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 28,
+        sourceUrl: "https://palworld.th.gl/guides/Jelliette",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-500280,"y":-342446},{"x":-494617,"y":-360490},{"x":-494596,"y":-378640},{"x":-496441,"y":-399154},{"x":-507761,"y":-210837},{"x":-515781,"y":-387246},{"x":-528148,"y":-397270},{"x":-529981,"y":-160746},{"x":-533369,"y":-176884},{"x":-521279,"y":-203502},{"x":-534425,"y":-212708},{"x":-544367,"y":-403070},{"x":-543510,"y":-188495},{"x":-548238,"y":-205420},{"x":-562698,"y":115933},{"x":-569486,"y":-395309},{"x":-574874,"y":-144081},{"x":-588536,"y":-163868},{"x":-568819,"y":131808},{"x":-606960,"y":-125522},{"x":-589824,"y":-132128},{"x":-596157,"y":-148995},{"x":-612966,"y":-142227},{"x":-608067,"y":-163651},{"x":-606186,"y":-178863},{"x":-627753,"y":-130080},{"x":-628883,"y":-150450},{"x":-625520,"y":-176621}],
+      },
+    ],
   },
   {
     id: 65,
@@ -2686,13 +3452,27 @@ export const pals: Pal[] = [
     elements: ["Water", "Dark"],
     description: "A Pal that closely resembles Jelliette. It sometimes appears as a substitute when Jelliette is unavailable. Its acting is so flawless that no one ever notices the switch.",
     workSuitability: [
+      { type: "Watering", level: 2 },
+      { type: "Handiwork", level: 1 },
+      { type: "Medicine Production", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Jellroy Drop", description: "While in party, increases items obtained from salvaging by <Status_Up>{Passive1_EffectValue1}%</>. While Jelliette and Jellroy are in your base, Jellroy's watering speed increases by <Status_Up>{Passive2_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "1-2, 100%" },
       { resourceId: "meat-jellyfishghost", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 75,
+        sourceUrl: "https://palworld.th.gl/guides/Jellroy",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-486726,"y":-263329},{"x":-501630,"y":-232172},{"x":-505735,"y":-262440},{"x":-509309,"y":-279930},{"x":-499030,"y":-340281},{"x":-493976,"y":-355318},{"x":-494407,"y":-372566},{"x":-494897,"y":-390864},{"x":-506581,"y":-403157},{"x":-511511,"y":-208672},{"x":-498644,"y":-217396},{"x":-523363,"y":-230938},{"x":-531938,"y":-244066},{"x":-520580,"y":-265054},{"x":-517031,"y":-385081},{"x":-529398,"y":-395105},{"x":-533731,"y":-158581},{"x":-528006,"y":-174111},{"x":-533183,"y":-190821},{"x":-538175,"y":-210543},{"x":-559868,"y":-229236},{"x":-543117,"y":-400905},{"x":-549458,"y":-162176},{"x":-555652,"y":-175852},{"x":-548523,"y":-199151},{"x":-562417,"y":-192351},{"x":-556930,"y":-209849},{"x":-541467,"y":-228986},{"x":-568236,"y":-393144},{"x":-587652,"y":-396702},{"x":-588522,"y":-442423},{"x":-571049,"y":-450591},{"x":-582583,"y":-458454},{"x":-566066,"y":-466624},{"x":-579534,"y":-477127},{"x":-577961,"y":-492767},{"x":-573624,"y":-141916},{"x":-588331,"y":-145012},{"x":-586036,"y":-163868},{"x":-579573,"y":-199871},{"x":-583285,"y":-216918},{"x":-603361,"y":-399956},{"x":-611362,"y":-422486},{"x":-601647,"y":-434786},{"x":-614739,"y":-448242},{"x":-598139,"y":-459740},{"x":-614799,"y":-465297},{"x":-604008,"y":-482201},{"x":-605710,"y":-123357},{"x":-605231,"y":-138727},{"x":-603257,"y":-157786},{"x":-599248,"y":-173121},{"x":-610934,"y":-187375},{"x":-620508,"y":-399191},{"x":-627457,"y":-424563},{"x":-633404,"y":-440742},{"x":-635683,"y":-464852},{"x":-619283,"y":-479825},{"x":-620221,"y":-132535},{"x":-631587,"y":-142815},{"x":-624767,"y":-156923},{"x":-615775,"y":-173035},{"x":-631948,"y":-174612},{"x":-649346,"y":-443187},{"x":-655811,"y":-458506},{"x":-664393,"y":-440940},{"x":-683418,"y":-432773},{"x":-676190,"y":-456824},{"x":-698040,"y":-429305},{"x":-715297,"y":-424388},{"x":-693179,"y":-450109},{"x":-715157,"y":-440415},{"x":-731014,"y":-427701},{"x":-209824,"y":-248993},{"x":-224672,"y":-256341}],
+      },
+    ],
   },
   {
     id: 66,
@@ -2703,12 +3483,25 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "If one disappears, another simply shows up to take its place, and life goes on like nothing happened. For Amione, companionship is everything.",
     workSuitability: [
+      { type: "Watering", level: 1 },
+      { type: "Handiwork", level: 2 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Magical Twin Powers", description: "While at a base, increases the Unknown Status (COMMON_WORK_SUITABILITY_Watering| style=|Status_Keyword) Work Suitability Level for all other Base Pals by <Status_Keyword>+{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "2-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 8,
+        sourceUrl: "https://palworld.th.gl/guides/Amione",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-302456,"y":126744},{"x":-315855,"y":136598},{"x":-329011,"y":128042},{"x":-792605,"y":-1510},{"x":-817007,"y":-83436},{"x":-804520,"y":49015},{"x":-817143,"y":61501},{"x":-823165,"y":-18155}],
+      },
+    ],
   },
   {
     id: 67,
@@ -2719,13 +3512,26 @@ export const pals: Pal[] = [
     elements: ["Water", "Dark"],
     description: "Be sure to check your plans for the next day before falling asleep with this Pal. Its suction cups leave marks that look suspiciously like hickeys. One sleepy cuddle session could lead to some truly awkward misunderstandings.",
     workSuitability: [
+      { type: "Watering", level: 2 },
+      { type: "Handiwork", level: 2 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Sticky Princess", description: "While in party, the capture gauge decreases <Status_Up>{Passive1_EffectValue1}%</> more slowly while the bars are not overlapping during the fishing minigame. (Does not stack)" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "1-2, 100%" },
       { resourceId: "meat-octopusgirl", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 48,
+        sourceUrl: "https://palworld.th.gl/guides/Gloopie",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-482976,"y":-265494},{"x":-500380,"y":-234337},{"x":-496651,"y":-258687},{"x":-507662,"y":-272378},{"x":-504966,"y":-290285},{"x":-507355,"y":-211869},{"x":-522113,"y":-233103},{"x":-526205,"y":-249327},{"x":-525643,"y":-215086},{"x":-558618,"y":-231401},{"x":-538409,"y":-233860},{"x":-548208,"y":-164341},{"x":-558152,"y":-175852},{"x":-538808,"y":-179780},{"x":-548692,"y":-191409},{"x":-562947,"y":-204583},{"x":-549868,"y":-213255},{"x":-574039,"y":-232508},{"x":-567076,"y":-395840},{"x":-583902,"y":-398867},{"x":-572374,"y":-144081},{"x":-584502,"y":-133677},{"x":-584640,"y":-153374},{"x":-568521,"y":-189895},{"x":-581454,"y":-202535},{"x":-602111,"y":-402121},{"x":-606394,"y":-418760},{"x":-604460,"y":-125522},{"x":-610466,"y":-142227},{"x":-605757,"y":-157786},{"x":-590554,"y":-168886},{"x":-603686,"y":-178863},{"x":-619258,"y":-401356},{"x":-631528,"y":-410781},{"x":-622721,"y":-132535},{"x":-626383,"y":-150450},{"x":-618275,"y":-173035},{"x":-634589,"y":-166699},{"x":-658847,"y":-444674},{"x":-664593,"y":-460820},{"x":-685918,"y":-432773},{"x":-679414,"y":-448562},{"x":-705876,"y":-433980},{"x":-713526,"y":-417157},{"x":-694998,"y":-455302},{"x":-726676,"y":-432224},{"x":-203775,"y":436070},{"x":-195297,"y":450623}],
+      },
+    ],
   },
   {
     id: 68,
@@ -2736,13 +3542,26 @@ export const pals: Pal[] = [
     elements: ["Water", "Neutral"],
     description: "Be sure to check your plans for the next day before falling asleep with this Pal. Its suction cups leave marks that look suspiciously like bite marks. One sleepy cuddle session could lead to some truly unnecessary concern.",
     workSuitability: [
+      { type: "Watering", level: 2 },
+      { type: "Handiwork", level: 2 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Cephalo-Princess", description: "While in party, increases Defense of <img id=|ElemIcon_Water|/>Unknown Status (COMMON_ELEMENT_NAME_Water| style=|Elem_Water) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "1-2, 100%" },
       { resourceId: "meat-octopusgirl", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 4,
+        sourceUrl: "https://palworld.th.gl/guides/Gloopie%20Primo",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-790105,"y":-1510},{"x":-814507,"y":-83436},{"x":-820665,"y":-18155},{"x":-830742,"y":-77442}],
+      },
+    ],
   },
   {
     id: 69,
@@ -2753,13 +3572,24 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "A Pal that can easily take flight even while grasping a human. It is, however, prone to letting go when tired, which has led to the sudden demise of more than a few souls.",
     workSuitability: [
+      { type: "Gathering", level: 2 },
     ],
     partnerSkill: { name: "Galeclaw Glider", description: "While in party, modifies the performance of the equipped glider. Enables high-speed gliding and allows shooting with the right hand. {ReferenceMsgId_GriderPerformanceUp}" },
     possibleDrops: [
       { resourceId: "meat-eagle", notes: "1-1, 100%" },
       { resourceId: "leather", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 59,
+        sourceUrl: "https://palworld.th.gl/guides/Galeclaw",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-257105,"y":3836},{"x":-233119,"y":-4020},{"x":-246079,"y":24114},{"x":-232761,"y":15948},{"x":-253268,"y":36194},{"x":-227996,"y":31904},{"x":-242410,"y":50252},{"x":-253456,"y":57621},{"x":-251045,"y":119041},{"x":-228198,"y":115078},{"x":-237272,"y":128927},{"x":-255940,"y":140279},{"x":-234474,"y":144116},{"x":-251668,"y":156816},{"x":-235289,"y":163442},{"x":-251918,"y":173797},{"x":-235597,"y":178638},{"x":-243393,"y":192889},{"x":-249670,"y":207308},{"x":-230516,"y":210172},{"x":-268661,"y":9365},{"x":-267330,"y":26915},{"x":-266247,"y":119382},{"x":-280428,"y":130126},{"x":-277407,"y":144849},{"x":-275376,"y":160184},{"x":-267186,"y":176509},{"x":-149471,"y":159841},{"x":-171148,"y":-11249},{"x":-171509,"y":10609},{"x":-174234,"y":51780},{"x":-176205,"y":36720},{"x":-159663,"y":62927},{"x":-172202,"y":145578},{"x":-169341,"y":160938},{"x":-156493,"y":173574},{"x":-186974,"y":-2518},{"x":-196145,"y":-19401},{"x":-202607,"y":-383},{"x":-194574,"y":24937},{"x":-194799,"y":47997},{"x":-188795,"y":73023},{"x":-199571,"y":62224},{"x":-199797,"y":142203},{"x":-184542,"y":156764},{"x":-200495,"y":164075},{"x":-184153,"y":172359},{"x":-198482,"y":182518},{"x":-211143,"y":-19932},{"x":-215741,"y":2110},{"x":-214993,"y":18132},{"x":-227140,"y":47091},{"x":-214813,"y":124886},{"x":-216779,"y":140172},{"x":-214577,"y":157053},{"x":-218934,"y":171606},{"x":-225412,"y":193149},{"x":-210587,"y":195724},{"x":-203337,"y":220595}],
+      },
+    ],
   },
   {
     id: 70,
@@ -2770,13 +3600,27 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "The ghostly hands behind it embody the souls of all humans who have raised its kind. Lately, they seem to have reached a unanimous consensus to dote on Wispaw.",
     workSuitability: [
+      { type: "Handiwork", level: 2 },
+      { type: "Lumbering", level: 1 },
+      { type: "Medicine Production", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Death-Cheating Feline", description: "While in party, increases the capture rate when awarded a <Status_Keyword>back bonus</>. (Does not stack) {ReferenceMsgId_CaptureRate}" },
     possibleDrops: [
       { resourceId: "palupgradestone", notes: "2-2, 100%" },
       { resourceId: "leather", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 26,
+        sourceUrl: "https://palworld.th.gl/guides/Wispaw",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-248867,"y":278331},{"x":-250210,"y":295763},{"x":-229428,"y":303653},{"x":-244030,"y":315083},{"x":-276575,"y":266147},{"x":-270320,"y":277936},{"x":-270491,"y":294338},{"x":-270645,"y":314764},{"x":-276323,"y":182539},{"x":-277913,"y":197782},{"x":-287451,"y":301670},{"x":-298824,"y":321068},{"x":-287998,"y":335472},{"x":-299025,"y":151060},{"x":-301485,"y":169055},{"x":-300101,"y":186178},{"x":-290869,"y":203027},{"x":-314985,"y":149160},{"x":-315739,"y":182616},{"x":-341406,"y":127178},{"x":-353762,"y":155009},{"x":-353418,"y":139097},{"x":-352701,"y":172979},{"x":-335950,"y":160960},{"x":-371650,"y":159850},{"x":-227155,"y":320404}],
+      },
+    ],
   },
   {
     id: 71,
@@ -2787,12 +3631,23 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "It carries newborn Pals to its nest and raises them as a surrogate parent. Once the baby Pal has fattened up, it hunts them.",
     workSuitability: [
+      { type: "Gathering", level: 2 },
     ],
     partnerSkill: { name: "Travel Companion", description: "Can be ridden as a flying mount. {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
       { resourceId: "leather", notes: "1-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 232,
+        sourceUrl: "https://palworld.th.gl/guides/Nitewing",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-254664,"y":273601},{"x":-251512,"y":301793},{"x":-230515,"y":305432},{"x":-238371,"y":282712},{"x":-252481,"y":326855},{"x":-235666,"y":330149},{"x":-253002,"y":352525},{"x":-232129,"y":359507},{"x":-244077,"y":376330},{"x":-230636,"y":387992},{"x":-271921,"y":257981},{"x":-282736,"y":275136},{"x":-277581,"y":300898},{"x":-268879,"y":286045},{"x":-274984,"y":329127},{"x":-266086,"y":313610},{"x":-278544,"y":352191},{"x":-263878,"y":342021},{"x":-263834,"y":366730},{"x":-278823,"y":186869},{"x":-274403,"y":206923},{"x":-305481,"y":303694},{"x":-303623,"y":326105},{"x":-288840,"y":321503},{"x":-298414,"y":341038},{"x":-308889,"y":99841},{"x":-304297,"y":121100},{"x":-298709,"y":167509},{"x":-305765,"y":184370},{"x":-292531,"y":196926},{"x":-305378,"y":231069},{"x":-305491,"y":215699},{"x":-289518,"y":213752},{"x":-303033,"y":248824},{"x":-320405,"y":23632},{"x":-326753,"y":43906},{"x":-318459,"y":70081},{"x":-335106,"y":99429},{"x":-325467,"y":81771},{"x":-319645,"y":112336},{"x":-327444,"y":228341},{"x":-329931,"y":209096},{"x":-328372,"y":246231},{"x":-349974,"y":26590},{"x":-347679,"y":51275},{"x":-347922,"y":77438},{"x":-331432,"y":62264},{"x":-336876,"y":119883},{"x":-345154,"y":225593},{"x":-347946,"y":204778},{"x":-354261,"y":240507},{"x":-374586,"y":26834},{"x":-362601,"y":43135},{"x":-379267,"y":45395},{"x":-368332,"y":60513},{"x":-364721,"y":76022},{"x":-384825,"y":63878},{"x":-376726,"y":82878},{"x":-363651,"y":98693},{"x":-384039,"y":102694},{"x":-375707,"y":124865},{"x":-377069,"y":202936},{"x":-381678,"y":225093},{"x":-390100,"y":14335},{"x":-405301,"y":11762},{"x":-398823,"y":28105},{"x":-396662,"y":44024},{"x":-398733,"y":60576},{"x":-395699,"y":81507},{"x":-405300,"y":91164},{"x":-411331,"y":121909},{"x":-392023,"y":121899},{"x":-397315,"y":210467},{"x":-423438,"y":10831},{"x":-413751,"y":25778},{"x":-430181,"y":30071},{"x":-418170,"y":41575},{"x":-412304,"y":69931},{"x":-429272,"y":66761},{"x":-421560,"y":86826}],
+      },
+    ],
   },
   {
     id: 72,
@@ -2803,13 +3658,26 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Often appears out of the blue to flaunt its prized wings in front of other Pals. Although this appears to be an intimidation tactic, the Pal seems to derive some kind of pleasure from the display.",
     workSuitability: [
+      { type: "Gathering", level: 2 },
+      { type: "Mining", level: 3 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Ultrasonic Sensor", description: "When activated, uses ultrasonic waves to detect nearby <Status_Keyword>dungeons, treasure chests, and scrap</>. {ReferenceMsgId_SearchAreaCoolTime}" },
     possibleDrops: [
       { resourceId: "leather", notes: "1-2, 100%" },
       { resourceId: "palupgradestone", notes: "1-1, 1%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 128,
+        sourceUrl: "https://palworld.th.gl/guides/Tombat",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-251584,"y":273266},{"x":-250262,"y":299628},{"x":-231765,"y":303267},{"x":-240480,"y":285251},{"x":-249401,"y":326520},{"x":-231875,"y":324764},{"x":-254252,"y":349690},{"x":-239678,"y":342150},{"x":-237129,"y":359507},{"x":-250907,"y":373830},{"x":-226419,"y":381209},{"x":-268841,"y":257647},{"x":-276898,"y":268535},{"x":-274501,"y":300564},{"x":-271022,"y":283253},{"x":-271904,"y":328792},{"x":-264836,"y":315775},{"x":-275464,"y":351857},{"x":-267584,"y":364565},{"x":-280463,"y":184591},{"x":-265546,"y":202425},{"x":-302401,"y":303359},{"x":-300543,"y":325770},{"x":-289232,"y":315648},{"x":-302164,"y":343203},{"x":-296525,"y":151060},{"x":-284274,"y":138089},{"x":-303985,"y":169055},{"x":-286830,"y":165739},{"x":-306238,"y":187982},{"x":-291932,"y":200433},{"x":-302878,"y":226739},{"x":-286322,"y":217070},{"x":-305533,"y":248824},{"x":-312485,"y":149160},{"x":-324850,"y":138838},{"x":-324100,"y":182123},{"x":-323236,"y":163228},{"x":-328824,"y":202837},{"x":-331194,"y":226176},{"x":-314574,"y":210731},{"x":-327522,"y":245178},{"x":-315092,"y":235875},{"x":-340156,"y":125013},{"x":-351262,"y":155009},{"x":-352168,"y":136932},{"x":-350201,"y":172979},{"x":-357367,"y":209174},{"x":-349555,"y":187719},{"x":-341404,"y":223428},{"x":-347431,"y":243007},{"x":-373336,"y":20339},{"x":-368538,"y":39213},{"x":-384795,"y":40480},{"x":-368313,"y":71793},{"x":-373061,"y":56160},{"x":-385257,"y":76885},{"x":-361293,"y":89788},{"x":-380022,"y":96703},{"x":-378207,"y":124865},{"x":-366679,"y":110132},{"x":-362932,"y":149386},{"x":-371520,"y":162650},{"x":-376022,"y":205177},{"x":-369506,"y":186841},{"x":-378598,"y":229758},{"x":-396930,"y":11835},{"x":-408576,"y":26165},{"x":-397459,"y":41972},{"x":-390396,"y":56792},{"x":-407834,"y":55942},{"x":-406930,"y":75203},{"x":-393191,"y":91307},{"x":-411179,"y":95113},{"x":-413831,"y":121909},{"x":-393273,"y":119734},{"x":-394235,"y":215133},{"x":-413065,"y":4427},{"x":-427074,"y":12156},{"x":-425443,"y":34176}],
+      },
+    ],
   },
   {
     id: 73,
@@ -2820,13 +3688,24 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "A frightening Pal that produces exploding eggs. It often fires these eggs from its rear end as a form of defense, but when spent, the Pal itself explodes.",
     workSuitability: [
+      { type: "Gathering", level: 1 },
     ],
     partnerSkill: { name: "Eggbomb Launcher", description: "When activated, equips to the player and transforms into an egg launcher. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
       { resourceId: "gunpowder", notes: "1-1, 100%" },
       { resourceId: "palitem-colorfulbird", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 176,
+        sourceUrl: "https://palworld.th.gl/guides/Tocotoco",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-13491,"y":-63012},{"x":-1118,"y":-72462},{"x":-11471,"y":276678},{"x":-13842,"y":257069},{"x":-26296,"y":300816},{"x":-10004,"y":292459},{"x":-23783,"y":326416},{"x":-4520,"y":329050},{"x":-11466,"y":314280},{"x":-25626,"y":357098},{"x":-6662,"y":360045},{"x":-772,"y":346143},{"x":-16521,"y":343963},{"x":-22931,"y":374729},{"x":1302,"y":376668},{"x":-7944,"y":391825},{"x":-21828,"y":408480},{"x":-3038,"y":411159},{"x":-4644,"y":434371},{"x":-26991,"y":429818},{"x":-23560,"y":453154},{"x":-4499,"y":455470},{"x":-22496,"y":470898},{"x":-2560,"y":472909},{"x":-22544,"y":504247},{"x":-14568,"y":226226},{"x":-18610,"y":212664},{"x":-25029,"y":244229},{"x":651,"y":250772},{"x":-29880,"y":-172263},{"x":-41347,"y":-178230},{"x":-32223,"y":274082},{"x":-51118,"y":302242},{"x":-45950,"y":323489},{"x":-49669,"y":355384},{"x":-37036,"y":382075},{"x":-37975,"y":366460},{"x":-44624,"y":408006},{"x":-51768,"y":430710},{"x":-46583,"y":449866},{"x":-49501,"y":481311},{"x":-37135,"y":468872},{"x":-31588,"y":483515},{"x":-40596,"y":508049},{"x":-42667,"y":525685},{"x":-39580,"y":543202},{"x":-53588,"y":-93995},{"x":-56769,"y":-115139},{"x":-66070,"y":-138077},{"x":-69322,"y":-152912},{"x":-73670,"y":-168785},{"x":-60075,"y":-178843},{"x":-53661,"y":-163396},{"x":-77165,"y":319799},{"x":-70859,"y":379280},{"x":-51542,"y":383008},{"x":-72296,"y":362185},{"x":-67243,"y":395322},{"x":-69724,"y":412657},{"x":-69160,"y":445596},{"x":-76515,"y":472989},{"x":-58307,"y":464408},{"x":-80625,"y":-133076},{"x":-95737,"y":-142639},{"x":-87814,"y":-156518},{"x":-100944,"y":379012},{"x":-90708,"y":361200},{"x":-93735,"y":398595},{"x":-92945,"y":431953},{"x":-102236,"y":474982},{"x":-99228,"y":492395},{"x":-113467,"y":-138112},{"x":-111029,"y":398125},{"x":-153784,"y":52671},{"x":-154228,"y":72667},{"x":-154690,"y":93365},{"x":-154786,"y":113529},{"x":-179354,"y":82928},{"x":-175954,"y":101381},{"x":-177050,"y":123211}],
+      },
+    ],
   },
   {
     id: 74,
@@ -2837,6 +3716,8 @@ export const pals: Pal[] = [
     elements: ["Electric"],
     description: "It used to be considered an emissary of the Thunder God, and thus was not hunted by people. However, after witnesses observed one die from a lightning strike, its reverence faded, and it quite literally fell into the role of a workhorse.",
     workSuitability: [
+      { type: "Generating Electricity", level: 3 },
+      { type: "Lumbering", level: 1 },
     ],
     partnerSkill: { name: "Swift Deity", description: "Can be ridden. While in party, improves player's and Pals' <img id=|ElemIcon_Electric|/>Unknown Status (COMMON_ELEMENT_NAME_Electricity| style=|Elem_Electric) damage to weak points by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -2844,7 +3725,17 @@ export const pals: Pal[] = [
       { resourceId: "electricorgan", notes: "1-1, 100%" },
       { resourceId: "horn", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 19,
+        sourceUrl: "https://palworld.th.gl/guides/Univolt",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-252105,"y":3836},{"x":-234369,"y":-6186},{"x":-246079,"y":19784},{"x":-230539,"y":20796},{"x":-249518,"y":38360},{"x":-231844,"y":38963},{"x":-237726,"y":55169},{"x":-255956,"y":57621},{"x":-263787,"y":22159},{"x":-275435,"y":11944},{"x":-265293,"y":40977},{"x":-176392,"y":-15615},{"x":-172898,"y":53},{"x":-196472,"y":-20955},{"x":-198335,"y":-3541},{"x":-201540,"y":17483},{"x":-183805,"y":11162},{"x":-216462,"y":-4443},{"x":-214516,"y":29534}],
+      },
+    ],
   },
   {
     id: 75,
@@ -2855,6 +3746,8 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "It used to be considered an emissary of the Winter God, and thus was not hunted by people. However, after witnesses observed one lose its footing on the ice, its reverence faded, and it quite literally slid into the role of a workhorse.",
     workSuitability: [
+      { type: "Lumbering", level: 3 },
+      { type: "Cooling", level: 6 },
     ],
     partnerSkill: { name: "Frigid Deity", description: "Can be ridden. While mounted, changes the player’s attack type to <img id=|ElemIcon_Ice|/>Unknown Status (COMMON_ELEMENT_NAME_Ice| style=|Elem_Ice) and increases Attack by <Status_Up>{Passive2_EffectValue1}%</>." },
     possibleDrops: [
@@ -2873,12 +3766,25 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "Long ago, it was a giant and powerful aquatic Pal. However, as food became scarce, it evolved to live on land. Since walking requires much energy, it gradually became smaller and is now a small and puny Pal.",
     workSuitability: [
+      { type: "Watering", level: 2 },
+      { type: "Handiwork", level: 2 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Angry Shark", description: "When activated, attacks targeted enemy with WaterGun| style=|Status_Keyword. When this Pal uses WaterGun| style=|Status_Keyword, it has a <Status_Up>x{ActiveSkillMainValueByRank}</> damage multiplier. While in party, increases the player's Attack by <Status_Up>{Passive1_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "palfluid", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 13,
+        sourceUrl: "https://palworld.th.gl/guides/Gobfin",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-254455,"y":-33962},{"x":-269766,"y":-25063},{"x":-300305,"y":-13190},{"x":-282753,"y":-17177},{"x":-320233,"y":12056},{"x":-165461,"y":-19718},{"x":-179058,"y":-35662},{"x":-189253,"y":-22735},{"x":-203737,"y":-33489},{"x":-195220,"y":200210},{"x":-201330,"y":215730},{"x":-200370,"y":236250},{"x":-217280,"y":223490}],
+      },
+    ],
   },
   {
     id: 77,
@@ -2889,12 +3795,25 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "Long ago, it was a giant and powerful aquatic Pal. However, as food became scarce, it evolved to live on land. Since walking burns many calories, it astonishingly awakened its power to control fire!",
     workSuitability: [
+      { type: "Kindling", level: 2 },
+      { type: "Handiwork", level: 2 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Angry Shark", description: "When activated, attacks targeted enemy with FireSeed| style=|Status_Keyword. When this Pal uses FireSeed| style=|Status_Keyword, it has a <Status_Up>x{ActiveSkillMainValueByRank}</> damage multiplier. While in party, increases the player's Attack by <Status_Up>{Passive1_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "fireorgan", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 25,
+        sourceUrl: "https://palworld.th.gl/guides/Gobfin%20Ignis",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-255400,"y":-150007},{"x":-233459,"y":-145945},{"x":-252153,"y":-171948},{"x":-249511,"y":-194475},{"x":-271550,"y":-175445},{"x":-266144,"y":-187977},{"x":-280194,"y":-185971},{"x":-275488,"y":-202396},{"x":-290983,"y":-151147},{"x":-293216,"y":-200297},{"x":-300060,"y":-225276},{"x":-287716,"y":-213208},{"x":-330199,"y":-231597},{"x":-310937,"y":-159098},{"x":-323561,"y":-159023},{"x":-334058,"y":-193847},{"x":-315361,"y":-186683},{"x":-327463,"y":-213121},{"x":-359457,"y":-132997},{"x":-357746,"y":-203312},{"x":-340887,"y":-219875},{"x":-377064,"y":-193223},{"x":-380216,"y":-213858},{"x":-387169,"y":-169850},{"x":-394797,"y":-203001}],
+      },
+    ],
   },
   {
     id: 78,
@@ -2905,12 +3824,23 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "The horns on its head grow under the moonlight. It doesn't hate the sun, but its horns itch when sunlight hits them.",
     workSuitability: [
+      { type: "Handiwork", level: 2 },
     ],
     partnerSkill: { name: "Dark Gleam Strike", description: "When activated, attacks targeted enemy with Unique_Werewolf_Scratch| style=|Status_Keyword. When this Pal uses Unique_Werewolf_Scratch| style=|Status_Keyword, it has a <Status_Up>x{ActiveSkillMainValueByRank}</> damage multiplier. While in party, increases the player's <Status_Keyword>melee weapon attack speed</> by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "bone", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 156,
+        sourceUrl: "https://palworld.th.gl/guides/Loupmoon",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-253355,"y":-2659},{"x":-247414,"y":-15426},{"x":-235619,"y":-8351},{"x":-238416,"y":7613},{"x":-249829,"y":17618},{"x":-229289,"y":22961},{"x":-239476,"y":259516},{"x":-235123,"y":277842},{"x":-252095,"y":32541},{"x":-241537,"y":50734},{"x":-233094,"y":41128},{"x":-254292,"y":60364},{"x":-237893,"y":68364},{"x":-246245,"y":84177},{"x":-233035,"y":96467},{"x":-254795,"y":116876},{"x":-231948,"y":112913},{"x":-239964,"y":126007},{"x":-255197,"y":133430},{"x":-241547,"y":141367},{"x":-254315,"y":153693},{"x":-229234,"y":155212},{"x":-251621,"y":168679},{"x":-233934,"y":171432},{"x":-244238,"y":187143},{"x":-242837,"y":205297},{"x":-229807,"y":217474},{"x":-233746,"y":242660},{"x":-270121,"y":8656},{"x":-266080,"y":24750},{"x":-262793,"y":40977},{"x":-278941,"y":28293},{"x":-281208,"y":47739},{"x":-271781,"y":70558},{"x":-262672,"y":94446},{"x":-279556,"y":90313},{"x":-279883,"y":109855},{"x":-270329,"y":125430},{"x":-279285,"y":141932},{"x":-277441,"y":157163},{"x":-266824,"y":171692},{"x":-291700,"y":26760},{"x":-304220,"y":36116},{"x":-302413,"y":60857},{"x":-287995,"y":68408},{"x":-305139,"y":97676},{"x":-302360,"y":80487},{"x":-300547,"y":118935},{"x":-319155,"y":21467},{"x":-332158,"y":48255},{"x":-327705,"y":62698},{"x":-316781,"y":74594},{"x":-331356,"y":97264},{"x":-331593,"y":78535},{"x":-329250,"y":113461},{"x":-316274,"y":122636},{"x":-346224,"y":24425},{"x":-359226,"y":39818},{"x":-358604,"y":60563},{"x":-347922,"y":73108},{"x":-346148,"y":100546},{"x":-49835,"y":258907},{"x":-48191,"y":227674},{"x":-72022,"y":279373},{"x":-62328,"y":259825},{"x":-51855,"y":274021},{"x":-74777,"y":178950},{"x":-60087,"y":204190},{"x":-61903,"y":220531},{"x":-98962,"y":294373},{"x":-101239,"y":335082},{"x":-94992,"y":177723},{"x":-93865,"y":197259},{"x":-98736,"y":218101},{"x":-123622,"y":271452},{"x":-104416,"y":271194},{"x":-121184,"y":292775},{"x":-122327,"y":310462},{"x":-112283,"y":147016},{"x":-109743,"y":174786}],
+      },
+    ],
   },
   {
     id: 79,
@@ -2921,12 +3851,24 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "The horns on its head are made of a mysterious ice that never melts. Shaved ice made by breaking off a horn is truly exquisite, but both the one who tries it and Loupmoon Cryst end up with a headache.",
     workSuitability: [
+      { type: "Handiwork", level: 4 },
+      { type: "Cooling", level: 4 },
     ],
     partnerSkill: { name: "Frozen Gleam Strike", description: "When activated, attacks targeted enemy with Unique_Werewolf_Ice_SnowScratch| style=|Status_Keyword. When this Pal uses Unique_Werewolf_Ice_SnowScratch| style=|Status_Keyword, it has a <Status_Up>x{ActiveSkillMainValueByRank}</> damage multiplier. While in party, increases the player's <Status_Keyword>melee weapon attack speed</> by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "bone", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 128,
+        sourceUrl: "https://palworld.th.gl/guides/Loupmoon%20Cryst",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-531,"y":12901},{"x":-1869,"y":34360},{"x":-22489,"y":41733},{"x":-14621,"y":55366},{"x":-17931,"y":104376},{"x":-14990,"y":125009},{"x":-12767,"y":144207},{"x":-26134,"y":162139},{"x":-18259,"y":175974},{"x":-5605,"y":159545},{"x":-3258,"y":186339},{"x":-499570,"y":-276210},{"x":-730685,"y":-323578},{"x":-741777,"y":-340333},{"x":-719870,"y":-345834},{"x":-734494,"y":-356686},{"x":-40782,"y":45620},{"x":-30733,"y":69132},{"x":-29256,"y":88925},{"x":-40153,"y":86916},{"x":-42438,"y":106863},{"x":-41093,"y":126090},{"x":-41394,"y":154997},{"x":-43422,"y":177482},{"x":-751265,"y":-352991},{"x":-758745,"y":-336693},{"x":-747542,"y":-370712},{"x":-766857,"y":-358897},{"x":-765625,"y":-374169},{"x":-762703,"y":-391087},{"x":-766483,"y":-411093},{"x":-773848,"y":-345077},{"x":-789576,"y":-344723},{"x":-782099,"y":-383183},{"x":-790857,"y":-366091},{"x":-794410,"y":-404435},{"x":-793131,"y":-431028},{"x":-774184,"y":-427787},{"x":-781721,"y":-413564},{"x":-790665,"y":-457864},{"x":-775278,"y":-446736},{"x":-813639,"y":-354878},{"x":-817080,"y":-376214},{"x":-813361,"y":-391249},{"x":-794002,"y":-388064},{"x":-816897,"y":-424410},{"x":-812468,"y":-456025},{"x":-817321,"y":-473015},{"x":-831102,"y":-328396},{"x":-837123,"y":-353105},{"x":-834056,"y":-371240},{"x":-843918,"y":-391012},{"x":-828675,"y":-392929},{"x":-840690,"y":-431384},{"x":-844488,"y":-412403},{"x":-845297,"y":-446994},{"x":-832990,"y":-457204},{"x":-864937,"y":-354616},{"x":-852116,"y":-340639},{"x":-862481,"y":-381315},{"x":-869705,"y":-406388},{"x":-867922,"y":-432965},{"x":-869667,"y":-454180},{"x":-856523,"y":-464368},{"x":-892671,"y":-377580},{"x":-876576,"y":-366240},{"x":-894517,"y":-399394},{"x":-879741,"y":-387513},{"x":-884377,"y":-429045},{"x":-888258,"y":-458008},{"x":-884117,"y":-476968},{"x":-917649,"y":-406509},{"x":-921461,"y":-387792},{"x":-905099,"y":-415710},{"x":-55277,"y":86207},{"x":-63930,"y":97167},{"x":-73578,"y":112286},{"x":-64099,"y":127173},{"x":-65321,"y":147971},{"x":-66512,"y":170322}],
+      },
+    ],
   },
   {
     id: 80,
@@ -2937,6 +3879,8 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Long ago it freely soared the skies. After losing a contest with Galeclaw, it abandoned the skies, and now lives a secretive life in the dark of night.",
     workSuitability: [
+      { type: "Lumbering", level: 2 },
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Eerie Nightstreaker", description: "When activated, grants <Status_Keyword>Night Vision</> to see in dark places. Activate again to turn off. Sometimes digs up bone| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
@@ -2944,7 +3888,17 @@ export const pals: Pal[] = [
       { resourceId: "venom", notes: "2-2, 100%" },
       { resourceId: "palupgradestone", notes: "1-1, 1%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 262,
+        sourceUrl: "https://palworld.th.gl/guides/Cawgnito",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-249605,"y":-494},{"x":-248664,"y":-17591},{"x":-233118,"y":-16314},{"x":-234209,"y":7531},{"x":-247329,"y":17618},{"x":-249595,"y":32541},{"x":-242787,"y":52899},{"x":-232800,"y":27732},{"x":-256792,"y":60364},{"x":-236643,"y":70529},{"x":-248745,"y":84177},{"x":-231641,"y":90436},{"x":-231654,"y":105516},{"x":-266371,"y":10821},{"x":-263350,"y":29104},{"x":-263034,"y":45034},{"x":-280191,"y":30458},{"x":-278708,"y":47739},{"x":-274281,"y":70558},{"x":-261422,"y":96611},{"x":-282056,"y":90313},{"x":-277383,"y":109855},{"x":-308846,"y":29948},{"x":-307474,"y":47193},{"x":-289671,"y":62429},{"x":-302704,"y":65293},{"x":-301389,"y":99841},{"x":-303610,"y":82652},{"x":-296797,"y":121100},{"x":-333071,"y":27232},{"x":-329658,"y":48255},{"x":-326423,"y":65329},{"x":-327606,"y":99429},{"x":-326717,"y":83936},{"x":-312077,"y":124983},{"x":-326072,"y":118347},{"x":-352657,"y":27139},{"x":-348929,"y":49110},{"x":-347286,"y":65476},{"x":-345869,"y":84494},{"x":-344501,"y":116928},{"x":-366605,"y":45937},{"x":-6138,"y":-151605},{"x":-21985,"y":-151328},{"x":-7721,"y":274513},{"x":-20516,"y":263227},{"x":-1947,"y":256380},{"x":-22546,"y":298651},{"x":-1452,"y":290962},{"x":-20033,"y":324251},{"x":1102,"y":323867},{"x":-6787,"y":312296},{"x":-21876,"y":354933},{"x":-5767,"y":345436},{"x":-26681,"y":372563},{"x":-11091,"y":381846},{"x":-189,"y":363783},{"x":-18078,"y":406315},{"x":1529,"y":402809},{"x":356,"y":438701},{"x":-23241,"y":427653},{"x":-19810,"y":450989},{"x":-26246,"y":468733},{"x":-5435,"y":471244},{"x":-22544,"y":499917},{"x":-10818,"y":224061},{"x":-18610,"y":208333},{"x":-21279,"y":242064},{"x":-1936,"y":241542},{"x":-508937,"y":-298657},{"x":-500762,"y":-356402},{"x":-500507,"y":-372146},{"x":-532066,"y":-258863},{"x":-528527,"y":-280731},{"x":-537299,"y":-299552},{"x":-523856,"y":-307442},{"x":-520678,"y":-325187},{"x":-517382,"y":-342386},{"x":-537512,"y":-334952},{"x":-533723,"y":-352349}],
+      },
+    ],
   },
   {
     id: 81,
@@ -2955,13 +3909,25 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "In ancient times, carnivorous Pals pursued them relentlessly. The absurd fury in the cries of Arsox transformed into a raging inferno, which has been passed on to this day.",
     workSuitability: [
+      { type: "Kindling", level: 3 },
+      { type: "Lumbering", level: 2 },
     ],
     partnerSkill: { name: "Warm Body", description: "Can be ridden. While in party, the player gains <Status_Keyword>Cold Resistance</> <Status_Keyword>+2</>. (Does not stack) {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
       { resourceId: "horn", notes: "1-1, 100%" },
       { resourceId: "fireorgan", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 65,
+        sourceUrl: "https://palworld.th.gl/guides/Arsox",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-254605,"y":4506},{"x":-231869,"y":-6186},{"x":-252469,"y":-40479},{"x":-235916,"y":7613},{"x":-244249,"y":22284},{"x":-235726,"y":257351},{"x":-231373,"y":275677},{"x":-247667,"y":36905},{"x":-230496,"y":31904},{"x":-251478,"y":55251},{"x":-232794,"y":56400},{"x":-229996,"y":240495},{"x":-273691,"y":-47723},{"x":-271161,"y":9365},{"x":-259755,"y":20514},{"x":-264043,"y":43142},{"x":-292149,"y":-13022},{"x":-280996,"y":-29802},{"x":-331228,"y":-12346},{"x":-306421,"y":-18449},{"x":-312355,"y":-871},{"x":-342380,"y":-20134},{"x":-354136,"y":-7783},{"x":-352769,"y":-33888},{"x":-354035,"y":9441},{"x":-336028,"y":4950},{"x":-367397,"y":-23182},{"x":-381374,"y":-14543},{"x":-379511,"y":5593},{"x":-399733,"y":-7696},{"x":-20473,"y":120576},{"x":-43032,"y":41546},{"x":-46770,"y":59270},{"x":-27594,"y":51441},{"x":-29171,"y":73973},{"x":-49139,"y":99429},{"x":-42595,"y":81207},{"x":-28191,"y":91541},{"x":-42588,"y":124588},{"x":-50054,"y":149997},{"x":-44655,"y":175244},{"x":-34800,"y":164507},{"x":-64859,"y":127731},{"x":-71537,"y":114077},{"x":-75915,"y":148513},{"x":-65908,"y":171544},{"x":-85576,"y":123251},{"x":-97106,"y":150467},{"x":-110334,"y":319419},{"x":-127128,"y":318981},{"x":-104171,"y":116666},{"x":-113467,"y":142612},{"x":-149550,"y":316990},{"x":-173892,"y":-15615},{"x":-170398,"y":53},{"x":-177218,"y":13713},{"x":-193972,"y":-20955},{"x":-195835,"y":-3541},{"x":-201889,"y":10444},{"x":-213643,"y":-19932},{"x":-218962,"y":-4443},{"x":-220626,"y":17953},{"x":-213985,"y":262906},{"x":-223751,"y":291243},{"x":-218071,"y":42596}],
+      },
+    ],
   },
   {
     id: 82,
@@ -2972,12 +3938,24 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "Its soft facial fluff softens any hit, but it cannot groom itself well nor scratch its itches, leaving it in a constant state of mild frustration.",
     workSuitability: [
+      { type: "Cooling", level: 2 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Fluffy Flutterer", description: "While in party, increases the capture rate of Pals afflicted with Unknown Status (ADDITIONAL_EFFECT_Freeze| style=|Effect_Freeze). (Does not stack) {ReferenceMsgId_CaptureRate}" },
     possibleDrops: [
       { resourceId: "iceorgan", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 25,
+        sourceUrl: "https://palworld.th.gl/guides/Muffly",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-257875,"y":121541},{"x":-237439,"y":119764},{"x":-251517,"y":136916},{"x":-232918,"y":139724},{"x":-243926,"y":153031},{"x":-253187,"y":169576},{"x":-232540,"y":174485},{"x":-246215,"y":185474},{"x":-238915,"y":199019},{"x":-236332,"y":216312},{"x":-274944,"y":125240},{"x":-277785,"y":141033},{"x":-275626,"y":157306},{"x":-267986,"y":178704},{"x":-786745,"y":-88900},{"x":-804585,"y":-68795},{"x":-816813,"y":-82066},{"x":-843560,"y":-51155},{"x":-831678,"y":-74471},{"x":-206627,"y":144703},{"x":-214445,"y":115514},{"x":-217987,"y":133595},{"x":-218450,"y":183931},{"x":-220900,"y":199200},{"x":-203927,"y":193737}],
+      },
+    ],
   },
   {
     id: 83,
@@ -2988,13 +3966,28 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "This prickly Pal's thorns are highly poisonous. It is friendly with Cinnamoth and only smiles while a Cinnamoth is drinking its nectar.",
     workSuitability: [
+      { type: "Planting", level: 2 },
+      { type: "Handiwork", level: 2 },
+      { type: "Gathering", level: 2 },
+      { type: "Medicine Production", level: 2 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Princess Gaze", description: "While in party, increases Attack of <img id=|ElemIcon_Grass|/>Unknown Status (COMMON_ELEMENT_NAME_Leaf| style=|Elem_Grass) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "tomatoseeds", notes: "1-2, 100%" },
       { resourceId: "poppy", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 30,
+        sourceUrl: "https://palworld.th.gl/guides/Bristla",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-254795,"y":121206},{"x":-231948,"y":117243},{"x":-246517,"y":136916},{"x":-249906,"y":153981},{"x":-230259,"y":146746},{"x":-254529,"y":170490},{"x":-236539,"y":165607},{"x":-246738,"y":187143},{"x":-230531,"y":180314},{"x":-241587,"y":203132},{"x":-231057,"y":215309},{"x":-271579,"y":123265},{"x":-274226,"y":138218},{"x":-272103,"y":153464},{"x":-269236,"y":176539},{"x":-286556,"y":135279},{"x":-153221,"y":162006},{"x":-175952,"y":147743},{"x":-172388,"y":163034},{"x":-161857,"y":177286},{"x":-203547,"y":144368},{"x":-204245,"y":166240},{"x":-185143,"y":161203},{"x":-190257,"y":178003},{"x":-214330,"y":122043},{"x":-215827,"y":159218},{"x":-208124,"y":183244},{"x":-228440,"y":195557},{"x":-213452,"y":197939},{"x":-207087,"y":222760}],
+      },
+    ],
   },
   {
     id: 84,
@@ -3005,6 +3998,9 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "Sniffing its scales produces a feeling of unparalleled euphoria. There was some effort to further regulate this byproduct, but the Free Pal Alliance have vehemently opposed these measures, putting a stop to them.",
     workSuitability: [
+      { type: "Planting", level: 2 },
+      { type: "Gathering", level: 2 },
+      { type: "Medicine Production", level: 2 },
     ],
     partnerSkill: { name: "Mysterious Scales", description: "When activated, attacks the targeted enemy with PoisonFog| style=|Status_Keyword. While at a base, increases the Unknown Status (COMMON_WORK_SUITABILITY_MonsterFarm| style=|Status_Keyword) Work Suitability Level for all other Base Pals by <Status_Keyword>+{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
@@ -3012,7 +4008,17 @@ export const pals: Pal[] = [
       { resourceId: "lettuceseeds", notes: "1-1, 75%" },
       { resourceId: "tomatoseeds", notes: "1-1, 75%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 32,
+        sourceUrl: "https://palworld.th.gl/guides/Cinnamoth",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-253545,"y":119041},{"x":-230698,"y":115078},{"x":-251093,"y":133849},{"x":-235933,"y":131791},{"x":-251156,"y":151816},{"x":-232759,"y":146746},{"x":-255779,"y":168324},{"x":-237789,"y":163442},{"x":-240056,"y":178450},{"x":-245144,"y":195282},{"x":-238488,"y":211549},{"x":-269055,"y":120765},{"x":-271240,"y":136128},{"x":-268376,"y":151343},{"x":-275416,"y":165357},{"x":-265863,"y":179563},{"x":-289056,"y":135279},{"x":-151971,"y":159841},{"x":-174702,"y":145578},{"x":-171841,"y":160938},{"x":-158993,"y":173574},{"x":-202297,"y":142203},{"x":-202995,"y":164075},{"x":-187643,"y":161203},{"x":-192757,"y":178003},{"x":-216830,"y":122043},{"x":-217077,"y":157053},{"x":-222242,"y":173161},{"x":-227361,"y":190658},{"x":-210624,"y":183244},{"x":-214121,"y":202798},{"x":-205837,"y":220595}],
+      },
+    ],
   },
   {
     id: 85,
@@ -3023,12 +4029,24 @@ export const pals: Pal[] = [
     elements: ["Electric"],
     description: "Its fluffy fur absorbs tremendous amounts of water when soaked. Shaking it dry releases a powerful electrical discharge, making bath time together a serious gamble.",
     workSuitability: [
+      { type: "Generating Electricity", level: 2 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Crackle Booster", description: "While at a base, increases the Unknown Status (COMMON_WORK_SUITABILITY_GenerateElectricity| style=|Status_Keyword) Work Suitability Level for all other Base Pals by <Status_Keyword>+{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "electricorgan", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 17,
+        sourceUrl: "https://palworld.th.gl/guides/Puffolt",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-256793,"y":64695},{"x":-282691,"y":30458},{"x":-277444,"y":48158},{"x":-274282,"y":74888},{"x":-279425,"y":96066},{"x":-304145,"y":29798},{"x":-303983,"y":64039},{"x":-285495,"y":68408},{"x":-297239,"y":93313},{"x":-284290,"y":112862},{"x":-758690,"y":-23245},{"x":-755360,"y":-46090},{"x":-745670,"y":-62655},{"x":-767085,"y":-55570},{"x":-779005,"y":-24715},{"x":-787680,"y":-42785},{"x":-780050,"y":-59560}],
+      },
+    ],
   },
   {
     id: 86,
@@ -3039,12 +4057,23 @@ export const pals: Pal[] = [
     elements: ["Dragon"],
     description: "It possesses a demeanor as pure as its appearance suggests. Perhaps because of this, it is sometimes unable to discern good from evil, often allowing wrongdoers to take advantage of it.",
     workSuitability: [
+      { type: "Lumbering", level: 3 },
     ],
     partnerSkill: { name: "Amicable Holy Dragon", description: "Can be ridden as a flying mount. While flying, Movement Speed is increased. While in party, <img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark) Pals drop <Status_Up>{Passive1_EffectValue1}%</> more items when defeated. (Does not stack)" },
     possibleDrops: [
       { resourceId: "paloil", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 28,
+        sourceUrl: "https://palworld.th.gl/guides/Elphidran",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-256045,"y":123371},{"x":-239939,"y":119764},{"x":-250267,"y":139081},{"x":-230418,"y":139724},{"x":-255565,"y":155858},{"x":-240347,"y":156600},{"x":-253168,"y":175962},{"x":-235040,"y":174485},{"x":-239630,"y":187733},{"x":-246587,"y":203132},{"x":-231766,"y":208007},{"x":-272829,"y":125430},{"x":-280285,"y":141033},{"x":-278126,"y":157306},{"x":-266036,"y":167280},{"x":-263793,"y":183884},{"x":-424866,"y":170396},{"x":-427537,"y":185204},{"x":-441288,"y":168747},{"x":-457333,"y":187552},{"x":-458062,"y":206181},{"x":-443255,"y":201934},{"x":-204797,"y":146533},{"x":-213195,"y":113349},{"x":-222061,"y":126270},{"x":-219318,"y":183679},{"x":-202677,"y":191572},{"x":-215371,"y":204963}],
+      },
+    ],
   },
   {
     id: 87,
@@ -3055,12 +4084,24 @@ export const pals: Pal[] = [
     elements: ["Dragon", "Water"],
     description: "It possesses a demeanor as pure as its appearance suggests. Perhaps because of this, it harbors no ill will in any of its actions and is indifferent even after killing someone.",
     workSuitability: [
+      { type: "Watering", level: 4 },
+      { type: "Lumbering", level: 3 },
     ],
     partnerSkill: { name: "Amicable Water Dragon", description: "Can be ridden as a flying mount. While flying, Movement Speed is increased. While in party, player and party Pals take <Status_Up>{Passive1_EffectValue1}%</> less <img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) damage and are immune to Unknown Status (ADDITIONAL_EFFECT_Burn| style=|Effect_Burn). (Does not stack)" },
     possibleDrops: [
       { resourceId: "paloil", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 9,
+        sourceUrl: "https://palworld.th.gl/guides/Elphidran%20Aqua",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-40914,"y":-133440},{"x":-47806,"y":-147157},{"x":-31387,"y":-153403},{"x":-47452,"y":-161603},{"x":-95908,"y":267406},{"x":-81504,"y":261774},{"x":-99958,"y":235108},{"x":-80345,"y":234036},{"x":-110496,"y":256850}],
+      },
+    ],
   },
   {
     id: 88,
@@ -3071,6 +4112,8 @@ export const pals: Pal[] = [
     elements: ["Fire", "Dark"],
     description: "The melodies of a flute made from the exoskeleton of a Vanwyrm are said to cross whole mountain ranges. In ages past, such flutes were used to signal an attack.",
     workSuitability: [
+      { type: "Kindling", level: 2 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Aerial Marauder", description: "Can be ridden as a flying mount. While in party, increases damage player deals to enemy weak points by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -3078,7 +4121,17 @@ export const pals: Pal[] = [
       { resourceId: "ruby", notes: "1-2, 1%" },
       { resourceId: "money", notes: "10-40, 10%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 205,
+        sourceUrl: "https://palworld.th.gl/guides/Vanwyrm",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-233486,"y":-70563},{"x":-246524,"y":-55048},{"x":-228914,"y":-93673},{"x":-249112,"y":-83236},{"x":-238796,"y":-127361},{"x":-247114,"y":-112876},{"x":-251650,"y":-147842},{"x":-248403,"y":-169783},{"x":-245761,"y":-192310},{"x":-235689,"y":16343},{"x":-232996,"y":31904},{"x":-264123,"y":-18608},{"x":-263026,"y":-48378},{"x":-276519,"y":-40202},{"x":-268407,"y":-66675},{"x":-267424,"y":-87793},{"x":-259362,"y":-124310},{"x":-264024,"y":-175041},{"x":-267394,"y":-190142},{"x":-280430,"y":-180930},{"x":-278873,"y":85285},{"x":-279688,"y":104441},{"x":-299526,"y":-22634},{"x":-281170,"y":-18326},{"x":-299527,"y":-42743},{"x":-282195,"y":-75377},{"x":-303055,"y":-73024},{"x":-287829,"y":-60292},{"x":-287104,"y":-115041},{"x":-283808,"y":-130399},{"x":-287233,"y":-148982},{"x":-296865,"y":-161622},{"x":-289466,"y":-198132},{"x":-301395,"y":-224930},{"x":-283966,"y":-215373},{"x":-285140,"y":40411},{"x":-300329,"y":41165},{"x":-306454,"y":67458},{"x":-304404,"y":101336},{"x":-301015,"y":86476},{"x":-292573,"y":117087},{"x":-331359,"y":-233525},{"x":-329978,"y":-10181},{"x":-316161,"y":-48446},{"x":-325064,"y":-35719},{"x":-316133,"y":-65080},{"x":-329750,"y":-56832},{"x":-310762,"y":-98218},{"x":-324463,"y":-90304},{"x":-310983,"y":-114091},{"x":-309687,"y":-161263},{"x":-326061,"y":-159023},{"x":-330308,"y":-191682},{"x":-313006,"y":-182478},{"x":-326371,"y":-215552},{"x":-315424,"y":33676},{"x":-330582,"y":73318},{"x":-329486,"y":101751},{"x":-314759,"y":89765},{"x":-329766,"y":121306},{"x":-313565,"y":117100},{"x":-317149,"y":134234},{"x":-346185,"y":-18206},{"x":-355822,"y":-45336},{"x":-342892,"y":-76199},{"x":-350570,"y":-61734},{"x":-354884,"y":-94281},{"x":-357113,"y":-116069},{"x":-335115,"y":-103783},{"x":-355707,"y":-130832},{"x":-353996,"y":-201147},{"x":-338387,"y":-219875},{"x":-344657,"y":103944},{"x":-363647,"y":-25347},{"x":-383874,"y":-18873},{"x":-359416,"y":-74873},{"x":-370003,"y":-67104},{"x":-373314,"y":-191058},{"x":-376466,"y":-211693},{"x":-399869,"y":-63246}],
+      },
+    ],
   },
   {
     id: 89,
@@ -3089,6 +4142,8 @@ export const pals: Pal[] = [
     elements: ["Ice", "Dark"],
     description: "The melodies of a flute made from the exoskeleton of a Vanwyrm Cryst are said to cross whole mountain ranges. In ages past, such flutes were used to signal victory in battle.",
     workSuitability: [
+      { type: "Cooling", level: 2 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Aerial Marauder", description: "Can be ridden as a flying mount. While in party, increases damage player deals to enemy weak points by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -3096,7 +4151,17 @@ export const pals: Pal[] = [
       { resourceId: "iceorgan", notes: "2-3, 100%" },
       { resourceId: "sapphire", notes: "1-1, 2%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 194,
+        sourceUrl: "https://palworld.th.gl/guides/Vanwyrm%20Cryst",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-233189,"y":16343},{"x":-231746,"y":29739},{"x":-240354,"y":43436},{"x":-282640,"y":40411},{"x":-297829,"y":41165},{"x":-305089,"y":70798},{"x":-312487,"y":33805},{"x":-487984,"y":-265788},{"x":-3381,"y":18979},{"x":-3232,"y":41868},{"x":-15246,"y":35731},{"x":-9621,"y":55366},{"x":-16009,"y":76953},{"x":-4837,"y":100627},{"x":-19222,"y":93659},{"x":-26723,"y":122741},{"x":-1991,"y":131878},{"x":-504708,"y":-244766},{"x":-510524,"y":-282812},{"x":-508258,"y":-262794},{"x":-499474,"y":-357784},{"x":-497900,"y":-342694},{"x":-499395,"y":-380807},{"x":-507751,"y":-405452},{"x":-495446,"y":-417927},{"x":-503229,"y":-229738},{"x":-510142,"y":-211252},{"x":-532892,"y":-254548},{"x":-532655,"y":-238805},{"x":-538428,"y":-177165},{"x":-531106,"y":-158918},{"x":-528239,"y":-223061},{"x":-526048,"y":-206044},{"x":-559815,"y":-233932},{"x":-555302,"y":-405654},{"x":-556871,"y":-178231},{"x":-561636,"y":-197560},{"x":-546310,"y":-196694},{"x":-556868,"y":-214126},{"x":-544581,"y":-223908},{"x":-589941,"y":-449639},{"x":-572899,"y":-455469},{"x":-584508,"y":-465194},{"x":-579645,"y":-486379},{"x":-568196,"y":-471207},{"x":-587062,"y":-147665},{"x":-587292,"y":-166404},{"x":-582800,"y":-204981},{"x":-579947,"y":-226794},{"x":-603734,"y":-409508},{"x":-613879,"y":-428460},{"x":-614836,"y":-447233},{"x":-604257,"y":-458881},{"x":-610246,"y":-481400},{"x":-597637,"y":-493589},{"x":-605711,"y":-127942},{"x":-611741,"y":-144864},{"x":-589870,"y":-131868},{"x":-615191,"y":-163691},{"x":-613074,"y":-178243},{"x":-628251,"y":-407306},{"x":-639054,"y":-424875},{"x":-638874,"y":-444065},{"x":-634224,"y":-459976},{"x":-619939,"y":-466028},{"x":-630452,"y":-144681},{"x":-640858,"y":-158979},{"x":-641199,"y":-178502},{"x":-665665,"y":-443516},{"x":-665817,"y":-462731},{"x":-653767,"y":-453678},{"x":-691363,"y":-428008},{"x":-689734,"y":-446657},{"x":-715492,"y":-431462},{"x":-729435,"y":-321413},{"x":-740527,"y":-338168},{"x":-718620,"y":-343669},{"x":-733244,"y":-354521},{"x":-739490,"y":-368979},{"x":-729489,"y":-427882}],
+      },
+    ],
   },
   {
     id: 90,
@@ -3107,13 +4172,24 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Attacking from the shadows, this Pal traps its prey within its cloak-like wings. It's probably best not to know what happens within them, or why the inside of its wings are stained red.",
     workSuitability: [
+      { type: "Medicine Production", level: 3 },
     ],
     partnerSkill: { name: "Life Steal", description: "While fighting together, grants the player and Felbat a life steal effect that <Status_Keyword>restores</> <Status_Up>{Passive1_EffectValue1}%</> of damage dealt as Unknown Status (COMMON_STATUS_HP| style=|Status_Keyword)." },
     possibleDrops: [
       { resourceId: "cloth", notes: "1-2, 100%" },
       { resourceId: "palupgradestone", notes: "1-1, 3%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 27,
+        sourceUrl: "https://palworld.th.gl/guides/Felbat",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-733185,"y":-323578},{"x":-744277,"y":-340333},{"x":-722370,"y":-345834},{"x":-736994,"y":-356686},{"x":-758431,"y":-348680},{"x":-745042,"y":-370712},{"x":-763970,"y":-363808},{"x":-765970,"y":-380654},{"x":-756970,"y":-396385},{"x":-768983,"y":-411093},{"x":-772598,"y":-342912},{"x":-787076,"y":-344723},{"x":-777683,"y":-362410},{"x":-780849,"y":-381018},{"x":-793497,"y":-361988},{"x":-781638,"y":-396399},{"x":-813833,"y":-354107},{"x":-801758,"y":-374376},{"x":-795803,"y":-402603},{"x":-815367,"y":-392421},{"x":-813763,"y":-410142},{"x":-830235,"y":-350497},{"x":-822763,"y":-368852},{"x":-832171,"y":-387658},{"x":-831038,"y":-413325},{"x":-843509,"y":-360181},{"x":-846848,"y":-383639}],
+      },
+    ],
   },
   {
     id: 91,
@@ -3124,6 +4200,12 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "The castle was filled with the king's favorite flowers. A great battle ensued, and flames approached the castle. Amidst the chaos, the spirit of a flower appeared. - From the fairy tale, |The King's Flower.|",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Handiwork", level: 3 },
+      { type: "Gathering", level: 3 },
+      { type: "Medicine Production", level: 3 },
+      { type: "Transporting", level: 2 },
+      { type: "Farming", level: 2 },
     ],
     partnerSkill: { name: "Purification of Gaia", description: "While in party, <img id=|ElemIcon_Ground|/>Unknown Status (COMMON_ELEMENT_NAME_Earth| style=|Elem_Ground) Pals drop <Status_Up>{Passive1_EffectValue1}%</> more items when defeated. (Does not stack) Sometimes drops <Status_Keyword>various seeds</> when assigned to Ranch." },
     possibleDrops: [
@@ -3131,7 +4213,17 @@ export const pals: Pal[] = [
       { resourceId: "tomatoseeds", notes: "1-1, 50%" },
       { resourceId: "onionseeds", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 8,
+        sourceUrl: "https://palworld.th.gl/guides/Vaelet",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-428616,"y":168231},{"x":-431287,"y":187369},{"x":-445038,"y":170912},{"x":-457333,"y":183221},{"x":-458062,"y":201851},{"x":-445161,"y":198431},{"x":-2284,"y":-149676},{"x":10642,"y":-127913}],
+      },
+    ],
   },
   {
     id: 92,
@@ -3142,12 +4234,29 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "A servant that pledges loyalty to Elizabee. Any that cause harm to the queen are immediately expelled from the hive. It will gladly give its life to protect its queen.",
     workSuitability: [
+      { type: "Planting", level: 2 },
+      { type: "Handiwork", level: 2 },
+      { type: "Gathering", level: 3 },
+      { type: "Lumbering", level: 2 },
+      { type: "Medicine Production", level: 2 },
+      { type: "Transporting", level: 2 },
+      { type: "Farming", level: 3 },
     ],
     partnerSkill: { name: "Worker Bee", description: "While in party, increases Unknown Character (QueenBee| style=|Status_Keyword)'s Attack. Sometimes drops honey| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "honey", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 53,
+        sourceUrl: "https://palworld.th.gl/guides/Beegarde",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-233896,"y":259851},{"x":-232623,"y":273512},{"x":-228166,"y":242995},{"x":-66507,"y":262279},{"x":-66079,"y":206958},{"x":-52924,"y":225336},{"x":-53527,"y":252753},{"x":-94190,"y":289246},{"x":-99989,"y":332917},{"x":-91242,"y":175558},{"x":-88599,"y":191194},{"x":-99012,"y":205498},{"x":-122372,"y":269287},{"x":-103166,"y":269029},{"x":-117721,"y":286178},{"x":-121077,"y":308297},{"x":-111033,"y":144851},{"x":-122933,"y":166954},{"x":-106960,"y":169460},{"x":-123681,"y":184447},{"x":-105089,"y":191111},{"x":-123022,"y":203928},{"x":-119385,"y":224711},{"x":-127101,"y":244853},{"x":-152203,"y":256847},{"x":-137015,"y":258673},{"x":-133127,"y":283856},{"x":-153448,"y":311631},{"x":-137984,"y":313884},{"x":-147595,"y":328138},{"x":-142310,"y":167746},{"x":-145627,"y":200921},{"x":-149364,"y":218224},{"x":-135265,"y":224292},{"x":-153111,"y":237016},{"x":-176631,"y":260427},{"x":-178872,"y":275790},{"x":-154929,"y":271728},{"x":-169294,"y":289014},{"x":-154360,"y":291561},{"x":-171214,"y":352204},{"x":-170424,"y":194528},{"x":-160031,"y":180495},{"x":-175688,"y":208939},{"x":-174890,"y":225785},{"x":-202397,"y":257207},{"x":-200307,"y":284602},{"x":-179997,"y":331047},{"x":-193880,"y":166870},{"x":-193341,"y":218786},{"x":-193908,"y":235734},{"x":-215235,"y":260741},{"x":-212485,"y":239194}],
+      },
+    ],
   },
   {
     id: 93,
@@ -3158,13 +4267,28 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "A chosen queen to rule over Beegardes. There is a never ending stream of servants willing to work themselves to death for the pleasure of serving their queen.",
     workSuitability: [
+      { type: "Planting", level: 4 },
+      { type: "Handiwork", level: 4 },
+      { type: "Gathering", level: 4 },
+      { type: "Lumbering", level: 3 },
+      { type: "Medicine Production", level: 4 },
     ],
     partnerSkill: { name: "Queen Bee Command", description: "This Pal's Attack increases by <Status_Up>{Passive1_EffectValue1}%</> for each Unknown Character (SoldierBee| style=|Status_Keyword) in party." },
     possibleDrops: [
       { resourceId: "honey", notes: "5-5, 100%" },
       { resourceId: "spear-queenbee", notes: "1-1, 3%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 50,
+        sourceUrl: "https://palworld.th.gl/guides/Elizabee",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-240726,"y":261681},{"x":-228873,"y":275677},{"x":-234996,"y":244825},{"x":-69007,"y":262279},{"x":-64829,"y":209123},{"x":-51674,"y":227501},{"x":-64367,"y":247587},{"x":-95440,"y":291411},{"x":-94989,"y":332917},{"x":-93742,"y":179888},{"x":-96365,"y":192929},{"x":-78605,"y":198949},{"x":-96796,"y":212084},{"x":-117372,"y":269287},{"x":-118971,"y":288343},{"x":-122327,"y":306132},{"x":-106033,"y":144851},{"x":-121683,"y":169119},{"x":-116801,"y":183610},{"x":-120604,"y":200960},{"x":-116885,"y":224711},{"x":-124601,"y":244853},{"x":-147203,"y":256847},{"x":-133846,"y":264162},{"x":-133969,"y":291318},{"x":-148448,"y":311631},{"x":-142595,"y":328138},{"x":-143560,"y":165581},{"x":-143127,"y":200921},{"x":-133925,"y":188471},{"x":-146864,"y":218224},{"x":-150611,"y":237016},{"x":-171631,"y":260427},{"x":-180122,"y":277955},{"x":-153679,"y":273893},{"x":-171794,"y":289014},{"x":-151860,"y":291561},{"x":-166214,"y":352204},{"x":-167924,"y":194528},{"x":-161281,"y":182660},{"x":-173188,"y":208939},{"x":-172390,"y":225785},{"x":-197397,"y":257207},{"x":-199057,"y":282437},{"x":-174997,"y":331047},{"x":-189029,"y":215702},{"x":-191569,"y":230757},{"x":-183545,"y":243860},{"x":-213985,"y":267237},{"x":-214985,"y":239194}],
+      },
+    ],
   },
   {
     id: 94,
@@ -3175,6 +4299,10 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Seeking a night of love, it is always chasing someone around. At first it only showed interest in other Pals, but in recent years even humans have become the target of its debauchery.",
     workSuitability: [
+      { type: "Handiwork", level: 3 },
+      { type: "Mining", level: 2 },
+      { type: "Medicine Production", level: 3 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Heart Drain", description: "While fighting together, grants the player and Lovander a life steal effect that <Status_Keyword>restores</> <Status_Up>{Passive1_EffectValue1}%</> of damage dealt as Unknown Status (COMMON_STATUS_HP| style=|Status_Keyword)." },
     possibleDrops: [
@@ -3184,7 +4312,17 @@ export const pals: Pal[] = [
       { resourceId: "narcotic", notes: "1-1, 1%" },
       { resourceId: "statuspointresetsan", notes: "1-1, 1%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 156,
+        sourceUrl: "https://palworld.th.gl/guides/Lovander",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-10221,"y":274513},{"x":-11342,"y":257069},{"x":-25046,"y":298651},{"x":-7504,"y":292459},{"x":-22533,"y":324251},{"x":-7020,"y":329050},{"x":-4409,"y":312463},{"x":-24376,"y":354933},{"x":-9162,"y":360045},{"x":1728,"y":346143},{"x":-25431,"y":374729},{"x":52,"y":378833},{"x":-20578,"y":406315},{"x":-5538,"y":411159},{"x":2186,"y":436871},{"x":-25741,"y":427653},{"x":-22310,"y":450989},{"x":-5749,"y":457635},{"x":-24996,"y":470898},{"x":-25044,"y":499917},{"x":-13318,"y":224061},{"x":-21110,"y":208333},{"x":-23779,"y":242064},{"x":-686,"y":239377},{"x":-33473,"y":271917},{"x":-49868,"y":300077},{"x":-44700,"y":321324},{"x":-34682,"y":334446},{"x":-53419,"y":353219},{"x":-48003,"y":377228},{"x":-45129,"y":395883},{"x":-40246,"y":414927},{"x":-50518,"y":428545},{"x":-39753,"y":452366},{"x":-48251,"y":479146},{"x":-39346,"y":505884},{"x":-41417,"y":523520},{"x":-42080,"y":543202},{"x":-75915,"y":317634},{"x":-64029,"y":381780},{"x":-75294,"y":368579},{"x":-78211,"y":392084},{"x":-67062,"y":404338},{"x":-65410,"y":443431},{"x":-56234,"y":460969},{"x":-75265,"y":470824},{"x":-78814,"y":332314},{"x":-99694,"y":376847},{"x":-88208,"y":361200},{"x":-96235,"y":394265},{"x":-91695,"y":429788},{"x":-100986,"y":472817},{"x":-87031,"y":481828},{"x":-101728,"y":492395},{"x":-112654,"y":386362},{"x":-153784,"y":48341},{"x":-152602,"y":65263},{"x":-152643,"y":80372},{"x":-153571,"y":96313},{"x":-154786,"y":109199},{"x":-179354,"y":78598},{"x":-179693,"y":98647},{"x":-180800,"y":121045},{"x":-199639,"y":78687},{"x":-195523,"y":95608},{"x":-190350,"y":110539},{"x":14912,"y":278174},{"x":6359,"y":267944},{"x":26092,"y":262785},{"x":8861,"y":304651},{"x":22866,"y":306263},{"x":12745,"y":327523},{"x":18878,"y":358512},{"x":27209,"y":344219},{"x":18520,"y":381847},{"x":6279,"y":399989},{"x":23454,"y":402728},{"x":15361,"y":421657},{"x":13023,"y":457542},{"x":25144,"y":441241}],
+      },
+    ],
   },
   {
     id: 95,
@@ -3195,12 +4333,23 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "Grintale's eyes light up the moment anyone enters its territory. This is no figure of speech—its eyes literally light up.",
     workSuitability: [
+      { type: "Gathering", level: 3 },
     ],
     partnerSkill: { name: "Glaring Cat's Eye", description: "Can be ridden. While in party, picking up a <Status_Keyword>Pal Egg</> has a <Status_Up>{Passive1_EffectValue1}%</> chance of receiving one extra. (Does not stack)" },
     possibleDrops: [
       { resourceId: "paloil", notes: "1-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 98,
+        sourceUrl: "https://palworld.th.gl/guides/Grintale",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-239476,"y":255186},{"x":-236770,"y":270962},{"x":-248545,"y":119041},{"x":-225698,"y":115078},{"x":-253947,"y":135595},{"x":-232591,"y":129675},{"x":-239877,"y":142850},{"x":-251815,"y":153693},{"x":-257029,"y":170490},{"x":-239039,"y":165607},{"x":-245950,"y":182325},{"x":-228031,"y":180314},{"x":-243036,"y":197671},{"x":-229266,"y":212337},{"x":-233746,"y":238330},{"x":-263747,"y":119382},{"x":-279178,"y":132291},{"x":-278268,"y":147381},{"x":-270148,"y":161079},{"x":-266293,"y":183884},{"x":-25509,"y":-43865},{"x":-22722,"y":-62805},{"x":-42873,"y":-14820},{"x":-49895,"y":-29791},{"x":-45010,"y":-48041},{"x":-43431,"y":-74099},{"x":-53585,"y":256742},{"x":-51941,"y":225509},{"x":-67465,"y":-241},{"x":-62057,"y":-14857},{"x":-64048,"y":-54096},{"x":-74716,"y":-66165},{"x":-59372,"y":-73064},{"x":-74325,"y":-90591},{"x":-75772,"y":277208},{"x":-50605,"y":276186},{"x":-78527,"y":176785},{"x":-63837,"y":202025},{"x":-102712,"y":296538},{"x":-101239,"y":330752},{"x":-98742,"y":175558},{"x":-91099,"y":191194},{"x":-101512,"y":205498},{"x":-123622,"y":267122},{"x":-104416,"y":266864},{"x":-124934,"y":294940},{"x":-123155,"y":312003},{"x":-112283,"y":142686},{"x":-113298,"y":175657},{"x":-128850,"y":164942},{"x":-124095,"y":189728},{"x":-103839,"y":188946},{"x":-116655,"y":202946},{"x":-121885,"y":224711},{"x":-128351,"y":242688},{"x":-153453,"y":254682},{"x":-135765,"y":260838},{"x":-150977,"y":294234},{"x":-154698,"y":309466},{"x":-148845,"y":325973},{"x":-144050,"y":171409},{"x":-140502,"y":190636},{"x":-150614,"y":216059},{"x":-136268,"y":229755},{"x":-131729,"y":208959},{"x":-154361,"y":234851},{"x":-177881,"y":258262},{"x":-174546,"y":273369},{"x":-152429,"y":271728},{"x":-168044,"y":291179},{"x":-172464,"y":350039},{"x":-169702,"y":145578},{"x":-152412,"y":154093},{"x":-170591,"y":163103},{"x":-160243,"y":175739},{"x":-175862,"y":178470},{"x":-171674,"y":192363},{"x":-174438,"y":211104},{"x":-180372,"y":231330},{"x":-203647,"y":255042}],
+      },
+    ],
   },
   {
     id: 96,
@@ -3211,13 +4360,27 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Extremely sticky and clingy. The more it's resisted, the more tenacious it becomes. Such is its |personality.|",
     workSuitability: [
+      { type: "Handiwork", level: 3 },
+      { type: "Gathering", level: 3 },
+      { type: "Medicine Production", level: 2 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Tarantriss’ Web", description: "Can be ridden. Can <Status_Keyword>double jump</> while mounted. Additionally, can shoot spider web to grapple and move at high speed. {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
       { resourceId: "fiber", notes: "2-5, 100%" },
       { resourceId: "venom", notes: "2-5, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 202,
+        sourceUrl: "https://palworld.th.gl/guides/Tarantriss",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-236937,"y":346},{"x":-11471,"y":281008},{"x":-15516,"y":267557},{"x":-26296,"y":305146},{"x":-23783,"y":330746},{"x":-7020,"y":324719},{"x":-25626,"y":361428},{"x":-9162,"y":355715},{"x":-7341,"y":379681},{"x":-21828,"y":412811},{"x":-5538,"y":406829},{"x":-26991,"y":434148},{"x":-4644,"y":434371},{"x":-23560,"y":457484},{"x":-8249,"y":457635},{"x":-18818,"y":470951},{"x":-14568,"y":230556},{"x":-25029,"y":248560},{"x":-5736,"y":247897},{"x":-639486,"y":-378196},{"x":-634463,"y":-409539},{"x":-629932,"y":-393307},{"x":-638783,"y":-425983},{"x":-660205,"y":-306291},{"x":-664202,"y":-322907},{"x":-644763,"y":-332395},{"x":-659607,"y":-354945},{"x":-658273,"y":-381233},{"x":-643264,"y":-359469},{"x":-664749,"y":-406571},{"x":-648870,"y":-397131},{"x":-663406,"y":-432907},{"x":-688066,"y":-281408},{"x":-687798,"y":-329939},{"x":-686984,"y":-356143},{"x":-673675,"y":-341561},{"x":-685240,"y":-383148},{"x":-672248,"y":-369057},{"x":-685766,"y":-404341},{"x":-676825,"y":-419954},{"x":-715189,"y":-240142},{"x":-698165,"y":-249268},{"x":-709682,"y":-279499},{"x":-716548,"y":-304099},{"x":-694868,"y":-305607},{"x":-709551,"y":-327554},{"x":-707806,"y":-354604},{"x":-714695,"y":-380002},{"x":-699209,"y":-370875},{"x":-712704,"y":-406275},{"x":-700552,"y":-392033},{"x":-705808,"y":-224233},{"x":-737629,"y":-230714},{"x":-736708,"y":-281479},{"x":-737938,"y":-303332},{"x":-742120,"y":-319479},{"x":-725568,"y":-323938},{"x":-724723,"y":-350566},{"x":-741054,"y":-381066},{"x":-739378,"y":-407901},{"x":-727193,"y":-393769},{"x":-738810,"y":-212004},{"x":-723315,"y":-220417},{"x":-25973,"y":271917},{"x":-51118,"y":306572},{"x":-39376,"y":296849},{"x":-45950,"y":327819},{"x":-32847,"y":318772},{"x":-30404,"y":346146},{"x":-44923,"y":377563},{"x":-27692,"y":379346},{"x":-46212,"y":358694},{"x":-45874,"y":410841},{"x":-42629,"y":391552},{"x":-51768,"y":435040},{"x":-42541,"y":460689},{"x":-49501,"y":485641},{"x":-29923,"y":484293},{"x":-40596,"y":512379},{"x":-39580,"y":538872}],
+      },
+    ],
   },
   {
     id: 97,
@@ -3228,12 +4391,24 @@ export const pals: Pal[] = [
     elements: ["Ice", "Water"],
     description: "Among Polapups, the fastest slider on the snow earns the highest respect. Sometimes, a too-forceful leap sends one tumbling from the sky— a common sight during territorial season. Forecast: clear skies with a chance of flying Polapups.",
     workSuitability: [
+      { type: "Watering", level: 3 },
+      { type: "Cooling", level: 4 },
     ],
     partnerSkill: { name: "Rider of the Snowy Mountain", description: "Can be ridden. Movement Speed is increased by <Status_Up>{Passive1_EffectValue1}%</> while mounted <Status_Keyword>on snow</>. Can also slide quickly down slopes." },
     possibleDrops: [
       { resourceId: "iceorgan", notes: "1-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 4,
+        sourceUrl: "https://palworld.th.gl/guides/Polapup",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-92413,"y":107154},{"x":-111451,"y":120129},{"x":-126667,"y":127350},{"x":13450,"y":151438}],
+      },
+    ],
   },
   {
     id: 98,
@@ -3244,13 +4419,25 @@ export const pals: Pal[] = [
     elements: ["Ice", "Ground"],
     description: "Among Polapup Terras, the fastest slider on the snow earns the highest respect. Sometimes, a too-forceful leap leaves one buried in the snow— a common sight during particularly competitive seasons. Traffic forecast: heavy Polapup Terra congestion.",
     workSuitability: [
+      { type: "Mining", level: 4 },
+      { type: "Cooling", level: 4 },
     ],
     partnerSkill: { name: "Snowy Mountain Slider", description: "Can be ridden. Movement Speed is increased by <Status_Up>{Passive1_EffectValue1}%</> while mounted <Status_Keyword>on snow</>. Can also slide quickly down slopes. While it starts out slow, the top speed it can hit while sliding is no joke." },
     possibleDrops: [
       { resourceId: "leather", notes: "1-2, 100%" },
       { resourceId: "palfluid", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 3,
+        sourceUrl: "https://palworld.th.gl/guides/Polapup%20Terra",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-74414,"y":-245035},{"x":-58147,"y":-244801},{"x":-72794,"y":-260342}],
+      },
+    ],
   },
   {
     id: 99,
@@ -3261,6 +4448,9 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "A Pal that always takes great care to maintain a stylish stance. Always on the hunt for the coolest poses, if given a mirror it will spend all day posing in front of it.",
     workSuitability: [
+      { type: "Handiwork", level: 2 },
+      { type: "Gathering", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Too Cool to be Seen", description: "When activated, Leezpunk and the player become <Status_Keyword>invisible</>, making them undetectable to enemies for <Status_Up>{ActiveSkillOverWriteEffectTime}</> seconds. {ReferenceMsgId_CooldownReduction}" },
     possibleDrops: [
@@ -3268,7 +4458,17 @@ export const pals: Pal[] = [
       { resourceId: "treasureboxkey02", notes: "1-1, 1%" },
       { resourceId: "palitem-lizardman", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 189,
+        sourceUrl: "https://palworld.th.gl/guides/Leezpunk",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-253719,"y":-42644},{"x":-276191,"y":-47723},{"x":-294649,"y":-13022},{"x":-283496,"y":-29802},{"x":-308921,"y":-18449},{"x":-313605,"y":-3037},{"x":-331508,"y":151},{"x":-355285,"y":7276},{"x":-380765,"y":-68573},{"x":-371757,"y":-55848},{"x":-380761,"y":3428},{"x":-400983,"y":-9861},{"x":-398619,"y":-65412},{"x":-404340,"y":-88560},{"x":-404272,"y":-178168},{"x":-400897,"y":-157413},{"x":-402879,"y":-206699},{"x":-431622,"y":-36534},{"x":-421703,"y":-70743},{"x":-432400,"y":-52376},{"x":-417864,"y":-100152},{"x":-431272,"y":-87719},{"x":-432678,"y":-103764},{"x":-423437,"y":-151262},{"x":-431862,"y":-130432},{"x":-428524,"y":-179139},{"x":-415930,"y":-166109},{"x":-428755,"y":-194996},{"x":-448775,"y":-49643},{"x":-439426,"y":-64902},{"x":-458045,"y":-62763},{"x":-453725,"y":-97009},{"x":-446969,"y":-79061},{"x":-454626,"y":-117857},{"x":-439259,"y":-151346},{"x":-447409,"y":-140374},{"x":-451553,"y":-169012},{"x":-459779,"y":-155055},{"x":-444251,"y":-185593},{"x":-463882,"y":-85647},{"x":-471730,"y":-99501},{"x":-473508,"y":-123392},{"x":-470595,"y":-140220},{"x":-6471,"y":281008},{"x":-13016,"y":263227},{"x":-21296,"y":305146},{"x":-23585,"y":283253},{"x":-18783,"y":330746},{"x":-5579,"y":317383},{"x":-20626,"y":361428},{"x":-7017,"y":347601},{"x":-13591,"y":377516},{"x":-2689,"y":363783},{"x":-16828,"y":412811},{"x":-14421,"y":398067},{"x":-2144,"y":439371},{"x":-21991,"y":434148},{"x":-18560,"y":457484},{"x":-18818,"y":475282},{"x":-3681,"y":467245},{"x":-18794,"y":502082},{"x":-9568,"y":230556},{"x":-25379,"y":220562},{"x":-20029,"y":248560},{"x":-1849,"y":246442},{"x":-46118,"y":306572},{"x":-33195,"y":293819},{"x":-40950,"y":327819},{"x":-37823,"y":354572},{"x":-28889,"y":375238},{"x":-48003,"y":372898},{"x":-39525,"y":389967},{"x":-47124,"y":403675},{"x":-33587,"y":411247},{"x":-46768,"y":435040},{"x":-44083,"y":454866},{"x":-44501,"y":485641},{"x":-35596,"y":512379},{"x":-31737,"y":532135},{"x":-72165,"y":324129}],
+      },
+    ],
   },
   {
     id: 100,
@@ -3279,6 +4479,10 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "A Pal that has an unusual obsession with their standing posture. Always in search of the hottest pose, this Pal's owner is constantly presented with fervent stances.",
     workSuitability: [
+      { type: "Kindling", level: 2 },
+      { type: "Handiwork", level: 2 },
+      { type: "Gathering", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Too Cool to be Seen", description: "When activated, Leezpunk Ignis and the player become <Status_Keyword>invisible</>, making them undetectable to enemies for <Status_Up>{ActiveSkillOverWriteEffectTime}</> seconds. {ReferenceMsgId_CooldownReduction}" },
     possibleDrops: [
@@ -3286,7 +4490,17 @@ export const pals: Pal[] = [
       { resourceId: "treasureboxkey02", notes: "1-1, 2%" },
       { resourceId: "palitem-lizardman", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 33,
+        sourceUrl: "https://palworld.th.gl/guides/Leezpunk%20Ignis",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-250400,"y":-150007},{"x":-247153,"y":-171948},{"x":-244511,"y":-194475},{"x":-262774,"y":-177206},{"x":-278798,"y":-174034},{"x":-285983,"y":-151147},{"x":-295615,"y":-163787},{"x":-288216,"y":-200297},{"x":-300145,"y":-227095},{"x":-286466,"y":-215373},{"x":-330109,"y":-235690},{"x":-332478,"y":-14511},{"x":-312187,"y":-161263},{"x":-332380,"y":-157853},{"x":-329058,"y":-193847},{"x":-315506,"y":-182478},{"x":-328871,"y":-215552},{"x":-354616,"y":-19428},{"x":-357667,"y":-40792},{"x":-354457,"y":-132997},{"x":-352746,"y":-203312},{"x":-342137,"y":-222041},{"x":-368647,"y":-25347},{"x":-382624,"y":-16708},{"x":-359559,"y":-667},{"x":-372064,"y":-193223},{"x":-375216,"y":-213858},{"x":-364529,"y":-226076},{"x":-382169,"y":-169850},{"x":-387857,"y":-204457},{"x":-106584,"y":317254},{"x":-123378,"y":316816},{"x":-139304,"y":317169}],
+      },
+    ],
   },
   {
     id: 101,
@@ -3297,13 +4511,26 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "It beats the ground rhythmically to communicate with its comrades. The meaning of each rhythm differs by troop, but the distinction between them is still largely unknown.",
     workSuitability: [
+      { type: "Handiwork", level: 2 },
+      { type: "Lumbering", level: 3 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Full-Power Gorilla Mode", description: "When activated, unleashes a primal fury that increases Gorirat's Attack by <Status_Up>{ReferencePassive1_EffectValue1}%</> for a limited time." },
     possibleDrops: [
       { resourceId: "leather", notes: "1-2, 100%" },
       { resourceId: "bone", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 52,
+        sourceUrl: "https://palworld.th.gl/guides/Gorirat",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-238226,"y":262351},{"x":-232496,"y":245495},{"x":-51085,"y":256742},{"x":-49441,"y":225509},{"x":-73272,"y":277208},{"x":-65257,"y":264444},{"x":-61337,"y":202025},{"x":-64403,"y":220531},{"x":-63519,"y":246470},{"x":-92940,"y":291411},{"x":-98739,"y":335082},{"x":-96242,"y":175558},{"x":-82490,"y":185574},{"x":-95115,"y":195094},{"x":-98046,"y":209919},{"x":-121122,"y":271452},{"x":-101916,"y":271194},{"x":-116471,"y":288343},{"x":-119827,"y":310462},{"x":-109783,"y":147016},{"x":-110993,"y":172620},{"x":-127277,"y":170513},{"x":-121664,"y":186617},{"x":-124272,"y":201763},{"x":-124601,"y":249184},{"x":-150953,"y":259012},{"x":-131877,"y":286021},{"x":-152198,"y":313796},{"x":-146345,"y":330304},{"x":-141060,"y":169911},{"x":-141752,"y":188471},{"x":-144445,"y":218185},{"x":-150611,"y":241346},{"x":-175381,"y":262592},{"x":-175772,"y":279884},{"x":-157173,"y":275163},{"x":-161629,"y":289958},{"x":-169964,"y":354369},{"x":-158781,"y":182660},{"x":-167924,"y":198859},{"x":-170179,"y":217944},{"x":-168940,"y":234811},{"x":-201147,"y":259372},{"x":-199057,"y":286767},{"x":-178747,"y":333212},{"x":-198311,"y":220296},{"x":-185947,"y":214386},{"x":-181196,"y":231703},{"x":-193879,"y":246004},{"x":-212155,"y":265406},{"x":-226297,"y":276346},{"x":-211235,"y":241359}],
+      },
+    ],
   },
   {
     id: 102,
@@ -3314,13 +4541,26 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "It beats the ground rhythmically to communicate with its comrades. Stronger than Gorirat, if every Gorirat Terra hit the ground at the same time, the island would sink in 1 second.",
     workSuitability: [
+      { type: "Handiwork", level: 2 },
+      { type: "Mining", level: 3 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Full-Power Gorilla Pound", description: "While in party, increases the player's climbing speed by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "copperore", notes: "2-3, 100%" },
       { resourceId: "bone", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 30,
+        sourceUrl: "https://palworld.th.gl/guides/Gorirat%20Terra",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-3633,"y":280157},{"x":-21085,"y":283253},{"x":-16473,"y":304209},{"x":-15671,"y":395902},{"x":279,"y":404974},{"x":-13855,"y":411677},{"x":-14919,"y":426770},{"x":-33271,"y":-174090},{"x":-45163,"y":-186108},{"x":-48486,"y":415413},{"x":-39691,"y":427929},{"x":-59688,"y":-127165},{"x":-70881,"y":-150988},{"x":-73981,"y":-131974},{"x":-54030,"y":-144857},{"x":-70506,"y":-169374},{"x":-57064,"y":-176322},{"x":-59366,"y":423410},{"x":-97835,"y":-147339},{"x":-85623,"y":-167355},{"x":-112962,"y":-146365},{"x":9898,"y":261671},{"x":11832,"y":282839},{"x":6361,"y":304651},{"x":22086,"y":412566},{"x":36568,"y":407441},{"x":32677,"y":425191},{"x":84187,"y":307029},{"x":100257,"y":300935},{"x":105382,"y":315627}],
+      },
+    ],
   },
   {
     id: 103,
@@ -3331,12 +4571,24 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "Its hydrodynamic form is well suited for activities on water. Poachers often catch them and use them in place of surfboards.",
     workSuitability: [
+      { type: "Watering", level: 3 },
+      { type: "Farming", level: 2 },
     ],
     partnerSkill: { name: "Swift Swimmer", description: "Can be ridden to travel on water. Sometimes drops leather| style=|status_keyword when assigned to Ranch. {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 58,
+        sourceUrl: "https://palworld.th.gl/guides/Surfent",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-234066,"y":279000},{"x":-250524,"y":73039},{"x":-234095,"y":252846},{"x":-327421,"y":93490},{"x":-21569,"y":264244},{"x":-22147,"y":474643},{"x":-3810,"y":470744},{"x":-23794,"y":502082},{"x":-19362,"y":226306},{"x":-19860,"y":210499},{"x":-731,"y":231978},{"x":-34202,"y":280273},{"x":-50370,"y":305516},{"x":-36078,"y":331712},{"x":-34850,"y":349758},{"x":-50919,"y":353219},{"x":-45542,"y":476338},{"x":-40673,"y":497576},{"x":-37736,"y":518627},{"x":-51722,"y":266098},{"x":-56914,"y":283445},{"x":-66908,"y":472745},{"x":-76027,"y":176785},{"x":-64686,"y":191074},{"x":-52016,"y":239943},{"x":-85763,"y":358335},{"x":-101715,"y":481701},{"x":-84316,"y":485602},{"x":-101456,"y":502177},{"x":-126350,"y":164942},{"x":-192720,"y":200210},{"x":-198830,"y":215730},{"x":-197870,"y":236250},{"x":-216190,"y":214400},{"x":-213510,"y":230570},{"x":25277,"y":458124},{"x":22369,"y":475737},{"x":25130,"y":240158},{"x":48054,"y":262211},{"x":37413,"y":443682},{"x":42278,"y":482158},{"x":69440,"y":402410},{"x":71102,"y":419764},{"x":67537,"y":453588},{"x":70175,"y":437658},{"x":81132,"y":275915},{"x":84370,"y":394408},{"x":101890,"y":394551},{"x":120293,"y":407460},{"x":151790,"y":396476},{"x":140900,"y":415521},{"x":169871,"y":267330},{"x":172470,"y":295389},{"x":167251,"y":391953},{"x":189050,"y":311476},{"x":199654,"y":326196},{"x":203988,"y":363426},{"x":206386,"y":346396}],
+      },
+    ],
   },
   {
     id: 104,
@@ -3347,13 +4599,24 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "Its aerodynamic form is well suited for activities on sand. Poachers often catch them and use them in place of surfboards.",
     workSuitability: [
+      { type: "Gathering", level: 3 },
     ],
     partnerSkill: { name: "Sand Swimmer", description: "Can be ridden. While in party, the player's attacks inflict Unknown Status (ADDITIONAL_EFFECT_Muddy| style=|Effect_Muddy) <Status_Up>{Passive1_EffectValue1}</>. (Does not stack) {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "1-2, 100%" },
       { resourceId: "copperore", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 153,
+        sourceUrl: "https://palworld.th.gl/guides/Surfent%20Terra",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-484226,"y":-263329},{"x":-15092,"y":259234},{"x":-2648,"y":321702},{"x":-21513,"y":316392},{"x":-6650,"y":352666},{"x":-9767,"y":337451},{"x":-25951,"y":344577},{"x":-11955,"y":370203},{"x":-26060,"y":453154},{"x":-8249,"y":453305},{"x":-5686,"y":239377},{"x":-508458,"y":-242601},{"x":-492187,"y":-277078},{"x":-514274,"y":-280647},{"x":-505758,"y":-262794},{"x":-503224,"y":-355619},{"x":-503145,"y":-378642},{"x":-511501,"y":-403287},{"x":-495191,"y":-396989},{"x":-499196,"y":-415762},{"x":-509011,"y":-208672},{"x":-511508,"y":-224287},{"x":-536642,"y":-252383},{"x":-521301,"y":-251668},{"x":-528765,"y":-234663},{"x":-514531,"y":-385081},{"x":-526898,"y":-395105},{"x":-531231,"y":-158581},{"x":-530506,"y":-174111},{"x":-535683,"y":-190821},{"x":-535675,"y":-210543},{"x":-563565,"y":-231767},{"x":-559052,"y":-403489},{"x":-560621,"y":-176066},{"x":-550656,"y":-164687},{"x":-551023,"y":-199151},{"x":-549450,"y":-226222},{"x":-584772,"y":-444588},{"x":-567299,"y":-452756},{"x":-584905,"y":-459801},{"x":-568396,"y":-470051},{"x":-580784,"y":-479292},{"x":-587796,"y":-496950},{"x":-590812,"y":-145500},{"x":-578500,"y":-136478},{"x":-591042,"y":-164239},{"x":-578917,"y":-154949},{"x":-568533,"y":-190142},{"x":-586550,"y":-202816},{"x":-580188,"y":-221715},{"x":-565042,"y":-212892},{"x":-607484,"y":-407342},{"x":-607612,"y":-424651},{"x":-610989,"y":-450407},{"x":-611049,"y":-467462},{"x":-602758,"y":-484366},{"x":-609461,"y":-125777},{"x":-615491,"y":-142699},{"x":-601529,"y":-152950},{"x":-615191,"y":-159361},{"x":-611058,"y":-172612},{"x":-610809,"y":-187895},{"x":-632001,"y":-405141},{"x":-622943,"y":-429145},{"x":-637978,"y":-427472},{"x":-639891,"y":-451082},{"x":-627210,"y":-468947},{"x":-634202,"y":-142516},{"x":-639608,"y":-156814},{"x":-639949,"y":-176337},{"x":-666915,"y":-441351},{"x":-665817,"y":-458401},{"x":-692613,"y":-425843},{"x":-693484,"y":-444492},{"x":-682873,"y":-457900},{"x":-719242,"y":-429297},{"x":-707376,"y":-419180},{"x":-722801,"y":-411862},{"x":-30254,"y":303192},{"x":-30853,"y":328705}],
+      },
+    ],
   },
   {
     id: 105,
@@ -3364,13 +4627,29 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "A Pal that is very similar to humans who hunt and live in the forests. It may prove to be a key for understanding what Pals are and how they diverged from humans in the distant past.",
     workSuitability: [
+      { type: "Planting", level: 2 },
+      { type: "Handiwork", level: 3 },
+      { type: "Gathering", level: 3 },
+      { type: "Lumbering", level: 2 },
+      { type: "Medicine Production", level: 1 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Grounded Archer", description: "While in party, increases the player's <Status_Keyword>bow damage</> by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "potatoseeds", notes: "1-2, 100%" },
       { resourceId: "arrow", notes: "2-4, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 39,
+        sourceUrl: "https://palworld.th.gl/guides/Robinquill",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-256045,"y":119041},{"x":-233198,"y":115078},{"x":-242886,"y":127753},{"x":-253440,"y":140279},{"x":-236229,"y":142463},{"x":-249168,"y":156816},{"x":-249418,"y":173797},{"x":-232328,"y":177184},{"x":-245076,"y":190253},{"x":-230557,"y":197602},{"x":-247170,"y":207308},{"x":-228557,"y":215309},{"x":-269079,"y":123265},{"x":-271726,"y":138218},{"x":-269603,"y":153464},{"x":-264192,"y":169466},{"x":-287806,"y":137444},{"x":-154471,"y":159841},{"x":-174131,"y":264757},{"x":-174522,"y":282049},{"x":-156179,"y":273893},{"x":-161271,"y":290530},{"x":-177202,"y":145578},{"x":-169601,"y":159397},{"x":-163107,"y":179451},{"x":-199897,"y":261537},{"x":-194282,"y":285710},{"x":-204797,"y":142203},{"x":-205495,"y":164075},{"x":-186393,"y":163368},{"x":-198015,"y":177774},{"x":-192213,"y":243102},{"x":-214082,"y":274065},{"x":-218511,"y":119374},{"x":-227632,"y":160263},{"x":-217042,"y":174108},{"x":-210077,"y":190410},{"x":-208337,"y":220595},{"x":-216904,"y":204958}],
+      },
+    ],
   },
   {
     id: 106,
@@ -3381,13 +4660,28 @@ export const pals: Pal[] = [
     elements: ["Grass", "Ground"],
     description: "A Pal that is very similar to humans who hunt and live in the rocky areas. When Robinquill Terra bones are found in ruins, there are always human bones found nearby as well.",
     workSuitability: [
+      { type: "Handiwork", level: 3 },
+      { type: "Gathering", level: 3 },
+      { type: "Lumbering", level: 2 },
+      { type: "Medicine Production", level: 2 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Master Archer", description: "While in party, increases the player's <Status_Keyword>bow charge speed</> by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "potatoseeds", notes: "1-2, 100%" },
       { resourceId: "arrow", notes: "2-4, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 122,
+        sourceUrl: "https://palworld.th.gl/guides/Robinquill%20Terra",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-7721,"y":278843},{"x":-16766,"y":265392},{"x":-1586,"y":264254},{"x":-22546,"y":302981},{"x":-21085,"y":287583},{"x":-20033,"y":328581},{"x":-8079,"y":317383},{"x":-21876,"y":359263},{"x":-8267,"y":345436},{"x":-12341,"y":379681},{"x":1061,"y":361618},{"x":-18078,"y":410646},{"x":-13171,"y":395902},{"x":-3394,"y":436536},{"x":-23241,"y":431983},{"x":-19810,"y":455319},{"x":-17568,"y":473117},{"x":-10818,"y":228391},{"x":-21279,"y":246394},{"x":1901,"y":248607},{"x":-29723,"y":274082},{"x":-47368,"y":304407},{"x":-35695,"y":293819},{"x":-42200,"y":325654},{"x":-37823,"y":358902},{"x":-31654,"y":343981},{"x":-35139,"y":377403},{"x":-41379,"y":393718},{"x":-36496,"y":412762},{"x":-48018,"y":432875},{"x":-45333,"y":452031},{"x":-45751,"y":483476},{"x":-39635,"y":468872},{"x":-36846,"y":510214},{"x":-25875,"y":492266},{"x":-38917,"y":527850},{"x":-73415,"y":321964},{"x":-69609,"y":381446},{"x":-74044,"y":366414},{"x":-52792,"y":380843},{"x":-56681,"y":364002},{"x":-54672,"y":402555},{"x":-70391,"y":400844},{"x":-72494,"y":419210},{"x":-67910,"y":447761},{"x":-72765,"y":475154},{"x":-60807,"y":464408},{"x":-97194,"y":381177},{"x":-92485,"y":396430},{"x":-89195,"y":434118},{"x":-98486,"y":477147},{"x":-94321,"y":494076},{"x":-108529,"y":398125},{"x":17412,"y":282505},{"x":19246,"y":259284},{"x":4606,"y":298837},{"x":26616,"y":304098},{"x":3212,"y":330891},{"x":19113,"y":325325},{"x":17628,"y":356347},{"x":18234,"y":340399},{"x":2918,"y":380916},{"x":22270,"y":379682},{"x":10029,"y":402154},{"x":6836,"y":421988},{"x":23699,"y":434669},{"x":24714,"y":417042},{"x":15523,"y":461872},{"x":1779,"y":468245},{"x":20382,"y":243544},{"x":9689,"y":231140},{"x":34191,"y":275185},{"x":53481,"y":270460},{"x":42693,"y":298402},{"x":35461,"y":326345},{"x":50934,"y":327123},{"x":36327,"y":356506},{"x":51047,"y":344549},{"x":49090,"y":385338},{"x":51045,"y":368215}],
+      },
+    ],
   },
   {
     id: 107,
@@ -3398,13 +4692,28 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "It prefers places that have an abundance of vegetation, but hay fever has apparently become a problem for Flopie as of late.",
     workSuitability: [
+      { type: "Planting", level: 2 },
+      { type: "Handiwork", level: 2 },
+      { type: "Gathering", level: 2 },
+      { type: "Medicine Production", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Helper Bunny", description: "While in party, appears near the player. Automatically picks up nearby items. {ReferenceMsgId_ItemCollectRangeUp}" },
     possibleDrops: [
       { resourceId: "herbs", notes: "1-1, 20%" },
       { resourceId: "lettuceseeds", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 39,
+        sourceUrl: "https://palworld.th.gl/guides/Flopie",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-252295,"y":121206},{"x":-229448,"y":117243},{"x":-249017,"y":136916},{"x":-231668,"y":137558},{"x":-248656,"y":151816},{"x":-253279,"y":168324},{"x":-231734,"y":155212},{"x":-236434,"y":171432},{"x":-253647,"y":183535},{"x":-236753,"y":189290},{"x":-244087,"y":203132},{"x":-228016,"y":210172},{"x":-266555,"y":120765},{"x":-277928,"y":130126},{"x":-280768,"y":147381},{"x":-267304,"y":154152},{"x":-264686,"y":176509},{"x":-7375,"y":-101427},{"x":-23178,"y":-126342},{"x":-23526,"y":-107665},{"x":-4485,"y":-126091},{"x":-22808,"y":-144809},{"x":-42168,"y":-127196},{"x":-150721,"y":162006},{"x":-139474,"y":171979},{"x":-173452,"y":147743},{"x":-174888,"y":163034},{"x":-164357,"y":177286},{"x":-201047,"y":144368},{"x":-201745,"y":166240},{"x":-188833,"y":175420},{"x":-212313,"y":124886},{"x":-214279,"y":140172},{"x":-217150,"y":161933},{"x":-220568,"y":181514},{"x":-206833,"y":188529},{"x":-211621,"y":202798},{"x":-204587,"y":222760},{"x":10569,"y":-132852}],
+      },
+    ],
   },
   {
     id: 108,
@@ -3415,13 +4724,26 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "With the power of light, it produces arcane phenomena. It prefers to eat food well-done and is particularly hostile towards Katress.",
     workSuitability: [
+      { type: "Kindling", level: 3 },
+      { type: "Handiwork", level: 3 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Lord Fox", description: "When activated, Wixen changes the player's attack type to <img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) and increases Attack by <Status_Up>{ReferencePassive1_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "fireorgan", notes: "1-2, 100%" },
       { resourceId: "technologybook-g1", notes: "1-1, 1%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 55,
+        sourceUrl: "https://palworld.th.gl/guides/Wixen",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-229736,"y":-72728},{"x":-242774,"y":-57213},{"x":-233914,"y":-93673},{"x":-245362,"y":-85401},{"x":-243796,"y":-127361},{"x":-236380,"y":-114011},{"x":-238459,"y":-145945},{"x":-260373,"y":-20773},{"x":-277262,"y":-19241},{"x":-258779,"y":-49361},{"x":-271934,"y":-40353},{"x":-264657,"y":-68840},{"x":-280987,"y":-68132},{"x":-261160,"y":-83600},{"x":-257443,"y":-119553},{"x":-295776,"y":-24799},{"x":-286775,"y":-46094},{"x":-295342,"y":-73857},{"x":-301234,"y":-59042},{"x":-301682,"y":-87323},{"x":-283354,"y":-117206},{"x":-327478,"y":-14511},{"x":-312411,"y":-50611},{"x":-327835,"y":-43095},{"x":-310429,"y":-30101},{"x":-320477,"y":-63962},{"x":-309512,"y":-100383},{"x":-323213,"y":-92469},{"x":-328646,"y":-77547},{"x":-318267,"y":-113486},{"x":-347435,"y":-20371},{"x":-357072,"y":-47501},{"x":-345392,"y":-76199},{"x":-336856,"y":-62738},{"x":-351134,"y":-96446},{"x":-353363,"y":-118234},{"x":-331365,"y":-105948},{"x":-369897,"y":-27512},{"x":-383874,"y":-14543},{"x":-361072,"y":-11945},{"x":-365972,"y":-74327},{"x":-371897,"y":-60461},{"x":-366938,"y":-109973},{"x":-404469,"y":-17636},{"x":-428397,"y":-7975},{"x":-414861,"y":-30451},{"x":-99806,"y":327873},{"x":-114436,"y":319634},{"x":-130862,"y":320272},{"x":-147984,"y":324904},{"x":-218451,"y":-24672},{"x":-220237,"y":-44839},{"x":-216917,"y":-59694},{"x":-220539,"y":-101493},{"x":-224003,"y":-136054}],
+      },
+    ],
   },
   {
     id: 109,
@@ -3432,13 +4754,26 @@ export const pals: Pal[] = [
     elements: ["Fire", "Dark"],
     description: "Due to its upbringing, it no longer cares about whether its food is cooked enough. This Pal stopped worrying about those details, and just prefers its food to be as sweet as possible. Not on good terms with Katress Ignis.",
     workSuitability: [
+      { type: "Kindling", level: 4 },
+      { type: "Handiwork", level: 4 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Black Fox Lord", description: "When activated, Wixen Noct changes the player's attack type to <img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark) and increases Attack by <Status_Up>{ReferencePassive1_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "palupgradestone2", notes: "1-2, 100%" },
       { resourceId: "technologybook-g1", notes: "1-1, 1%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 33,
+        sourceUrl: "https://palworld.th.gl/guides/Wixen%20Noct",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-14741,"y":-65177},{"x":1382,"y":-72462},{"x":-24521,"y":-101185},{"x":-14635,"y":-88995},{"x":-6521,"y":-163750},{"x":-42746,"y":-97747},{"x":-30828,"y":-85151},{"x":-38414,"y":-133440},{"x":-52806,"y":-147157},{"x":-33452,"y":-151301},{"x":-47452,"y":-165933},{"x":-24880,"y":-172263},{"x":-49923,"y":-183580},{"x":-57882,"y":-106198},{"x":-61128,"y":-118989},{"x":-67320,"y":-140242},{"x":-73096,"y":-154525},{"x":-65077,"y":-169816},{"x":-81875,"y":-130911},{"x":-96987,"y":-140474},{"x":-87332,"y":-162248},{"x":-108467,"y":-138112},{"x":-124602,"y":-132148},{"x":17673,"y":-74526},{"x":26917,"y":-88436},{"x":933,"y":-90755},{"x":16295,"y":-100059},{"x":25166,"y":-112426},{"x":24660,"y":-148959},{"x":22472,"y":-126993},{"x":15657,"y":-161609},{"x":36961,"y":-99174},{"x":45700,"y":-112951}],
+      },
+    ],
   },
   {
     id: 110,
@@ -3449,6 +4784,9 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "With the power of shadows, it produces arcane phenomena. It prefers to eat food raw and is particularly hostile towards Wixen.",
     workSuitability: [
+      { type: "Handiwork", level: 3 },
+      { type: "Medicine Production", level: 3 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Mystical Black Magic", description: "While in party, <img id=|ElemIcon_Neutral|/>Unknown Status (COMMON_ELEMENT_NAME_Normal| style=|Elem_Neutral) Pals drop <Status_Up>{Passive1_EffectValue1}%</> more items when defeated. Also has a <Status_Up>{Passive2_EffectValue1}%</> chance to prevent Pal Sphere consumption when thrown. (Does not stack)" },
     possibleDrops: [
@@ -3456,7 +4794,17 @@ export const pals: Pal[] = [
       { resourceId: "palitem-catmage", notes: "1-1, 50%" },
       { resourceId: "technologybook-g1", notes: "1-1, 1%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 102,
+        sourceUrl: "https://palworld.th.gl/guides/Katress",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-240726,"y":257351},{"x":-236373,"y":275677},{"x":-252295,"y":116876},{"x":-229448,"y":112913},{"x":-237464,"y":126007},{"x":-252697,"y":133430},{"x":-252930,"y":148530},{"x":-233729,"y":142463},{"x":-250925,"y":164359},{"x":-235184,"y":173597},{"x":-234348,"y":157977},{"x":-255914,"y":181145},{"x":-242130,"y":187733},{"x":-245337,"y":205297},{"x":-228057,"y":197602},{"x":-232307,"y":217474},{"x":-234996,"y":240495},{"x":-267805,"y":122930},{"x":-272976,"y":140383},{"x":-279766,"y":154591},{"x":-267696,"y":163907},{"x":-290306,"y":137444},{"x":-52335,"y":258907},{"x":-43789,"y":116847},{"x":-28295,"y":123185},{"x":-42144,"y":132544},{"x":-50691,"y":227674},{"x":-74522,"y":279373},{"x":-49355,"y":274021},{"x":-62680,"y":99332},{"x":-69099,"y":127173},{"x":-77277,"y":178950},{"x":-62587,"y":204190},{"x":-63153,"y":222696},{"x":-61019,"y":246470},{"x":-100212,"y":296538},{"x":-102489,"y":332917},{"x":-91915,"y":125764},{"x":-97492,"y":177723},{"x":-96365,"y":197259},{"x":-77355,"y":196784},{"x":-90347,"y":211356},{"x":-124872,"y":269287},{"x":-105666,"y":269029},{"x":-122434,"y":294940},{"x":-125655,"y":312003},{"x":-113533,"y":144851},{"x":-115798,"y":175657},{"x":-127600,"y":167107},{"x":-126595,"y":189728},{"x":-112006,"y":200433},{"x":-125106,"y":209628},{"x":-106516,"y":217074},{"x":-129601,"y":244853},{"x":-154703,"y":256847},{"x":-134515,"y":258673},{"x":-148477,"y":294234},{"x":-133060,"y":282678},{"x":-155948,"y":311631},{"x":-150095,"y":328138},{"x":-146550,"y":171409},{"x":-139252,"y":188471},{"x":-151864,"y":218224},{"x":-132765,"y":224292},{"x":-155611,"y":237016},{"x":-179131,"y":260427},{"x":-177622,"y":277955},{"x":-158423,"y":277328},{"x":-163587,"y":293910},{"x":-173714,"y":352204},{"x":-173452,"y":143413},{"x":-151162,"y":151928},{"x":-166281,"y":157355},{"x":-165607,"y":179451},{"x":-179237,"y":167856},{"x":-172924,"y":194528},{"x":-157967,"y":192940},{"x":-166429,"y":220109},{"x":-177872,"y":231330},{"x":-204897,"y":257207}],
+      },
+    ],
   },
   {
     id: 111,
@@ -3467,6 +4815,10 @@ export const pals: Pal[] = [
     elements: ["Dark", "Fire"],
     description: "Due to its upbringing, it no longer cares about whether its food is raw enough. This Pal stopped worrying about those details, and just prefers its food to be as spicy as possible. Not on good terms with Wixen Noct.",
     workSuitability: [
+      { type: "Kindling", level: 3 },
+      { type: "Handiwork", level: 3 },
+      { type: "Medicine Production", level: 3 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Blazing Black Magic", description: "While at a base, increases the Unknown Status (COMMON_WORK_SUITABILITY_EmitFlame| style=|Status_Keyword) Work Suitability Level for all other Base Pals by <Status_Keyword>+{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
@@ -3485,13 +4837,24 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "It calls forth lightning from the depths of hell. Those who dies from Helzephyr's lightning are sure to have their soul sent to the underworld.",
     workSuitability: [
+      { type: "Transporting", level: 4 },
     ],
     partnerSkill: { name: "Wings of Death", description: "Can be ridden as a flying mount. While mounted, changes the player’s attack type to <img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark) and increases Attack by <Status_Up>{Passive2_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "venom", notes: "1-3, 100%" },
       { resourceId: "palupgradestone2", notes: "1-1, 3%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 181,
+        sourceUrl: "https://palworld.th.gl/guides/Helzephyr",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-236976,"y":255186},{"x":-234270,"y":270962},{"x":-249215,"y":121541},{"x":-226368,"y":117578},{"x":-247767,"y":139081},{"x":-229168,"y":137558},{"x":-238615,"y":151300},{"x":-253065,"y":155858},{"x":-240898,"y":166142},{"x":-255506,"y":176084},{"x":-229281,"y":182479},{"x":-242576,"y":190253},{"x":-247403,"y":204535},{"x":-231766,"y":212337},{"x":-231246,"y":238330},{"x":-264997,"y":121547},{"x":-281678,"y":132291},{"x":-279518,"y":149546},{"x":-272916,"y":165357},{"x":-542890,"y":-304426},{"x":-553367,"y":-292560},{"x":-554386,"y":-318804},{"x":-550727,"y":-354152},{"x":-558764,"y":-341961},{"x":-545763,"y":-378206},{"x":-562065,"y":-364357},{"x":-551974,"y":-392161},{"x":-570925,"y":-303195},{"x":-572881,"y":-324671},{"x":-588793,"y":-327510},{"x":-584507,"y":-310432},{"x":-574261,"y":-339792},{"x":-578281,"y":-356844},{"x":-565340,"y":-381621},{"x":-584870,"y":-380454},{"x":-607465,"y":-300111},{"x":-601505,"y":-315155},{"x":-604013,"y":-334817},{"x":-611394,"y":-348258},{"x":-594857,"y":-352200},{"x":-598312,"y":-371727},{"x":-610601,"y":-375507},{"x":-596747,"y":-394258},{"x":-625816,"y":-255957},{"x":-626589,"y":-271389},{"x":-632965,"y":-293019},{"x":-622358,"y":-306155},{"x":-626056,"y":-329627},{"x":-628709,"y":-351438},{"x":-635617,"y":-366699},{"x":-632403,"y":-384775},{"x":-636694,"y":-401892},{"x":-635923,"y":-417217},{"x":-645140,"y":-248039},{"x":-660039,"y":-243931},{"x":-642149,"y":-280151},{"x":-651988,"y":-262589},{"x":-653008,"y":-300775},{"x":-662908,"y":-321542},{"x":-642658,"y":-331494},{"x":-658507,"y":-354002},{"x":-661539,"y":-381201},{"x":-663417,"y":-405085},{"x":-654277,"y":-420010},{"x":-663587,"y":-432012},{"x":-689344,"y":-230078},{"x":-669415,"y":-228486},{"x":-676649,"y":-245261},{"x":-685498,"y":-291408},{"x":-686258,"y":-328958},{"x":-672458,"y":-334906},{"x":-678902,"y":-353924},{"x":-671076,"y":-365699},{"x":-677469,"y":-379538},{"x":-690535,"y":-371848},{"x":-683304,"y":-406091},{"x":-684704,"y":-427215},{"x":-672069,"y":-418274},{"x":-695319,"y":-247224},{"x":-707384,"y":-240543}],
+      },
+    ],
   },
   {
     id: 113,
@@ -3502,13 +4865,25 @@ export const pals: Pal[] = [
     elements: ["Dark", "Electric"],
     description: "It calls forth lightning from the depths of hell. While considered a subspecies of Helzephyr, there's a theory that suggests Helzephyr Lux, struck by lightning from hell, will transform into Helzephyr.",
     workSuitability: [
+      { type: "Generating Electricity", level: 4 },
+      { type: "Transporting", level: 5 },
     ],
     partnerSkill: { name: "Wings of Thunder", description: "Can be ridden as a flying mount. While mounted, changes the player’s attack type to <img id=|ElemIcon_Electric|/>Unknown Status (COMMON_ELEMENT_NAME_Electricity| style=|Elem_Electric) and increases Attack by <Status_Up>{Passive2_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "electricorgan", notes: "1-3, 100%" },
       { resourceId: "palupgradestone2", notes: "1-1, 3%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 13,
+        sourceUrl: "https://palworld.th.gl/guides/Helzephyr%20Lux",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-10991,"y":-63012},{"x":-1633,"y":-76571},{"x":-1521,"y":-163750},{"x":12914,"y":-72287},{"x":21953,"y":-84456},{"x":5933,"y":-90755},{"x":25119,"y":-100870},{"x":24013,"y":-116336},{"x":22830,"y":-151459},{"x":19090,"y":-136691},{"x":38589,"y":-90106},{"x":42563,"y":-108969},{"x":38247,"y":-126730}],
+      },
+    ],
   },
   {
     id: 114,
@@ -3519,13 +4894,28 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "The leaf on its horn cannot be removed, no matter how hard it is pulled. When the leaf falls on its own, Elgrove accepts its time has come.",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Gathering", level: 2 },
+      { type: "Lumbering", level: 3 },
+      { type: "Mining", level: 2 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Mother Nature's Menace", description: "When activated, Elgrove changes the player's attack type to <img id=|ElemIcon_Grass|/>Unknown Status (COMMON_ELEMENT_NAME_Leaf| style=|Elem_Grass) and increases Attack by <Status_Up>{ReferencePassive1_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "horn", notes: "2-3, 100%" },
       { resourceId: "leather", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 15,
+        sourceUrl: "https://palworld.th.gl/guides/Elgrove",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-258043,"y":62529},{"x":-283941,"y":28293},{"x":-278694,"y":45993},{"x":-275532,"y":72723},{"x":-280675,"y":93901},{"x":-278634,"y":112020},{"x":-306645,"y":29798},{"x":-305233,"y":61874},{"x":-289671,"y":62429},{"x":-298489,"y":91148},{"x":-291282,"y":109105},{"x":-427366,"y":170396},{"x":-428787,"y":187369},{"x":-442538,"y":170912},{"x":-442661,"y":198431}],
+      },
+    ],
   },
   {
     id: 115,
@@ -3536,6 +4926,10 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "Its frozen horn stays solid through its life. When water begins to drip from this ice, Elgrove Cryst feels the chill of its own life slipping away.",
     workSuitability: [
+      { type: "Lumbering", level: 3 },
+      { type: "Mining", level: 3 },
+      { type: "Cooling", level: 5 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Father Winter's Threat", description: "While in party, grants the player the ability to Unknown Status (ADDITIONAL_EFFECT_Freeze| style=|Effect_Freeze) enemies afflicted with Unknown Status (ADDITIONAL_EFFECT_Wetness| style=|Effect_Wetness) in one strike." },
     possibleDrops: [
@@ -3554,12 +4948,25 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "It can control those who carelessly stare into its eyes. Those seen with a Lunaris are in its mind, simply under its control.",
     workSuitability: [
+      { type: "Handiwork", level: 4 },
+      { type: "Gathering", level: 2 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Antigravity", description: "While in party, spheres <Status_Keyword>home in</> on Pals, and carrying capacity increases by <Status_Up>{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "pal-crystal-s", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 14,
+        sourceUrl: "https://palworld.th.gl/guides/Lunaris",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-401969,"y":-17636},{"x":-418450,"y":-15483},{"x":-412361,"y":-30451},{"x":-423616,"y":168231},{"x":-435097,"y":178895},{"x":-441411,"y":196266},{"x":-41289,"y":116847},{"x":-39644,"y":132544},{"x":-60180,"y":99332},{"x":-72328,"y":110121},{"x":-66599,"y":127173},{"x":-89415,"y":125764},{"x":88058,"y":63878},{"x":106182,"y":70419}],
+      },
+    ],
   },
   {
     id: 117,
@@ -3570,13 +4977,24 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "In ages past, its beautiful visage was a common sight in paintings. As time passed, its beautiful pelt and antlers were often seen in works of art.",
     workSuitability: [
+      { type: "Lumbering", level: 3 },
     ],
     partnerSkill: { name: "Wind and Clouds", description: "Can be ridden. Can <Status_Keyword>double jump</> while mounted. {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
       { resourceId: "leather", notes: "3-3, 100%" },
       { resourceId: "horn", notes: "2-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 34,
+        sourceUrl: "https://palworld.th.gl/guides/Fenglope",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-378265,"y":-68573},{"x":-402369,"y":-63246},{"x":-403588,"y":-92556},{"x":-401772,"y":-178168},{"x":-404647,"y":-155248},{"x":-406629,"y":-204534},{"x":-422107,"y":-75310},{"x":-436150,"y":-50210},{"x":-418479,"y":-97371},{"x":-435022,"y":-85554},{"x":-424687,"y":-153427},{"x":-429362,"y":-130432},{"x":-425451,"y":-174200},{"x":-422970,"y":-203556},{"x":-452735,"y":-48985},{"x":-459366,"y":-74023},{"x":-441781,"y":-65263},{"x":-436047,"y":-102322},{"x":-454540,"y":-97865},{"x":-451360,"y":-120167},{"x":-443287,"y":-142987},{"x":-448855,"y":-175869},{"x":-453362,"y":-156089},{"x":-439298,"y":-200495},{"x":-477610,"y":-99537},{"x":-474360,"y":-78427},{"x":-477258,"y":-121227},{"x":-463492,"y":-111218},{"x":-473902,"y":-151867},{"x":-478065,"y":-137210},{"x":-460209,"y":-133117},{"x":-462502,"y":-168163},{"x":152972,"y":458756},{"x":170824,"y":453912}],
+      },
+    ],
   },
   {
     id: 118,
@@ -3587,6 +5005,8 @@ export const pals: Pal[] = [
     elements: ["Electric"],
     description: "In ages past, it was believed that drawing a picture of Fenglope Lux would result in being struck down by lightning. As time passes, artworks depicting Fenglope Lux became revered as charms to ward off lightning, making them a common presence.",
     workSuitability: [
+      { type: "Generating Electricity", level: 5 },
+      { type: "Lumbering", level: 4 },
     ],
     partnerSkill: { name: "Stormcloud", description: "Can be ridden. Can <Status_Keyword>double jump</> while mounted. While in party, <img id=|ElemIcon_Water|/>Unknown Status (COMMON_ELEMENT_NAME_Water| style=|Elem_Water) Pals drop <Status_Up>{Passive1_EffectValue1}%</> more items when defeated. (Does not stack) {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
@@ -3594,7 +5014,17 @@ export const pals: Pal[] = [
       { resourceId: "horn", notes: "2-2, 100%" },
       { resourceId: "electricorgan", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 52,
+        sourceUrl: "https://palworld.th.gl/guides/Fenglope%20Lux",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-507687,"y":-296492},{"x":-498262,"y":-356402},{"x":-498007,"y":-372146},{"x":-511867,"y":-380227},{"x":-529566,"y":-258863},{"x":-527277,"y":-278566},{"x":-536049,"y":-297387},{"x":-521356,"y":-307442},{"x":-518178,"y":-325187},{"x":-514882,"y":-342386},{"x":-530360,"y":-340887},{"x":-532007,"y":-357036},{"x":-518296,"y":-364872},{"x":-528334,"y":-380997},{"x":-561597,"y":-246856},{"x":-561416,"y":-262531},{"x":-542416,"y":-268378},{"x":-559812,"y":-277977},{"x":-552289,"y":-321121},{"x":-540160,"y":-373701},{"x":-559418,"y":-155616},{"x":-585970,"y":-255169},{"x":-579764,"y":-277519},{"x":-574747,"y":-292363},{"x":-574678,"y":-164460},{"x":-584888,"y":-172839},{"x":-606084,"y":-230581},{"x":-606374,"y":-246750},{"x":-610770,"y":-262848},{"x":-594780,"y":-267452},{"x":-594164,"y":-291207},{"x":-607278,"y":-283121},{"x":-588382,"y":-189759},{"x":-601995,"y":-204945},{"x":-622328,"y":-242426},{"x":-619515,"y":-291980},{"x":-637289,"y":-175697},{"x":-637143,"y":-157300},{"x":-634088,"y":-191120},{"x":-622969,"y":-200312},{"x":-624544,"y":-215453},{"x":-640867,"y":-241620},{"x":-653033,"y":-233060},{"x":-638345,"y":-141876},{"x":-651248,"y":-129208},{"x":-651371,"y":-149229},{"x":-661877,"y":-160287},{"x":-654378,"y":-175453},{"x":-645656,"y":-198176},{"x":-663674,"y":-190168},{"x":-646497,"y":-213478},{"x":-662365,"y":-208604}],
+      },
+    ],
   },
   {
     id: 119,
@@ -3605,13 +5035,25 @@ export const pals: Pal[] = [
     elements: ["Grass", "Dragon"],
     description: "A Pal who once angered cannot be pacified. It rages on and on like an inferno. The phrase |step on a Dinossom's tail| has come to mean enraging someone.",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Lumbering", level: 3 },
     ],
     partnerSkill: { name: "Fragrant Dragon", description: "Can be ridden. While in party, increase Defense of <img id=|ElemIcon_Dragon|/>Unknown Status (COMMON_ELEMENT_NAME_Dragon| style=|Elem_Dragon) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "tomatoseeds", notes: "1-2, 100%" },
       { resourceId: "lettuceseeds", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 104,
+        sourceUrl: "https://palworld.th.gl/guides/Dinossom",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-250852,"y":315262},{"x":-237218,"y":328325},{"x":-253117,"y":339097},{"x":-230879,"y":357341},{"x":-241577,"y":376330},{"x":-235782,"y":391408},{"x":-277539,"y":333024},{"x":-281713,"y":177426},{"x":-280655,"y":193709},{"x":-268046,"y":202425},{"x":-304564,"y":181705},{"x":-304629,"y":200457},{"x":-325350,"y":174958},{"x":-327492,"y":190140},{"x":-355906,"y":257583},{"x":-354766,"y":273038},{"x":-341563,"y":263217},{"x":-342102,"y":178476},{"x":-358617,"y":202009},{"x":-336633,"y":202342},{"x":-371505,"y":27169},{"x":-374622,"y":258562},{"x":-376818,"y":273493},{"x":-374940,"y":44035},{"x":-383727,"y":73535},{"x":-378635,"y":57729},{"x":-383776,"y":115843},{"x":-368640,"y":115318},{"x":-379772,"y":198681},{"x":-375086,"y":182176},{"x":-378910,"y":227210},{"x":-391350,"y":12170},{"x":-409979,"y":12029},{"x":-384220,"y":27484},{"x":-403823,"y":28105},{"x":-388403,"y":42694},{"x":-404978,"y":43849},{"x":-407222,"y":73689},{"x":-393102,"y":58784},{"x":-407392,"y":91544},{"x":-393166,"y":97337},{"x":-407362,"y":121803},{"x":-392399,"y":128284},{"x":-402406,"y":214578},{"x":-423324,"y":14321},{"x":-418581,"y":30464},{"x":-431091,"y":36742},{"x":-421870,"y":48687},{"x":-433640,"y":88470},{"x":-422285,"y":104140},{"x":-459475,"y":75100},{"x":-446855,"y":58135},{"x":-457770,"y":92755},{"x":-8625,"y":-99261},{"x":-25678,"y":-126342},{"x":-24776,"y":-105500},{"x":-5735,"y":-123926},{"x":-24058,"y":-142644},{"x":-4041,"y":-139379},{"x":-43418,"y":-125031},{"x":-97773,"y":-6029},{"x":-79673,"y":12442},{"x":-100107,"y":14043},{"x":-99816,"y":43709},{"x":-92855,"y":28201},{"x":-127991,"y":-8153},{"x":-125994,"y":9124},{"x":-116984,"y":24660},{"x":-111985,"y":864},{"x":-124862,"y":37988},{"x":-146393,"y":-3105},{"x":-148012,"y":21036},{"x":-132641,"y":22758},{"x":-147009,"y":361669},{"x":-152102,"y":37052},{"x":-138082,"y":49131},{"x":-180543,"y":330077},{"x":-170355,"y":347568},{"x":-175310,"y":364115},{"x":-160400,"y":371875}],
+      },
+    ],
   },
   {
     id: 120,
@@ -3622,13 +5064,25 @@ export const pals: Pal[] = [
     elements: ["Electric", "Dragon"],
     description: "Though struck by lightning, it lives on. The phrase |struck by a Dinossom Lux's bolt| has come to mean narrowly escaping death.",
     workSuitability: [
+      { type: "Generating Electricity", level: 3 },
+      { type: "Lumbering", level: 4 },
     ],
     partnerSkill: { name: "Thunder Dragon", description: "Can be ridden. While in party, increases Defense of <img id=|ElemIcon_Electric|/>Unknown Status (COMMON_ELEMENT_NAME_Electricity| style=|Elem_Electric) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "tomatoseeds", notes: "1-2, 100%" },
       { resourceId: "carrotseeds", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 128,
+        sourceUrl: "https://palworld.th.gl/guides/Dinossom%20Lux",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-10221,"y":278843},{"x":-19266,"y":265392},{"x":914,"y":264254},{"x":-25046,"y":302981},{"x":-22533,"y":328581},{"x":-3270,"y":326884},{"x":-13966,"y":314280},{"x":-24376,"y":359263},{"x":-5412,"y":357880},{"x":-14021,"y":343963},{"x":-9841,"y":379681},{"x":-20578,"y":410646},{"x":-1788,"y":408994},{"x":-10671,"y":395902},{"x":-3394,"y":432206},{"x":-25741,"y":431983},{"x":-22310,"y":455319},{"x":-6999,"y":455470},{"x":-15068,"y":473117},{"x":-13318,"y":228391},{"x":-23779,"y":246394},{"x":-6986,"y":245732},{"x":-24527,"y":281446},{"x":-49868,"y":304407},{"x":-44700,"y":325654},{"x":-29154,"y":343981},{"x":-36389,"y":375238},{"x":-48712,"y":358694},{"x":-42629,"y":395883},{"x":-37746,"y":414927},{"x":-50518,"y":432875},{"x":-45333,"y":447701},{"x":-48251,"y":483476},{"x":-28673,"y":482128},{"x":-48018,"y":464677},{"x":-39346,"y":510214},{"x":-37313,"y":494452},{"x":-41417,"y":527850},{"x":-75915,"y":321964},{"x":-69609,"y":377115},{"x":-50292,"y":380843},{"x":-71046,"y":360020},{"x":-55922,"y":404720},{"x":-73211,"y":392084},{"x":-73752,"y":407113},{"x":-64137,"y":431740},{"x":-60616,"y":449043},{"x":-75265,"y":475154},{"x":-99694,"y":381177},{"x":-86414,"y":363396},{"x":-96235,"y":398595},{"x":-91695,"y":434118},{"x":-100986,"y":477147},{"x":-91821,"y":494076},{"x":14912,"y":282505},{"x":17996,"y":261449},{"x":3356,"y":301002},{"x":25366,"y":306263},{"x":18691,"y":331263},{"x":13878,"y":352892},{"x":4232,"y":342911},{"x":9954,"y":374881},{"x":15309,"y":393741},{"x":12519,"y":424954},{"x":23336,"y":414731},{"x":13023,"y":461872},{"x":14789,"y":444374},{"x":8607,"y":246662},{"x":24402,"y":247156},{"x":12189,"y":231140},{"x":32941,"y":277350},{"x":35605,"y":259969},{"x":52231,"y":272625},{"x":36950,"y":295037},{"x":37961,"y":326345},{"x":46208,"y":307877},{"x":35077,"y":358671},{"x":34413,"y":341880},{"x":48547,"y":344549},{"x":49090,"y":381008}],
+      },
+    ],
   },
   {
     id: 121,
@@ -3639,13 +5093,28 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "Its body becomes a blade upon death, to be taken up by the next generation. If someone other than a Bushi wields this blade, the soul within torments them until they are driven mad.",
     workSuitability: [
+      { type: "Kindling", level: 2 },
+      { type: "Handiwork", level: 2 },
+      { type: "Gathering", level: 1 },
+      { type: "Lumbering", level: 3 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Brandish Blade", description: "When activated, attacks targeted enemy with Unique_Ronin_Iai| style=|Status_Keyword. When this Pal uses Unique_Ronin_Iai| style=|Status_Keyword, it has a <Status_Up>x{ActiveSkillMainValueByRank}</> damage multiplier." },
     possibleDrops: [
       { resourceId: "bone", notes: "1-2, 100%" },
       { resourceId: "copperingot", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 354,
+        sourceUrl: "https://palworld.th.gl/guides/Bushi",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-254969,"y":-44809},{"x":-231414,"y":-93673},{"x":-241296,"y":-127361},{"x":-249614,"y":-112876},{"x":-235959,"y":-145945},{"x":-255338,"y":-179163},{"x":-235097,"y":-185531},{"x":-274941,"y":-45558},{"x":-275987,"y":-68132},{"x":-258112,"y":-126475},{"x":-267477,"y":-168217},{"x":-276738,"y":-200231},{"x":-257733,"y":-197975},{"x":-293399,"y":-10857},{"x":-304793,"y":-48022},{"x":-282246,"y":-27636},{"x":-294092,"y":-76022},{"x":-305267,"y":-85023},{"x":-285983,"y":-146817},{"x":-292140,"y":-193437},{"x":-303810,"y":-223111},{"x":-288018,"y":-212161},{"x":-333949,"y":-229432},{"x":-333728,"y":-12346},{"x":-310171,"y":-16284},{"x":-320364,"y":-52564},{"x":-317926,"y":-36948},{"x":-328127,"y":-73646},{"x":-306533,"y":-65842},{"x":-318773,"y":-97346},{"x":-324932,"y":-178913},{"x":-326213,"y":-210956},{"x":-323345,"y":4312},{"x":-352116,"y":-19428},{"x":-343633,"y":341},{"x":-355167,"y":-40792},{"x":-334087,"y":-47285},{"x":-343824,"y":-73066},{"x":-333242,"y":-88501},{"x":-355829,"y":-82327},{"x":-347191,"y":-198328},{"x":-352208,"y":-222343},{"x":-352826,"y":12226},{"x":-369897,"y":-23182},{"x":-381314,"y":-11624},{"x":-363614,"y":-9553},{"x":-373867,"y":-66442},{"x":-372294,"y":-204162},{"x":-380344,"y":-217230},{"x":-383261,"y":3428},{"x":-369691,"y":11949},{"x":-406969,"y":-17636},{"x":-403619,"y":-65412},{"x":-405590,"y":-86395},{"x":-405522,"y":-176003},{"x":-405897,"y":-157413},{"x":-386027,"y":-201957},{"x":-407879,"y":-206699},{"x":-427147,"y":-5810},{"x":-432872,"y":-34369},{"x":-413611,"y":-28286},{"x":-422953,"y":-68578},{"x":-437400,"y":-52376},{"x":-419114,"y":-97987},{"x":-425611,"y":-83480},{"x":-433928,"y":-101599},{"x":-424687,"y":-149097},{"x":-433112,"y":-128267},{"x":-429774,"y":-176974},{"x":-417180,"y":-163944},{"x":-430005,"y":-192831},{"x":-453985,"y":-46820},{"x":-450223,"y":-64487},{"x":-461866,"y":-74023},{"x":-454975,"y":-94844},{"x":-440963,"y":-86912},{"x":-455876,"y":-115691},{"x":-448659,"y":-138209},{"x":-442234,"y":-162207},{"x":-456065,"y":-168306}],
+      },
+    ],
   },
   {
     id: 122,
@@ -3656,6 +5125,11 @@ export const pals: Pal[] = [
     elements: ["Fire", "Dark"],
     description: "Its body becomes a blade upon death, to be taken up by the next generation. If the Bushi who inherits it has a weak heart, the voices of the dead will drive it mad. The madness turns it into Bushi Noct that endlessly wanders.",
     workSuitability: [
+      { type: "Kindling", level: 2 },
+      { type: "Handiwork", level: 2 },
+      { type: "Gathering", level: 1 },
+      { type: "Lumbering", level: 5 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Void Blade", description: "When activated, attacks targeted enemy with Unique_Ronin_Iai| style=|Status_Keyword. When this Pal uses Unique_Ronin_Iai| style=|Status_Keyword, it has a <Status_Up>x{ActiveSkillMainValueByRank}</> damage multiplier. While in party, increases the player's <Status_Keyword>melee weapon damage</> by <Status_Up>{Passive1_EffectValue1}%</> but only when not in combat. (Does not stack)" },
     possibleDrops: [
@@ -3663,7 +5137,17 @@ export const pals: Pal[] = [
       { resourceId: "copperingot", notes: "2-3, 100%" },
       { resourceId: "palupgradestone2", notes: "1-2, 40%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 319,
+        sourceUrl: "https://palworld.th.gl/guides/Bushi%20Noct",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-481145,"y":-262994},{"x":-26759,"y":-46030},{"x":-22340,"y":-74480},{"x":-3878,"y":-62357},{"x":-21988,"y":-101495},{"x":-9489,"y":-83477},{"x":-2079,"y":-97929},{"x":-8289,"y":-128926},{"x":-4432,"y":-114145},{"x":-18847,"y":-123842},{"x":-22515,"y":-139638},{"x":-3638,"y":-151605},{"x":-504130,"y":-232172},{"x":-497901,"y":-256522},{"x":-490937,"y":-274913},{"x":-505162,"y":-272378},{"x":-502466,"y":-290285},{"x":-499030,"y":-344611},{"x":-495867,"y":-358325},{"x":-495846,"y":-376475},{"x":-509367,"y":-380227},{"x":-511196,"y":-365074},{"x":-497691,"y":-401319},{"x":-505930,"y":-208337},{"x":-525863,"y":-230938},{"x":-523851,"y":-245818},{"x":-518080,"y":-265054},{"x":-530816,"y":-256698},{"x":-534664,"y":-272367},{"x":-516328,"y":-283003},{"x":-538549,"y":-297387},{"x":-516335,"y":-301687},{"x":-512914,"y":-317006},{"x":-516636,"y":-331071},{"x":-515493,"y":-348276},{"x":-527860,"y":-340887},{"x":-529507,"y":-357036},{"x":-530834,"y":-380997},{"x":-526898,"y":-399435},{"x":-528151,"y":-158246},{"x":-529256,"y":-171946},{"x":-538183,"y":-190821},{"x":-522529,"y":-201337},{"x":-532595,"y":-210208},{"x":-564097,"y":-246856},{"x":-562368,"y":-229236},{"x":-565166,"y":-264696},{"x":-553690,"y":-276486},{"x":-553441,"y":-306497},{"x":-558902,"y":-289494},{"x":-554789,"y":-321121},{"x":-553227,"y":-354152},{"x":-543298,"y":-336012},{"x":-548263,"y":-378206},{"x":-560462,"y":-369153},{"x":-555790,"y":-391919},{"x":-546867,"y":-403070},{"x":-561918,"y":-155616},{"x":-547521,"y":-169788},{"x":-553523,"y":-199151},{"x":-556141,"y":-214810},{"x":-538967,"y":-228986},{"x":-588470,"y":-255169},{"x":-582264,"y":-277519},{"x":-572175,"y":-301030},{"x":-578115,"y":-314640},{"x":-577153,"y":-329917},{"x":-566418,"y":-342437},{"x":-570949,"y":-356972},{"x":-587926,"y":-353300},{"x":-575493,"y":-381258},{"x":-586201,"y":-391346},{"x":-589772,"y":-444588},{"x":-575316,"y":-448728},{"x":-567316,"y":-464459},{"x":-584378,"y":-463647},{"x":-582034,"y":-477127},{"x":-575461,"y":-492767},{"x":-576124,"y":-141916},{"x":-577178,"y":-164460}],
+      },
+    ],
   },
   {
     id: 123,
@@ -3674,6 +5158,9 @@ export const pals: Pal[] = [
     elements: ["Ice", "Water"],
     description: "The inside of its mouth stays pleasantly cold, making it a natural fridge when closed. Its saliva contains enzymes that prevent food from rotting. Thus, it can serve as a food locker for humans— whether it is sanitary or not is another matter entirely.",
     workSuitability: [
+      { type: "Watering", level: 2 },
+      { type: "Cooling", level: 3 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Icy Maw", description: "While in party, reduces the weight of <Status_Keyword>ingredient</> and <Status_Keyword>food</> by <Status_Keyword>{Passive1_EffectValue1}%</>. When paired with another <img id=|ElemIcon_Ice|/>Unknown Status (COMMON_ELEMENT_NAME_Ice| style=|Elem_Ice) Pal, their Rot Speed also reduces by <Status_Up>{Passive2_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -3681,7 +5168,17 @@ export const pals: Pal[] = [
       { resourceId: "palfluid", notes: "1-2, 100%" },
       { resourceId: "iceorgan", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 3,
+        sourceUrl: "https://palworld.th.gl/guides/Munchill",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-561448,"y":118098},{"x":-567569,"y":133973},{"x":13985,"y":99501}],
+      },
+    ],
   },
   {
     id: 124,
@@ -3692,6 +5189,9 @@ export const pals: Pal[] = [
     elements: ["Grass", "Ground"],
     description: "The vegetation on its back varies between individuals. There is a long history of appreciating this veritable garden of a Pal, and there are even Mammorest pruning specialists.",
     workSuitability: [
+      { type: "Planting", level: 4 },
+      { type: "Lumbering", level: 4 },
+      { type: "Mining", level: 4 },
     ],
     partnerSkill: { name: "Gaia Crusher", description: "Can be ridden. While mounted, increases logging efficiency by <Status_Up>{Passive1_EffectValue1}%</> and mining efficiency by <Status_Up>{Passive2_EffectValue1}%</>." },
     possibleDrops: [
@@ -3699,7 +5199,17 @@ export const pals: Pal[] = [
       { resourceId: "leather", notes: "5-10, 100%" },
       { resourceId: "meat-grassmammoth", notes: "2-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 152,
+        sourceUrl: "https://palworld.th.gl/guides/Mammorest",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-259605,"y":-494},{"x":-236869,"y":-6186},{"x":-247329,"y":21949},{"x":-234011,"y":18113},{"x":-253414,"y":280096},{"x":-250262,"y":308289},{"x":-234265,"y":307597},{"x":-239230,"y":287416},{"x":-251231,"y":333350},{"x":-238166,"y":330149},{"x":-249252,"y":354690},{"x":-250768,"y":40525},{"x":-231601,"y":34246},{"x":-238976,"y":57334},{"x":-257206,"y":59786},{"x":-261287,"y":22159},{"x":-269911,"y":11530},{"x":-270671,"y":264477},{"x":-267820,"y":282267},{"x":-276331,"y":307394},{"x":-279804,"y":292203},{"x":-273734,"y":335622},{"x":-264558,"y":320980},{"x":-277294,"y":358687},{"x":-264016,"y":347669},{"x":-260263,"y":369014},{"x":-275500,"y":26957},{"x":-267323,"y":43880},{"x":-279944,"y":276491},{"x":-304231,"y":310189},{"x":-302373,"y":332601},{"x":-287580,"y":326775},{"x":-287023,"y":346654},{"x":-307639,"y":102006},{"x":-303047,"y":123265},{"x":-305004,"y":152686},{"x":-289854,"y":133423},{"x":-303146,"y":172689},{"x":-286841,"y":161954},{"x":-304695,"y":219220},{"x":-287330,"y":228190},{"x":-303525,"y":243735},{"x":-285780,"y":245925},{"x":-319155,"y":25797},{"x":-329253,"y":43906},{"x":-320959,"y":70081},{"x":-333856,"y":101594},{"x":-321207,"y":88246},{"x":-318395,"y":110171},{"x":-329767,"y":121306},{"x":-332350,"y":138838},{"x":-316203,"y":142220},{"x":-331177,"y":168308},{"x":-315817,"y":163251},{"x":-333375,"y":201065},{"x":-321040,"y":187470},{"x":-323095,"y":232715},{"x":-333635,"y":218730},{"x":-314795,"y":209345},{"x":-330380,"y":248115},{"x":-358444,"y":269578},{"x":-349973,"y":256259},{"x":-341205,"y":275164},{"x":-348724,"y":28755},{"x":-345179,"y":51275},{"x":-345422,"y":77438},{"x":-333932,"y":62264},{"x":-347406,"y":94074},{"x":-360366,"y":153075},{"x":-356679,"y":135272},{"x":-344510,"y":152980},{"x":-351423,"y":166334},{"x":-341705,"y":181310},{"x":-345417,"y":243989},{"x":-375528,"y":261562},{"x":-357101,"y":42307},{"x":-369609,"y":53477},{"x":-362063,"y":69628},{"x":-373998,"y":78746},{"x":-366042,"y":96169}],
+      },
+    ],
   },
   {
     id: 125,
@@ -3710,6 +5220,9 @@ export const pals: Pal[] = [
     elements: ["Ice", "Ground"],
     description: "The vegetation on its back varies between individuals. There was a time when seeds of presumed extinct plants were found still frozen on the back of a Mammorest Cryst.",
     workSuitability: [
+      { type: "Lumbering", level: 5 },
+      { type: "Mining", level: 4 },
+      { type: "Cooling", level: 5 },
     ],
     partnerSkill: { name: "Ice Crusher", description: "Can be ridden. While mounted, increases logging efficiency by <Status_Up>{Passive1_EffectValue1}%</> and mining efficiency by <Status_Up>{Passive2_EffectValue1}%</>." },
     possibleDrops: [
@@ -3717,7 +5230,17 @@ export const pals: Pal[] = [
       { resourceId: "leather", notes: "5-10, 100%" },
       { resourceId: "meat-grassmammoth", notes: "2-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 58,
+        sourceUrl: "https://palworld.th.gl/guides/Mammorest%20Cryst",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-2361,"y":10401},{"x":-11251,"y":29416},{"x":-15019,"y":49706},{"x":-6477,"y":69819},{"x":-4837,"y":96296},{"x":-22386,"y":79909},{"x":-3269,"y":116549},{"x":-6218,"y":140533},{"x":-5557,"y":171036},{"x":12661,"y":-5429},{"x":21229,"y":22722},{"x":14781,"y":45043},{"x":8314,"y":85331},{"x":12281,"y":107170},{"x":20488,"y":120391},{"x":21439,"y":152221},{"x":27974,"y":177041},{"x":4599,"y":154560},{"x":9382,"y":186881},{"x":39821,"y":-14110},{"x":48346,"y":-36315},{"x":44987,"y":4455},{"x":54349,"y":35755},{"x":35371,"y":28919},{"x":48044,"y":51704},{"x":45724,"y":99487},{"x":40198,"y":116760},{"x":36208,"y":191118},{"x":49419,"y":202379},{"x":74630,"y":-1165},{"x":64283,"y":-27731},{"x":53994,"y":14422},{"x":72532,"y":37889},{"x":56497,"y":117768},{"x":64986,"y":206785},{"x":66915,"y":189446},{"x":63524,"y":223597},{"x":76723,"y":241607},{"x":97415,"y":-25365},{"x":88876,"y":-13671},{"x":84153,"y":-29617},{"x":93178,"y":17570},{"x":95008,"y":40656},{"x":99657,"y":70526},{"x":86859,"y":99827},{"x":125666,"y":18161},{"x":120643,"y":5681},{"x":101581,"y":3929},{"x":120742,"y":54805},{"x":110902,"y":29745},{"x":125467,"y":74059},{"x":144800,"y":118},{"x":151697,"y":30705},{"x":145933,"y":48254},{"x":130106,"y":39443},{"x":143916,"y":72758},{"x":148219,"y":98636},{"x":164591,"y":52951}],
+      },
+    ],
   },
   {
     id: 126,
@@ -3728,6 +5251,8 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "It looks like something is peeking out from inside a costume, but even if you reach inside, there’s nothing there. In fact, you can keep reaching deeper and deeper. Perhaps the universe itself lies within.",
     workSuitability: [
+      { type: "Watering", level: 2 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Water Gun", description: "When activated, Finsider changes the player's attack type to <img id=|ElemIcon_Water|/>Unknown Status (COMMON_ELEMENT_NAME_Water| style=|Elem_Water) and increases Attack by <Status_Up> {ReferencePassive1_EffectValue1}%</>." },
     possibleDrops: [
@@ -3735,7 +5260,17 @@ export const pals: Pal[] = [
       { resourceId: "palupgradestone", notes: "1-1, 1%" },
       { resourceId: "palfluid", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 3,
+        sourceUrl: "https://palworld.th.gl/guides/Finsider",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-323896,"y":347096},{"x":-338953,"y":341170},{"x":-498410,"y":-38595}],
+      },
+    ],
   },
   {
     id: 127,
@@ -3746,6 +5281,9 @@ export const pals: Pal[] = [
     elements: ["Water", "Fire"],
     description: "Even if you reach into its mouth, there’s nothing inside—it just keeps going. Thinking it might be an interdimensional space, one researcher tried climbing in like a sleeping bag. But when the gag reflex kicked in, they realized... it’s definitely part of the creature’s body.",
     workSuitability: [
+      { type: "Kindling", level: 2 },
+      { type: "Watering", level: 2 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Ember Chamber", description: "While in party, Finsider Ignis helps carry supplies, reducing the weight of weapons in your inventory by <Status_Up>{Passive1_EffectValue1}%</>. Also improves player's and Pals' <img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) damage to enemy weak points by <Status_Up>{Passive2_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -3764,13 +5302,28 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "A Pal that transforms into a massive plant when at the end of its life. Once every ten years, a beautiful flower blooms and a new Petallia is born.",
     workSuitability: [
+      { type: "Planting", level: 4 },
+      { type: "Handiwork", level: 3 },
+      { type: "Gathering", level: 3 },
+      { type: "Medicine Production", level: 4 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Blessing of the Flower Spirit", description: "When activated, soothing blossoms restore the player's Health by <Status_Up>{ActiveSkillMainValueByRank}%</>. While at a base, increases the Unknown Status (COMMON_WORK_SUITABILITY_Seeding| style=|Status_Keyword) Work Suitability Level for all other Base Pals by <Status_Keyword>+{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "poppy", notes: "2-3, 100%" },
       { resourceId: "potatoseeds", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 14,
+        sourceUrl: "https://palworld.th.gl/guides/Petallia",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-458583,"y":185386},{"x":-459312,"y":204016},{"x":-447069,"y":195035},{"x":-1034,"y":-147511},{"x":-153221,"y":157676},{"x":-148028,"y":176762},{"x":-174702,"y":150578},{"x":-177987,"y":170021},{"x":-166027,"y":179347},{"x":-200821,"y":164261},{"x":-197886,"y":179068},{"x":-225132,"y":160263},{"x":-217721,"y":174783},{"x":11892,"y":-125747}],
+      },
+    ],
   },
   {
     id: 129,
@@ -3781,6 +5334,11 @@ export const pals: Pal[] = [
     elements: ["Grass", "Fire"],
     description: "A Pal that burns away into a pile of ash upon the end of its life. The surrounding soil becomes incredibly fertile, allowing an abundance of vegetation to thrive for the following decade.",
     workSuitability: [
+      { type: "Kindling", level: 4 },
+      { type: "Handiwork", level: 3 },
+      { type: "Gathering", level: 3 },
+      { type: "Medicine Production", level: 4 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Passion of the Flower Spirit", description: "When activated, soothing blossoms restore the player's Health by <Status_Up>{ActiveSkillMainValueByRank}%</>. While in party, player and party Pals take <Status_Up>{Passive1_EffectValue1}%</> less <img id=|ElemIcon_Grass|/>Unknown Status (COMMON_ELEMENT_NAME_Leaf| style=|Elem_Grass) damage, and are immune to Unknown Status (ADDITIONAL_EFFECT_IvyCling| style=|Effect_IvyCling). (Does not stack)" },
     possibleDrops: [
@@ -3798,12 +5356,26 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "To hone the martial art passed down through a single bloodline: Daily training is the only way! Being distracted by romance? Unthinkable! Daily discipline is the only way! The time has come! Shoot my shot! Instant rejection, that’s all there is! The techniques of love were never passed down... Lingering regret, that’s all there is!",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Handiwork", level: 3 },
+      { type: "Gathering", level: 3 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Selfless Discipline", description: "This Pal's Attack and Defense increase by <Status_Up>{Passive1_EffectValue1}%</> for each other <img id=|ElemIcon_Grass|/>Unknown Status (COMMON_ELEMENT_NAME_Leaf| style=|Elem_Grass) Pal in your party." },
     possibleDrops: [
       { resourceId: "leather", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 18,
+        sourceUrl: "https://palworld.th.gl/guides/Leafan",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-793100,"y":31918},{"x":-816346,"y":21582},{"x":-798051,"y":17188},{"x":-794436,"y":51170},{"x":-816358,"y":47830},{"x":-831374,"y":10659},{"x":-831973,"y":26674},{"x":-832756,"y":47524},{"x":-824841,"y":61197},{"x":-176631,"y":265427},{"x":-157429,"y":271728},{"x":-172342,"y":284695},{"x":-160780,"y":295658},{"x":-202397,"y":262207},{"x":-188511,"y":277834},{"x":-190963,"y":240937},{"x":-211582,"y":274065},{"x":-227488,"y":280505}],
+      },
+    ],
   },
   {
     id: 131,
@@ -3814,13 +5386,27 @@ export const pals: Pal[] = [
     elements: ["Fire", "Dark"],
     description: "In the dark of night, this Pal snatches prey to bring back to its territory. What happens to those poor souls afterwards isn't too hard to imagine.",
     workSuitability: [
+      { type: "Kindling", level: 3 },
+      { type: "Handiwork", level: 2 },
+      { type: "Mining", level: 3 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Flameclaw Hunter", description: "When activated, attacks the targeted enemy with Unique_Baphomet_SwallowKite| style=|Status_Keyword. When this Pal uses Unique_Baphomet_SwallowKite| style=|Status_Keyword, it has a <Status_Up>x{ActiveSkillMainValueByRank}</> damage multiplier." },
     possibleDrops: [
       { resourceId: "horn", notes: "1-1, 100%" },
       { resourceId: "leather", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 69,
+        sourceUrl: "https://palworld.th.gl/guides/Incineram",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-252900,"y":-150007},{"x":-239709,"y":-148110},{"x":-249653,"y":-171948},{"x":-247011,"y":-194475},{"x":-282237,"y":-65967},{"x":-265274,"y":-177206},{"x":-281444,"y":-188136},{"x":-267378,"y":-197336},{"x":-276422,"y":-211834},{"x":-302293,"y":-48022},{"x":-297842,"y":-73857},{"x":-306517,"y":-87188},{"x":-288483,"y":-151147},{"x":-298115,"y":-163787},{"x":-290716,"y":-200297},{"x":-302645,"y":-227095},{"x":-332609,"y":-235690},{"x":-320364,"y":-48234},{"x":-329377,"y":-75811},{"x":-314883,"y":-62915},{"x":-320023,"y":-99512},{"x":-319286,"y":-159924},{"x":-331558,"y":-193847},{"x":-316611,"y":-188848},{"x":-322627,"y":-223890},{"x":-327620,"y":-208392},{"x":-332837,"y":-49450},{"x":-345074,"y":-75231},{"x":-334492,"y":-90666},{"x":-358329,"y":-82327},{"x":-356957,"y":-132997},{"x":-355246,"y":-203312},{"x":-344637,"y":-222041},{"x":-375117,"y":-68607},{"x":-374564,"y":-193223},{"x":-377716,"y":-213858},{"x":-401119,"y":-65412},{"x":-406088,"y":-92556},{"x":-384669,"y":-169850},{"x":-405522,"y":-180333},{"x":-403397,"y":-157413},{"x":-390357,"y":-204457},{"x":-405379,"y":-206699},{"x":-424607,"y":-75310},{"x":-434900,"y":-52376},{"x":-420979,"y":-97371},{"x":-433772,"y":-87719},{"x":-414554,"y":-145431},{"x":-431183,"y":-152550},{"x":-433112,"y":-132597},{"x":-427951,"y":-174200},{"x":-425470,"y":-203556},{"x":-455235,"y":-48985},{"x":-460616,"y":-76188},{"x":-444281,"y":-65263},{"x":-457040,"y":-97865},{"x":-453860,"y":-120167},{"x":-444087,"y":-107451},{"x":-450108,"y":-141916},{"x":-450105,"y":-178034},{"x":-454525,"y":-162950},{"x":-445193,"y":-193044},{"x":-478860,"y":-101702},{"x":-475610,"y":-80592},{"x":-476008,"y":-123392},{"x":-465992,"y":-111218},{"x":-466363,"y":-153027},{"x":-479468,"y":-143491},{"x":-462709,"y":-133117}],
+      },
+    ],
   },
   {
     id: 132,
@@ -3831,13 +5417,26 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "It specifically targets baby Pals, taking them back to its domain. One can only imagine the profound despair of a parent whose child has been taken away.",
     workSuitability: [
+      { type: "Handiwork", level: 3 },
+      { type: "Mining", level: 4 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Darkclaw Hunter", description: "When activated, attacks the targeted enemy with Unique_Baphomet_Dark_DarkKite| style=|Status_Keyword. When this Pal uses Unique_Baphomet_Dark_DarkKite| style=|Status_Keyword, it has a <Status_Up>x{ActiveSkillMainValueByRank}</> damage multiplier." },
     possibleDrops: [
       { resourceId: "horn", notes: "1-1, 100%" },
       { resourceId: "leather", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 5,
+        sourceUrl: "https://palworld.th.gl/guides/Incineram%20Noct",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-172600,"y":-133720},{"x":-159578,"y":-147067},{"x":-174590,"y":-146542},{"x":155201,"y":458640},{"x":169574,"y":451747}],
+      },
+    ],
   },
   {
     id: 133,
@@ -3848,13 +5447,26 @@ export const pals: Pal[] = [
     elements: ["Electric"],
     description: "Often kind to lonely Pals. However, the moment a Pal mistakes this for actual friendship, it seizes the opportunity to blast them with a thunderbolt.",
     workSuitability: [
+      { type: "Generating Electricity", level: 3 },
+      { type: "Handiwork", level: 2 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Lady of Lightning", description: "While in party, appears near the player. Attacks hostile enemies with <img id=|ElemIcon_Electric|/>Unknown Status (COMMON_ELEMENT_NAME_Electricity| style=|Elem_Electric) bolts. These bolts will not reduce the target's Health below 1. {ReferenceMsgId_Funnel}" },
     possibleDrops: [
       { resourceId: "electricorgan", notes: "1-1, 100%" },
       { resourceId: "palitem-raijindaughter", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 116,
+        sourceUrl: "https://palworld.th.gl/guides/Dazzi",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-8971,"y":276678},{"x":-18016,"y":263227},{"x":-697,"y":258545},{"x":-23796,"y":300816},{"x":-22335,"y":285418},{"x":-3952,"y":290962},{"x":-21283,"y":326416},{"x":-5770,"y":326884},{"x":-9287,"y":312296},{"x":-23126,"y":357098},{"x":-7912,"y":357880},{"x":-24181,"y":372563},{"x":-8308,"y":373655},{"x":-19328,"y":408480},{"x":-4288,"y":408994},{"x":-11694,"y":389660},{"x":-24491,"y":429818},{"x":-2144,"y":434371},{"x":-21060,"y":453154},{"x":-3448,"y":449477},{"x":-23746,"y":468733},{"x":-7935,"y":471244},{"x":-12068,"y":226226},{"x":-22529,"y":244229},{"x":-3186,"y":239377},{"x":-30973,"y":271917},{"x":-48618,"y":302242},{"x":-43450,"y":323489},{"x":-39073,"y":356737},{"x":-49253,"y":375063},{"x":-44624,"y":403675},{"x":-42025,"y":389967},{"x":-49268,"y":430710},{"x":-40041,"y":460689},{"x":-47001,"y":481311},{"x":-31173,"y":482128},{"x":-38096,"y":508049},{"x":-40167,"y":525685},{"x":-40830,"y":541037},{"x":-74665,"y":319799},{"x":-72690,"y":381780},{"x":-76544,"y":366414},{"x":-57931,"y":361836},{"x":-77502,"y":409278},{"x":-59799,"y":410221},{"x":-59929,"y":392797},{"x":-60387,"y":429575},{"x":-57484,"y":458804},{"x":-66660,"y":450596},{"x":-74015,"y":472989},{"x":-98444,"y":379012},{"x":-89985,"y":396430},{"x":-90445,"y":431953},{"x":-99736,"y":474982},{"x":-100478,"y":490230},{"x":-109779,"y":395960},{"x":-150034,"y":54836},{"x":-153295,"y":69814},{"x":-148440,"y":91200},{"x":-151036,"y":115694},{"x":-160116,"y":45189},{"x":-175604,"y":85093},{"x":-178767,"y":100572},{"x":-177050,"y":118880},{"x":-161109,"y":106337},{"x":-200523,"y":95608},{"x":-193042,"y":80604},{"x":-191600,"y":112705},{"x":16162,"y":280339},{"x":16746,"y":259284},{"x":7611,"y":302486},{"x":24116,"y":304098},{"x":10245,"y":327523},{"x":25522,"y":328861},{"x":5662,"y":349829},{"x":21547,"y":350213},{"x":7454,"y":374881},{"x":22526,"y":375303},{"x":8778,"y":399989},{"x":13226,"y":434875}],
+      },
+    ],
   },
   {
     id: 134,
@@ -3865,6 +5477,10 @@ export const pals: Pal[] = [
     elements: ["Dark", "Electric"],
     description: "Often kind to lonely Pals, it plots to lure them into dropping their guard before striking them down. Yet, unable to find the right moment, it ends up making friends with them instead.",
     workSuitability: [
+      { type: "Generating Electricity", level: 1 },
+      { type: "Handiwork", level: 1 },
+      { type: "Medicine Production", level: 1 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Lady of Dark Lightning", description: "While in party, appears near the player. Attacks hostile enemies with <img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark) bolts. These bolts will not reduce the target's Health below 1. {ReferenceMsgId_Funnel}" },
     possibleDrops: [
@@ -3872,7 +5488,17 @@ export const pals: Pal[] = [
       { resourceId: "palitem-raijindaughter", notes: "1-1, 100%" },
       { resourceId: "paldarkparts", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 38,
+        sourceUrl: "https://palworld.th.gl/guides/Dazzi%20Noct",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-497780,"y":-342446},{"x":-492117,"y":-360490},{"x":-492096,"y":-378640},{"x":-493941,"y":-399154},{"x":-509081,"y":-403157},{"x":-513281,"y":-387246},{"x":-525648,"y":-397270},{"x":-560347,"y":-249021},{"x":-560166,"y":-264696},{"x":-541867,"y":-403070},{"x":-558168,"y":-157782},{"x":-562674,"y":-233545},{"x":-584720,"y":-257334},{"x":-578514,"y":-279684},{"x":-566986,"y":-395309},{"x":-573428,"y":-166625},{"x":-587388,"y":-172839},{"x":-604834,"y":-232746},{"x":-606821,"y":-255017},{"x":-610486,"y":-271808},{"x":-590882,"y":-189759},{"x":-604495,"y":-204945},{"x":-621078,"y":-244591},{"x":-636521,"y":-245036},{"x":-624580,"y":-263404},{"x":-621719,"y":-202477},{"x":-616197,"y":-218417},{"x":-632319,"y":-214655},{"x":-689772,"y":-204376},{"x":-670099,"y":-190965},{"x":-709408,"y":-201409},{"x":-715366,"y":-219293},{"x":-790350,"y":-102055},{"x":-772855,"y":-113845},{"x":-803970,"y":-92725},{"x":-816340,"y":-102000},{"x":-823255,"y":-85310},{"x":-846370,"y":-458610}],
+      },
+    ],
   },
   {
     id: 135,
@@ -3883,13 +5509,25 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "Its entire body has evolved into a highly efficient radiator, gifting it with astounding stamina. If someone rides it, this Pal takes caution not to burn them.",
     workSuitability: [
+      { type: "Kindling", level: 4 },
+      { type: "Lumbering", level: 2 },
     ],
     partnerSkill: { name: "Red Hare", description: "Can be ridden. While mounted, changes the player’s attack type to <img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) and increases Attack by <Status_Up>{Passive2_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "fireorgan", notes: "4-5, 100%" },
       { resourceId: "leather", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 51,
+        sourceUrl: "https://palworld.th.gl/guides/Pyrin",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-230986,"y":-70563},{"x":-244024,"y":-55048},{"x":-232664,"y":-95838},{"x":-246612,"y":-83236},{"x":-242546,"y":-129526},{"x":-237630,"y":-111845},{"x":-261623,"y":-18608},{"x":-274762,"y":-19241},{"x":-256279,"y":-49361},{"x":-269434,"y":-40353},{"x":-265907,"y":-66675},{"x":-278487,"y":-68132},{"x":-266174,"y":-89958},{"x":-256862,"y":-124310},{"x":-297026,"y":-22634},{"x":-284275,"y":-46094},{"x":-298277,"y":-44908},{"x":-292842,"y":-73857},{"x":-304017,"y":-87188},{"x":-284604,"y":-115041},{"x":-286308,"y":-130399},{"x":-328148,"y":-12011},{"x":-313661,"y":-48446},{"x":-325335,"y":-43095},{"x":-311679,"y":-27936},{"x":-326877,"y":-75811},{"x":-310106,"y":-72310},{"x":-317523,"y":-99512},{"x":-313483,"y":-114091},{"x":-326182,"y":-176748},{"x":-312013,"y":-188848},{"x":-344935,"y":-20371},{"x":-354572,"y":-47501},{"x":-342574,"y":-75231},{"x":-357997,"y":-72714},{"x":-336183,"y":-56580},{"x":-331992,"y":-90666},{"x":-352384,"y":-94281},{"x":-354613,"y":-116069},{"x":-332615,"y":-103783},{"x":-344691,"y":-198328},{"x":-367397,"y":-27512},{"x":-385124,"y":-16708},{"x":-358572,"y":-11945},{"x":-372617,"y":-68607},{"x":-368188,"y":-107808},{"x":-219701,"y":-22507},{"x":-221487,"y":-42674},{"x":-214417,"y":-59694},{"x":-218951,"y":-80861},{"x":-222753,"y":-138219}],
+      },
+    ],
   },
   {
     id: 136,
@@ -3900,13 +5538,25 @@ export const pals: Pal[] = [
     elements: ["Fire", "Dark"],
     description: "It burns mysterious dark matter as energy and expels the remaining particles from its body. If someone rides it, they should take care so as not to gallop down the path of darkness.",
     workSuitability: [
+      { type: "Kindling", level: 4 },
+      { type: "Lumbering", level: 3 },
     ],
     partnerSkill: { name: "Black Hare", description: "Can be ridden. While mounted, changes the player’s attack type to<img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark) and increases Attack by <Status_Up>{Passive2_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "fireorgan", notes: "4-5, 100%" },
       { resourceId: "leather", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 113,
+        sourceUrl: "https://palworld.th.gl/guides/Pyrin%20Noct",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-254969,"y":-40479},{"x":-230986,"y":-74893},{"x":-244024,"y":-59378},{"x":-232664,"y":-91508},{"x":-246612,"y":-87567},{"x":-242546,"y":-125196},{"x":-235064,"y":-106828},{"x":-237209,"y":-143780},{"x":-251650,"y":-152172},{"x":-248403,"y":-174113},{"x":-245761,"y":-196640},{"x":-261623,"y":-22938},{"x":-276012,"y":-17075},{"x":-273184,"y":-38188},{"x":-265907,"y":-71006},{"x":-258900,"y":-55692},{"x":-279737,"y":-65967},{"x":-269924,"y":-92124},{"x":-255612,"y":-126475},{"x":-267774,"y":-177206},{"x":-263010,"y":-162555},{"x":-283944,"y":-188136},{"x":-279238,"y":-200231},{"x":-258445,"y":-205241},{"x":-297026,"y":-26964},{"x":-288025,"y":-43929},{"x":-294092,"y":-71692},{"x":-307767,"y":-89354},{"x":-284604,"y":-119371},{"x":-287233,"y":-153312},{"x":-284411,"y":-137145},{"x":-300615,"y":-163787},{"x":-295294,"y":-199475},{"x":-305060,"y":-225276},{"x":-287716,"y":-217538},{"x":-335199,"y":-231597},{"x":-334978,"y":-14511},{"x":-315976,"y":-12235},{"x":-316161,"y":-52776},{"x":-326585,"y":-40930},{"x":-314179,"y":-27936},{"x":-330627,"y":-77977},{"x":-307606,"y":-72310},{"x":-321273,"y":-101677},{"x":-328682,"y":-176748},{"x":-318036,"y":-157759},{"x":-313263,"y":-186683},{"x":-330308,"y":-196012},{"x":-323606,"y":-217622},{"x":-329008,"y":151},{"x":-353366,"y":-17263},{"x":-344883,"y":-1824},{"x":-354019,"y":-31723},{"x":-358322,"y":-49666},{"x":-359247,"y":-70549},{"x":-344316,"y":-69047},{"x":-334318,"y":-55979},{"x":-341548,"y":-88343},{"x":-354613,"y":-120399},{"x":-345941,"y":-196163},{"x":-339709,"y":-217236},{"x":-355326,"y":12226},{"x":-371147,"y":-25347},{"x":-378814,"y":-11624},{"x":-376367,"y":-70772},{"x":-361332,"y":-95783},{"x":-371938,"y":-109973},{"x":-364461,"y":-138363},{"x":-373314,"y":-195388},{"x":-376466,"y":-216023},{"x":-362029,"y":-226076},{"x":-382011,"y":5593},{"x":-403219,"y":-15471},{"x":-405470,"y":-31141},{"x":-399869,"y":-67577},{"x":-408090,"y":-86395},{"x":-408022,"y":-176003},{"x":-383419,"y":-172015},{"x":-402147,"y":-159578},{"x":-392857,"y":-204457}],
+      },
+    ],
   },
   {
     id: 137,
@@ -3917,13 +5567,25 @@ export const pals: Pal[] = [
     elements: ["Dragon", "Water"],
     description: "Contrary to its blasé appearance, it's quite ferocious. It perceives everything in its sight as prey and will stop at nothing to devour it.",
     workSuitability: [
+      { type: "Watering", level: 3 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Hungry Missile", description: "Can be ridden. Can rapidly fire a missile launcher while mounted. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
       { resourceId: "paloil", notes: "1-4, 100%" },
       { resourceId: "ruby", notes: "1-1, 5%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 44,
+        sourceUrl: "https://palworld.th.gl/guides/Relaxaurus",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-266763,"y":2763},{"x":-276750,"y":29122},{"x":-268573,"y":41715},{"x":-279807,"y":53373},{"x":-287887,"y":-14572},{"x":-294200,"y":26760},{"x":-304974,"y":51523},{"x":-293463,"y":66552},{"x":-317924,"y":33676},{"x":-329658,"y":52585},{"x":-323923,"y":69659},{"x":-358088,"y":21331},{"x":-331711,"y":28211},{"x":-338038,"y":41353},{"x":-355594,"y":46586},{"x":-346647,"y":61539},{"x":-345395,"y":76605},{"x":-354127,"y":91426},{"x":-18519,"y":-58004},{"x":-500217,"y":-263034},{"x":-543487,"y":-333560},{"x":-589242,"y":-288345},{"x":-611814,"y":-363611},{"x":-699739,"y":-381964},{"x":-49029,"y":-20777},{"x":-47510,"y":-48041},{"x":-42668,"y":-75038},{"x":-33429,"y":-60850},{"x":-37306,"y":-150957},{"x":-783618,"y":-375173},{"x":-807489,"y":-396574},{"x":-64453,"y":-1370},{"x":-54995,"y":-67140},{"x":-72931,"y":-76184},{"x":-53636,"y":-85828},{"x":-49222,"y":266098},{"x":-54414,"y":283445},{"x":-73527,"y":176785},{"x":-62186,"y":191074},{"x":-49516,"y":239943},{"x":-76841,"y":-92350},{"x":-123850,"y":164942},{"x":-212765,"y":242343},{"x":202570,"y":300345}],
+      },
+    ],
   },
   {
     id: 138,
@@ -3934,6 +5596,8 @@ export const pals: Pal[] = [
     elements: ["Dragon", "Electric"],
     description: "One day, Relaxaurus had an idea. Maybe it was about time for a change. Just then, an electric shock raced through its body!",
     workSuitability: [
+      { type: "Generating Electricity", level: 4 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Missile Party", description: "Can be ridden. Can rapidly fire a missile launcher while mounted. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
@@ -3941,7 +5605,17 @@ export const pals: Pal[] = [
       { resourceId: "electricorgan", notes: "2-3, 100%" },
       { resourceId: "sapphire", notes: "1-1, 5%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 17,
+        sourceUrl: "https://palworld.th.gl/guides/Relaxaurus%20Lux",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-243988,"y":31875},{"x":-277556,"y":-144438},{"x":-414947,"y":-206747},{"x":-502717,"y":-263034},{"x":-545987,"y":-333560},{"x":-591742,"y":-288345},{"x":-614314,"y":-363611},{"x":-702239,"y":-381964},{"x":-39806,"y":-150957},{"x":-786118,"y":-375173},{"x":-809989,"y":-396574},{"x":-57495,"y":-67140},{"x":-87432,"y":265533},{"x":-125483,"y":348257},{"x":-145141,"y":95367},{"x":-145492,"y":222174},{"x":200070,"y":300345}],
+      },
+    ],
   },
   {
     id: 139,
@@ -3952,13 +5626,25 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "On nights when the aurora is visible, it looks up towards the sky and begins to howl a beautiful song. This does, however, leave it vulnerable to attacks from enemies.",
     workSuitability: [
+      { type: "Cooling", level: 4 },
+      { type: "Farming", level: 3 },
     ],
     partnerSkill: { name: "Aurora Guide", description: "While in party, increases Attack of <img id=|ElemIcon_Ice|/>Unknown Status (COMMON_ELEMENT_NAME_Ice| style=|Elem_Ice) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack) Sometimes drops iceorgan| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "leather", notes: "1-1, 100%" },
       { resourceId: "iceorgan", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 43,
+        sourceUrl: "https://palworld.th.gl/guides/Foxcicle",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-3611,"y":12566},{"x":1881,"y":32195},{"x":-12501,"y":31581},{"x":-16269,"y":51871},{"x":-20147,"y":68331},{"x":-710,"y":60697},{"x":-6752,"y":75263},{"x":-20938,"y":83927},{"x":-3508,"y":92616},{"x":-17317,"y":101200},{"x":1965,"y":116175},{"x":-2327,"y":131293},{"x":-6072,"y":147778},{"x":-8057,"y":171036},{"x":-93408,"y":267406},{"x":-75918,"y":262673},{"x":-97458,"y":235108},{"x":-107996,"y":256850},{"x":-109514,"y":239836},{"x":11411,"y":-3263},{"x":26229,"y":18392},{"x":25005,"y":34392},{"x":15084,"y":89775},{"x":21783,"y":122512},{"x":18939,"y":152221},{"x":25474,"y":177041},{"x":7684,"y":171218},{"x":6882,"y":186881},{"x":38571,"y":-11945},{"x":48084,"y":-26808},{"x":41196,"y":7987},{"x":51849,"y":35755},{"x":28722,"y":100537},{"x":38771,"y":114794},{"x":33708,"y":191118},{"x":67648,"y":-5897},{"x":63112,"y":-42920},{"x":55244,"y":16587},{"x":75668,"y":204099},{"x":64415,"y":189446},{"x":87046,"y":-16171},{"x":82903,"y":-31782},{"x":94445,"y":-41773}],
+      },
+    ],
   },
   {
     id: 140,
@@ -3969,12 +5655,25 @@ export const pals: Pal[] = [
     elements: ["Electric"],
     description: "Some think it is a related species to Ragnahawk, but there is in fact no connection. Using its sharp beak, it descends on its prey in a quick motion that resembles a bolt of lightning.",
     workSuitability: [
+      { type: "Generating Electricity", level: 4 },
+      { type: "Gathering", level: 2 },
+      { type: "Transporting", level: 5 },
     ],
     partnerSkill: { name: "Thunderous", description: "Can be ridden as a flying mount. While mounted, changes the player's attack type to <img id=|ElemIcon_Electric|/>Unknown Status (COMMON_ELEMENT_NAME_Electricity| style=|Elem_Electric) and increases Attack by <Status_Up>{Passive3_EffectValue1}%</>. This Pal’s Movement Speed increases by <Status_Up>{Passive1_EffectValue1}%</> for each other <img id=|ElemIcon_Electric|/>Unknown Status (COMMON_ELEMENT_NAME_Electricity| style=|Elem_Electric) Pal in your party. (Excluding Beakon)" },
     possibleDrops: [
       { resourceId: "electricorgan", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 138,
+        sourceUrl: "https://palworld.th.gl/guides/Beakon",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-5383,"y":-74406},{"x":-5271,"y":-161585},{"x":-3197,"y":258545},{"x":-10239,"y":272447},{"x":-18243,"y":313465},{"x":3602,"y":323867},{"x":-15108,"y":329430},{"x":-10400,"y":354831},{"x":-27201,"y":342412},{"x":-15705,"y":372368},{"x":-2448,"y":378833},{"x":-2144,"y":434371},{"x":-23560,"y":448824},{"x":-1999,"y":455470},{"x":-19695,"y":463774},{"x":-1936,"y":237212},{"x":-48585,"y":256742},{"x":-27027,"y":281446},{"x":-34004,"y":305357},{"x":-33889,"y":375238},{"x":-46753,"y":379393},{"x":-45874,"y":405841},{"x":-34496,"y":390981},{"x":-31255,"y":417135},{"x":-44083,"y":449866},{"x":-48019,"y":464677},{"x":-33058,"y":472302},{"x":-46941,"y":225509},{"x":-70772,"y":277208},{"x":-64828,"y":259825},{"x":-68359,"y":379280},{"x":-54100,"y":359624},{"x":-72296,"y":357854},{"x":-69743,"y":395322},{"x":-61049,"y":408056},{"x":-73744,"y":417045},{"x":-65387,"y":429575},{"x":-66660,"y":445596},{"x":-58837,"y":202025},{"x":-59911,"y":217154},{"x":-61338,"y":234072},{"x":-82798,"y":287790},{"x":-87664,"y":365561},{"x":-93179,"y":384224},{"x":-82494,"y":404388},{"x":-93742,"y":175558},{"x":-79990,"y":185574},{"x":-92615,"y":195094},{"x":-95546,"y":209919},{"x":-107154,"y":369311},{"x":-104180,"y":398828},{"x":-113904,"y":388527},{"x":-108493,"y":172620},{"x":-124931,"y":182282},{"x":-106339,"y":188946},{"x":-119354,"y":198795},{"x":-135082,"y":196254},{"x":-152286,"y":188471},{"x":16242,"y":-71209},{"x":9593,"y":-95637},{"x":25024,"y":-86715},{"x":21632,"y":-115897},{"x":13926,"y":-138406},{"x":9330,"y":-153711},{"x":13315,"y":256973},{"x":25366,"y":301933},{"x":23613,"y":317076},{"x":5482,"y":340746},{"x":29709,"y":344219},{"x":24100,"y":382182},{"x":8779,"y":399989},{"x":8072,"y":415536},{"x":13227,"y":434875},{"x":21654,"y":448126},{"x":8920,"y":466269},{"x":39461,"y":-99174},{"x":39241,"y":-114813},{"x":31229,"y":-129929},{"x":27153,"y":276880},{"x":42499,"y":266817}],
+      },
+    ],
   },
   {
     id: 141,
@@ -3985,6 +5684,9 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "Perfectly adapted to colder environments, it hardly feels the cold despite its slender form. Its diving plunge carries tremendous force, as if a giant icicle were dropping straight from the sky.",
     workSuitability: [
+      { type: "Gathering", level: 2 },
+      { type: "Cooling", level: 5 },
+      { type: "Transporting", level: 5 },
     ],
     partnerSkill: { name: "Coldsnap", description: "Can be ridden as a flying mount. While mounted, changes the player's attack type to <img id=|ElemIcon_Ice|/>Unknown Status (COMMON_ELEMENT_NAME_Ice| style=|Elem_Ice) and increases Attack by <Status_Up>{Passive3_EffectValue1}%</>. This Pal’s Movement Speed increases by <Status_Up>{Passive1_EffectValue1}%</> for each other <img id=|ElemIcon_Ice|/>Unknown Status (COMMON_ELEMENT_NAME_Ice| style=|Elem_Ice) Pal in your party. (Excluding Beakon Cryst)" },
     possibleDrops: [
@@ -4001,13 +5703,25 @@ export const pals: Pal[] = [
     elements: ["Dark", "Water"],
     description: "With its shining lure, it illuminates the darkness. The wandering Pals drawn in by the light stand no chance of escape once spotted by Ghangler. No matter how far, it will keep guiding them until they get home safe and sound.",
     workSuitability: [
+      { type: "Watering", level: 5 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Master of Darkness", description: "Can be ridden to travel on water. This Pal’s Movement Speed increases by <Status_Up>{Passive1_EffectValue1}%</> for each other <img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark) or <img id=|ElemIcon_Water|/>Unknown Status (COMMON_ELEMENT_NAME_Water| style=|Elem_Water) Pal in your party. (Excluding Ghangler)" },
     possibleDrops: [
       { resourceId: "bone", notes: "2-3, 100%" },
       { resourceId: "venom", notes: "2-4, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 17,
+        sourceUrl: "https://palworld.th.gl/guides/Ghangler",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-234163,"y":-201975},{"x":-248516,"y":-208322},{"x":-485476,"y":-265494},{"x":-510261,"y":-210837},{"x":-532481,"y":-160746},{"x":-535869,"y":-176884},{"x":-536925,"y":-212708},{"x":-540458,"y":-192947},{"x":-569576,"y":-395840},{"x":-586402,"y":-398867},{"x":-604611,"y":-402121},{"x":-608894,"y":-418760},{"x":-621758,"y":-401356},{"x":-627883,"y":-417785},{"x":-207324,"y":-248993},{"x":-220270,"y":-258530},{"x":-222075,"y":-186636}],
+      },
+    ],
   },
   {
     id: 143,
@@ -4018,6 +5732,9 @@ export const pals: Pal[] = [
     elements: ["Fire", "Water"],
     description: "Its blazing lure doubles as a grill for roasting prey. Drawn in by the delicious aroma, Pals have no hope of escape once Ghangler Ignis sets its sights on them. In the end, they’re treated to a hearty meal—until everyone’s full.",
     workSuitability: [
+      { type: "Kindling", level: 5 },
+      { type: "Watering", level: 5 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Abyssal Celebrity Chef", description: "Can be ridden to travel on water. This Pal’s Movement Speed increases by <Status_Up>{Passive1_EffectValue1}%</> for each other <img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) or <img id=|ElemIcon_Water|/>Unknown Status (COMMON_ELEMENT_NAME_Water| style=|Elem_Water) Pal in your party. (Excluding Ghangler Ignis)" },
     possibleDrops: [
@@ -4035,12 +5752,23 @@ export const pals: Pal[] = [
     elements: ["Electric"],
     description: "At full speed, it could be mistaken for a bolt of lightning. When two Rayhounds collide, a thunderous roar echoes through the air.",
     workSuitability: [
+      { type: "Generating Electricity", level: 4 },
     ],
     partnerSkill: { name: "Lightning Shepherd", description: "Can be ridden. Can perform a <Status_Keyword>double jump</> while mounted. This Pal’s Movement Speed increases by <Status_Up>{Passive1_EffectValue1}%</> for each other <img id=|ElemIcon_Electric|/>Unknown Status (COMMON_ELEMENT_NAME_Electricity| style=|Elem_Electric) Pal in your party. (Excluding Rayhound)" },
     possibleDrops: [
       { resourceId: "electricorgan", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 145,
+        sourceUrl: "https://palworld.th.gl/guides/Rayhound",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-6471,"y":276678},{"x":-15516,"y":263227},{"x":-21296,"y":300816},{"x":-19835,"y":285418},{"x":-18783,"y":326416},{"x":-1398,"y":323867},{"x":-20626,"y":357098},{"x":-24701,"y":342412},{"x":-21681,"y":372563},{"x":-1198,"y":376668},{"x":-1439,"y":361618},{"x":-16828,"y":408480},{"x":-971,"y":402809},{"x":-10444,"y":387495},{"x":-21991,"y":429818},{"x":356,"y":434371},{"x":-18560,"y":453154},{"x":-948,"y":449477},{"x":-21246,"y":468733},{"x":-4931,"y":465080},{"x":-22261,"y":101876},{"x":-9536,"y":115049},{"x":-12885,"y":130601},{"x":-15178,"y":152760},{"x":-24884,"y":164304},{"x":-9568,"y":226226},{"x":-20029,"y":244229},{"x":-599,"y":248607},{"x":-658834,"y":-265751},{"x":-683571,"y":-260136},{"x":-677051,"y":-277741},{"x":-678384,"y":-292373},{"x":-684183,"y":-306409},{"x":-712733,"y":-254078},{"x":-711155,"y":-271100},{"x":-695169,"y":-320352},{"x":-737996,"y":-255723},{"x":-734183,"y":-274513},{"x":-28473,"y":271917},{"x":-46118,"y":302242},{"x":-40950,"y":323489},{"x":-36573,"y":356737},{"x":-46753,"y":375063},{"x":-40874,"y":405841},{"x":-33246,"y":393146},{"x":-46768,"y":430710},{"x":-37541,"y":460689},{"x":-44501,"y":481311},{"x":-35596,"y":508049},{"x":-28375,"y":492266},{"x":-30109,"y":36630},{"x":-37667,"y":525685},{"x":-38330,"y":541037},{"x":-42119,"y":57545},{"x":-29483,"y":71297},{"x":-28006,"y":86760},{"x":-45153,"y":86916},{"x":-39938,"y":106863},{"x":-45724,"y":152497},{"x":-47752,"y":174982},{"x":-763326,"y":-253617},{"x":-762815,"y":-235489},{"x":-764308,"y":-275152},{"x":-764227,"y":-299071},{"x":-752782,"y":-329210},{"x":-762964,"y":-217213},{"x":-788291,"y":-251455},{"x":-788584,"y":-268984},{"x":-788045,"y":-299497},{"x":-783325,"y":-283676},{"x":-789020,"y":-323230},{"x":-771506,"y":-319336},{"x":-799444,"y":-277717},{"x":-799516,"y":-259188},{"x":-72165,"y":319799},{"x":-73359,"y":379280},{"x":-73546,"y":360020},{"x":-55431,"y":361836},{"x":-78752,"y":407113},{"x":-62299,"y":410221}],
+      },
+    ],
   },
   {
     id: 145,
@@ -4051,12 +5779,23 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "Sprinting across the tundra at full speed kicks up a blinding blizzard, leading to constant Rayhound Cryst collisions due to zero visibility.",
     workSuitability: [
+      { type: "Cooling", level: 3 },
     ],
     partnerSkill: { name: "Snow Shepherd", description: "Can be ridden. Can perform a <Status_Keyword>double jump</> while mounted. While in party, increases Defense of <img id=|ElemIcon_Ice|/>Unknown Status (COMMON_ELEMENT_NAME_Ice| style=|Elem_Ice) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack) {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
       { resourceId: "iceorgan", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 21,
+        sourceUrl: "https://palworld.th.gl/guides/Rayhound%20Cryst",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-6111,"y":12566},{"x":-15001,"y":31581},{"x":-18769,"y":51871},{"x":173,"y":131293},{"x":-3572,"y":147778},{"x":-6807,"y":173201},{"x":8911,"y":-3263},{"x":25105,"y":-6436},{"x":17689,"y":154386},{"x":23607,"y":129709},{"x":24224,"y":179206},{"x":8132,"y":189046},{"x":34311,"y":-19713},{"x":49565,"y":-20157},{"x":50846,"y":-36315},{"x":28732,"y":8635},{"x":34958,"y":193283},{"x":40559,"y":179339},{"x":70738,"y":-40558},{"x":76918,"y":206264},{"x":63085,"y":198090}],
+      },
+    ],
   },
   {
     id: 146,
@@ -4067,13 +5806,25 @@ export const pals: Pal[] = [
     elements: ["Dark", "Ground"],
     description: "Being made of pure energy, its insides are completely hollow. This Pal crams still-living prey into its hollow body, where it absorbs them. Hellish screams of pain can often be heard coming from inside this Pal.",
     workSuitability: [
+      { type: "Lumbering", level: 3 },
+      { type: "Mining", level: 5 },
     ],
     partnerSkill: { name: "Steel Scorpion", description: "While in party, player's Defense increases by <Status_Up>{Passive2_EffectValue1}%</>, and <img id=|ElemIcon_Electric|/>Unknown Status (COMMON_ELEMENT_NAME_Electricity| style=|Elem_Electric) Pals drop <Status_Up>{Passive1_EffectValue1}%</> more items when defeated. (Does not stack)" },
     possibleDrops: [
       { resourceId: "palupgradestone2", notes: "1-2, 100%" },
       { resourceId: "venom", notes: "5-10, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 129,
+        sourceUrl: "https://palworld.th.gl/guides/Menasting",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-6633,"y":-76571},{"x":-10918,"y":-59460},{"x":-5271,"y":-165915},{"x":-2383,"y":282322},{"x":-4447,"y":260710},{"x":-18005,"y":287918},{"x":-15223,"y":306374},{"x":-148,"y":321702},{"x":-25613,"y":328916},{"x":-7900,"y":354831},{"x":-5273,"y":339273},{"x":-22861,"y":347772},{"x":-13205,"y":372368},{"x":-6694,"y":389660},{"x":-13517,"y":403463},{"x":-894,"y":436536},{"x":-17725,"y":424304},{"x":-25390,"y":450654},{"x":-5749,"y":453305},{"x":-4436,"y":237212},{"x":-34521,"y":-171925},{"x":-46413,"y":-183943},{"x":-31504,"y":305357},{"x":-32639,"y":377403},{"x":-44598,"y":370303},{"x":-43879,"y":393718},{"x":-28785,"y":393947},{"x":-38996,"y":412762},{"x":-37191,"y":427929},{"x":-42833,"y":452031},{"x":-39636,"y":468872},{"x":-60938,"y":-125000},{"x":-72131,"y":-148823},{"x":-55280,"y":-142692},{"x":-71756,"y":-167208},{"x":-51629,"y":-168691},{"x":-67109,"y":381446},{"x":-60431,"y":361836},{"x":-71544,"y":366414},{"x":-57172,"y":402555},{"x":-72891,"y":400844},{"x":-71244,"y":417045},{"x":-55503,"y":427875},{"x":-65410,"y":447761},{"x":-99085,"y":-145174},{"x":-76851,"y":-134168},{"x":-85164,"y":365561},{"x":-91929,"y":382059},{"x":-112831,"y":-140082},{"x":-105904,"y":371477},{"x":-101680,"y":398828},{"x":-111404,"y":388527},{"x":-170840,"y":-148708},{"x":9483,"y":-75807},{"x":7093,"y":-95637},{"x":22524,"y":-86715},{"x":19132,"y":-115897},{"x":11426,"y":-138406},{"x":11830,"y":-153711},{"x":9826,"y":271672},{"x":14565,"y":259138},{"x":6361,"y":300321},{"x":18883,"y":284819},{"x":29116,"y":304098},{"x":21113,"y":317076},{"x":17441,"y":329098},{"x":25959,"y":342054},{"x":4954,"y":374881},{"x":24770,"y":379682},{"x":11279,"y":399989},{"x":4336,"y":421988},{"x":24949,"y":432504},{"x":24586,"y":412566},{"x":12289,"y":444374},{"x":9273,"y":459707},{"x":22882,"y":243544},{"x":35711,"y":-101339},{"x":38650,"y":-86549},{"x":37965,"y":-124412},{"x":43749,"y":268982}],
+      },
+    ],
   },
   {
     id: 147,
@@ -4084,13 +5835,25 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "Being made of pure energy, its insides are completely hollow. It stuffs earth and minerals into its outer shell, achieving overwhelming mass. Those who are struck by it can only let out hellish groans.",
     workSuitability: [
+      { type: "Lumbering", level: 3 },
+      { type: "Mining", level: 6 },
     ],
     partnerSkill: { name: "Golden Scorpion", description: "While in party, player's Defense increases by <Status_Up>{Passive2_EffectValue1}%</>, and <img id=|ElemIcon_Electric|/>Unknown Status (COMMON_ELEMENT_NAME_Electricity| style=|Elem_Electric) Pals drop <Status_Up>{Passive1_EffectValue1}%</> more items when defeated. (Does not stack)" },
     possibleDrops: [
       { resourceId: "palupgradestone2", notes: "2-3, 100%" },
       { resourceId: "sapphire", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 3,
+        sourceUrl: "https://palworld.th.gl/guides/Menasting%20Terra",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":149222,"y":456591},{"x":178579,"y":458622},{"x":167598,"y":448934}],
+      },
+    ],
   },
   {
     id: 148,
@@ -4101,12 +5864,25 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "Its spikes react to its emotions. A dearly cherished Needoll is something one may instinctively want to embrace. But more often than not, it ends in a tragic accident.",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Gathering", level: 3 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Hug Me Please", description: "While in party, increases player's and Pals' damage to enemies afflicted with Unknown Status (ADDITIONAL_EFFECT_IvyCling| style=|Effect_IvyCling) by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "fiber", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 70,
+        sourceUrl: "https://palworld.th.gl/guides/Needoll",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-453650,"y":336751},{"x":-441992,"y":347159},{"x":-459604,"y":355930},{"x":-446560,"y":364812},{"x":-8842,"y":257069},{"x":-6398,"y":323867},{"x":-25263,"y":314227},{"x":-6650,"y":356996},{"x":-19021,"y":343963},{"x":-11955,"y":374533},{"x":-15315,"y":457975},{"x":-5686,"y":243707},{"x":-28353,"y":328705},{"x":-44598,"y":365973},{"x":-24025,"y":363709},{"x":-41292,"y":458524},{"x":-30558,"y":472302},{"x":-54042,"y":378678},{"x":-68956,"y":361173},{"x":-82084,"y":365896},{"x":-97436,"y":373273},{"x":-106877,"y":390578},{"x":28592,"y":262785},{"x":22363,"y":324241},{"x":482,"y":340746},{"x":16984,"y":342564},{"x":7918,"y":380916},{"x":21276,"y":377468},{"x":30144,"y":441241},{"x":13539,"y":442209},{"x":14273,"y":454707},{"x":15382,"y":247874},{"x":47499,"y":271147},{"x":27120,"y":306920},{"x":47023,"y":300902},{"x":36257,"y":287403},{"x":47279,"y":328534},{"x":35663,"y":344045},{"x":42868,"y":363998},{"x":74805,"y":286141},{"x":63609,"y":305099},{"x":60637,"y":342157},{"x":61297,"y":365666},{"x":61635,"y":382865},{"x":63930,"y":402451},{"x":58364,"y":418716},{"x":84782,"y":384259},{"x":106363,"y":378996},{"x":120013,"y":296970},{"x":132292,"y":360451},{"x":118913,"y":374543},{"x":129469,"y":394704},{"x":149157,"y":280154},{"x":137210,"y":292168},{"x":154698,"y":302752},{"x":146708,"y":328444},{"x":140854,"y":308642},{"x":133099,"y":342591},{"x":146609,"y":368425},{"x":139875,"y":413703},{"x":142650,"y":384473},{"x":177236,"y":311108},{"x":160837,"y":324922},{"x":181149,"y":331810},{"x":169381,"y":351196},{"x":159473,"y":366288},{"x":162703,"y":383359},{"x":174775,"y":375315},{"x":187851,"y":348768},{"x":222137,"y":305941}],
+      },
+    ],
   },
   {
     id: 149,
@@ -4117,13 +5893,26 @@ export const pals: Pal[] = [
     elements: ["Dark", "Grass"],
     description: "Its spikes react to its emotions. A well-loved Needoll Noct clings to its owner, but accepting that love means accepting the pain too.",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Gathering", level: 3 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Hug You So Much", description: "While in party, the player's attacks inflict Unknown Status (ADDITIONAL_EFFECT_IvyCling| style=|Effect_IvyCling) <Status_Up>{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "fiber", notes: "1-2, 100%" },
       { resourceId: "venom", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 68,
+        sourceUrl: "https://palworld.th.gl/guides/Needoll%20Noct",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-9512,"y":259569},{"x":-5728,"y":321367},{"x":-22763,"y":314227},{"x":-9150,"y":357666},{"x":-17771,"y":341798},{"x":52,"y":374503},{"x":-22931,"y":370398},{"x":-17310,"y":459649},{"x":-947,"y":449477},{"x":-7516,"y":241877},{"x":-29603,"y":330870},{"x":-28590,"y":355995},{"x":-40848,"y":368138},{"x":-38792,"y":458524},{"x":-35846,"y":476074},{"x":-52850,"y":361789},{"x":-51542,"y":378678},{"x":-69216,"y":362520},{"x":-83914,"y":367726},{"x":-93179,"y":379894},{"x":-103404,"y":367146},{"x":-112227,"y":381737},{"x":27922,"y":265285},{"x":19863,"y":323571},{"x":1732,"y":338581},{"x":15734,"y":340399},{"x":15440,"y":377182},{"x":29474,"y":443741},{"x":16109,"y":456086},{"x":13552,"y":246044},{"x":44999,"y":271817},{"x":28370,"y":304754},{"x":45193,"y":302733},{"x":33757,"y":287403},{"x":48405,"y":288373},{"x":36711,"y":324180},{"x":33163,"y":344045},{"x":54127,"y":344884},{"x":30239,"y":375670},{"x":44118,"y":361833},{"x":72809,"y":287815},{"x":62359,"y":302934},{"x":56923,"y":320729},{"x":63797,"y":365666},{"x":59135,"y":382865},{"x":74047,"y":377251},{"x":61430,"y":403121},{"x":59614,"y":416550},{"x":57951,"y":434066},{"x":90677,"y":382256},{"x":119343,"y":294470},{"x":115836,"y":374969},{"x":131622,"y":362951},{"x":127639,"y":396534},{"x":148704,"y":282719},{"x":135960,"y":294333},{"x":153448,"y":304917},{"x":144604,"y":310807},{"x":143237,"y":383009},{"x":137375,"y":413033},{"x":174736,"y":311778},{"x":162087,"y":322757},{"x":180479,"y":334310},{"x":174769,"y":361713},{"x":161453,"y":381194},{"x":189101,"y":346603},{"x":189492,"y":380776},{"x":221685,"y":308506}],
+      },
+    ],
   },
   {
     id: 150,
@@ -4134,6 +5923,8 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "Its transparent cerulean antlers glow with the cold of absolute zero. Any who touch them with their bare hands are instantly frozen and smashed to pieces.",
     workSuitability: [
+      { type: "Lumbering", level: 3 },
+      { type: "Cooling", level: 3 },
     ],
     partnerSkill: { name: "Cool Body", description: "Can be ridden. While in party, the player gains <Status_Keyword>Heat Resistance</> <Status_Keyword>+2</>. (Does not stack) {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
@@ -4142,7 +5933,17 @@ export const pals: Pal[] = [
       { resourceId: "horn", notes: "2-2, 100%" },
       { resourceId: "iceorgan", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 36,
+        sourceUrl: "https://palworld.th.gl/guides/Reindrix",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-4861,"y":10401},{"x":-13751,"y":29416},{"x":-17519,"y":49706},{"x":-22973,"y":120576},{"x":-38032,"y":41546},{"x":-43020,"y":61435},{"x":-30421,"y":71808},{"x":-47889,"y":101594},{"x":-47804,"y":86600},{"x":-30691,"y":91541},{"x":-45088,"y":124588},{"x":-48224,"y":156827},{"x":-39655,"y":175244},{"x":-23758,"y":163194},{"x":-67359,"y":127731},{"x":-67787,"y":111912},{"x":-70915,"y":148513},{"x":-60908,"y":171544},{"x":-92158,"y":265241},{"x":-74668,"y":260508},{"x":-88076,"y":123251},{"x":-104606,"y":150467},{"x":-83746,"y":138961},{"x":-76047,"y":164687},{"x":-96208,"y":232943},{"x":-100421,"y":114501},{"x":-120383,"y":132306},{"x":-106746,"y":254685},{"x":-112014,"y":239836},{"x":10161,"y":-5429},{"x":10603,"y":10090},{"x":37321,"y":-14110},{"x":45584,"y":-26808},{"x":26232,"y":8635},{"x":60612,"y":-42920},{"x":61783,"y":-27731}],
+      },
+    ],
   },
   {
     id: 151,
@@ -4153,6 +5954,10 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "A Pal so powerful it's hard to believe. In one experiment, this Pal tore through 3,000 sheets of paper at once! It's only by some miracle that this Pal isn't a meat-eater.",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Handiwork", level: 2 },
+      { type: "Lumbering", level: 4 },
+      { type: "Transporting", level: 4 },
     ],
     partnerSkill: { name: "Grenadier Panda", description: "Can be ridden. Can rapidly fire a grenade launcher while mounted. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
@@ -4160,7 +5965,17 @@ export const pals: Pal[] = [
       { resourceId: "leather", notes: "2-3, 100%" },
       { resourceId: "carrotseeds", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 51,
+        sourceUrl: "https://palworld.th.gl/guides/Mossanda",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-235726,"y":261681},{"x":-229996,"y":244825},{"x":-64007,"y":262279},{"x":-63579,"y":206958},{"x":-50424,"y":225336},{"x":-91690,"y":289246},{"x":-97489,"y":332917},{"x":-91912,"y":178058},{"x":-97615,"y":195094},{"x":-79855,"y":196784},{"x":-91597,"y":213521},{"x":-119872,"y":269287},{"x":-100666,"y":269029},{"x":-115221,"y":286178},{"x":-118577,"y":308297},{"x":-108533,"y":144851},{"x":-120433,"y":166954},{"x":-108530,"y":177407},{"x":-126181,"y":184447},{"x":-118104,"y":200960},{"x":-107766,"y":219239},{"x":-122771,"y":247353},{"x":-149703,"y":256847},{"x":-142148,"y":270237},{"x":-130627,"y":283856},{"x":-131902,"y":298901},{"x":-150948,"y":311631},{"x":-145095,"y":328138},{"x":-139810,"y":167746},{"x":-143455,"y":202718},{"x":-146945,"y":218185},{"x":-148781,"y":239516},{"x":-174131,"y":260427},{"x":-176372,"y":275790},{"x":-159673,"y":275163},{"x":-166087,"y":293910},{"x":-168714,"y":352204},{"x":-157531,"y":180495},{"x":-166093,"y":197028},{"x":-168929,"y":220109},{"x":-165170,"y":239011},{"x":-199897,"y":257207},{"x":-197807,"y":284602},{"x":-177497,"y":331047},{"x":-200811,"y":220296},{"x":-183447,"y":214386},{"x":-183696,"y":231703},{"x":-186614,"y":247168},{"x":-211485,"y":262906},{"x":-222315,"y":273433},{"x":-209985,"y":239194}],
+      },
+    ],
   },
   {
     id: 152,
@@ -4171,6 +5986,10 @@ export const pals: Pal[] = [
     elements: ["Electric"],
     description: "A Pal whose power is truly shocking. By altering the electrical currents in its body, this Pal's been able to overload its own strength. When it comes to sheer power, this Pal may be top of the list.",
     workSuitability: [
+      { type: "Generating Electricity", level: 4 },
+      { type: "Handiwork", level: 3 },
+      { type: "Lumbering", level: 4 },
+      { type: "Transporting", level: 4 },
     ],
     partnerSkill: { name: "Grenadier Panda", description: "Can be ridden. Can rapidly fire a grenade launcher while mounted. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
@@ -4189,13 +6008,25 @@ export const pals: Pal[] = [
     elements: ["Ice", "Dragon"],
     description: "It can curl up its body and roll around at extremely high speeds. Long ago, people would tie bags of milk to domesticated Chillet as they grazed to produce butter using this spinning force.",
     workSuitability: [
+      { type: "Gathering", level: 1 },
+      { type: "Cooling", level: 2 },
     ],
     partnerSkill: { name: "Wriggling Weasel", description: "Can be ridden. While mounted, changes the player’s attack type to <img id=|ElemIcon_Dragon|/>Unknown Status (COMMON_ELEMENT_NAME_Dragon| style=|Elem_Dragon) and increases Attack by <Status_Up>{Passive2_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "leather", notes: "2-3, 100%" },
       { resourceId: "iceorgan", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 28,
+        sourceUrl: "https://palworld.th.gl/guides/Chillet",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-21011,"y":104041},{"x":-8286,"y":117214},{"x":-24223,"y":122741},{"x":-14017,"y":142042},{"x":-23634,"y":166469},{"x":-28859,"y":38795},{"x":-39619,"y":57545},{"x":-28233,"y":73463},{"x":-43903,"y":89081},{"x":-37438,"y":106863},{"x":-46338,"y":126753},{"x":-44474,"y":154662},{"x":-46502,"y":177147},{"x":-57562,"y":91737},{"x":-68609,"y":129896},{"x":-66857,"y":113955},{"x":-68401,"y":147636},{"x":-69592,"y":169987},{"x":-98332,"y":259985},{"x":-81501,"y":261774},{"x":-89326,"y":125416},{"x":-88128,"y":110273},{"x":-92041,"y":148204},{"x":-80365,"y":160258},{"x":-98705,"y":232943},{"x":-107201,"y":126925},{"x":-121064,"y":145364},{"x":-120329,"y":249760}],
+      },
+    ],
   },
   {
     id: 154,
@@ -4206,13 +6037,25 @@ export const pals: Pal[] = [
     elements: ["Fire", "Dragon"],
     description: "It can curl up its body and roll around so fast that sparks fly. Sparks also fly when it feels excited. If you stroke it too much, this pal will get fired up, literally!",
     workSuitability: [
+      { type: "Kindling", level: 4 },
+      { type: "Gathering", level: 3 },
     ],
     partnerSkill: { name: "Sparkling Weasel", description: "Can be ridden. While mounted, changes the player’s attack type to <img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) and increases Attack by <Status_Up>{Passive2_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "leather", notes: "2-3, 100%" },
       { resourceId: "fireorgan", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 10,
+        sourceUrl: "https://palworld.th.gl/guides/Chillet%20Ignis",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-18238,"y":-99330},{"x":-1436,"y":-98850},{"x":-4539,"y":-126761},{"x":-20678,"y":-126342},{"x":-3911,"y":-142779},{"x":-23765,"y":-141803},{"x":-35893,"y":-126332},{"x":-46618,"y":-115222},{"x":7077,"y":-111748},{"x":13069,"y":-132852}],
+      },
+    ],
   },
   {
     id: 155,
@@ -4223,12 +6066,24 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "Some think it is a related species to Beakon, but there is in fact no connection. It mainly eats rocks, and after many long years its beak and head have hardened to accommodate this diet.",
     workSuitability: [
+      { type: "Kindling", level: 4 },
+      { type: "Transporting", level: 5 },
     ],
     partnerSkill: { name: "Flame Wing", description: "Can be ridden as a flying mount. While mounted, changes the player’s attack type to <img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) and increases Attack by <Status_Up>{Passive2_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "fireorgan", notes: "5-7, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 80,
+        sourceUrl: "https://palworld.th.gl/guides/Ragnahawk",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-254150,"y":-152172},{"x":-234128,"y":-143445},{"x":-250903,"y":-174113},{"x":-248261,"y":-196640},{"x":-237597,"y":-185531},{"x":-283487,"y":-68132},{"x":-269050,"y":-175445},{"x":-282694,"y":-185971},{"x":-277988,"y":-202396},{"x":-266550,"y":-191250},{"x":-260945,"y":-205241},{"x":-299793,"y":-48022},{"x":-301514,"y":-70563},{"x":-307767,"y":-85023},{"x":-288415,"y":-83176},{"x":-289733,"y":-153312},{"x":-286911,"y":-137145},{"x":-297794,"y":-199475},{"x":-305145,"y":-227095},{"x":-288966,"y":-215373},{"x":-335109,"y":-235690},{"x":-322864,"y":-48234},{"x":-330627,"y":-73646},{"x":-317383,"y":-62915},{"x":-321273,"y":-97346},{"x":-310372,"y":-112548},{"x":-328045,"y":-111374},{"x":-327432,"y":-178913},{"x":-313437,"y":-159098},{"x":-331130,"y":-155687},{"x":-314513,"y":-188848},{"x":-332808,"y":-196012},{"x":-320127,"y":-223890},{"x":-355497,"y":-72714},{"x":-336818,"y":-55979},{"x":-344315,"y":-99740},{"x":-358207,"y":-135162},{"x":-357157,"y":-197882},{"x":-340887,"y":-215545},{"x":-376367,"y":-66442},{"x":-361254,"y":-95733},{"x":-375814,"y":-195388},{"x":-378966,"y":-216023},{"x":-402369,"y":-67577},{"x":-404838,"y":-90391},{"x":-385919,"y":-172015},{"x":-402442,"y":-175668},{"x":-404647,"y":-159578},{"x":-391607,"y":-202292},{"x":-423357,"y":-73145},{"x":-436150,"y":-54541},{"x":-419729,"y":-95206},{"x":-436272,"y":-87719},{"x":-412054,"y":-145431},{"x":-420937,"y":-151262},{"x":-430032,"y":-127932},{"x":-426701,"y":-172035},{"x":-424220,"y":-201391},{"x":-456485,"y":-46820},{"x":-463116,"y":-76188},{"x":-450569,"y":-63960},{"x":-455790,"y":-95700},{"x":-452610,"y":-118002},{"x":-438476,"y":-151591},{"x":-447608,"y":-141916},{"x":-451355,"y":-175869},{"x":-450862,"y":-156089},{"x":-436798,"y":-200495},{"x":-480110,"y":-99537},{"x":-477258,"y":-125557},{"x":-464742,"y":-109053},{"x":-463863,"y":-153027},{"x":-478218,"y":-141326},{"x":-461459,"y":-130952},{"x":-667391,"y":-171970},{"x":-674672,"y":-188400},{"x":-689291,"y":-204081},{"x":-709168,"y":-201786},{"x":-714399,"y":-218402},{"x":-727249,"y":-208066}],
+      },
+    ],
   },
   {
     id: 156,
@@ -4239,13 +6094,25 @@ export const pals: Pal[] = [
     elements: ["Fire", "Ground"],
     description: "In a healthy individual, the lava on its back flows smoothly. However, a poor lifestyle will gradually worsen its circulation, eventually causing a lava clog that results in a sudden, massive explosion.",
     workSuitability: [
+      { type: "Kindling", level: 5 },
+      { type: "Mining", level: 5 },
     ],
     partnerSkill: { name: "Magma Overload", description: "Can be ridden as a mount. This Pal's Attack increases by <Status_Up>{Passive1_EffectValue1}%</> for each other <img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) or <img id=|ElemIcon_Ground|/>Unknown Status (COMMON_ELEMENT_NAME_Earth| style=|Elem_Ground) Pal in your party." },
     possibleDrops: [
       { resourceId: "fireorgan", notes: "4-5, 100%" },
       { resourceId: "leather", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 22,
+        sourceUrl: "https://palworld.th.gl/guides/Moldron",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-282237,"y":-70297},{"x":-301043,"y":-45857},{"x":-299014,"y":-70563},{"x":-309017,"y":-87188},{"x":-324114,"y":-50399},{"x":-331877,"y":-75811},{"x":-318633,"y":-65080},{"x":-322523,"y":-99512},{"x":-356747,"y":-70549},{"x":-344048,"y":-88343},{"x":-377617,"y":-68607},{"x":-988533,"y":-361391},{"x":-988026,"y":-378240},{"x":-986512,"y":-400953},{"x":-1018073,"y":-344289},{"x":-1021875,"y":-375971},{"x":-1005175,"y":-360325},{"x":-1005641,"y":-380899},{"x":-1019988,"y":-393104},{"x":-1025077,"y":-357729},{"x":-1040261,"y":-351913},{"x":-1038750,"y":-371398}],
+      },
+    ],
   },
   {
     id: 157,
@@ -4256,6 +6123,8 @@ export const pals: Pal[] = [
     elements: ["Ice", "Ground"],
     description: "In a healthy individual, the substance flowing along its back maintains a stable temperature. However, if its heartbeat quickens, the temperature destabilizes, eventually triggering vaporization or crystallization that results in a sudden, abrupt death from shock.",
     workSuitability: [
+      { type: "Mining", level: 5 },
+      { type: "Cooling", level: 5 },
     ],
     partnerSkill: { name: "Ice Overload", description: "Can be ridden. While in party, improves player's and Pals' <img id=|ElemIcon_Ice|/>Unknown Status (COMMON_ELEMENT_NAME_Ice| style=|Elem_Ice) damage to enemy weak points by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -4273,6 +6142,9 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "Disrupts enemies’ rhythm with a signature dance. In turf battles, the first to fall in sync with the other’s rhythm loses. Courtship, boredom, battle—it all comes down to dance! Now then, what could a dance aimed at a human possibly mean?",
     workSuitability: [
+      { type: "Planting", level: 4 },
+      { type: "Gathering", level: 4 },
+      { type: "Mining", level: 5 },
     ],
     partnerSkill: { name: "Samba Step", description: "Can be ridden. Movement Speed is increased by <Status_Up>{Passive1_EffectValue1}%</> while mounted <Status_Keyword>on grass</>." },
     possibleDrops: [
@@ -4280,7 +6152,17 @@ export const pals: Pal[] = [
       { resourceId: "onionseeds", notes: "1-2, 100%" },
       { resourceId: "carrotseeds", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 11,
+        sourceUrl: "https://palworld.th.gl/guides/Palumba",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-22080,"y":562690},{"x":-495910,"y":-38595},{"x":-36841,"y":566396},{"x":22644,"y":357052},{"x":7223,"y":363445},{"x":19685,"y":371859},{"x":150458,"y":330609},{"x":136849,"y":344756},{"x":147033,"y":367097},{"x":169191,"y":338636},{"x":168661,"y":357190}],
+      },
+    ],
   },
   {
     id: 159,
@@ -4291,11 +6173,22 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "A Digtoise possessing the strongest shell and the only drill capable of piercing it, ponders the contradictions of the world in the popular children's tale, |Digtoise's Fable|.",
     workSuitability: [
+      { type: "Mining", level: 4 },
     ],
     partnerSkill: { name: "Drill Crusher", description: "When activated, enters the Unique_DrillGame_ShellAttack| style=|Status_Keyword state. Follows the player while spinning, increasing ore mining efficiency by <Status_Up>{ReferencePassive1_EffectValue1}%</>." },
     possibleDrops: [
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 133,
+        sourceUrl: "https://palworld.th.gl/guides/Digtoise",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-451150,"y":336751},{"x":-437545,"y":347235},{"x":-457104,"y":355930},{"x":-4883,"y":282322},{"x":-5697,"y":258545},{"x":-19835,"y":289748},{"x":-15743,"y":313465},{"x":2932,"y":326367},{"x":-12608,"y":329430},{"x":-11650,"y":352666},{"x":-25951,"y":340247},{"x":-16955,"y":370203},{"x":-3698,"y":376668},{"x":-14421,"y":393737},{"x":-23658,"y":410980},{"x":-3471,"y":402809},{"x":-894,"y":432206},{"x":-12419,"y":426770},{"x":-21060,"y":448154},{"x":-2669,"y":457970},{"x":-17195,"y":463774},{"x":1814,"y":239377},{"x":-35254,"y":303192},{"x":-30347,"y":318772},{"x":-35139,"y":373073},{"x":-38275,"y":387802},{"x":-47124,"y":408006},{"x":-46331,"y":424543},{"x":-30916,"y":425665},{"x":-42833,"y":447701},{"x":-45519,"y":464677},{"x":-35846,"y":480404},{"x":-67109,"y":377115},{"x":-51600,"y":359624},{"x":-68546,"y":360020},{"x":-74461,"y":394249},{"x":-67224,"y":412657},{"x":-66637,"y":431740},{"x":-58116,"y":449043},{"x":-88914,"y":363396},{"x":-95679,"y":384224},{"x":-105904,"y":367146},{"x":-102930,"y":400993},{"x":-115154,"y":386362},{"x":-155034,"y":50506},{"x":-155478,"y":70502},{"x":-142466,"y":80106},{"x":-155940,"y":91200},{"x":-156036,"y":111364},{"x":-180604,"y":80763},{"x":-177193,"y":98647},{"x":-179550,"y":123211},{"x":-200889,"y":80852},{"x":-198023,"y":95608},{"x":-192850,"y":110539},{"x":12326,"y":271672},{"x":4762,"y":293853},{"x":23337,"y":293957},{"x":12782,"y":308145},{"x":24272,"y":331026},{"x":11246,"y":342815},{"x":22270,"y":384012},{"x":22204,"y":400563},{"x":10572,"y":415536},{"x":21199,"y":434669},{"x":19859,"y":453921},{"x":10637,"y":252412},{"x":28403,"y":279045},{"x":43749,"y":264652},{"x":26533,"y":259132},{"x":41443,"y":300568},{"x":50905,"y":288373},{"x":42279,"y":324204},{"x":36327,"y":360836},{"x":45280,"y":341278},{"x":51590,"y":381008},{"x":36565,"y":394227},{"x":45871,"y":414948},{"x":35292,"y":432675},{"x":41028,"y":479323}],
+      },
+    ],
   },
   {
     id: 160,
@@ -4306,13 +6199,24 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "Its scent drastically changes before and after pairing. It exudes a pleasing aroma after finding a partner, which is called the |Fragrance of First Love.|",
     workSuitability: [
+      { type: "Planting", level: 5 },
     ],
     partnerSkill: { name: "Love's First Blossom", description: "Can be ridden. While in party, Pal Eggs you pick up have a <Status_Up>{Passive1_EffectValue1}%</> chance of becoming an Alpha Pal Egg. (Does not stack)" },
     possibleDrops: [
       { resourceId: "meat-sakurasaurus", notes: "2-2, 100%" },
       { resourceId: "onionseeds", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 88,
+        sourceUrl: "https://palworld.th.gl/guides/Broncherry",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-255855,"y":1671},{"x":-243354,"y":-12461},{"x":-235709,"y":980},{"x":-251079,"y":24114},{"x":-231511,"y":18113},{"x":-249602,"y":313097},{"x":-235968,"y":326160},{"x":-251867,"y":336932},{"x":-232425,"y":365242},{"x":-242467,"y":380104},{"x":-231066,"y":395330},{"x":-251740,"y":40205},{"x":-234101,"y":34246},{"x":-248978,"y":55251},{"x":-230294,"y":56400},{"x":-253545,"y":124041},{"x":-231880,"y":121898},{"x":-257190,"y":142444},{"x":-238664,"y":135727},{"x":-246426,"y":153031},{"x":-230861,"y":150039},{"x":-255687,"y":169576},{"x":-239346,"y":168689},{"x":-242981,"y":183321},{"x":-245936,"y":199655},{"x":-229307,"y":199767},{"x":-238832,"y":216312},{"x":-272621,"y":12986},{"x":-276289,"y":330859},{"x":-265992,"y":342895},{"x":-268350,"y":29104},{"x":-277444,"y":43828},{"x":-274282,"y":70558},{"x":-278306,"y":88148},{"x":-278438,"y":102276},{"x":-270305,"y":122930},{"x":-275476,"y":140383},{"x":-280000,"y":155674},{"x":-264241,"y":156103},{"x":-266736,"y":176539},{"x":-289500,"y":24699},{"x":-307895,"y":27633},{"x":-305204,"y":65293},{"x":-288398,"y":76624},{"x":-305654,"y":103501},{"x":-304860,"y":80487},{"x":-292441,"y":95086},{"x":-290073,"y":117087},{"x":-329332,"y":71152},{"x":-321360,"y":84804},{"x":-331986,"y":101751},{"x":-326071,"y":118347},{"x":-308052,"y":120781},{"x":-345907,"y":106109},{"x":-101462,"y":294373},{"x":-123684,"y":292775},{"x":-149727,"y":292069},{"x":-150478,"y":363388},{"x":-177642,"y":-13450},{"x":-175103,"y":2195},{"x":-179293,"y":332242},{"x":-172970,"y":354389},{"x":-178952,"y":372953},{"x":-161218,"y":378096},{"x":-175754,"y":389534},{"x":-154463,"y":394584},{"x":-165038,"y":409284},{"x":-197722,"y":-18790},{"x":-199585,"y":-1376},{"x":-201540,"y":21813},{"x":-185937,"y":14273},{"x":-201127,"y":320528},{"x":-198447,"y":337282},{"x":-203820,"y":355879},{"x":-200333,"y":372970},{"x":-196794,"y":389105},{"x":-202188,"y":407436},{"x":-185102,"y":412716},{"x":-202297,"y":147203},{"x":-220990,"y":-13419}],
+      },
+    ],
   },
   {
     id: 161,
@@ -4323,13 +6227,24 @@ export const pals: Pal[] = [
     elements: ["Grass", "Water"],
     description: "Its scent drastically changes before and after pairing. It exudes a pleasing aroma before finding a partner, which is called the |Perfume of Purity.|",
     workSuitability: [
+      { type: "Watering", level: 5 },
     ],
     partnerSkill: { name: "Purity's Full Bloom", description: "Can be ridden. While in party, Pal Eggs you pick up have a <Status_Up>{Passive1_EffectValue1}%</> chance of becoming an Alpha Pal Egg. (Does not stack)" },
     possibleDrops: [
       { resourceId: "meat-sakurasaurus", notes: "2-2, 100%" },
       { resourceId: "onionseeds", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 3,
+        sourceUrl: "https://palworld.th.gl/guides/Broncherry%20Aqua",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-116420,"y":285224},{"x":-153171,"y":287180},{"x":-140332,"y":295995}],
+      },
+    ],
   },
   {
     id: 162,
@@ -4340,13 +6255,27 @@ export const pals: Pal[] = [
     elements: ["Ground", "Water"],
     description: "When too relaxed, its reaction time drastically declines. Even if it were sliced from head to tail, it probably wouldn't even realize that it should be dead until the next morning.",
     workSuitability: [
+      { type: "Watering", level: 2 },
+      { type: "Mining", level: 2 },
+      { type: "Transporting", level: 1 },
+      { type: "Farming", level: 1 },
     ],
     partnerSkill: { name: "Soil Improver", description: "While in party, increases Attack of <img id=|ElemIcon_Ground|/>Unknown Status (COMMON_ELEMENT_NAME_Earth| style=|Elem_Ground) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack) Sometimes drops paloil| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "meat-lazycatfish", notes: "2-2, 100%" },
       { resourceId: "paloil", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 81,
+        sourceUrl: "https://palworld.th.gl/guides/Dumud",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-251955,"y":-33962},{"x":-231663,"y":-201975},{"x":-246151,"y":-206960},{"x":-236976,"y":259516},{"x":-232623,"y":277842},{"x":-255543,"y":62529},{"x":-231246,"y":242660},{"x":-267266,"y":-25063},{"x":-281441,"y":28293},{"x":-276194,"y":45993},{"x":-273032,"y":72723},{"x":-278175,"y":93901},{"x":-279884,"y":109855},{"x":-306487,"y":-232557},{"x":-282439,"y":-24424},{"x":-297805,"y":-13190},{"x":-305395,"y":27633},{"x":-302733,"y":61874},{"x":-282377,"y":62748},{"x":-293520,"y":73927},{"x":-295989,"y":91148},{"x":-323273,"y":-235769},{"x":-329773,"y":11254},{"x":-311852,"y":10814},{"x":-356352,"y":-223959},{"x":-344815,"y":18551},{"x":-379515,"y":-66408},{"x":-371505,"y":-222686},{"x":-359857,"y":16938},{"x":-383523,"y":13580},{"x":-401162,"y":-738},{"x":-396789,"y":-62912},{"x":-407338,"y":-90391},{"x":-404272,"y":-173838},{"x":-399066,"y":-154913},{"x":-406629,"y":-208864},{"x":-387476,"y":-221927},{"x":-420667,"y":-4752},{"x":-429004,"y":-21328},{"x":-425857,"y":-73145},{"x":-430570,"y":-49876},{"x":-422229,"y":-95206},{"x":-415804,"y":-143266},{"x":-428683,"y":-152550},{"x":-431862,"y":-126102},{"x":-429201,"y":-172035},{"x":-413862,"y":-162282},{"x":-434590,"y":-204495},{"x":-417464,"y":-197209},{"x":-430445,"y":-187845},{"x":-450830,"y":-46740},{"x":-459366,"y":-78353},{"x":-443031,"y":-63098},{"x":-458045,"y":-62763},{"x":-433547,"y":-102322},{"x":-458290,"y":-95700},{"x":-438463,"y":-86912},{"x":-455110,"y":-118002},{"x":-440787,"y":-142987},{"x":-457504,"y":-140828},{"x":-459274,"y":-176796},{"x":-452112,"y":-153924},{"x":-445193,"y":-193044},{"x":-478860,"y":-101702},{"x":-475609,"y":-80592},{"x":-476007,"y":-123392},{"x":-473901,"y":-151867},{"x":-151284,"y":48341},{"x":-150102,"y":65263},{"x":-150143,"y":80372},{"x":-151071,"y":96313},{"x":-152286,"y":109199},{"x":-176854,"y":78598},{"x":-180943,"y":96481},{"x":-175938,"y":111473},{"x":-197139,"y":78687},{"x":-196773,"y":97773},{"x":-190997,"y":115492},{"x":-220825,"y":-188801},{"x":-215235,"y":265071}],
+      },
+    ],
   },
   {
     id: 163,
@@ -4357,6 +6286,10 @@ export const pals: Pal[] = [
     elements: ["Ground", "Water"],
     description: "Its body reflects light with astounding clarity. Even more shocking, its reflexes are somehow even slower than Dumud.",
     workSuitability: [
+      { type: "Watering", level: 2 },
+      { type: "Mining", level: 2 },
+      { type: "Transporting", level: 1 },
+      { type: "Farming", level: 4 },
     ],
     partnerSkill: { name: "Golden Harvest", description: "While in party, increases amount of Gold Coin dropped by enemies by <Status_Up>+{Passive1_EffectValue1}%</>. Sometimes drops paloil| style=|status_keyword when assigned to Ranch, with a small chance to drop money| style=|status_keyword. (Does not stack)" },
     possibleDrops: [
@@ -4364,7 +6297,17 @@ export const pals: Pal[] = [
       { resourceId: "paloil", notes: "1-1, 100%" },
       { resourceId: "money", notes: "100-200, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 43,
+        sourceUrl: "https://palworld.th.gl/guides/Dumud%20Gild",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-253205,"y":-31797},{"x":-229163,"y":-201975},{"x":-243651,"y":-206960},{"x":-268516,"y":-22898},{"x":-303987,"y":-232557},{"x":-299055,"y":-11025},{"x":-280253,"y":-17177},{"x":-320773,"y":-235769},{"x":-327273,"y":11254},{"x":-309352,"y":10814},{"x":-353852,"y":-223959},{"x":-342315,"y":18551},{"x":-369005,"y":-222686},{"x":-357357,"y":16938},{"x":-381023,"y":13580},{"x":-398662,"y":-738},{"x":-384767,"y":-222773},{"x":-397347,"y":-213137},{"x":-418167,"y":-4752},{"x":-433844,"y":-11176},{"x":-434830,"y":-28551},{"x":-432090,"y":-204495},{"x":-448330,"y":-46740},{"x":-460098,"y":-108463},{"x":-456774,"y":-176796},{"x":-442693,"y":-193044},{"x":-470140,"y":-73256},{"x":-476360,"y":-101702},{"x":-473507,"y":-123392},{"x":-471401,"y":-151867},{"x":-14741,"y":-60847},{"x":-1701,"y":-74284},{"x":-218325,"y":-188801},{"x":18923,"y":-76691},{"x":2183,"y":-88590},{"x":17629,"y":-91782},{"x":27666,"y":-106495},{"x":19080,"y":-149294},{"x":23722,"y":-129158},{"x":10302,"y":-162906},{"x":36708,"y":-80569},{"x":43813,"y":-106804},{"x":40046,"y":-122143}],
+      },
+    ],
   },
   {
     id: 164,
@@ -4375,6 +6318,9 @@ export const pals: Pal[] = [
     elements: ["Grass", "Ground"],
     description: "Its breath carries a miraculous, pollen-like substance that pollinates any plant it touches. For plant-based Pals, being near it can be a bit… complicated.",
     workSuitability: [
+      { type: "Planting", level: 5 },
+      { type: "Gathering", level: 5 },
+      { type: "Mining", level: 3 },
     ],
     partnerSkill: { name: "Balmy Weather", description: "Can be ridden. While in your base, increases the egg production speed of Pals assigned to Breeding Farm by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -4383,7 +6329,17 @@ export const pals: Pal[] = [
       { resourceId: "lettuceseeds", notes: "1-2, 50%" },
       { resourceId: "tomatoseeds", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 40,
+        sourceUrl: "https://palworld.th.gl/guides/Braloha",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-382477,"y":75700},{"x":-382526,"y":118008},{"x":-363872,"y":118070},{"x":-405972,"y":75854},{"x":-406142,"y":93709},{"x":-386369,"y":91832},{"x":-406112,"y":123968},{"x":-399287,"y":109753},{"x":-432390,"y":86305},{"x":-421035,"y":101975},{"x":-458225,"y":72935},{"x":-445605,"y":55970},{"x":-456520,"y":90590},{"x":-23330,"y":564855},{"x":-38091,"y":568561},{"x":-88893,"y":-1422},{"x":-103762,"y":14084},{"x":-88027,"y":17292},{"x":-104653,"y":38225},{"x":-84124,"y":34401},{"x":-129503,"y":-12349},{"x":-114811,"y":-6525},{"x":-130293,"y":-37888},{"x":-114820,"y":-48611},{"x":-129997,"y":-63212},{"x":-118233,"y":-75589},{"x":-118075,"y":-94495},{"x":-117428,"y":11918},{"x":-114606,"y":29695},{"x":-128026,"y":41946},{"x":-154292,"y":-32344},{"x":-141240,"y":-45517},{"x":-154850,"y":-63749},{"x":21394,"y":359217},{"x":5973,"y":365610},{"x":147958,"y":330609},{"x":134349,"y":344756},{"x":144533,"y":367097},{"x":167941,"y":340801},{"x":167411,"y":359355}],
+      },
+    ],
   },
   {
     id: 165,
@@ -4394,13 +6350,24 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "Despite its appearance, Kitsun is extremely sensitive and will flee into a cave when spooked. Long ago, it was considered an ill omen if one ran away from you.",
     workSuitability: [
+      { type: "Kindling", level: 3 },
     ],
     partnerSkill: { name: "Wolf of the Sun", description: "Can be ridden. While in party, player and party Pals take <Status_Up>{Passive1_EffectValue1}%</> less <img id=|ElemIcon_Ice|/>Unknown Status (COMMON_ELEMENT_NAME_Ice| style=|Elem_Ice) damage and are immune to Unknown Status (ADDITIONAL_EFFECT_Freeze| style=|Effect_Freeze). (Does not stack) {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
       { resourceId: "fireorgan", notes: "2-3, 100%" },
       { resourceId: "leather", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 8,
+        sourceUrl: "https://palworld.th.gl/guides/Kitsun",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-97158,"y":265241},{"x":-79004,"y":261774},{"x":-101208,"y":232943},{"x":-81595,"y":236201},{"x":-111746,"y":254685},{"x":-115071,"y":238690},{"x":-173850,"y":-135885},{"x":-162078,"y":-147067}],
+      },
+    ],
   },
   {
     id: 166,
@@ -4411,6 +6378,7 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Despite its appearance, Kitsun Noct is extremely sensitive and will flee into a cave when spooked. It has become quite gloomy from being a shut-in for too long.",
     workSuitability: [
+      { type: "Kindling", level: 4 },
     ],
     partnerSkill: { name: "Gloomhowl", description: "Can be ridden. While in party, player and party Pals take <Status_Up>{Passive1_EffectValue1}%</> less <img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark) damage and are immune to Unknown Status (ADDITIONAL_EFFECT_Darkness| style=|Effect_Darkness). (Does not stack) {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
@@ -4418,7 +6386,17 @@ export const pals: Pal[] = [
       { resourceId: "leather", notes: "2-3, 100%" },
       { resourceId: "paldarkparts", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 68,
+        sourceUrl: "https://palworld.th.gl/guides/Kitsun%20Noct",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-541640,"y":-306591},{"x":-545298,"y":-290433},{"x":-561402,"y":-289494},{"x":-553136,"y":-320970},{"x":-549477,"y":-356317},{"x":-561905,"y":-346062},{"x":-544513,"y":-380371},{"x":-559212,"y":-371318},{"x":-558290,"y":-386546},{"x":-573425,"y":-303195},{"x":-575381,"y":-324671},{"x":-574496,"y":-346645},{"x":-587593,"y":-355400},{"x":-576117,"y":-366896},{"x":-574243,"y":-383423},{"x":-588701,"y":-391346},{"x":-606215,"y":-302276},{"x":-589480,"y":-313732},{"x":-593813,"y":-328779},{"x":-612034,"y":-320691},{"x":-603060,"y":-345622},{"x":-605914,"y":-362253},{"x":-594205,"y":-375258},{"x":-607238,"y":-382998},{"x":-624566,"y":-258122},{"x":-622497,"y":-276170},{"x":-638840,"y":-274664},{"x":-628556,"y":-329627},{"x":-627459,"y":-353603},{"x":-634367,"y":-368864},{"x":-631153,"y":-386940},{"x":-635444,"y":-404057},{"x":-634673,"y":-419383},{"x":-643890,"y":-250204},{"x":-657692,"y":-241412},{"x":-654488,"y":-262589},{"x":-645158,"y":-331494},{"x":-660405,"y":-340985},{"x":-645879,"y":-352710},{"x":-645785,"y":-379861},{"x":-657351,"y":-366706},{"x":-650967,"y":-405093},{"x":-653027,"y":-422175},{"x":-673737,"y":-249860},{"x":-688094,"y":-232243},{"x":-668165,"y":-230651},{"x":-668641,"y":-433302},{"x":-694069,"y":-249389},{"x":-703687,"y":-237813},{"x":-713612,"y":-330789},{"x":-710667,"y":-351636},{"x":-697442,"y":-218839},{"x":-721283,"y":-230997},{"x":-737855,"y":-231432},{"x":-741313,"y":-299190},{"x":-741956,"y":-320236},{"x":-724340,"y":-314943},{"x":-720244,"y":-368308},{"x":-728722,"y":-382186},{"x":-739417,"y":-394280},{"x":-740858,"y":-216148},{"x":-756112,"y":-305045},{"x":-758812,"y":-327497},{"x":-758069,"y":-342486},{"x":-759173,"y":-399276},{"x":-763064,"y":-419282},{"x":-790002,"y":-332229},{"x":-775587,"y":-324347}],
+      },
+    ],
   },
   {
     id: 167,
@@ -4429,12 +6407,24 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "While it prefers raw meat, it always ends up eating well-done meat. This is due to its blistering claws, which it uses as its weapon—it simply doesn't realize its prey gets burned to a crisp.",
     workSuitability: [
+      { type: "Kindling", level: 5 },
+      { type: "Lumbering", level: 3 },
     ],
     partnerSkill: { name: "Hellflame Lion", description: "Can be ridden. While in party, <img id=|ElemIcon_Grass|/>Unknown Status (COMMON_ELEMENT_NAME_Leaf| style=|Elem_Grass) Pals drop <Status_Up>{Passive1_EffectValue1}%</> more items when defeated. (Does not stack)" },
     possibleDrops: [
       { resourceId: "fireorgan", notes: "3-5, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 37,
+        sourceUrl: "https://palworld.th.gl/guides/Blazehowl",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-254150,"y":-147842},{"x":-237209,"y":-148110},{"x":-250903,"y":-169783},{"x":-248261,"y":-192310},{"x":-279737,"y":-70297},{"x":-266524,"y":-175041},{"x":-264894,"y":-190142},{"x":-278944,"y":-188136},{"x":-303543,"y":-45857},{"x":-296592,"y":-76022},{"x":-289733,"y":-148982},{"x":-299365,"y":-161622},{"x":-291966,"y":-198132},{"x":-303895,"y":-224930},{"x":-285216,"y":-213208},{"x":-333859,"y":-233525},{"x":-322864,"y":-52564},{"x":-320426,"y":-36948},{"x":-309033,"y":-65842},{"x":-316786,"y":-159924},{"x":-329880,"y":-157853},{"x":-332808,"y":-191682},{"x":-314111,"y":-188848},{"x":-327621,"y":-213387},{"x":-358207,"y":-130832},{"x":-356496,"y":-201147},{"x":-339057,"y":-217375},{"x":-375814,"y":-191058},{"x":-378966,"y":-211693},{"x":-385919,"y":-167685},{"x":-397297,"y":-203001},{"x":-664891,"y":-171970},{"x":-672172,"y":-188400},{"x":-686791,"y":-204081},{"x":-706668,"y":-201786},{"x":-711899,"y":-218402},{"x":-724749,"y":-208066}],
+      },
+    ],
   },
   {
     id: 168,
@@ -4445,12 +6435,24 @@ export const pals: Pal[] = [
     elements: ["Fire", "Dark"],
     description: "While it prefers raw meat, it always ends up eating tainted meat. This is due to its dark claws, which it uses as its weapon—it simply doesn't realize its prey gets cursed.",
     workSuitability: [
+      { type: "Kindling", level: 5 },
+      { type: "Lumbering", level: 3 },
     ],
     partnerSkill: { name: "Darkflame Lion", description: "Can be ridden. While in party, <img id=|ElemIcon_Neutral|/>Unknown Status (COMMON_ELEMENT_NAME_Normal| style=|Elem_Neutral) Pals drop <Status_Up>{Passive1_EffectValue1}%</> more items when defeated. (Does not stack)" },
     possibleDrops: [
       { resourceId: "fireorgan", notes: "2-4, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 169,
+        sourceUrl: "https://palworld.th.gl/guides/Blazehowl%20Noct",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-256219,"y":-42644},{"x":-227236,"y":-72728},{"x":-240274,"y":-57213},{"x":-235164,"y":-91508},{"x":-245046,"y":-125196},{"x":-232564,"y":-106828},{"x":-239709,"y":-143780},{"x":-244653,"y":-171948},{"x":-242011,"y":-194475},{"x":-257873,"y":-20773},{"x":-278512,"y":-17075},{"x":-274434,"y":-40353},{"x":-262157,"y":-68840},{"x":-275360,"y":-75968},{"x":-279214,"y":-58807},{"x":-267424,"y":-92124},{"x":-259699,"y":-148844},{"x":-258433,"y":-178326},{"x":-276298,"y":-174034},{"x":-282694,"y":-190301},{"x":-264878,"y":-197336},{"x":-273922,"y":-211834},{"x":-293276,"y":-24799},{"x":-302027,"y":-47073},{"x":-296592,"y":-71692},{"x":-305267,"y":-89354},{"x":-280854,"y":-117206},{"x":-283483,"y":-151147},{"x":-299365,"y":-165952},{"x":-296544,"y":-197310},{"x":-303810,"y":-227441},{"x":-292732,"y":-214636},{"x":-333949,"y":-233762},{"x":-333728,"y":-16676},{"x":-307671,"y":-16284},{"x":-326249,"y":-1366},{"x":-319114,"y":-50399},{"x":-330064,"y":-35719},{"x":-328127,"y":-77977},{"x":-318773,"y":-101677},{"x":-329932,"y":-178913},{"x":-320536,"y":-157759},{"x":-315763,"y":-186683},{"x":-326558,"y":-193847},{"x":-324856,"y":-215457},{"x":-355866,"y":-17263},{"x":-342383,"y":-1824},{"x":-356519,"y":-31723},{"x":-355822,"y":-49666},{"x":-346324,"y":-73066},{"x":-333683,"y":-56580},{"x":-342798,"y":-86178},{"x":-357079,"y":-80162},{"x":-350863,"y":-118234},{"x":-335115,"y":-108113},{"x":-355707,"y":-135162},{"x":-348441,"y":-196163},{"x":-344637,"y":-217710},{"x":-356535,"y":9441},{"x":-375565,"y":-24514},{"x":-381066,"y":-10024},{"x":-373867,"y":-70772},{"x":-369257,"y":-55848},{"x":-358832,"y":-95783},{"x":-370688,"y":-112138},{"x":-369564,"y":-193223},{"x":-372716,"y":-213858},{"x":-359715,"y":-221562},{"x":-379535,"y":9906},{"x":-405719,"y":-15471},{"x":-402970,"y":-31141},{"x":-396119,"y":-65412},{"x":-409340,"y":-88560},{"x":-409272,"y":-178168},{"x":-379669,"y":-169850},{"x":-398397,"y":-157413},{"x":-391607,"y":-206622},{"x":-393270,"y":-180497},{"x":-425897,"y":-7975},{"x":-430372,"y":-34369}],
+      },
+    ],
   },
   {
     id: 169,
@@ -4461,12 +6463,26 @@ export const pals: Pal[] = [
     elements: ["Ground", "Grass"],
     description: "The ultra-hard armor surrounding its body is extremely strong and heat resistant. Even a napalm blast would hardly leave a scratch.",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Handiwork", level: 3 },
+      { type: "Lumbering", level: 4 },
+      { type: "Transporting", level: 5 },
     ],
     partnerSkill: { name: "Cast-Iron Shell", description: "While in your party, <Status_Keyword>generates a barrier</> around the player after 5 melee hits are landed within <Status_Up>{Passive1_EffectValue1} seconds</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "honey", notes: "3-4, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 7,
+        sourceUrl: "https://palworld.th.gl/guides/Warsect",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-126529,"y":215605},{"x":-127407,"y":244840},{"x":-150279,"y":200395},{"x":-152876,"y":230695},{"x":-143436,"y":242920},{"x":-178340,"y":-148708},{"x":-170936,"y":218233}],
+      },
+    ],
   },
   {
     id: 170,
@@ -4477,12 +6493,25 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "The ultra-hard armor surrounding its body is extremely strong and heat resistant. It doesn't flinch even if a Mammorest steps on it.",
     workSuitability: [
+      { type: "Handiwork", level: 2 },
+      { type: "Mining", level: 5 },
+      { type: "Transporting", level: 5 },
     ],
     partnerSkill: { name: "Fullmetal Shell", description: "While in your party, <Status_Keyword>generates a barrier</> around the player after 5 melee hits are landed within <Status_Up>{Passive1_EffectValue1}</> seconds. (Does not stack)" },
     possibleDrops: [
       { resourceId: "honey", notes: "3-4, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 29,
+        sourceUrl: "https://palworld.th.gl/guides/Warsect%20Terra",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-660084,"y":-263586},{"x":-649093,"y":-280848},{"x":-662601,"y":-288521},{"x":-684821,"y":-257971},{"x":-674001,"y":-273029},{"x":-679634,"y":-290208},{"x":-675006,"y":-305963},{"x":-689714,"y":-315964},{"x":-712301,"y":-247087},{"x":-712405,"y":-273265},{"x":-736965,"y":-245914},{"x":-741971,"y":-267605},{"x":-722052,"y":-258745},{"x":-764591,"y":-239348},{"x":-759718,"y":-253711},{"x":-765558,"y":-277317},{"x":-765477,"y":-301236},{"x":-753998,"y":-290053},{"x":-754032,"y":-331375},{"x":-764617,"y":-209494},{"x":-759873,"y":-224612},{"x":-745050,"y":-207076},{"x":-789541,"y":-253620},{"x":-789834,"y":-271149},{"x":-789295,"y":-301662},{"x":-777689,"y":-289914},{"x":-790270,"y":-325395},{"x":-777463,"y":-313864},{"x":-807415,"y":-289442}],
+      },
+    ],
   },
   {
     id: 171,
@@ -4493,12 +6522,24 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "So precise is its sense of time that it awakens at the exact same hour every morning. According to Palpagos lore, a day was divided into 24 parts because when Frostplume spreads its tail feathers wide, it reveals a pattern with 24 distinct spaces.",
     workSuitability: [
+      { type: "Gathering", level: 2 },
+      { type: "Cooling", level: 4 },
     ],
     partnerSkill: { name: "Peacock Pounce", description: "While in party, Frostplume's icy aura sharpens focus, increasing the player's <Status_Keyword>reload speeds</> by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "iceorgan", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 18,
+        sourceUrl: "https://palworld.th.gl/guides/Frostplume",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-762440,"y":-25410},{"x":-759110,"y":-48255},{"x":-749110,"y":-36345},{"x":-749420,"y":-64820},{"x":-768035,"y":-65715},{"x":-782755,"y":-26880},{"x":-791430,"y":-44950},{"x":-783800,"y":-61725},{"x":-784245,"y":-88900},{"x":-810131,"y":-10637},{"x":-810044,"y":-30766},{"x":-802085,"y":-68795},{"x":-814313,"y":-82066},{"x":-830158,"y":225},{"x":-829954,"y":-17406},{"x":-841060,"y":-51155},{"x":-827583,"y":-33195},{"x":-829178,"y":-74471}],
+      },
+    ],
   },
   {
     id: 172,
@@ -4509,13 +6550,27 @@ export const pals: Pal[] = [
     elements: ["Dark", "Fire"],
     description: "It appears to be striking a heroic pose, but the reality is that it's simply bracing itself against the weight of its tail and hair to avoid toppling over.",
     workSuitability: [
+      { type: "Kindling", level: 4 },
+      { type: "Handiwork", level: 5 },
+      { type: "Medicine Production", level: 3 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Phantasmal Arcana", description: "While in party, when the player attacks an enemy afflicted with Unknown Status (ADDITIONAL_EFFECT_Burn| style=|Effect_Burn), the enemy <Status_Keyword>creates flames around itself</>, dealing continuous damage equal to <Status_Up>{Passive1_EffectValue1}%</> of the player's attack damage to enemies that come into contact with them. (Does not stack.)" },
     possibleDrops: [
       { resourceId: "leather", notes: "2-3, 100%" },
       { resourceId: "fireorgan", notes: "2-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 2,
+        sourceUrl: "https://palworld.th.gl/guides/Majex",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-176350,"y":-135885},{"x":-161288,"y":-139502}],
+      },
+    ],
   },
   {
     id: 173,
@@ -4526,13 +6581,26 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "A Pal that likes the rain, and will often bask in rain showers until the weather clears up. On rainy days, Foxparks can often be found taking shelter beneath it.",
     workSuitability: [
+      { type: "Medicine Production", level: 3 },
+      { type: "Cooling", level: 3 },
+      { type: "Farming", level: 3 },
     ],
     partnerSkill: { name: "Silk Shroud", description: "When activated, attacks targeted enemy with IcicleThrow| style=|Status_Keyword. When this Pal uses IcicleThrow| style=|Status_Keyword, it has a <Status_Up>x{ActiveSkillMainValueByRank}</> damage multiplier. Sometimes makes cloth2| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "cloth2", notes: "1-1, 100%" },
       { resourceId: "iceorgan", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 62,
+        sourceUrl: "https://palworld.th.gl/guides/Sibelyx",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":369,"y":16813},{"x":-619,"y":32195},{"x":-13996,"y":33566},{"x":-12121,"y":55366},{"x":-17259,"y":74788},{"x":-1421,"y":82914},{"x":-1087,"y":98461},{"x":-18567,"y":99035},{"x":481,"y":114384},{"x":1759,"y":129713},{"x":-32571,"y":75678},{"x":22605,"y":-6436},{"x":6427,"y":-2417},{"x":23729,"y":18392},{"x":15039,"y":30997},{"x":18531,"y":47208},{"x":3550,"y":53925},{"x":16031,"y":105005},{"x":24238,"y":122556},{"x":24211,"y":140930},{"x":12286,"y":154920},{"x":47065,"y":-20157},{"x":50846,"y":-31984},{"x":32397,"y":4982},{"x":47487,"y":4455},{"x":36621,"y":26754},{"x":49349,"y":35755},{"x":53044,"y":51704},{"x":49474,"y":101652},{"x":41448,"y":114595},{"x":28934,"y":178365},{"x":48121,"y":183206},{"x":53169,"y":204544},{"x":65148,"y":-5897},{"x":75355,"y":-32219},{"x":79078,"y":11754},{"x":77532,"y":37889},{"x":60247,"y":119934},{"x":71993,"y":200839},{"x":73082,"y":225906},{"x":84546,"y":-16171},{"x":93518,"y":-28643},{"x":96928,"y":19735},{"x":91258,"y":42821},{"x":104657,"y":70526},{"x":89308,"y":66713},{"x":90609,"y":101992},{"x":129416,"y":15996},{"x":119393,"y":3516},{"x":104081,"y":3929},{"x":125742,"y":54805},{"x":110902,"y":34076},{"x":129217,"y":71894},{"x":149800,"y":118},{"x":155447,"y":32871},{"x":147183,"y":46089},{"x":132606,"y":39443},{"x":147892,"y":61940},{"x":153219,"y":98636},{"x":143823,"y":86377},{"x":165841,"y":50786},{"x":166163,"y":64652}],
+      },
+    ],
   },
   {
     id: 174,
@@ -4543,6 +6611,8 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "A Pal that loves gazing into the void, and will often remain completely still. It frequently becomes a gathering spot for smaller Pals.",
     workSuitability: [
+      { type: "Medicine Production", level: 3 },
+      { type: "Farming", level: 4 },
     ],
     partnerSkill: { name: "Gilded Shroud", description: "While in party, increases Defense of <img id=|ElemIcon_Neutral|/>Unknown Status (COMMON_ELEMENT_NAME_Normal| style=|Elem_Neutral) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack) Sometimes makes cloth2| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
@@ -4560,6 +6630,8 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "It relishes the peculiar scent living things give off when they are near death. If a Maraith has taken a liking to you, it is safe to assume that is why.",
     workSuitability: [
+      { type: "Gathering", level: 4 },
+      { type: "Mining", level: 4 },
     ],
     partnerSkill: { name: "Messenger of Death", description: "Can be ridden. While in party, all Party Pals' Active Skill cooldowns are reduced by <Status_Up>{Passive1_EffectValue1}%</> whenever you defeat an enemy. (Does not stack)" },
     possibleDrops: [
@@ -4567,7 +6639,17 @@ export const pals: Pal[] = [
       { resourceId: "palupgradestone", notes: "1-1, 15%" },
       { resourceId: "crudeoil", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 117,
+        sourceUrl: "https://palworld.th.gl/guides/Maraith",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":139,"y":10401},{"x":-5274,"y":26047},{"x":-4482,"y":44033},{"x":-19989,"y":41733},{"x":-20147,"y":59109},{"x":-7727,"y":67654},{"x":-17261,"y":101876},{"x":-2671,"y":85079},{"x":-24886,"y":79909},{"x":-4536,"y":115049},{"x":-14135,"y":128436},{"x":-16428,"y":150595},{"x":714,"y":148653},{"x":-27384,"y":164304},{"x":-9307,"y":168871},{"x":-758,"y":186339},{"x":-687834,"y":-263002},{"x":-678021,"y":-276736},{"x":-666643,"y":-259948},{"x":-676305,"y":-304462},{"x":-691755,"y":-314106},{"x":-717733,"y":-254078},{"x":-713655,"y":-275430},{"x":-701936,"y":-261617},{"x":-693978,"y":-329747},{"x":-742996,"y":-255723},{"x":-739183,"y":-274513},{"x":-38282,"y":45620},{"x":-43903,"y":84751},{"x":-35739,"y":97932},{"x":-45039,"y":114682},{"x":-37384,"y":127716},{"x":-40724,"y":152497},{"x":-42752,"y":174982},{"x":-767076,"y":-255782},{"x":-767815,"y":-235489},{"x":-751001,"y":-241714},{"x":-760558,"y":-277317},{"x":-760477,"y":-301236},{"x":-755282,"y":-333540},{"x":-767964,"y":-217213},{"x":-750875,"y":-223862},{"x":-784541,"y":-253620},{"x":-784834,"y":-271149},{"x":-784295,"y":-301662},{"x":-771419,"y":-289193},{"x":-785270,"y":-325395},{"x":-769006,"y":-319336},{"x":-801460,"y":-253750},{"x":-800694,"y":-275552},{"x":-808665,"y":-291607},{"x":-795849,"y":-313165},{"x":-58812,"y":93902},{"x":-71078,"y":112286},{"x":-67849,"y":125008},{"x":-64651,"y":145471},{"x":-65842,"y":167822},{"x":-96163,"y":104989},{"x":-90665,"y":123599},{"x":-88384,"y":142243},{"x":-100856,"y":152632},{"x":-80723,"y":158361},{"x":-115201,"y":117964},{"x":-129161,"y":136938},{"x":-113681,"y":133466},{"x":15161,"y":-5429},{"x":22479,"y":16227},{"x":17539,"y":30997},{"x":17281,"y":45043},{"x":11031,"y":105005},{"x":22988,"y":120391},{"x":20189,"y":150056},{"x":24981,"y":165840},{"x":6434,"y":173383},{"x":19468,"y":185227},{"x":34821,"y":-14110},{"x":50815,"y":-17992},{"x":47096,"y":-38480},{"x":42446,"y":10152},{"x":39121,"y":26754}],
+      },
+    ],
   },
   {
     id: 176,
@@ -4578,13 +6660,28 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "Inhaling large amounts of its spores will put you into a trance. Sometimes, if Shroomer appears motionless, it's not because it's mimicking a mushroom, but rather because it's high off its own spores.",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Handiwork", level: 2 },
+      { type: "Gathering", level: 3 },
+      { type: "Lumbering", level: 2 },
+      { type: "Farming", level: 3 },
     ],
     partnerSkill: { name: "Rampant Spores", description: "Can be ridden. Sometimes drops mushroom| style=|status_keyword or cavemushroom| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
       { resourceId: "mushroom", notes: "1-2, 100%" },
       { resourceId: "berries", notes: "1-2, 60%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 13,
+        sourceUrl: "https://palworld.th.gl/guides/Shroomer",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-24259,"y":-41700},{"x":-21019,"y":-58004},{"x":-41623,"y":-12655},{"x":-48645,"y":-27626},{"x":-37663,"y":-44334},{"x":-36941,"y":-61698},{"x":-48514,"y":-55669},{"x":-45168,"y":-75038},{"x":-66215,"y":1924},{"x":-59557,"y":-14857},{"x":-61548,"y":-54096},{"x":-73466,"y":-63999},{"x":-73075,"y":-88426}],
+      },
+    ],
   },
   {
     id: 177,
@@ -4595,13 +6692,27 @@ export const pals: Pal[] = [
     elements: ["Grass", "Dark"],
     description: "The abundance of spores released by this Pal blocks out sunlight. Sometimes, if Shroomer Noct appears motionless, it's not because it's mimicking a mushroom, but rather because its own spores don't let it see anything.",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Handiwork", level: 3 },
+      { type: "Gathering", level: 3 },
+      { type: "Lumbering", level: 2 },
     ],
     partnerSkill: { name: "Roiling Spores", description: "Can be ridden. While at a base, its mysterious spores slow the rate at which the SAN value of allies at the base decreases by <Status_Up>{Passive1_EffectValue2}%</>." },
     possibleDrops: [
       { resourceId: "venom", notes: "4-8, 100%" },
       { resourceId: "poisonmushroom", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 66,
+        sourceUrl: "https://palworld.th.gl/guides/Shroomer%20Noct",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-26759,"y":-41700},{"x":-19769,"y":-55839},{"x":-734910,"y":-332669},{"x":-737402,"y":-358106},{"x":-722332,"y":-349265},{"x":-44123,"y":-12655},{"x":-51145,"y":-27626},{"x":-46260,"y":-45876},{"x":-34441,"y":-61698},{"x":-42181,"y":-71934},{"x":-751998,"y":-332594},{"x":-756842,"y":-349408},{"x":-765143,"y":-381680},{"x":-763787,"y":-364857},{"x":-756719,"y":-397355},{"x":-763825,"y":-412375},{"x":-783274,"y":-350211},{"x":-787127,"y":-379767},{"x":-776268,"y":-398840},{"x":-795660,"y":-406600},{"x":-794381,"y":-433193},{"x":-775434,"y":-429952},{"x":-779221,"y":-413564},{"x":-791915,"y":-460029},{"x":-776528,"y":-448901},{"x":-816139,"y":-354878},{"x":-799595,"y":-363237},{"x":-818330,"y":-378379},{"x":-818147,"y":-426575},{"x":-809444,"y":-410353},{"x":-813718,"y":-458190},{"x":-818571,"y":-475180},{"x":-832352,"y":-330561},{"x":-838373,"y":-355270},{"x":-835306,"y":-373405},{"x":-845168,"y":-393177},{"x":-826175,"y":-392929},{"x":-841940,"y":-433549},{"x":-845738,"y":-414568},{"x":-830177,"y":-414065},{"x":-846547,"y":-449159},{"x":-830490,"y":-457204},{"x":-866187,"y":-356781},{"x":-853366,"y":-342804},{"x":-863731,"y":-383480},{"x":-870955,"y":-408553},{"x":-869172,"y":-435130},{"x":-870917,"y":-456345},{"x":-854023,"y":-464368},{"x":-893921,"y":-379745},{"x":-883987,"y":-368350},{"x":-895767,"y":-401559},{"x":-877241,"y":-387513},{"x":-885906,"y":-425436},{"x":-889508,"y":-460173},{"x":-885367,"y":-479133},{"x":-918899,"y":-408674},{"x":-922711,"y":-389957},{"x":-906968,"y":-389644},{"x":-902599,"y":-415710},{"x":-68715,"y":1924},{"x":-60807,"y":-12692},{"x":-62798,"y":-51931},{"x":-75966,"y":-63999},{"x":-56872,"y":-73064},{"x":-75575,"y":-88426}],
+      },
+    ],
   },
   {
     id: 178,
@@ -4612,12 +6723,26 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "Though its body melts in the heat, it just can’t resist sunbathing. Though its body melts in the warmth, it likes hot springs too much. If it's going to melt anyway, it hopes it’ll be in a steaming outdoor bath under a clear blue sky.",
     workSuitability: [
+      { type: "Handiwork", level: 5 },
+      { type: "Medicine Production", level: 4 },
+      { type: "Cooling", level: 5 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Witch's Icy Veil", description: "When activated, Icelyn changes the player's attack type to <img id=|ElemIcon_Ice|/>Unknown Status (COMMON_ELEMENT_NAME_Ice| style=|Elem_Ice) and increases Attack by <Status_Up>{ReferencePassive1_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "iceorgan", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 11,
+        sourceUrl: "https://palworld.th.gl/guides/Icelyn",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":92086,"y":20807},{"x":93372,"y":36851},{"x":91808,"y":61713},{"x":125123,"y":11791},{"x":112152,"y":31910},{"x":124492,"y":52640},{"x":113272,"y":64560},{"x":104565,"y":80492},{"x":148550,"y":-2047},{"x":144310,"y":16943},{"x":133510,"y":27495}],
+      },
+    ],
   },
   {
     id: 179,
@@ -4628,13 +6753,26 @@ export const pals: Pal[] = [
     elements: ["Dark", "Ground"],
     description: "The golden, bandage-like organs covering its body are highly elastic. However, they are prone to tearing under extremely dry conditions, so daily moisture checks are absolutely essential.",
     workSuitability: [
+      { type: "Handiwork", level: 5 },
+      { type: "Medicine Production", level: 4 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Resurrection", description: "While fighting together, when Gildra is incapacitated, it <Status_Keyword>revives</> with its Hunger reduced to 0. {ReferenceMsgId_CooldownReduction}" },
     possibleDrops: [
       { resourceId: "cloth", notes: "2-3, 100%" },
       { resourceId: "leather", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 66,
+        sourceUrl: "https://palworld.th.gl/guides/Gildra",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-15092,"y":254904},{"x":-1398,"y":328867},{"x":-25263,"y":318557},{"x":-7900,"y":350501},{"x":-19701,"y":342412},{"x":-27456,"y":359598},{"x":-13205,"y":368038},{"x":-16730,"y":450654},{"x":-686,"y":243707},{"x":-31504,"y":301026},{"x":-48348,"y":368138},{"x":-41292,"y":462854},{"x":-39596,"y":478239},{"x":-66456,"y":365503},{"x":-85164,"y":361231},{"x":-95679,"y":379894},{"x":-105627,"y":388413},{"x":22342,"y":260620},{"x":26693,"y":321741},{"x":7496,"y":344980},{"x":29039,"y":346719},{"x":418,"y":380916},{"x":17270,"y":384012},{"x":22644,"y":441241},{"x":11773,"y":455377},{"x":20382,"y":247874},{"x":49999,"y":266817},{"x":42448,"y":279243},{"x":30870,"y":309085},{"x":41443,"y":296237},{"x":46029,"y":322039},{"x":42780,"y":341278},{"x":29240,"y":369499},{"x":46618,"y":366163},{"x":73390,"y":278820},{"x":52084,"y":305573},{"x":64665,"y":293412},{"x":58153,"y":325578},{"x":59442,"y":349342},{"x":67534,"y":377594},{"x":57034,"y":389899},{"x":60003,"y":407485},{"x":58985,"y":427451},{"x":89782,"y":384259},{"x":126843,"y":298800},{"x":109586,"y":372804},{"x":126042,"y":358286},{"x":126956,"y":378514},{"x":141657,"y":275154},{"x":150986,"y":301095},{"x":152702,"y":320393},{"x":136414,"y":367807},{"x":148888,"y":374645},{"x":132131,"y":397315},{"x":151964,"y":392186},{"x":179736,"y":306778},{"x":164502,"y":308859},{"x":167067,"y":328165},{"x":179801,"y":339784},{"x":181599,"y":359883},{"x":161973,"y":370618},{"x":167959,"y":386995},{"x":186305,"y":323487},{"x":194662,"y":352034},{"x":194492,"y":375776},{"x":214637,"y":300941}],
+      },
+    ],
   },
   {
     id: 180,
@@ -4645,6 +6783,7 @@ export const pals: Pal[] = [
     elements: ["Dragon", "Water"],
     description: "Legend says the Jormuntide was once a wise man who, after being wrongly convicted and cast into a whirlpool, returned as this Pal to annihilate the kingdom.",
     workSuitability: [
+      { type: "Watering", level: 7 },
     ],
     partnerSkill: { name: "Stormbringer Sea Dragon", description: "Can be ridden to travel on water. While in party, increases player's and Pals' damage to enemies afflicted with Unknown Status (ADDITIONAL_EFFECT_Wetness| style=|Effect_Wetness) by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack) {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
@@ -4661,13 +6800,24 @@ export const pals: Pal[] = [
     elements: ["Dragon", "Fire"],
     description: "Legend says the Jormuntide Ignis was once a warrior who, after being wrongly convicted and cast into a volcano, returned as this Pal to annihilate the kingdom.",
     workSuitability: [
+      { type: "Kindling", level: 7 },
     ],
     partnerSkill: { name: "Stormbringer Lava Dragon", description: "Can be ridden. While in party, <Status_Keyword>nullifies lava damage</> and increases player's and Pals' damage to enemies afflicted with Unknown Status (ADDITIONAL_EFFECT_Burn| style=|Effect_Burn) by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack) {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
       { resourceId: "paloil", notes: "2-3, 100%" },
       { resourceId: "fireorgan", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 7,
+        sourceUrl: "https://palworld.th.gl/guides/Jormuntide%20Ignis",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-666141,"y":-169805},{"x":-673422,"y":-186235},{"x":-688041,"y":-201916},{"x":-707918,"y":-199621},{"x":-710796,"y":-215617},{"x":-725999,"y":-205901},{"x":-175840,"y":-148708}],
+      },
+    ],
   },
   {
     id: 182,
@@ -4678,12 +6828,23 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "It was once believed to usher in the dry season. Whenever there was a drought the previous year, people would relentlessly seek to cull its numbers, hoping to bring about a plentiful harvest in the next year.",
     workSuitability: [
+      { type: "Kindling", level: 5 },
     ],
     partnerSkill: { name: "Wings of Flame", description: "Can be ridden as a flying mount. This Pal’s Movement Speed increases by <Status_Up>{Passive1_EffectValue1}%</> for each other <img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) Pal in your party. (Excluding Suzaku)" },
     possibleDrops: [
       { resourceId: "fireorgan", notes: "5-10, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 97,
+        sourceUrl: "https://palworld.th.gl/guides/Suzaku",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-4641,"y":279178},{"x":-16766,"y":261062},{"x":-336,"y":266419},{"x":-19466,"y":303316},{"x":-24835,"y":285418},{"x":-16953,"y":328916},{"x":-2648,"y":326032},{"x":-18796,"y":359598},{"x":-23451,"y":344577},{"x":-14841,"y":379681},{"x":-2839,"y":368013},{"x":-14998,"y":410980},{"x":-11921,"y":398067},{"x":-20161,"y":432318},{"x":-3394,"y":436536},{"x":-16730,"y":455654},{"x":-16318,"y":475282},{"x":-2431,"y":465080},{"x":-7738,"y":228726},{"x":-18199,"y":246729},{"x":-3099,"y":248607},{"x":-44287,"y":304742},{"x":-39119,"y":325989},{"x":-40323,"y":354572},{"x":-50503,"y":372898},{"x":-35786,"y":384240},{"x":-43374,"y":410171},{"x":-44938,"y":433210},{"x":-41291,"y":462854},{"x":-42671,"y":483811},{"x":-33766,"y":510549},{"x":-29625,"y":494431},{"x":-35837,"y":528185},{"x":-70335,"y":322299},{"x":-70859,"y":374950},{"x":-76046,"y":360020},{"x":-75002,"y":404948},{"x":-59672,"y":402555},{"x":-65387,"y":434575},{"x":-57796,"y":417818},{"x":-59984,"y":458804},{"x":-69684,"y":475489},{"x":-94113,"y":381512},{"x":-86114,"y":434453},{"x":-95405,"y":477482},{"x":-83066,"y":487768},{"x":-109727,"y":381737},{"x":-105430,"y":396662},{"x":-103537,"y":496911},{"x":20492,"y":282839},{"x":17996,"y":257119},{"x":-394,"y":298837},{"x":16532,"y":305980},{"x":14941,"y":329098},{"x":6912,"y":351994},{"x":23459,"y":346384},{"x":15466,"y":377620},{"x":10028,"y":402154},{"x":15726,"y":434875},{"x":6836,"y":421988},{"x":23464,"y":419207},{"x":18603,"y":462207},{"x":8615,"y":236600},{"x":34948,"y":279243},{"x":31855,"y":262134},{"x":48481,"y":270460},{"x":41071,"y":302637},{"x":49655,"y":286208},{"x":31453,"y":332608},{"x":47279,"y":324204},{"x":43799,"y":357008},{"x":47297,"y":342384},{"x":33989,"y":373505},{"x":49089,"y":385338},{"x":31175,"y":406625},{"x":32404,"y":391253},{"x":39041,"y":434840},{"x":50870,"y":414948},{"x":29516,"y":243112},{"x":73390,"y":283820}],
+      },
+    ],
   },
   {
     id: 183,
@@ -4694,12 +6855,23 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "It was once believed to usher in the rainy season. Whenever there was a flood the previous year, people would relentlessly seek to cull its numbers, hoping to avert disaster in the coming year.",
     workSuitability: [
+      { type: "Watering", level: 6 },
     ],
     partnerSkill: { name: "Wings of Water", description: "Can be ridden as a flying mount. This Pal’s Movement Speed increases by <Status_Up>{Passive1_EffectValue1}%</> for each other <img id=|ElemIcon_Water|/>Unknown Status (COMMON_ELEMENT_NAME_Water| style=|Elem_Water) Pal in your party. (Excluding Suzaku Aqua)" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "5-5, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 8,
+        sourceUrl: "https://palworld.th.gl/guides/Suzaku%20Aqua",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-762440,"y":-21080},{"x":-759110,"y":-43925},{"x":-743955,"y":-47200},{"x":-749420,"y":-60490},{"x":-764285,"y":-67880},{"x":-782755,"y":-22550},{"x":-791430,"y":-40620},{"x":-783800,"y":-57395}],
+      },
+    ],
   },
   {
     id: 184,
@@ -4710,12 +6882,23 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "Take one step forward and forget your doubts. Take two steps forward and forget your worries. Take three steps forward and forget your fears. Face any enemy.",
     workSuitability: [
+      { type: "Gathering", level: 2 },
     ],
     partnerSkill: { name: "Sand Sprint", description: "Can be ridden. Movement Speed is increased by <Status_Up>{Passive1_EffectValue1}%</> while mounted <Status_Keyword>on sand</>." },
     possibleDrops: [
       { resourceId: "bone", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 99,
+        sourceUrl: "https://palworld.th.gl/guides/Dazemu",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-12241,"y":-60847},{"x":-4201,"y":-74284},{"x":-12592,"y":259234},{"x":-3898,"y":323867},{"x":-24013,"y":316392},{"x":-9150,"y":352666},{"x":-12267,"y":337451},{"x":-25361,"y":347772},{"x":-14455,"y":370203},{"x":-25390,"y":455654},{"x":-9499,"y":455470},{"x":-4436,"y":241542},{"x":-35771,"y":-174090},{"x":-47663,"y":-186108},{"x":-32754,"y":303192},{"x":-45848,"y":368138},{"x":-40042,"y":460689},{"x":-37096,"y":478239},{"x":-62188,"y":-127165},{"x":-73381,"y":-150988},{"x":-56530,"y":-144857},{"x":-73006,"y":-169374},{"x":-54129,"y":-168691},{"x":-67706,"y":363338},{"x":-100335,"y":-147339},{"x":-79351,"y":-134168},{"x":-83914,"y":363396},{"x":-94429,"y":382059},{"x":-115331,"y":-140082},{"x":-103404,"y":371477},{"x":-108127,"y":388413},{"x":-148203,"y":53006},{"x":-154228,"y":68337},{"x":-141216,"y":82271},{"x":-152190,"y":89035},{"x":-149206,"y":113864},{"x":-162616,"y":45189},{"x":-173773,"y":83263},{"x":-177204,"y":103546},{"x":-179550,"y":118880},{"x":-193389,"y":80852},{"x":-199273,"y":97773},{"x":15414,"y":-72287},{"x":24417,"y":-88436},{"x":4683,"y":-88590},{"x":25166,"y":-106495},{"x":21580,"y":-149294},{"x":21222,"y":-129158},{"x":11552,"y":-165071},{"x":24842,"y":264950},{"x":21113,"y":321406},{"x":2982,"y":340746},{"x":19484,"y":342564},{"x":873,"y":371180},{"x":18520,"y":377517},{"x":27644,"y":441241},{"x":17359,"y":453921},{"x":16632,"y":241379},{"x":40607,"y":-93639},{"x":45063,"y":-108969},{"x":47499,"y":266817},{"x":36198,"y":277078},{"x":29620,"y":306920},{"x":45193,"y":298402},{"x":36711,"y":328510},{"x":35077,"y":354341},{"x":51047,"y":340219},{"x":49795,"y":370380},{"x":64729,"y":283820},{"x":67359,"y":302934},{"x":51816,"y":312162},{"x":59403,"y":327743},{"x":56300,"y":354830},{"x":68413,"y":369247},{"x":64923,"y":390029},{"x":62503,"y":407485},{"x":60235,"y":425286},{"x":86032,"y":382094},{"x":100113,"y":381161},{"x":125593,"y":292304}],
+      },
+    ],
   },
   {
     id: 185,
@@ -4726,12 +6909,26 @@ export const pals: Pal[] = [
     elements: ["Dragon"],
     description: "Sleeping while cuddling a Quivern is said to be a heavenly experience, but there are some who have been crushed and sent to heaven by ones that toss and turn in their sleep.",
     workSuitability: [
+      { type: "Handiwork", level: 2 },
+      { type: "Gathering", level: 3 },
+      { type: "Mining", level: 4 },
+      { type: "Transporting", level: 5 },
     ],
     partnerSkill: { name: "Sky Dragon Affection", description: "Can be ridden as a flying mount. While in party, increases Attack of <img id=|ElemIcon_Dragon|/>Unknown Status (COMMON_ELEMENT_NAME_Dragon| style=|Elem_Dragon) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "paloil", notes: "3-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 96,
+        sourceUrl: "https://palworld.th.gl/guides/Quivern",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-21084,"y":-73967},{"x":-20771,"y":-99020},{"x":-3947,"y":-91829},{"x":-6111,"y":8236},{"x":-6524,"y":23882},{"x":-732,"y":41868},{"x":-21239,"y":39568},{"x":-10871,"y":57531},{"x":-1077,"y":133458},{"x":-4822,"y":149943},{"x":-9307,"y":173201},{"x":-41496,"y":-99912},{"x":-36572,"y":-83261},{"x":-43849,"y":-131544},{"x":-38648,"y":-157684},{"x":-39532,"y":43455},{"x":-45039,"y":119012},{"x":-25795,"y":123185},{"x":-763690,"y":-23245},{"x":-760360,"y":-46090},{"x":-741455,"y":-47200},{"x":-750670,"y":-62655},{"x":-765535,"y":-65715},{"x":-784005,"y":-24715},{"x":-792000,"y":-4160},{"x":-777205,"y":-7925},{"x":-792680,"y":-42785},{"x":-785050,"y":-59560},{"x":-795350,"y":-102055},{"x":-777855,"y":-113845},{"x":-785730,"y":16795},{"x":-795600,"y":31918},{"x":-804525,"y":-1695},{"x":-817810,"y":-19818},{"x":-810982,"y":-37949},{"x":-807545,"y":-88145},{"x":-821340,"y":-102000},{"x":-818846,"y":21582},{"x":-796936,"y":51170},{"x":-818858,"y":47830},{"x":-827658,"y":225},{"x":-832695,"y":-25114},{"x":-828255,"y":-85310},{"x":-843547,"y":20781},{"x":-828362,"y":37443},{"x":-834785,"y":59680},{"x":-48753,"y":-144752},{"x":-63930,"y":101497},{"x":-70349,"y":129338},{"x":-93165,"y":127930},{"x":-87655,"y":112531},{"x":-174590,"y":-150873},{"x":8911,"y":-7594},{"x":26355,"y":-4271},{"x":10918,"y":19559},{"x":27505,"y":34392},{"x":16439,"y":152221},{"x":26107,"y":129709},{"x":22974,"y":177041},{"x":8934,"y":173383},{"x":36811,"y":-19713},{"x":47096,"y":-34149},{"x":37965,"y":12010},{"x":48099,"y":37921},{"x":32458,"y":193283},{"x":43059,"y":179339},{"x":49776,"y":208237},{"x":62648,"y":-5897},{"x":61862,"y":-40755},{"x":57744,"y":16587},{"x":73451,"y":6401},{"x":74418,"y":206264},{"x":63165,"y":191611},{"x":64774,"y":225762},{"x":72973,"y":243772},{"x":83296,"y":-14006},{"x":98665,"y":-23200},{"x":85403,"y":-31782},{"x":88336,"y":22972},{"x":95008,"y":44986}],
+      },
+    ],
   },
   {
     id: 186,
@@ -4742,6 +6939,11 @@ export const pals: Pal[] = [
     elements: ["Dragon", "Grass"],
     description: "When you hug Quivern Botan, if it smells like sunshine and meadows, tomorrow will be sunny. If it smells damp, tomorrow will be wet and miserable.",
     workSuitability: [
+      { type: "Planting", level: 5 },
+      { type: "Handiwork", level: 2 },
+      { type: "Gathering", level: 4 },
+      { type: "Mining", level: 3 },
+      { type: "Transporting", level: 4 },
     ],
     partnerSkill: { name: "Grass Dragon Affection", description: "Can be ridden as a flying mount. While mounted, changes the player’s attack type to <img id=|ElemIcon_Grass|/>Unknown Status (COMMON_ELEMENT_NAME_Leaf| style=|Elem_Grass) and increases Attack by <Status_Up>{Passive2_EffectValue1}%</>." },
     possibleDrops: [
@@ -4749,7 +6951,17 @@ export const pals: Pal[] = [
       { resourceId: "poppy", notes: "2-3, 100%" },
       { resourceId: "berries", notes: "1-2, 60%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 12,
+        sourceUrl: "https://palworld.th.gl/guides/Quivern%20Botan",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-17340,"y":-74480},{"x":-8651,"y":-90692},{"x":-22021,"y":-101185},{"x":-32581,"y":-66802},{"x":-42085,"y":-81324},{"x":-40386,"y":-98142},{"x":-45951,"y":-112511},{"x":-43595,"y":-129089},{"x":-39898,"y":-159849},{"x":-28859,"y":34465},{"x":-36937,"y":51007},{"x":-51253,"y":-144752}],
+      },
+    ],
   },
   {
     id: 187,
@@ -4760,13 +6972,27 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "In early spring, pollen floats on the wind throughout the island. Flopie's hay fever is Lullu's fault.",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Handiwork", level: 3 },
+      { type: "Gathering", level: 2 },
+      { type: "Medicine Production", level: 3 },
     ],
     partnerSkill: { name: "Floral Boost", description: "While at a base, Lullu fills farms with good spirits, increasing the growth rate of the crops by <Status_Up>{Passive1_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "poppy", notes: "2-3, 100%" },
       { resourceId: "berries", notes: "1-2, 60%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 10,
+        sourceUrl: "https://palworld.th.gl/guides/Lullu",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-23584,"y":-73967},{"x":-19521,"y":-101185},{"x":-6447,"y":-91829},{"x":216,"y":-149676},{"x":-43996,"y":-99912},{"x":-39072,"y":-83261},{"x":-46349,"y":-131544},{"x":-37398,"y":-159849},{"x":-55080,"y":-152528},{"x":13142,"y":-127913}],
+      },
+    ],
   },
   {
     id: 188,
@@ -4777,6 +7003,7 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "A decade ago, Kikit soccer was popular. However, it quickly fell out of favor due to fierce opposition from the Free Pal Alliance. Nevertheless, the Kikit's themselves didn't mind because it helped shed their old carapace.",
     workSuitability: [
+      { type: "Mining", level: 1 },
     ],
     partnerSkill: { name: "Sandball Soccer", description: "While in party, increases Defense of <img id=|ElemIcon_Ground|/>Unknown Status (COMMON_ELEMENT_NAME_Earth| style=|Elem_Ground) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -4784,7 +7011,17 @@ export const pals: Pal[] = [
       { resourceId: "bone", notes: "1-2, 60%" },
       { resourceId: "crudeoil", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 23,
+        sourceUrl: "https://palworld.th.gl/guides/Kikit",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-4133,"y":-76571},{"x":-12168,"y":-61625},{"x":-4021,"y":-163750},{"x":-27380,"y":-172263},{"x":-43847,"y":-178230},{"x":-51088,"y":-93995},{"x":-56632,"y":-108363},{"x":-57683,"y":-126057},{"x":-74998,"y":-130345},{"x":-66674,"y":-149671},{"x":-71170,"y":-168785},{"x":-56161,"y":-163396},{"x":-63464,"y":-183955},{"x":-82614,"y":-150888},{"x":-93237,"y":-142639},{"x":-110967,"y":-138112},{"x":14992,"y":-73374},{"x":8343,"y":-97802},{"x":23774,"y":-88881},{"x":20382,"y":-118062},{"x":12676,"y":-140571},{"x":38211,"y":-101339},{"x":35465,"y":-124412}],
+      },
+    ],
   },
   {
     id: 189,
@@ -4795,12 +7032,23 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "It has a strong sense of justice and despises evil. In the past they were faithful and loving companions to the islanders. Nowadays, Yakumos are hostile to humans wherever they spot them.",
     workSuitability: [
+      { type: "Gathering", level: 2 },
     ],
     partnerSkill: { name: "Birds of a Feather", description: "Can be ridden. While fighting together, <Status_Up>{Passive1_EffectValue1}%</> increased chance of encountering pals with the same Passive Skill as this Pal. (Excludes certain Passive Skills)" },
     possibleDrops: [
       { resourceId: "leather", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 10,
+        sourceUrl: "https://palworld.th.gl/guides/Yakumo",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-19488,"y":-97165},{"x":1064,"y":-98850},{"x":-5789,"y":-124596},{"x":-24428,"y":-128507},{"x":-22029,"y":-112648},{"x":-5161,"y":-140614},{"x":-18424,"y":-147259},{"x":-37103,"y":-121333},{"x":-33624,"y":-143776},{"x":8069,"y":-132852}],
+      },
+    ],
   },
   {
     id: 190,
@@ -4811,13 +7059,26 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "A bizarre species which temporarily separates its body and uses its bones to slice through enemies, at the risk of perishing itself upon taking too long. While unconfirmed, older individuals are said to deliberately stay separated in order to trigger their survival instincts and prolong their lifespans.",
     workSuitability: [
+      { type: "Watering", level: 4 },
+      { type: "Gathering", level: 1 },
+      { type: "Lumbering", level: 4 },
     ],
     partnerSkill: { name: "Fish Fillet", description: "When activated, Skutlass becomes the player's katana (Attack: <Status_Up>{ActiveSkillMainValueByRank}</>). If it does not revert to its normal form quickly, Skutlass will become incapacitated. It will also become incapacitated if Iaigiri is used." },
     possibleDrops: [
       { resourceId: "meat-swordcutlassfish", notes: "1-2, 100%" },
       { resourceId: "palfluid", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 12,
+        sourceUrl: "https://palworld.th.gl/guides/Skutlass",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-761745,"y":-23875},{"x":-751295,"y":-49620},{"x":-763935,"y":-58430},{"x":-789055,"y":-50355},{"x":-153025,"y":46639},{"x":-141431,"y":59536},{"x":-139919,"y":78905},{"x":-141693,"y":98318},{"x":-149429,"y":113525},{"x":-165325,"y":122969},{"x":-181038,"y":125952},{"x":-199271,"y":111284}],
+      },
+    ],
   },
   {
     id: 191,
@@ -4828,13 +7089,27 @@ export const pals: Pal[] = [
     elements: ["Water", "Fire"],
     description: "A bizarre species which temporarily separates its body and uses its bones to slice through enemies, at the risk of perishing itself upon taking too long. While unconfirmed, older individuals are said to deliberately stay separated in order to trigger their survival instincts and prolong their lifespans.",
     workSuitability: [
+      { type: "Kindling", level: 3 },
+      { type: "Watering", level: 2 },
+      { type: "Gathering", level: 2 },
+      { type: "Lumbering", level: 3 },
     ],
     partnerSkill: { name: "Seared Fish Fillet", description: "When activated, Skutlass Ignis becomes the player's katana (Attack: <Status_Up>{ActiveSkillMainValueByRank}</>). If it does not revert to its normal form quickly, Skutlass Ignis will become incapacitated. It will also become incapacitated if Iaigiri is used." },
     possibleDrops: [
       { resourceId: "meat-swordcutlassfish", notes: "1-2, 100%" },
       { resourceId: "fireorgan", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 4,
+        sourceUrl: "https://palworld.th.gl/guides/Skutlass%20Ignis",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":70735,"y":510723},{"x":69919,"y":535175},{"x":91547,"y":502512},{"x":85151,"y":523443}],
+      },
+    ],
   },
   {
     id: 192,
@@ -4845,12 +7120,24 @@ export const pals: Pal[] = [
     elements: ["Fire", "Ground"],
     description: "Magma-like blood runs throughout its body. If a large amount of water is thrown on it, the water rapidly heats, causing an immense vapor explosion.",
     workSuitability: [
+      { type: "Kindling", level: 5 },
+      { type: "Mining", level: 5 },
     ],
     partnerSkill: { name: "Ore-Loving Beast", description: "Can be ridden. While in party, reduces weight of <Status_Keyword>all types of ore</> by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "fireorgan", notes: "5-7, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 38,
+        sourceUrl: "https://palworld.th.gl/guides/Reptyro",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-234736,"y":-72728},{"x":-247774,"y":-57213},{"x":-229584,"y":-91173},{"x":-250362,"y":-85401},{"x":-239466,"y":-124861},{"x":-248364,"y":-110711},{"x":-251738,"y":-134124},{"x":-265373,"y":-20773},{"x":-264276,"y":-46213},{"x":-277769,"y":-38037},{"x":-269657,"y":-68840},{"x":-269924,"y":-87793},{"x":-300776,"y":-24799},{"x":-282420,"y":-16161},{"x":-302027,"y":-42743},{"x":-286260,"y":-74334},{"x":-300555,"y":-73024},{"x":-288354,"y":-117206},{"x":-332478,"y":-9511},{"x":-317411,"y":-50611},{"x":-326314,"y":-33554},{"x":-330212,"y":-63358},{"x":-316334,"y":-102249},{"x":-317764,"y":-86322},{"x":-348685,"y":-18206},{"x":-358322,"y":-45336},{"x":-356166,"y":-75872},{"x":-348070,"y":-61734},{"x":-356134,"y":-96446},{"x":-332932,"y":-91241},{"x":-358363,"y":-118234},{"x":-364317,"y":-22847},{"x":-381374,"y":-18873},{"x":-366864,"y":-63912},{"x":-223451,"y":-24672},{"x":-225237,"y":-44839},{"x":-215692,"y":-73852},{"x":-219672,"y":-133554}],
+      },
+    ],
   },
   {
     id: 193,
@@ -4861,12 +7148,24 @@ export const pals: Pal[] = [
     elements: ["Ice", "Ground"],
     description: "Ice cold blood runs throughout its body. If heated rapidly, its blood evaporates, causing an immense vapor explosion.",
     workSuitability: [
+      { type: "Mining", level: 5 },
+      { type: "Cooling", level: 5 },
     ],
     partnerSkill: { name: "Ice-Loving Beast", description: "Can be ridden. While in party, reduces weight of <Status_Keyword>all types of ore</> by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "iceorgan", notes: "3-4, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 30,
+        sourceUrl: "https://palworld.th.gl/guides/Reptyro%20Cryst",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-837176,"y":-434841},{"x":-841373,"y":-449670},{"x":-852578,"y":-357927},{"x":-857535,"y":-374672},{"x":-849585,"y":-392092},{"x":-853889,"y":-407134},{"x":-866366,"y":-395458},{"x":-866950,"y":-422783},{"x":-853280,"y":-434686},{"x":-862873,"y":-460315},{"x":-868855,"y":-356443},{"x":-884939,"y":-364412},{"x":-888873,"y":-380337},{"x":-873162,"y":-377641},{"x":-889832,"y":-400966},{"x":-883571,"y":-416439},{"x":-874094,"y":-441902},{"x":-887464,"y":-461400},{"x":-880746,"y":-479712},{"x":-902928,"y":-374023},{"x":-904990,"y":-388682},{"x":-898239,"y":-415410},{"x":-913952,"y":-410364},{"x":126717,"y":71894},{"x":151516,"y":57514},{"x":142667,"y":70593},{"x":138239,"y":88132},{"x":150720,"y":98636},{"x":166781,"y":49658},{"x":164913,"y":66817}],
+      },
+    ],
   },
   {
     id: 194,
@@ -4877,13 +7176,24 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "It takes great pride in its flowing, gorgeous mane. If it finds a split end, it becomes so mortified it can't focus on running properly. Because static electricity makes its hair frizzy, it avoids Azurmane at all costs.",
     workSuitability: [
+      { type: "Gathering", level: 5 },
     ],
     partnerSkill: { name: "Night Dancer", description: "Can be ridden. Boosts jumping ability while mounted. This Pal's movement speed increases by <Status_Up>+{Passive1_EffectValue1}%</> at night." },
     possibleDrops: [
       { resourceId: "leather", notes: "2-3, 100%" },
       { resourceId: "paldarkparts", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 193,
+        sourceUrl: "https://palworld.th.gl/guides/Starryon",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-509772,"y":-381739},{"x":-529409,"y":-280260},{"x":-531350,"y":-304327},{"x":-514033,"y":-332150},{"x":-528748,"y":-353369},{"x":-535851,"y":-337688},{"x":-530902,"y":-377352},{"x":-557203,"y":-248856},{"x":-545190,"y":-238067},{"x":-554804,"y":-278594},{"x":-539840,"y":-269098},{"x":-565279,"y":-263420},{"x":-555786,"y":-303324},{"x":-551763,"y":-326792},{"x":-550866,"y":-357814},{"x":-560519,"y":-346806},{"x":-554275,"y":-381490},{"x":-540078,"y":-390419},{"x":-559400,"y":-160419},{"x":-552690,"y":-188780},{"x":-571250,"y":-280040},{"x":-581288,"y":-270335},{"x":-575374,"y":-299736},{"x":-588417,"y":-291500},{"x":-580260,"y":-331977},{"x":-583163,"y":-315502},{"x":-567212,"y":-314410},{"x":-582815,"y":-356452},{"x":-579446,"y":-379785},{"x":-565994,"y":-365602},{"x":-581440,"y":-398442},{"x":-582503,"y":-180699},{"x":-574942,"y":-164799},{"x":-603970,"y":-255864},{"x":-614098,"y":-238748},{"x":-611832,"y":-274284},{"x":-596919,"y":-276101},{"x":-608352,"y":-303093},{"x":-607763,"y":-319698},{"x":-608402,"y":-349047},{"x":-590519,"y":-343070},{"x":-602875,"y":-383798},{"x":-606183,"y":-366597},{"x":-603377,"y":-403956},{"x":-599202,"y":-203817},{"x":-597043,"y":-187794},{"x":-612256,"y":-221403},{"x":-633214,"y":-251960},{"x":-623785,"y":-280614},{"x":-635061,"y":-270281},{"x":-618972,"y":-260907},{"x":-633993,"y":-303350},{"x":-628824,"y":-331559},{"x":-634486,"y":-378196},{"x":-633213,"y":-411704},{"x":-633407,"y":-395939},{"x":-641283,"y":-425983},{"x":-624181,"y":-204229},{"x":-633069,"y":-216464},{"x":-655239,"y":-250723},{"x":-660300,"y":-235025},{"x":-639860,"y":-233085},{"x":-662584,"y":-263586},{"x":-646593,"y":-280848},{"x":-648920,"y":-300808},{"x":-663851,"y":-286356},{"x":-665452,"y":-320742},{"x":-650266,"y":-329712},{"x":-660857,"y":-352780},{"x":-659523,"y":-379068},{"x":-643231,"y":-367184},{"x":-665999,"y":-404406},{"x":-647620,"y":-394966},{"x":-658406,"y":-432907},{"x":-652870,"y":-413610},{"x":-644725,"y":-126878},{"x":-651162,"y":-149886},{"x":-659780,"y":-161276},{"x":-652249,"y":-176277},{"x":-662211,"y":-189347}],
+      },
+    ],
   },
   {
     id: 195,
@@ -4894,6 +7204,7 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "It takes great pride in its glowing, gorgeous mane. If it gets even slightly dirty, it becomes so mortified it can't focus on running properly. Because skin oils ruin its coat, it wants to avoid being touched too much, even by its favorite Pal Tamer.",
     workSuitability: [
+      { type: "Gathering", level: 7 },
     ],
     partnerSkill: { name: "Light Dancer", description: "Can be ridden. Boosts Jump Power while mounted. This Pal’s Movement Speed increases by <Status_Up>{Passive1_EffectValue1}%</> for each other <img id=|ElemIcon_Neutral|/>Unknown Status (COMMON_ELEMENT_NAME_Normal| style=|Elem_Neutral) Pal in your party. (Excluding Starryon Primo)" },
     possibleDrops: [
@@ -4911,6 +7222,7 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "It smashes its body against harder rocks to maintain its preferred shape. Those with noticeable dents are best left alone, much like people with a botched haircut.",
     workSuitability: [
+      { type: "Mining", level: 5 },
     ],
     partnerSkill: { name: "Power Stone", description: "While in party, increases player's and Pals' damage to enemies afflicted with Unknown Status (ADDITIONAL_EFFECT_Muddy| style=|Effect_Muddy) by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -4918,7 +7230,17 @@ export const pals: Pal[] = [
       { resourceId: "coal", notes: "4-5, 100%" },
       { resourceId: "sulfur", notes: "4-5, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 4,
+        sourceUrl: "https://palworld.th.gl/guides/Pierdon",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":68235,"y":510723},{"x":67419,"y":535175},{"x":89047,"y":502512},{"x":82651,"y":523443}],
+      },
+    ],
   },
   {
     id: 197,
@@ -4929,6 +7251,8 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "It basks in the sun, rotating just enough to melt its ice into its preferred shape. Lopsided ones should be left alone, much like a person who was a little too bold with their sideburns.",
     workSuitability: [
+      { type: "Mining", level: 5 },
+      { type: "Cooling", level: 6 },
     ],
     partnerSkill: { name: "Power Crystal", description: "While in party, player and party Pals take <Status_Up>{Passive1_EffectValue1}%</> less <img id=|ElemIcon_Dragon|/>Unknown Status (COMMON_ELEMENT_NAME_Dragon| style=|Elem_Dragon) damage. (Does not stack)" },
     possibleDrops: [
@@ -4936,7 +7260,17 @@ export const pals: Pal[] = [
       { resourceId: "iceorgan", notes: "4-5, 100%" },
       { resourceId: "quartz", notes: "4-5, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 7,
+        sourceUrl: "https://palworld.th.gl/guides/Pierdon%20Cryst",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-761190,"y":-23245},{"x":-757860,"y":-46090},{"x":-748170,"y":-62655},{"x":-766785,"y":-67880},{"x":-781505,"y":-24715},{"x":-790180,"y":-42785},{"x":-782550,"y":-59560}],
+      },
+    ],
   },
   {
     id: 198,
@@ -4947,12 +7281,26 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "It can easily climb steep mountains with its hard claws. However, its short legs make it difficult to descend, often leaving it stranded in high places.",
     workSuitability: [
+      { type: "Handiwork", level: 3 },
+      { type: "Lumbering", level: 4 },
+      { type: "Cooling", level: 4 },
+      { type: "Transporting", level: 4 },
     ],
     partnerSkill: { name: "Dragon Hunter", description: "While in party, <img id=|ElemIcon_Dragon|/>Unknown Status (COMMON_ELEMENT_NAME_Dragon| style=|Elem_Dragon) Pals drop <Status_Up>{Passive1_EffectValue1}%</> more items when defeated. (Does not stack)" },
     possibleDrops: [
       { resourceId: "iceorgan", notes: "1-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 57,
+        sourceUrl: "https://palworld.th.gl/guides/Cryolinx",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-881,"y":18979},{"x":-5732,"y":41868},{"x":-2727,"y":67654},{"x":-17553,"y":58756},{"x":-14759,"y":74788},{"x":-2337,"y":100627},{"x":-16067,"y":99035},{"x":509,"y":131878},{"x":-30071,"y":75678},{"x":23855,"y":-8601},{"x":5177,"y":-252},{"x":26229,"y":22722},{"x":17281,"y":49373},{"x":8636,"y":35286},{"x":5814,"y":85331},{"x":14781,"y":107170},{"x":22988,"y":124721},{"x":22961,"y":143095},{"x":11036,"y":157085},{"x":48315,"y":-22322},{"x":48737,"y":6620},{"x":34897,"y":4982},{"x":50599,"y":33590},{"x":33055,"y":38807},{"x":51794,"y":53869},{"x":48224,"y":103817},{"x":27684,"y":180530},{"x":46871,"y":185371},{"x":51919,"y":206709},{"x":78380,"y":-3330},{"x":72855,"y":-32219},{"x":58112,"y":-42920},{"x":77828,"y":13919},{"x":76282,"y":40054},{"x":58997,"y":122099},{"x":74493,"y":200839},{"x":71832,"y":228071},{"x":93665,"y":-23200},{"x":95678,"y":17570},{"x":93758,"y":42821},{"x":90558,"y":63878},{"x":89359,"y":104158},{"x":107396,"y":-36778},{"x":123873,"y":9626},{"x":124460,"y":25073},{"x":106581,"y":3929},{"x":123242,"y":50475},{"x":115772,"y":64560},{"x":107065,"y":80492},{"x":147300,"y":-4213},{"x":143060,"y":14778},{"x":154197,"y":35036},{"x":152766,"y":55349},{"x":142666,"y":70593},{"x":151969,"y":100801},{"x":146323,"y":86377},{"x":172385,"y":62896}],
+      },
+    ],
   },
   {
     id: 199,
@@ -4963,12 +7311,26 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "It can easily carry many items with its large hands. However, its short legs slow its pace, often leaving it overtaken by nightfall.",
     workSuitability: [
+      { type: "Handiwork", level: 2 },
+      { type: "Lumbering", level: 6 },
+      { type: "Mining", level: 5 },
+      { type: "Transporting", level: 4 },
     ],
     partnerSkill: { name: "Explosive Strength", description: "While in party, when attacking <Status_Keyword>enemy weak point</>, increases the power of the next weak point attack by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "copperore", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 66,
+        sourceUrl: "https://palworld.th.gl/guides/Cryolinx%20Terra",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-482984,"y":-265788},{"x":-503458,"y":-242601},{"x":-509274,"y":-280647},{"x":-504508,"y":-264959},{"x":-498224,"y":-355619},{"x":-498145,"y":-378642},{"x":-506501,"y":-403287},{"x":-494196,"y":-415762},{"x":-506508,"y":-224287},{"x":-501739,"y":-207977},{"x":-531642,"y":-252383},{"x":-527515,"y":-236828},{"x":-520647,"y":-265312},{"x":-533428,"y":-177165},{"x":-529856,"y":-161083},{"x":-518735,"y":-203829},{"x":-534404,"y":-213106},{"x":-543401,"y":-237011},{"x":-558565,"y":-231767},{"x":-554052,"y":-403489},{"x":-555621,"y":-176066},{"x":-556636,"y":-197560},{"x":-537950,"y":-193282},{"x":-553118,"y":-216291},{"x":-574054,"y":-232629},{"x":-586022,"y":-442423},{"x":-568549,"y":-450591},{"x":-585083,"y":-458454},{"x":-568566,"y":-466624},{"x":-578284,"y":-479292},{"x":-585296,"y":-496950},{"x":-585812,"y":-145500},{"x":-586042,"y":-164239},{"x":-571033,"y":-190142},{"x":-581550,"y":-202816},{"x":-569833,"y":-215699},{"x":-602484,"y":-407342},{"x":-608862,"y":-422486},{"x":-612239,"y":-448242},{"x":-612299,"y":-465297},{"x":-597888,"y":-472528},{"x":-612746,"y":-481400},{"x":-604461,"y":-125777},{"x":-610491,"y":-142699},{"x":-611441,"y":-161526},{"x":-599156,"y":-173632},{"x":-611824,"y":-180408},{"x":-627001,"y":-405141},{"x":-620443,"y":-429145},{"x":-635478,"y":-427472},{"x":-637391,"y":-451082},{"x":-624710,"y":-468947},{"x":-629202,"y":-142516},{"x":-635858,"y":-158979},{"x":-636199,"y":-178502},{"x":-647257,"y":-437790},{"x":-649819,"y":-460580},{"x":-661915,"y":-441351},{"x":-687613,"y":-425843},{"x":-688484,"y":-444492},{"x":-681623,"y":-460065},{"x":-666804,"y":-465934},{"x":-714242,"y":-429297},{"x":-704094,"y":-446525},{"x":-730739,"y":-430048},{"x":-724051,"y":-414027}],
+      },
+    ],
   },
   {
     id: 200,
@@ -4979,13 +7341,27 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "“To look at a Snugloo's eyes” is an expression which means to seek the unseen essence of things. Ironically, no researcher has ever confirmed whether Snugloos have eyes in the first place.",
     workSuitability: [
+      { type: "Handiwork", level: 2 },
+      { type: "Mining", level: 3 },
+      { type: "Cooling", level: 3 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Invisible Eye", description: "While in party, reduces the chance of being detected by enemies. (Does not stack) {ReferenceMsgId_EnemySightRate}" },
     possibleDrops: [
       { resourceId: "leather", notes: "1-2, 100%" },
       { resourceId: "wool", notes: "2-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 5,
+        sourceUrl: "https://palworld.th.gl/guides/Snugloo",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-94658,"y":265241},{"x":-77168,"y":260508},{"x":-98708,"y":232943},{"x":-82845,"y":234036},{"x":-109246,"y":254685}],
+      },
+    ],
   },
   {
     id: 201,
@@ -4996,13 +7372,27 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "Researchers once tried to shave off its hair to reveal its true form. In the end, only hair was left, as if that was all there was to begin with.",
     workSuitability: [
+      { type: "Handiwork", level: 3 },
+      { type: "Lumbering", level: 5 },
+      { type: "Cooling", level: 5 },
+      { type: "Transporting", level: 6 },
     ],
     partnerSkill: { name: "Guardian of the Snowy Mountain", description: "Can be ridden. While at a base, increases the Unknown Status (COMMON_WORK_SUITABILITY_Transport| style=|Status_Keyword) Work Suitability Level for all other Base Pals by <Status_Keyword>+{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "iceorgan", notes: "2-3, 100%" },
       { resourceId: "poppy", notes: "1-1, 20%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 56,
+        sourceUrl: "https://palworld.th.gl/guides/Wumpo",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-4631,"y":16813},{"x":631,"y":30030},{"x":-17746,"y":35731},{"x":-3334,"y":52182},{"x":-3977,"y":69819},{"x":-15053,"y":58756},{"x":-6087,"y":98461},{"x":-21136,"y":77744},{"x":-20472,"y":95824},{"x":-769,"y":116549},{"x":30105,"y":-6436},{"x":15674,"y":-83},{"x":23729,"y":23392},{"x":13531,"y":47208},{"x":11580,"y":91553},{"x":19238,"y":122556},{"x":19211,"y":140930},{"x":4383,"y":135899},{"x":7286,"y":154920},{"x":54565,"y":-20157},{"x":48346,"y":-31315},{"x":46237,"y":6620},{"x":39697,"y":37580},{"x":49294,"y":53869},{"x":44474,"y":101652},{"x":23934,"y":178365},{"x":43121,"y":183206},{"x":48169,"y":204544},{"x":77130,"y":-1165},{"x":72855,"y":-36549},{"x":56602,"y":40591},{"x":73782,"y":40054},{"x":55247,"y":119934},{"x":67486,"y":206785},{"x":68082,"y":225906},{"x":94915,"y":-25365},{"x":80154,"y":-22600},{"x":89586,"y":20807},{"x":90872,"y":36851},{"x":100907,"y":72691},{"x":84978,"y":64213},{"x":85609,"y":101992},{"x":106146,"y":-34613},{"x":104980,"y":19493},{"x":126373,"y":9626},{"x":126960,"y":25073},{"x":102831,"y":6094},{"x":103686,"y":45292},{"x":125742,"y":50475},{"x":129217,"y":71894},{"x":149800,"y":-4213},{"x":145560,"y":14778},{"x":150447,"y":32871},{"x":154016,"y":57514},{"x":140739,"y":88132},{"x":169885,"y":62896}],
+      },
+    ],
   },
   {
     id: 202,
@@ -5013,6 +7403,10 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "Researchers once tried to cut the grass off its body to reveal its true form. In the end, only grass was left, as if that was all there was to begin with.",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Handiwork", level: 3 },
+      { type: "Lumbering", level: 5 },
+      { type: "Transporting", level: 6 },
     ],
     partnerSkill: { name: "Guardian of the South", description: "Can be ridden. While in party, player and party Pals take <Status_Up>{Passive1_EffectValue1}%</> less <img id=|ElemIcon_Ground|/>Unknown Status (COMMON_ELEMENT_NAME_Earth| style=|Elem_Ground) damage and are immune to Unknown Status (ADDITIONAL_EFFECT_Muddy| style=|Effect_Muddy) status. (Does not stack)" },
     possibleDrops: [
@@ -5020,7 +7414,17 @@ export const pals: Pal[] = [
       { resourceId: "poppy", notes: "1-1, 20%" },
       { resourceId: "carrotseeds", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 13,
+        sourceUrl: "https://palworld.th.gl/guides/Wumpo%20Botan",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-18590,"y":-72315},{"x":-10739,"y":-85642},{"x":-540,"y":-103271},{"x":-30081,"y":-66802},{"x":-39585,"y":-81324},{"x":-25754,"y":-90218},{"x":-37886,"y":-98142},{"x":-43451,"y":-112511},{"x":-41095,"y":-129089},{"x":-50306,"y":-147157},{"x":-33887,"y":-153403},{"x":-46202,"y":-163768},{"x":-173340,"y":-148708}],
+      },
+    ],
   },
   {
     id: 203,
@@ -5031,6 +7435,11 @@ export const pals: Pal[] = [
     elements: ["Dark", "Fire"],
     description: "It was once believed that as the world approached its end, the flame would weaken. Doomsayers would repeatedly rejoice when the flame began to weaken, but in the end, it turned out to be a prank by Sootseer. At least, for now.",
     workSuitability: [
+      { type: "Kindling", level: 3 },
+      { type: "Handiwork", level: 3 },
+      { type: "Gathering", level: 2 },
+      { type: "Mining", level: 3 },
+      { type: "Farming", level: 2 },
     ],
     partnerSkill: { name: "Grave Robber", description: "While in party, player and party Pals take <Status_Up>{Passive1_EffectValue1}%</> less <img id=|ElemIcon_Neutral|/>Unknown Status (COMMON_ELEMENT_NAME_Normal| style=|Elem_Neutral) damage. (Does not stack) Sometimes digs up bone| style=|status_keyword when assigned to Ranch." },
     possibleDrops: [
@@ -5038,7 +7447,17 @@ export const pals: Pal[] = [
       { resourceId: "bone", notes: "1-2, 100%" },
       { resourceId: "crudeoil", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 108,
+        sourceUrl: "https://palworld.th.gl/guides/Sootseer",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-24259,"y":-46030},{"x":-21090,"y":-76645},{"x":-15991,"y":-63012},{"x":-2951,"y":-72119},{"x":-19488,"y":-101495},{"x":-6151,"y":-90692},{"x":-5789,"y":-128926},{"x":-2430,"y":-109979},{"x":-16800,"y":-140334},{"x":-4888,"y":-149440},{"x":-731935,"y":-321413},{"x":-743027,"y":-338168},{"x":-721120,"y":-343669},{"x":-735744,"y":-354521},{"x":-740740,"y":-366814},{"x":-41623,"y":-16985},{"x":-51145,"y":-31956},{"x":-38913,"y":-42169},{"x":-31331,"y":-64637},{"x":-44681,"y":-76264},{"x":-49764,"y":-53504},{"x":-32137,"y":-90984},{"x":-45421,"y":-99248},{"x":-25129,"y":-124224},{"x":-35937,"y":-113780},{"x":-45316,"y":-123265},{"x":-32660,"y":-137331},{"x":-47192,"y":-138816},{"x":-35137,"y":-151238},{"x":-51202,"y":-163768},{"x":-31130,"y":-174428},{"x":-53673,"y":-181415},{"x":-750015,"y":-350826},{"x":-756245,"y":-336693},{"x":-768107,"y":-356732},{"x":-754733,"y":-369941},{"x":-764720,"y":-382819},{"x":-767733,"y":-408928},{"x":-778526,"y":-346956},{"x":-774733,"y":-370975},{"x":-789607,"y":-363926},{"x":-784041,"y":-384879},{"x":-786826,"y":-402398},{"x":-775899,"y":-423394},{"x":-789453,"y":-432450},{"x":-787131,"y":-460656},{"x":-777124,"y":-444592},{"x":-795161,"y":-346731},{"x":-812583,"y":-356273},{"x":-800508,"y":-376541},{"x":-815712,"y":-377479},{"x":-800186,"y":-395186},{"x":-810676,"y":-417429},{"x":-816108,"y":-434049},{"x":-798892,"y":-450487},{"x":-814577,"y":-460749},{"x":-800825,"y":-466824},{"x":-828985,"y":-352662},{"x":-834911,"y":-369473},{"x":-826129,"y":-391885},{"x":-840018,"y":-385989},{"x":-828990,"y":-426196},{"x":-843336,"y":-413422},{"x":-828505,"y":-447250},{"x":-842623,"y":-447505},{"x":-818536,"y":-479115},{"x":-853828,"y":-355762},{"x":-854479,"y":-371695},{"x":-859151,"y":-388124},{"x":-868481,"y":-407520},{"x":-864450,"y":-422783},{"x":-850780,"y":-434686},{"x":-864123,"y":-458150},{"x":-870105,"y":-354278},{"x":-879232,"y":-366320},{"x":-894850,"y":-374042},{"x":-891082,"y":-398801},{"x":-880236,"y":-386834},{"x":-881071,"y":-416439},{"x":-871594,"y":-441902}],
+      },
+    ],
   },
   {
     id: 204,
@@ -5049,13 +7468,27 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "Prone to eating indiscriminately, the mouth atop its head frequently breaks out in agonizing ulcers, causing it to use the mouth on its face instead. However, its behavior doesn't change, which leads to both mouths suffering the same ulcers.",
     workSuitability: [
+      { type: "Planting", level: 6 },
+      { type: "Handiwork", level: 4 },
+      { type: "Gathering", level: 4 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Entangling Tongue", description: "While in party, when the player performs a dodge roll or dodge step, Carnibora creates a whirlwind that deals damage to enemies it touches (<img id=|ElemIcon_Grass|/>Unknown Status (COMMON_ELEMENT_NAME_Leaf| style=|Elem_Grass) / Power: <Status_Up>{Passive1_EffectValue1}</>). (Does not stack)" },
     possibleDrops: [
       { resourceId: "venom", notes: "2-3, 100%" },
       { resourceId: "fiber", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 2,
+        sourceUrl: "https://palworld.th.gl/guides/Carnibora",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":151722,"y":456591},{"x":177329,"y":456457}],
+      },
+    ],
   },
   {
     id: 205,
@@ -5066,13 +7499,25 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "Legends say it was born during a volcanic eruption. A strange group even claims that this continent is laid upon the back of a giant Blazamut.",
     workSuitability: [
+      { type: "Kindling", level: 6 },
+      { type: "Mining", level: 7 },
     ],
     partnerSkill: { name: "Magma Kaiser", description: "Can be ridden. While in party, increases the Attack and Defense of the Pal fighting alongside you by <Status_Up>{Passive1_EffectValue1}%</> whenever you defeat an enemy. This effect lasts 20 seconds and stacks up to five times." },
     possibleDrops: [
       { resourceId: "coal", notes: "10-10, 100%" },
       { resourceId: "fireorgan", notes: "10-10, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 6,
+        sourceUrl: "https://palworld.th.gl/guides/Blazamut",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":69485,"y":512888},{"x":68669,"y":537340},{"x":90297,"y":504677},{"x":83901,"y":525608},{"x":153951,"y":460805},{"x":167074,"y":451747}],
+      },
+    ],
   },
   {
     id: 206,
@@ -5083,6 +7528,8 @@ export const pals: Pal[] = [
     elements: ["Dragon", "Fire"],
     description: "Long ago, it emerged from the depths of the earth. With relentless, raging flames showing no mercy, it burned the entire island until nothing remained. It was known as the Eternal Flame.",
     workSuitability: [
+      { type: "Kindling", level: 6 },
+      { type: "Mining", level: 7 },
     ],
     partnerSkill: { name: "Dragon Kaiser", description: "Can be ridden. While in party, improves player's and Pals' <img id=|ElemIcon_Dragon|/>Unknown Status (COMMON_ELEMENT_NAME_Dragon| style=|Elem_Dragon) damage to enemy weak points by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -5100,13 +7547,28 @@ export const pals: Pal[] = [
     elements: ["Ground", "Grass"],
     description: "One entity, two minds. When their wills clash, it's impossible to tell where the armor will wander until they reconcile.",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Gathering", level: 3 },
+      { type: "Lumbering", level: 5 },
+      { type: "Mining", level: 6 },
+      { type: "Transporting", level: 6 },
     ],
     partnerSkill: { name: "Forest Laser", description: "Can be ridden. When activated, Dualith fires a powerful <img id=|ElemIcon_Grass|/>Unknown Status (COMMON_ELEMENT_NAME_Leaf| style=|Elem_Grass) laser from its right hand. {ReferenceMsgId_CooldownReduction}" },
     possibleDrops: [
       { resourceId: "poppy", notes: "3-5, 100%" },
       { resourceId: "palupgradestone3", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 5,
+        sourceUrl: "https://palworld.th.gl/guides/Dualith",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-42539,"y":119012},{"x":-61430,"y":101497},{"x":-67849,"y":129338},{"x":-90665,"y":127930},{"x":-90155,"y":112531}],
+      },
+    ],
   },
   {
     id: 208,
@@ -5117,6 +7579,11 @@ export const pals: Pal[] = [
     elements: ["Ground", "Dark"],
     description: "One entity, two minds. They rarely agree and bicker constantly, but once battle begins, mind and body instantly unite as one!",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Gathering", level: 3 },
+      { type: "Lumbering", level: 5 },
+      { type: "Mining", level: 6 },
+      { type: "Transporting", level: 6 },
     ],
     partnerSkill: { name: "Corruption Laser", description: "Can be ridden. When activated, Dualith Noct fires a powerful <img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark) laser from its right hand. {ReferenceMsgId_CooldownReduction}" },
     possibleDrops: [
@@ -5134,6 +7601,9 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "Once seen as a symbol of nobility, and an idol for those who shunned wealth and power. Yet over time, this Pal became a token of death.",
     workSuitability: [
+      { type: "Handiwork", level: 6 },
+      { type: "Mining", level: 6 },
+      { type: "Transporting", level: 4 },
     ],
     partnerSkill: { name: "Guardian of the Desert", description: "When activated, Anubis changes the player's attack type to <img id=|ElemIcon_Ground|/>Unknown Status (COMMON_ELEMENT_NAME_Earth| style=|Elem_Ground) and increases Attack by {ReferencePassive1_EffectValue1}%. Occasionally evades attacks with a flash sidestep during battle." },
     possibleDrops: [
@@ -5141,7 +7611,17 @@ export const pals: Pal[] = [
       { resourceId: "palupgradestone3", notes: "1-1, 100%" },
       { resourceId: "technologybook-g2", notes: "1-1, 5%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 5,
+        sourceUrl: "https://palworld.th.gl/guides/Anubis",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-406422,"y":-406016},{"x":-385425,"y":-431636},{"x":-404068,"y":-432921},{"x":-406992,"y":-448361},{"x":-425792,"y":-431858}],
+      },
+    ],
   },
   {
     id: 210,
@@ -5152,13 +7632,26 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "Once a fierce creature feared as a symbol of death. When Anubis claimed that mantle, wealthy elites looking for a replacement beguiled the species with wine. Before long, Sekhmet became a symbol of high nobility.",
     workSuitability: [
+      { type: "Handiwork", level: 6 },
+      { type: "Mining", level: 3 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Desert Empress", description: "While at base, boosts Unknown Character (Anubis| style=|Status_Keyword)'s work speed by <Status_Up>{Passive1_EffectValue1}%</>. Increases efficiency by <Status_Up>{Passive2_EffectValue1}%</> if Sekhmet is also working at a Workbench, Workshop, or other related facilities. (Does not stack)" },
     possibleDrops: [
       { resourceId: "leather", notes: "2-3, 100%" },
       { resourceId: "palupgradestone3", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 68,
+        sourceUrl: "https://palworld.th.gl/guides/Sekhmet",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-405172,"y":-408181},{"x":-384175,"y":-433801},{"x":-402818,"y":-435086},{"x":-424542,"y":-434023},{"x":-12592,"y":254904},{"x":-3898,"y":328197},{"x":-26513,"y":316392},{"x":-4150,"y":352666},{"x":-15271,"y":346128},{"x":-9455,"y":370203},{"x":-13560,"y":453154},{"x":-3186,"y":244377},{"x":-27340,"y":353830},{"x":-47098,"y":365973},{"x":-42542,"y":460689},{"x":-38346,"y":476074},{"x":-55292,"y":380843},{"x":-68956,"y":365503},{"x":-81414,"y":363396},{"x":-93686,"y":371108},{"x":-108477,"y":383902},{"x":24842,"y":260620},{"x":24863,"y":323571},{"x":6246,"y":342815},{"x":27209,"y":348550},{"x":1668,"y":378751},{"x":15440,"y":382182},{"x":23894,"y":439076},{"x":18609,"y":456086},{"x":17882,"y":248544},{"x":49329,"y":269317},{"x":41778,"y":281743},{"x":28370,"y":309085},{"x":43943,"y":296237},{"x":49779,"y":324204},{"x":37823,"y":335455},{"x":41299,"y":352678},{"x":27990,"y":371664},{"x":52295,"y":366050},{"x":76559,"y":281320},{"x":63794,"y":298994},{"x":60100,"y":283685},{"x":59387,"y":339992},{"x":62885,"y":380700},{"x":65760,"y":400621},{"x":59614,"y":420881},{"x":87282,"y":384929},{"x":102613,"y":376831},{"x":124343,"y":299470},{"x":128542,"y":358286},{"x":121413,"y":374543},{"x":126389,"y":390038},{"x":144157,"y":275824},{"x":149156,"y":302925},{"x":150202,"y":320393},{"x":144109,"y":368425},{"x":142375,"y":413033},{"x":141400,"y":386638},{"x":179066,"y":309278},{"x":168727,"y":321515},{"x":174398,"y":338240},{"x":179769,"y":361713},{"x":160143,"y":368788},{"x":174412,"y":381676},{"x":187555,"y":321322},{"x":189101,"y":350933},{"x":193823,"y":378276},{"x":217137,"y":301611}],
+      },
+    ],
   },
   {
     id: 211,
@@ -5169,12 +7662,25 @@ export const pals: Pal[] = [
     elements: ["Dark", "Ground"],
     description: "It has about 5,000 types of venom. Some of them are deadly enough to cause instant death, but none are present in a high enough concentration to have any effect.",
     workSuitability: [
+      { type: "Gathering", level: 2 },
+      { type: "Lumbering", level: 4 },
+      { type: "Medicine Production", level: 2 },
     ],
     partnerSkill: { name: "Phantom Venom", description: "While in party, increases player's and Pals' damage to enemies afflicted with Unknown Status (ADDITIONAL_EFFECT_Poison| style=|Effect_Poison) by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "venom", notes: "4-5, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 24,
+        sourceUrl: "https://palworld.th.gl/guides/Prixter",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-2883,"y":-74406},{"x":-9668,"y":-61625},{"x":-2771,"y":-161585},{"x":-31130,"y":-170098},{"x":-48673,"y":-181415},{"x":-54838,"y":-91829},{"x":-55382,"y":-106198},{"x":-59878,"y":-121154},{"x":-64820,"y":-135912},{"x":-71600,"y":-149235},{"x":-55571,"y":-156006},{"x":-74920,"y":-166620},{"x":-60964,"y":-183955},{"x":-79375,"y":-130911},{"x":-88601,"y":-141258},{"x":-86564,"y":-154353},{"x":-103460,"y":-143446},{"x":-119130,"y":-133503},{"x":17492,"y":-73374},{"x":10843,"y":-97802},{"x":26274,"y":-88881},{"x":22882,"y":-118062},{"x":15176,"y":-140571},{"x":40711,"y":-101339}],
+      },
+    ],
   },
   {
     id: 212,
@@ -5185,12 +7691,26 @@ export const pals: Pal[] = [
     elements: ["Electric", "Ground"],
     description: "It pierces foes with its tail to deliver an electric jolt directly into their bodies. However, the current it generates is extremely weak, so a simple punch would do far more damage.",
     workSuitability: [
+      { type: "Generating Electricity", level: 3 },
+      { type: "Gathering", level: 2 },
+      { type: "Lumbering", level: 4 },
+      { type: "Medicine Production", level: 2 },
     ],
     partnerSkill: { name: "Scorpion Longwave", description: "When activated, Prixter Lux changes the player's attack type to <img id=|ElemIcon_Electric|/>Unknown Status (COMMON_ELEMENT_NAME_Electricity| style=|Elem_Electric) and increases Attack by <Status_Up>{ReferencePassive1_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "electricorgan", notes: "4-5, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 5,
+        sourceUrl: "https://palworld.th.gl/guides/Prixter%20Lux",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-407672,"y":-408181},{"x":-386675,"y":-433801},{"x":-405318,"y":-435086},{"x":-395526,"y":-448009},{"x":-427042,"y":-434023}],
+      },
+    ],
   },
   {
     id: 213,
@@ -5201,13 +7721,24 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "Those stones on its back are not just cargo. Set them down somewhere distant and they will slowly make their way back home.",
     workSuitability: [
+      { type: "Mining", level: 4 },
     ],
     partnerSkill: { name: "Masonry Archelon", description: "Can be ridden While at a base, increases the Unknown Status (COMMON_WORK_SUITABILITY_Mining| style=|Status_Keyword) Work Suitability Level for all other Base Pals by <Status_Keyword>+{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "ruby", notes: "1-2, 100%" },
       { resourceId: "palupgradestone3", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 65,
+        sourceUrl: "https://palworld.th.gl/guides/Tetroise",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-16342,"y":257069},{"x":1102,"y":328197},{"x":-22763,"y":318557},{"x":-10400,"y":350501},{"x":-23451,"y":340247},{"x":-15705,"y":368038},{"x":-2448,"y":374503},{"x":-18560,"y":448824},{"x":-3447,"y":449477},{"x":1144,"y":241877},{"x":-34004,"y":301026},{"x":-29840,"y":353830},{"x":-47098,"y":370303},{"x":-38792,"y":462854},{"x":-38346,"y":480404},{"x":-65206,"y":363338},{"x":-87664,"y":361231},{"x":-96929,"y":382059},{"x":-108529,"y":393795},{"x":21092,"y":262785},{"x":27363,"y":319241},{"x":21191,"y":331263},{"x":9996,"y":344980},{"x":19770,"y":384682},{"x":23894,"y":443406},{"x":9943,"y":457207},{"x":22212,"y":246044},{"x":46249,"y":264652},{"x":38698,"y":277078},{"x":40193,"y":298402},{"x":43529,"y":322039},{"x":36913,"y":341880},{"x":26595,"y":354086},{"x":26740,"y":369499},{"x":47868,"y":363998},{"x":71559,"y":276990},{"x":53334,"y":307738},{"x":62165,"y":293412},{"x":54566,"y":330554},{"x":57061,"y":346077},{"x":68204,"y":375094},{"x":63673,"y":392194},{"x":62114,"y":420881},{"x":91612,"y":382429},{"x":128673,"y":296970},{"x":108336,"y":374969},{"x":124792,"y":360451},{"x":128206,"y":376348},{"x":123889,"y":390038},{"x":139157,"y":275824},{"x":151656,"y":298595},{"x":138354,"y":308642},{"x":153952,"y":318228},{"x":142859,"y":370590},{"x":144205,"y":411203},{"x":142650,"y":388803},{"x":175986,"y":304613},{"x":168317,"y":330330},{"x":177301,"y":339784},{"x":182269,"y":357383},{"x":164473,"y":371288},{"x":181679,"y":322009},{"x":199164,"y":342938},{"x":190742,"y":373610},{"x":212137,"y":301611}],
+      },
+    ],
   },
   {
     id: 214,
@@ -5218,6 +7749,7 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "Even if the stones on its back were to be removed, Tetroise Primo will know where they are. No matter how far apart, it will always track them down.",
     workSuitability: [
+      { type: "Mining", level: 6 },
     ],
     partnerSkill: { name: "Stone-Chaser Archelon", description: "Can be ridden. While in party, increases the durability of all <Status_Keyword>weapons</> and <Status_Keyword>armor</> by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -5235,12 +7767,26 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Strongly dislikes anyone catching a glimpse of its concealed eye. If you insist on trying, it'll burst into tears and ignore you for two weeks.",
     workSuitability: [
+      { type: "Handiwork", level: 4 },
+      { type: "Gathering", level: 4 },
+      { type: "Lumbering", level: 2 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Shot-Nyan Mode", description: "When activated, Nyafia will fire a shotgun at nearby enemies for a limited time. While in party, increases the player's shotgun damage by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "leather", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 75,
+        sourceUrl: "https://palworld.th.gl/guides/Nyafia",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-507687,"y":-300822},{"x":-502012,"y":-354237},{"x":-509772,"y":-377409},{"x":-533159,"y":-278095},{"x":-533316,"y":-256698},{"x":-535100,"y":-302162},{"x":-517783,"y":-329985},{"x":-521421,"y":-312274},{"x":-532498,"y":-351204},{"x":-535851,"y":-333358},{"x":-534652,"y":-375187},{"x":-527587,"y":-388700},{"x":-557203,"y":-244526},{"x":-541440,"y":-235902},{"x":-558554,"y":-276428},{"x":-543131,"y":-288206},{"x":-559536,"y":-301159},{"x":-555513,"y":-324627},{"x":-552895,"y":-353314},{"x":-558025,"y":-379325},{"x":-551737,"y":-393002},{"x":-559400,"y":-156089},{"x":-567853,"y":-236451},{"x":-585038,"y":-268170},{"x":-579124,"y":-297571},{"x":-584010,"y":-329812},{"x":-575732,"y":-312317},{"x":-586565,"y":-354287},{"x":-568118,"y":-357771},{"x":-565794,"y":-341418},{"x":-583196,"y":-377620},{"x":-585190,"y":-396277},{"x":-567031,"y":-395517},{"x":-582503,"y":-176369},{"x":-607720,"y":-253699},{"x":-611598,"y":-234417},{"x":-589323,"y":-249047},{"x":-611832,"y":-269954},{"x":-597086,"y":-294886},{"x":-612027,"y":-285326},{"x":-611513,"y":-317533},{"x":-592265,"y":-315920},{"x":-612152,"y":-346882},{"x":-606625,"y":-381632},{"x":-609933,"y":-364432},{"x":-603377,"y":-399625},{"x":-602952,"y":-201652},{"x":-591107,"y":-189029},{"x":-603331,"y":-217124},{"x":-636964,"y":-249795},{"x":-627535,"y":-278449},{"x":-635243,"y":-305515},{"x":-632574,"y":-329394},{"x":-634209,"y":-175362},{"x":-634063,"y":-156965},{"x":-632838,"y":-188955},{"x":-624181,"y":-199899},{"x":-636819,"y":-214299},{"x":-619466,"y":-220872},{"x":-643490,"y":-232104},{"x":-658989,"y":-248558},{"x":-659050,"y":-232860},{"x":-651420,"y":-300808},{"x":-647966,"y":-284473},{"x":-648475,"y":-124713},{"x":-639595,"y":-139711},{"x":-655121,"y":-151394},{"x":-658000,"y":-166556},{"x":-642576,"y":-197841},{"x":-661281,"y":-187378},{"x":-666054,"y":-201889},{"x":-654772,"y":-212408},{"x":-683919,"y":-241701},{"x":-674743,"y":-214712},{"x":-694812,"y":-222751}],
+      },
+    ],
   },
   {
     id: 216,
@@ -5251,6 +7797,8 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "There was once a tradition of handing out an award to the person who met their end in the most foolish way. The first award was given for |being unaware of Mimog, opening the chest, and being bitten to death.|",
     workSuitability: [
+      { type: "Gathering", level: 1 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Master of Unlocking", description: "While fighting together, Mimog can open treasure chests without using a key. {ReferenceMsgId_CooldownReduction}" },
     possibleDrops: [
@@ -5258,7 +7806,17 @@ export const pals: Pal[] = [
       { resourceId: "dogcoin", notes: "14-21, 100%" },
       { resourceId: "expboost-04", notes: "1-1, 20%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 874,
+        sourceUrl: "https://palworld.th.gl/guides/Mimog",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-250275,"y":2006},{"x":-247104,"y":-10296},{"x":-230618,"y":-16314},{"x":-252469,"y":-44809},{"x":-227905,"y":-70228},{"x":-237750,"y":-51213},{"x":-236414,"y":-93673},{"x":-246296,"y":-127361},{"x":-233880,"y":-114011},{"x":-240959,"y":-145945},{"x":-245323,"y":-169448},{"x":-242681,"y":-191975},{"x":-235459,"y":5366},{"x":-243579,"y":19784},{"x":-233226,"y":257351},{"x":-235123,"y":273512},{"x":-250845,"y":34706},{"x":-245287,"y":52899},{"x":-231746,"y":34070},{"x":-234143,"y":66199},{"x":-243165,"y":88842},{"x":-231912,"y":103265},{"x":-251045,"y":123371},{"x":-234380,"y":121898},{"x":-254690,"y":142444},{"x":-241164,"y":135727},{"x":-236115,"y":151300},{"x":-254680,"y":158808},{"x":-238398,"y":166142},{"x":-250668,"y":175962},{"x":-231781,"y":182479},{"x":-243826,"y":192418},{"x":-248420,"y":209473},{"x":-233016,"y":210172},{"x":-227496,"y":240495},{"x":-258543,"y":-18273},{"x":-279762,"y":-19241},{"x":-273184,"y":-42518},{"x":-262827,"y":-66340},{"x":-272860,"y":-75968},{"x":-281714,"y":-58807},{"x":-257199,"y":-148844},{"x":-255933,"y":-178326},{"x":-270300,"y":-173280},{"x":-268644,"y":-187977},{"x":-280488,"y":-202396},{"x":-259695,"y":-203076},{"x":-267041,"y":13321},{"x":-264600,"y":31269},{"x":-260731,"y":49554},{"x":-282691,"y":30458},{"x":-276193,"y":45993},{"x":-259784,"y":65276},{"x":-268701,"y":75223},{"x":-261422,"y":92281},{"x":-283306,"y":88148},{"x":-272188,"y":104441},{"x":-267497,"y":121547},{"x":-282928,"y":130126},{"x":-275095,"y":143076},{"x":-272216,"y":158405},{"x":-265936,"y":178674},{"x":-293946,"y":-22299},{"x":-299527,"y":-47073},{"x":-290010,"y":-72169},{"x":-301517,"y":-87188},{"x":-281524,"y":-114706},{"x":-285058,"y":-128233},{"x":-284153,"y":-148647},{"x":-296865,"y":-165952},{"x":-299044,"y":-197310},{"x":-301310,"y":-227441},{"x":-290232,"y":-214636},{"x":-307596,"y":27783},{"x":-304974,"y":47193},{"x":-281127,"y":60583},{"x":-297895,"y":66415},{"x":-302059,"y":102341},{"x":-306110,"y":82652},{"x":-297467,"y":123600}],
+      },
+    ],
   },
   {
     id: 217,
@@ -5269,6 +7827,8 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Can send information and convert it into energy by forgetting it. Regularly seems to be sending information to someone. - Respond. Target located. Proceed to immediate destruction.",
     workSuitability: [
+      { type: "Lumbering", level: 3 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Unknown Invader", description: "While in party, increases the damage of the last bullet fired from a full-auto weapon by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -5285,6 +7845,7 @@ export const pals: Pal[] = [
     elements: ["Dragon"],
     description: "Consumes information and turns it into energy. Regularly seems to be sending information to someone. - Hello? What was the message you just sent? I devoured it before checking.",
     workSuitability: [
+      { type: "Mining", level: 4 },
     ],
     partnerSkill: { name: "Unknown Intruder", description: "Can be ridden. While in party, increases the player's <Status_Keyword>energy weapon</> damage by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -5302,6 +7863,11 @@ export const pals: Pal[] = [
     elements: ["Grass", "Dark"],
     description: "Intelligent and graceful in its demeanor, it was frequently employed as an attendant by the island's nobles. However, when encountered at night, its face looked so eerie that it quickly fell out of favor.",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Handiwork", level: 1 },
+      { type: "Gathering", level: 2 },
+      { type: "Medicine Production", level: 3 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Prayer for Abundant Harvest", description: "While at a base, Prunelia's prayers bless the crops, increasing their harvest by <Status_Up>{Passive1_EffectValue1}%</>." },
     possibleDrops: [
@@ -5309,7 +7875,17 @@ export const pals: Pal[] = [
       { resourceId: "poppy", notes: "2-3, 100%" },
       { resourceId: "carrotseeds", notes: "1-1, 50%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 136,
+        sourceUrl: "https://palworld.th.gl/guides/Prunelia",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-508522,"y":-379574},{"x":-531909,"y":-280260},{"x":-533850,"y":-304327},{"x":-516533,"y":-332150},{"x":-520171,"y":-314439},{"x":-531248,"y":-353369},{"x":-534601,"y":-335523},{"x":-512552,"y":-355381},{"x":-533402,"y":-377352},{"x":-555953,"y":-246691},{"x":-540190,"y":-238067},{"x":-557304,"y":-278594},{"x":-542340,"y":-269098},{"x":-560279,"y":-263420},{"x":-545631,"y":-288206},{"x":-558286,"y":-303324},{"x":-554263,"y":-326792},{"x":-549616,"y":-355649},{"x":-563019,"y":-346806},{"x":-556775,"y":-381490},{"x":-562336,"y":-364006},{"x":-558150,"y":-158254},{"x":-583788,"y":-270335},{"x":-577874,"y":-299736},{"x":-582760,"y":-331977},{"x":-578163,"y":-315502},{"x":-585315,"y":-356452},{"x":-581946,"y":-379785},{"x":-583940,"y":-398442},{"x":-581253,"y":-178534},{"x":-606470,"y":-255864},{"x":-610348,"y":-236583},{"x":-588073,"y":-251212},{"x":-610582,"y":-272119},{"x":-595836,"y":-297051},{"x":-610263,"y":-319698},{"x":-594765,"y":-315920},{"x":-610902,"y":-349047},{"x":-593019,"y":-343070},{"x":-605375,"y":-383798},{"x":-608683,"y":-366597},{"x":-602127,"y":-401791},{"x":-601702,"y":-203817},{"x":-599543,"y":-187794},{"x":-635714,"y":-251960},{"x":-626285,"y":-280614},{"x":-624482,"y":-264054},{"x":-637965,"y":-293019},{"x":-621108,"y":-303990},{"x":-631324,"y":-331559},{"x":-624959,"y":-353603},{"x":-636986,"y":-378196},{"x":-622000,"y":-368049},{"x":-631963,"y":-409539},{"x":-627432,"y":-393307},{"x":-636283,"y":-425983},{"x":-622931,"y":-202064},{"x":-635569,"y":-216464},{"x":-616216,"y":-217495},{"x":-657739,"y":-250723},{"x":-661550,"y":-232860},{"x":-642360,"y":-233085},{"x":-640151,"y":-273743},{"x":-649928,"y":-300440},{"x":-659828,"y":-321207},{"x":-655427,"y":-353667},{"x":-658458,"y":-380866},{"x":-660337,"y":-404750},{"x":-660906,"y":-432907},{"x":-650419,"y":-418986},{"x":-647225,"y":-126878},{"x":-652412,"y":-152051},{"x":-658363,"y":-168718},{"x":-663461,"y":-191512},{"x":-646898,"y":-201584},{"x":-662766,"y":-209687},{"x":-682669,"y":-243866},{"x":-685566,"y":-281408},{"x":-683178,"y":-328623},{"x":-671953,"y":-343704}],
+      },
+    ],
   },
   {
     id: 220,
@@ -5320,12 +7896,24 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "What it carries is its own soul. When it falls for someone, it forcibly extracts their soul and merges it with its own, yearning to become one.",
     workSuitability: [
+      { type: "Handiwork", level: 4 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Soul Collector", description: "While fighting together, Pals drop <Status_Up>+{Passive1_EffectValue1}%</> more Pal Souls when defeated. (Does not stack)" },
     possibleDrops: [
       { resourceId: "palupgradestone", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 53,
+        sourceUrl: "https://palworld.th.gl/guides/Nitemary",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-728185,"y":-323578},{"x":-739277,"y":-340333},{"x":-717370,"y":-345834},{"x":-731994,"y":-356686},{"x":-741990,"y":-368979},{"x":-753214,"y":-332742},{"x":-748765,"y":-352991},{"x":-764357,"y":-358897},{"x":-763125,"y":-374169},{"x":-760203,"y":-391087},{"x":-763983,"y":-411093},{"x":-771348,"y":-345077},{"x":-785797,"y":-349139},{"x":-779599,"y":-383183},{"x":-788357,"y":-366091},{"x":-777518,"y":-401005},{"x":-790660,"y":-406600},{"x":-789381,"y":-433193},{"x":-770434,"y":-429952},{"x":-786915,"y":-460029},{"x":-771528,"y":-448901},{"x":-801218,"y":-358300},{"x":-817924,"y":-352069},{"x":-813330,"y":-378379},{"x":-804542,"y":-399330},{"x":-813147,"y":-426575},{"x":-800344,"y":-418304},{"x":-808718,"y":-458190},{"x":-813571,"y":-475180},{"x":-827352,"y":-330561},{"x":-833373,"y":-355270},{"x":-830306,"y":-373405},{"x":-840168,"y":-393177},{"x":-836940,"y":-433549},{"x":-840738,"y":-414568},{"x":-841547,"y":-449159},{"x":-823018,"y":-450954},{"x":-861187,"y":-356781},{"x":-848366,"y":-342804},{"x":-858731,"y":-383480},{"x":-865955,"y":-408553},{"x":-864172,"y":-435130},{"x":-865917,"y":-456345},{"x":-876633,"y":-357611},{"x":-888921,"y":-379745},{"x":-872936,"y":-376813},{"x":-890767,"y":-401559},{"x":-880627,"y":-431210},{"x":-884508,"y":-460173},{"x":-880367,"y":-479133},{"x":-902693,"y":-373189},{"x":-913899,"y":-408674},{"x":-917711,"y":-389957}],
+      },
+    ],
   },
   {
     id: 221,
@@ -5336,12 +7924,25 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "What it carries is its own soul. When it falls for someone, it flings its soul at them to merge it with theirs, yearning to become one.",
     workSuitability: [
+      { type: "Planting", level: 3 },
+      { type: "Handiwork", level: 4 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Soul Binder", description: "While in party, increases Defense of <img id=|ElemIcon_Grass|/>Unknown Status (COMMON_ELEMENT_NAME_Leaf| style=|Elem_Grass) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "palupgradestone2", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 5,
+        sourceUrl: "https://palworld.th.gl/guides/Nitemary%20Botan",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-151230,"y":577356},{"x":-178018,"y":560470},{"x":-158855,"y":560133},{"x":-163377,"y":591905},{"x":-179442,"y":584767}],
+      },
+    ],
   },
   {
     id: 222,
@@ -5352,12 +7953,23 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "The black flames are merely warm to the touch, but anything left in contact with them slowly melts from the inside. Hold some cheese over them, and it becomes a true delicacy.",
     workSuitability: [
+      { type: "Gathering", level: 2 },
     ],
     partnerSkill: { name: "Dig, Smokie! Dig!", description: "When activated, uses its sharp sense of smell to detect nearby chromium| style=|status_keyword. While fighting together, chromium| style=|status_keyword acquisition increases by <Status_Up>+{Passive1_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "chromium", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 258,
+        sourceUrl: "https://palworld.th.gl/guides/Smokie",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-487976,"y":-265494},{"x":-505380,"y":-234337},{"x":-508235,"y":-262440},{"x":-510559,"y":-277764},{"x":-511437,"y":-298657},{"x":-501530,"y":-340281},{"x":-491476,"y":-355318},{"x":-511022,"y":-379574},{"x":-491907,"y":-372566},{"x":-492397,"y":-390864},{"x":-502996,"y":-403431},{"x":-512761,"y":-210837},{"x":-496144,"y":-217396},{"x":-527113,"y":-233103},{"x":-527455,"y":-247162},{"x":-534409,"y":-280260},{"x":-528476,"y":-263381},{"x":-536350,"y":-304327},{"x":-519033,"y":-332150},{"x":-522671,"y":-314439},{"x":-533748,"y":-353369},{"x":-537101,"y":-335523},{"x":-515052,"y":-355381},{"x":-535902,"y":-377352},{"x":-530648,"y":-397270},{"x":-534981,"y":-160746},{"x":-534619,"y":-174719},{"x":-534433,"y":-188656},{"x":-539425,"y":-212708},{"x":-558453,"y":-246691},{"x":-542690,"y":-238067},{"x":-563618,"y":-231401},{"x":-559804,"y":-278594},{"x":-562779,"y":-263420},{"x":-560786,"y":-303324},{"x":-547835,"y":-289511},{"x":-556763,"y":-326792},{"x":-552116,"y":-355649},{"x":-560014,"y":-339796},{"x":-559275,"y":-381490},{"x":-550965,"y":-403179},{"x":-560650,"y":-158254},{"x":-552781,"y":-172653},{"x":-549773,"y":-196986},{"x":-560447,"y":-204583},{"x":-586288,"y":-270335},{"x":-580374,"y":-299736},{"x":-585260,"y":-331977},{"x":-580663,"y":-315502},{"x":-587815,"y":-356452},{"x":-570618,"y":-357771},{"x":-584446,"y":-379785},{"x":-586440,"y":-398442},{"x":-569531,"y":-395517},{"x":-588522,"y":-446753},{"x":-572299,"y":-452756},{"x":-585628,"y":-461482},{"x":-569646,"y":-467886},{"x":-583284,"y":-479292},{"x":-586546,"y":-494785},{"x":-577374,"y":-144081},{"x":-583753,"y":-178534},{"x":-587286,"y":-161703},{"x":-565685,"y":-181882},{"x":-577073,"y":-199871},{"x":-582035,"y":-214753},{"x":-608970,"y":-255864},{"x":-612848,"y":-236583},{"x":-590573,"y":-251212},{"x":-613082,"y":-272119},{"x":-598336,"y":-297051},{"x":-612763,"y":-319698},{"x":-613402,"y":-349047},{"x":-604076,"y":-336105},{"x":-607875,"y":-383798},{"x":-611183,"y":-366597},{"x":-604627,"y":-401791},{"x":-611362,"y":-426816},{"x":-614739,"y":-452573},{"x":-603701,"y":-441393}],
+      },
+    ],
   },
   {
     id: 223,
@@ -5368,13 +7980,25 @@ export const pals: Pal[] = [
     elements: ["Dark", "Ice"],
     description: "The blue flames are merely cool to the touch, but anything left in contact with them slowly freezes. Hold a milk bottle over them, and you get a frozen milkshake!",
     workSuitability: [
+      { type: "Gathering", level: 2 },
+      { type: "Cooling", level: 2 },
     ],
     partnerSkill: { name: "Cryo Instincts", description: "While at a base, increases the Unknown Status (COMMON_WORK_SUITABILITY_Cool| style=|Status_Keyword) Work Suitability Level for all other Base Pals by <Status_Keyword>+{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "iceorgan", notes: "1-2, 100%" },
       { resourceId: "palupgradestone2", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 4,
+        sourceUrl: "https://palworld.th.gl/guides/Smokie%20Cryst",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-542809,"y":-612607},{"x":-547893,"y":-635335},{"x":-571387,"y":-608129},{"x":-572805,"y":-629818}],
+      },
+    ],
   },
   {
     id: 224,
@@ -5385,12 +8009,23 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "The mask it wears is not its face, they say. It seems in front, but it's not there, no way. From shadows deep, it watches night and day. Glance away, and closer it will stray.",
     workSuitability: [
+      { type: "Gathering", level: 5 },
     ],
     partnerSkill: { name: "Masquerade Dance", description: "While in party, increases Party Pals' <Status_Keyword>EXP gained</> by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "paldarkparts", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 261,
+        sourceUrl: "https://palworld.th.gl/guides/Omascul",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-486726,"y":-267659},{"x":-504130,"y":-236502},{"x":-509485,"y":-264605},{"x":-513059,"y":-277764},{"x":-510187,"y":-300822},{"x":-502780,"y":-342446},{"x":-492726,"y":-353153},{"x":-493157,"y":-370401},{"x":-510617,"y":-378062},{"x":-493647,"y":-388699},{"x":-500496,"y":-403431},{"x":-511511,"y":-213002},{"x":-525863,"y":-235268},{"x":-534115,"y":-252128},{"x":-530493,"y":-267612},{"x":-527995,"y":-284243},{"x":-539799,"y":-299552},{"x":-522606,"y":-305277},{"x":-519428,"y":-323022},{"x":-514647,"y":-353801},{"x":-524079,"y":-340325},{"x":-531223,"y":-352349},{"x":-534721,"y":-366669},{"x":-532084,"y":-383162},{"x":-533731,"y":-162912},{"x":-533437,"y":-182203},{"x":-538175,"y":-214873},{"x":-526071,"y":-205947},{"x":-565347,"y":-249021},{"x":-562368,"y":-233566},{"x":-563916,"y":-266861},{"x":-545849,"y":-270047},{"x":-550941,"y":-306497},{"x":-555572,"y":-288058},{"x":-556886,"y":-318804},{"x":-554477,"y":-356317},{"x":-562514,"y":-339796},{"x":-540798,"y":-336012},{"x":-549513,"y":-380371},{"x":-562962,"y":-369153},{"x":-545617,"y":-400905},{"x":-548052,"y":-166886},{"x":-563168,"y":-157782},{"x":-546317,"y":-196405},{"x":-555145,"y":-180891},{"x":-561697,"y":-202418},{"x":-561572,"y":-217849},{"x":-589720,"y":-257334},{"x":-583514,"y":-279684},{"x":-574675,"y":-301030},{"x":-574131,"y":-322506},{"x":-586293,"y":-327510},{"x":-575746,"y":-344480},{"x":-585426,"y":-353300},{"x":-580334,"y":-368302},{"x":-577993,"y":-381258},{"x":-570736,"y":-393144},{"x":-588902,"y":-398867},{"x":-586022,"y":-446753},{"x":-571049,"y":-454921},{"x":-588128,"y":-461482},{"x":-572146,"y":-467886},{"x":-579919,"y":-485238},{"x":-576124,"y":-146246},{"x":-582002,"y":-133677},{"x":-578428,"y":-166625},{"x":-584648,"y":-184034},{"x":-578323,"y":-197706},{"x":-578029,"y":-213789},{"x":-609834,"y":-232746},{"x":-608071,"y":-252852},{"x":-611736,"y":-269643},{"x":-611215,"y":-302276},{"x":-595414,"y":-289042},{"x":-611919,"y":-286437},{"x":-590205,"y":-309171},{"x":-602021,"y":-326660},{"x":-601810,"y":-343457},{"x":-604664,"y":-360088},{"x":-595455,"y":-373093}],
+      },
+    ],
   },
   {
     id: 225,
@@ -5401,6 +8036,8 @@ export const pals: Pal[] = [
     elements: ["Ice", "Water"],
     description: "When it sleeps, Pals often mistake it for a drifting piece of ice and rest on it. Although gentle and unwilling to push them away when awake, it feels quietly stressed by the intrusion on its personal space.",
     workSuitability: [
+      { type: "Watering", level: 5 },
+      { type: "Cooling", level: 6 },
     ],
     partnerSkill: { name: "Chilled Whale Cruiser", description: "Can be ridden. While in party, fishing minigames start with the capture gauge increased by <Status_Up>{Passive1_EffectValue1}%</>. Additionally, while the bars overlap, capture progress increases by <Status_Up>{Passive2_EffectValue1}%</>. (Does not stack) {ReferenceMsgId_SwimSpeedUp}" },
     possibleDrops: [
@@ -5409,7 +8046,17 @@ export const pals: Pal[] = [
       { resourceId: "iceorgan", notes: "1-3, 100%" },
       { resourceId: "palupgradestone3", notes: "1-1, 1%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 2,
+        sourceUrl: "https://palworld.th.gl/guides/Whalaska",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":170215,"y":220979},{"x":184680,"y":226924}],
+      },
+    ],
   },
   {
     id: 226,
@@ -5420,6 +8067,8 @@ export const pals: Pal[] = [
     elements: ["Ice", "Fire"],
     description: "Determined never to be mistaken for drift ice again, it turned bright red through sheer will. Unfortunately, some Pals can’t see red. So despite its efforts, its personal space continues to be invaded.",
     workSuitability: [
+      { type: "Kindling", level: 5 },
+      { type: "Cooling", level: 6 },
     ],
     partnerSkill: { name: "Cozy Whale Cruiser", description: "Can be ridden. While in party, fishing minigame begins with the capture gauge <Status_Up>{Passive1_EffectValue1}%</> higher than usual, and capture progress increases by <Status_Up>{Passive2_EffectValue1}%</> while the bars overlap. (Does not stack) {ReferenceMsgId_SwimSpeedUp}" },
     possibleDrops: [
@@ -5439,13 +8088,28 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "Land that Verdash has run across becomes extremely fertile, with thick vegetation growing soon after. It will not run anywhere that herbicide has been used.",
     workSuitability: [
+      { type: "Planting", level: 4 },
+      { type: "Handiwork", level: 5 },
+      { type: "Gathering", level: 5 },
+      { type: "Lumbering", level: 3 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Grassland Gymnast", description: "While in party, grants <Status_Keyword>{Passive1_EffectValue1}</> additional jump and <Status_Keyword>{Passive1_EffectValue2}</> additional mid-air dash. (Does not stack)" },
     possibleDrops: [
       { resourceId: "leather", notes: "1-2, 100%" },
       { resourceId: "bone", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 39,
+        sourceUrl: "https://palworld.th.gl/guides/Verdash",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-19840,"y":-74480},{"x":-5854,"y":-80928},{"x":-4579,"y":-97929},{"x":-23271,"y":-99020},{"x":-684084,"y":-265167},{"x":-674271,"y":-278901},{"x":-665393,"y":-262113},{"x":-672555,"y":-306627},{"x":-688005,"y":-316272},{"x":-713983,"y":-251913},{"x":-713655,"y":-271100},{"x":-698121,"y":-257553},{"x":-739246,"y":-253558},{"x":-735433,"y":-272348},{"x":-35987,"y":-74072},{"x":-49163,"y":-88103},{"x":-39116,"y":-105403},{"x":-47816,"y":-123265},{"x":-49692,"y":-138816},{"x":-36969,"y":-147549},{"x":-48702,"y":-163768},{"x":-28741,"y":-160951},{"x":-764576,"y":-251451},{"x":-764065,"y":-233324},{"x":-766808,"y":-275152},{"x":-750882,"y":-265648},{"x":-766727,"y":-299071},{"x":-751498,"y":-290053},{"x":-755282,"y":-329210},{"x":-764214,"y":-215047},{"x":-790791,"y":-251455},{"x":-791084,"y":-268984},{"x":-777541,"y":-259405},{"x":-790545,"y":-299497},{"x":-780825,"y":-283676},{"x":-791520,"y":-323230},{"x":-776213,"y":-311699},{"x":-804915,"y":-289442},{"x":-177090,"y":-150873}],
+      },
+    ],
   },
   {
     id: 228,
@@ -5456,12 +8120,26 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "It has an uncontrollable urge to tear its prey apart. Each individual has their own meticulous order for dismemberment. If caught by Splatterina, pray that your head is taken first.",
     workSuitability: [
+      { type: "Handiwork", level: 6 },
+      { type: "Lumbering", level: 3 },
+      { type: "Medicine Production", level: 5 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Blade of Uncontrolled Passion", description: "While in party, the amount of items obtained from using the Meat Cleaver increases by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "paldarkparts", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 179,
+        sourceUrl: "https://palworld.th.gl/guides/Splatterina",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-510187,"y":-296492},{"x":-499512,"y":-354237},{"x":-512272,"y":-381739},{"x":-499257,"y":-369981},{"x":-533159,"y":-282425},{"x":-528050,"y":-266945},{"x":-535100,"y":-306492},{"x":-517783,"y":-334315},{"x":-515414,"y":-317006},{"x":-532498,"y":-355534},{"x":-535663,"y":-340829},{"x":-517552,"y":-355381},{"x":-534652,"y":-379517},{"x":-559703,"y":-248856},{"x":-551115,"y":-236082},{"x":-558554,"y":-280759},{"x":-563916,"y":-262531},{"x":-559536,"y":-305489},{"x":-555513,"y":-328957},{"x":-553366,"y":-357814},{"x":-558025,"y":-383655},{"x":-561900,"y":-160419},{"x":-570353,"y":-236451},{"x":-585038,"y":-272500},{"x":-584554,"y":-256566},{"x":-579124,"y":-301901},{"x":-584010,"y":-334142},{"x":-569340,"y":-321556},{"x":-587657,"y":-319107},{"x":-586565,"y":-358617},{"x":-573118,"y":-357771},{"x":-563294,"y":-341418},{"x":-583196,"y":-381950},{"x":-585190,"y":-400607},{"x":-570781,"y":-393352},{"x":-585003,"y":-180699},{"x":-573692,"y":-166964},{"x":-607720,"y":-258029},{"x":-607168,"y":-242305},{"x":-614332,"y":-274284},{"x":-597086,"y":-299216},{"x":-611513,"y":-321863},{"x":-612152,"y":-351212},{"x":-595940,"y":-346063},{"x":-606625,"y":-385963},{"x":-609933,"y":-368762},{"x":-605877,"y":-403956},{"x":-602952,"y":-205982},{"x":-594966,"y":-190042},{"x":-611006,"y":-223569},{"x":-636964,"y":-254125},{"x":-622945,"y":-242614},{"x":-627535,"y":-282779},{"x":-630765,"y":-298176},{"x":-616163,"y":-291464},{"x":-632574,"y":-333724},{"x":-631209,"y":-351438},{"x":-638236,"y":-380362},{"x":-635713,"y":-411704},{"x":-635907,"y":-395939},{"x":-639789,"y":-175697},{"x":-639643,"y":-157300},{"x":-631588,"y":-191120},{"x":-636819,"y":-218629},{"x":-642240,"y":-234269},{"x":-658989,"y":-252888},{"x":-662800,"y":-235025},{"x":-637651,"y":-273743},{"x":-655508,"y":-300775},{"x":-665408,"y":-321542},{"x":-652766,"y":-329712},{"x":-661007,"y":-354002},{"x":-664039,"y":-381201},{"x":-645731,"y":-367184},{"x":-665917,"y":-405085},{"x":-651792,"y":-391573},{"x":-662156,"y":-435072},{"x":-653000,"y":-421333},{"x":-648475,"y":-129043},{"x":-650710,"y":-145141}],
+      },
+    ],
   },
   {
     id: 229,
@@ -5472,12 +8150,23 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "During the golden age of alchemy on the island, its ever-glowing golden fur was highly prized as a catalyst for transmuting gold. In time, a remarkable revelation was made: the same golden hue could be achieved simply by processing its mane.",
     workSuitability: [
+      { type: "Gathering", level: 5 },
     ],
     partnerSkill: { name: "Sandstorm's Blessing", description: "Can be ridden. While mounted, changes the player’s attack type to <img id=|ElemIcon_Ground|/>Unknown Status (COMMON_ELEMENT_NAME_Earth| style=|Elem_Ground) and increases Attack by <Status_Up>{Passive2_EffectValue1}%</>." },
     possibleDrops: [
       { resourceId: "leather", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 111,
+        sourceUrl: "https://palworld.th.gl/guides/Gildane",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-485484,"y":-265788},{"x":-505958,"y":-242601},{"x":-511774,"y":-280647},{"x":-507008,"y":-264959},{"x":-500724,"y":-355619},{"x":-500645,"y":-378642},{"x":-509001,"y":-403287},{"x":-496696,"y":-415762},{"x":-509008,"y":-224287},{"x":-504239,"y":-207977},{"x":-534142,"y":-252383},{"x":-530015,"y":-236828},{"x":-535928,"y":-177165},{"x":-532356,"y":-161083},{"x":-521235,"y":-203829},{"x":-536904,"y":-213106},{"x":-561065,"y":-231767},{"x":-556552,"y":-403489},{"x":-558121,"y":-176066},{"x":-559136,"y":-197560},{"x":-540450,"y":-193282},{"x":-555618,"y":-216291},{"x":-588691,"y":-451804},{"x":-571649,"y":-457634},{"x":-583559,"y":-472319},{"x":-586624,"y":-497213},{"x":-588312,"y":-145500},{"x":-588542,"y":-164239},{"x":-584050,"y":-202816},{"x":-577447,"y":-226794},{"x":-604984,"y":-407342},{"x":-612629,"y":-430625},{"x":-613586,"y":-449398},{"x":-613763,"y":-468676},{"x":-607165,"y":-483644},{"x":-606961,"y":-125777},{"x":-612991,"y":-142699},{"x":-613941,"y":-161526},{"x":-614324,"y":-180408},{"x":-634322,"y":-283140},{"x":-633265,"y":-298176},{"x":-629501,"y":-405141},{"x":-637804,"y":-427040},{"x":-637624,"y":-446231},{"x":-638623,"y":-465484},{"x":-631702,"y":-142516},{"x":-638358,"y":-158979},{"x":-638699,"y":-178502},{"x":-658184,"y":-274090},{"x":-651758,"y":-302940},{"x":-665101,"y":-288521},{"x":-661658,"y":-323707},{"x":-657257,"y":-356167},{"x":-660289,"y":-383366},{"x":-662167,"y":-407250},{"x":-664415,"y":-441351},{"x":-664567,"y":-460566},{"x":-684248,"y":-293573},{"x":-685008,"y":-331123},{"x":-668203,"y":-345869},{"x":-681402,"y":-353924},{"x":-669826,"y":-367864},{"x":-679969,"y":-379538},{"x":-678027,"y":-406091},{"x":-673368,"y":-425919},{"x":-690113,"y":-425843},{"x":-690984,"y":-444492},{"x":-684123,"y":-460065},{"x":-715139,"y":-254901},{"x":-707075,"y":-278812},{"x":-695571,"y":-256953},{"x":-693555,"y":-306838},{"x":-706389,"y":-297209},{"x":-702493,"y":-331879},{"x":-713568,"y":-316057},{"x":-695173,"y":-347813},{"x":-708167,"y":-351636},{"x":-699944,"y":-380710},{"x":-712503,"y":-372191},{"x":-694028,"y":-404113}],
+      },
+    ],
   },
   {
     id: 230,
@@ -5488,12 +8177,27 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "Striving for a state of selflessness, it meditates endlessly. After confronting its worldly desires, it eats a meal and reflects. It ate too much today.",
     workSuitability: [
+      { type: "Handiwork", level: 4 },
+      { type: "Gathering", level: 3 },
+      { type: "Lumbering", level: 3 },
+      { type: "Medicine Production", level: 2 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Homeward Prayer", description: "When activated, teleports to the nearest base. Cannot be used inside dungeons or similar areas. {ReferenceMsgId_CooldownReduction}" },
     possibleDrops: [
       { resourceId: "bone", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 11,
+        sourceUrl: "https://palworld.th.gl/guides/Dogen",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-20738,"y":-99330},{"x":-186,"y":-96685},{"x":-7039,"y":-126761},{"x":-12853,"y":-112285},{"x":-21928,"y":-128507},{"x":-6411,"y":-142779},{"x":-20924,"y":-147259},{"x":-39603,"y":-121333},{"x":-33910,"y":-139496},{"x":3252,"y":-114653},{"x":9319,"y":-135018}],
+      },
+    ],
   },
   {
     id: 231,
@@ -5504,13 +8208,25 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "In the old islands, Bulldosu sumo was widely enjoyed. At the highest levels, even a charging Rushoar would be sent flying instead.",
     workSuitability: [
+      { type: "Mining", level: 4 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Yokozuna's Presence", description: "Can be ridden. While in party, player and party Pals take <Status_Up>{Passive1_EffectValue1}%</> less <img id=|ElemIcon_Electric|/>Unknown Status (COMMON_ELEMENT_NAME_Electricity| style=|Elem_Electric) damage and are immune to Unknown Status (ADDITIONAL_EFFECT_Electrical| style=|Effect_Electrical). (Does not stack)" },
     possibleDrops: [
       { resourceId: "bone", notes: "2-3, 100%" },
       { resourceId: "fiber", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 7,
+        sourceUrl: "https://palworld.th.gl/guides/Bulldosu",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-21988,"y":-97165},{"x":-8289,"y":-124596},{"x":-6689,"y":-106567},{"x":-7661,"y":-140614},{"x":-21265,"y":-141803},{"x":-26379,"y":-126390},{"x":6760,"y":-117920}],
+      },
+    ],
   },
   {
     id: 232,
@@ -5521,6 +8237,8 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "Ancient texts refer to it as the |Beast of Salvation.| The light emitted by Celesdir purifies everything, literally causing things to vanish from existence without leaving a trace.",
     workSuitability: [
+      { type: "Gathering", level: 4 },
+      { type: "Lumbering", level: 7 },
     ],
     partnerSkill: { name: "Blessing of Purification", description: "Can be ridden. This Pal's Attack and Movement Speed increases by <Status_Up>{Passive2_EffectValue1}%</> for each other <img id=|ElemIcon_Neutral|/>Unknown Status (COMMON_ELEMENT_NAME_Normal| style=|Elem_Neutral) Pal in your party. When in party, recovers Health of the player and Party Pals by <Status_Up>{Passive1_EffectValue1}%</> per second. (Does not stack)" },
     possibleDrops: [
@@ -5528,7 +8246,17 @@ export const pals: Pal[] = [
       { resourceId: "horn", notes: "2-2, 100%" },
       { resourceId: "rainbowcrystal", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 263,
+        sourceUrl: "https://palworld.th.gl/guides/Celesdir",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-484226,"y":-267659},{"x":-501630,"y":-236502},{"x":-494151,"y":-258687},{"x":-506412,"y":-270212},{"x":-503716,"y":-288120},{"x":-501530,"y":-344611},{"x":-512272,"y":-377409},{"x":-493367,"y":-358325},{"x":-493346,"y":-376475},{"x":-497691,"y":-396989},{"x":-509011,"y":-213002},{"x":-523363,"y":-235268},{"x":-529955,"y":-247162},{"x":-536909,"y":-280260},{"x":-518182,"y":-256963},{"x":-522296,"y":-272678},{"x":-538850,"y":-304327},{"x":-525692,"y":-296231},{"x":-521533,"y":-332150},{"x":-525171,"y":-314439},{"x":-536248,"y":-353369},{"x":-539601,"y":-335523},{"x":-513802,"y":-353216},{"x":-538402,"y":-377352},{"x":-525087,"y":-388700},{"x":-531231,"y":-162912},{"x":-530937,"y":-182203},{"x":-518779,"y":-203502},{"x":-535675,"y":-214873},{"x":-559703,"y":-244526},{"x":-543940,"y":-235902},{"x":-562304,"y":-278594},{"x":-548426,"y":-270612},{"x":-561529,"y":-261255},{"x":-563286,"y":-303324},{"x":-553207,"y":-291963},{"x":-559263,"y":-326792},{"x":-553366,"y":-353484},{"x":-561775,"y":-381490},{"x":-549237,"y":-393002},{"x":-561900,"y":-156089},{"x":-545021,"y":-169788},{"x":-543817,"y":-196405},{"x":-552645,"y":-180891},{"x":-559917,"y":-192351},{"x":-558180,"y":-207684},{"x":-571539,"y":-232508},{"x":-588788,"y":-270335},{"x":-579183,"y":-258747},{"x":-582874,"y":-299736},{"x":-587760,"y":-331977},{"x":-581913,"y":-313337},{"x":-590315,"y":-356452},{"x":-569368,"y":-355606},{"x":-574189,"y":-339003},{"x":-586946,"y":-379785},{"x":-588940,"y":-398442},{"x":-575902,"y":-390810},{"x":-582272,"y":-444588},{"x":-571414,"y":-456846},{"x":-589378,"y":-463647},{"x":-572509,"y":-475947},{"x":-576711,"y":-490601},{"x":-573624,"y":-146246},{"x":-583252,"y":-131512},{"x":-585003,"y":-176369},{"x":-580823,"y":-197706},{"x":-575529,"y":-213789},{"x":-611470,"y":-255864},{"x":-615348,"y":-236583},{"x":-592459,"y":-254467},{"x":-615582,"y":-272119},{"x":-599783,"y":-279127},{"x":-600836,"y":-297051},{"x":-615263,"y":-319698},{"x":-599222,"y":-319363},{"x":-615902,"y":-349047},{"x":-601576,"y":-336105},{"x":-610375,"y":-383798},{"x":-613683,"y":-366597}],
+      },
+    ],
   },
   {
     id: 233,
@@ -5539,6 +8267,8 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Where blinding radiance shines, dark shadows are born. It scatters an all-enveloping darkness to reclaim the chaos that ought to be. Balance is what the world requires.",
     workSuitability: [
+      { type: "Gathering", level: 4 },
+      { type: "Lumbering", level: 8 },
     ],
     partnerSkill: { name: "Blessing of Chaos", description: "Can be ridden. While in party, the Pal fighting alongside you gradually loses Health in exchange for <Status_Up>{ReferencePassive1_EffectValue1}%</> Attack increase. (Does not stack)" },
     possibleDrops: [
@@ -5557,13 +8287,25 @@ export const pals: Pal[] = [
     elements: ["Dragon", "Dark"],
     description: "A savage beast born of the abyss. Thou shall not stand before the beast. Thou shall not heed the beast.",
     workSuitability: [
+      { type: "Handiwork", level: 3 },
+      { type: "Mining", level: 7 },
     ],
     partnerSkill: { name: "Black Ankylosaur", description: "Can be ridden as a flying mount. Increases the damage dealt to ores by <Status_Up>{Passive1_EffectValue1}%</>, and you can obtain <Status_Up>{Passive2_EffectValue1}%</> more copperore| style=|status_keyword while mounted." },
     possibleDrops: [
       { resourceId: "plastic", notes: "2-3, 100%" },
       { resourceId: "palupgradestone3", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 3,
+        sourceUrl: "https://palworld.th.gl/guides/Astegon",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":152701,"y":458640},{"x":168324,"y":449582},{"x":169575,"y":464963}],
+      },
+    ],
   },
   {
     id: 235,
@@ -5574,12 +8316,25 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "Can be disassembled into 215 parts. It is capable of being reassembled and functioning again even if the parts are scattered. Mixing parts from different individuals will trigger a malfunction due to mistaken identity.",
     workSuitability: [
+      { type: "Gathering", level: 4 },
+      { type: "Mining", level: 7 },
+      { type: "Transporting", level: 7 },
     ],
     partnerSkill: { name: "Steel Guardian Mode", description: "When activated, a steel resolve increases Knocklem's Attack by <Status_Up>{ReferencePassive1_EffectValue1}%</> and Defense by <Status_Up>{ReferencePassive2_EffectValue1}%</> for a limited time." },
     possibleDrops: [
       { resourceId: "copperore", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 3,
+        sourceUrl: "https://palworld.th.gl/guides/Knocklem",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":150472,"y":458756},{"x":179829,"y":456457},{"x":165098,"y":448934}],
+      },
+    ],
   },
   {
     id: 236,
@@ -5590,13 +8345,26 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "Upon disassembly, it is capable of being reassembled and functioning again. Mixing parts from different individuals will trigger a fatal cognitive error that causes its systems to overheat.",
     workSuitability: [
+      { type: "Kindling", level: 5 },
+      { type: "Mining", level: 7 },
+      { type: "Transporting", level: 7 },
     ],
     partnerSkill: { name: "Iron Guardian Mode", description: "When activated, a steel resolve increases Knocklem Ignis's Attack by <Status_Up>{ReferencePassive1_EffectValue1}%</> and Defense by <Status_Up>{ReferencePassive2_EffectValue1}%</> for a limited time." },
     possibleDrops: [
       { resourceId: "copperore", notes: "2-3, 100%" },
       { resourceId: "fireorgan", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 10,
+        sourceUrl: "https://palworld.th.gl/guides/Knocklem%20Ignis",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-986033,"y":-361391},{"x":-985526,"y":-378240},{"x":-984012,"y":-400953},{"x":-1015573,"y":-344289},{"x":-1000517,"y":-352381},{"x":-1019375,"y":-375971},{"x":-1017488,"y":-393104},{"x":-1022577,"y":-357729},{"x":-1037761,"y":-351913},{"x":-1036250,"y":-371398}],
+      },
+    ],
   },
   {
     id: 237,
@@ -5607,6 +8375,7 @@ export const pals: Pal[] = [
     elements: ["Dragon"],
     description: "The metallic components around its neck possess magnetic properties. If the leg pieces get too close, they cling to it. When metal debris builds up on its neck, it grudgingly begins cleaning, and grows frustrated when they won't come off easily.",
     workSuitability: [
+      { type: "Lumbering", level: 6 },
     ],
     partnerSkill: { name: "Aegis Shield", description: "Can be ridden. While in party, reduces shield regeneration delay by <Status_Up>{Passive1_EffectValue1}%</> and reduces damage taken by your shield by <Status_Up>{Passive2_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -5623,12 +8392,23 @@ export const pals: Pal[] = [
     elements: ["Electric"],
     description: "Like Univolt, it was once believed to be connected to the Thunder God. As faith in Univolt waned, Azurmane was deemed the God's true envoy. Even so, time reduced both to the same lowly status of ordinary workhorses.",
     workSuitability: [
+      { type: "Generating Electricity", level: 5 },
     ],
     partnerSkill: { name: "Plasma Dash", description: "Can be ridden. Grants <Status_Keyword>Air Dash</>, to move at even higher speeds. {ReferenceMsgId_ShortDashSpeedCoolTime}" },
     possibleDrops: [
       { resourceId: "electricorgan", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 182,
+        sourceUrl: "https://palworld.th.gl/guides/Azurmane",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-513522,"y":-379574},{"x":-535659,"y":-282425},{"x":-530550,"y":-266945},{"x":-537600,"y":-306492},{"x":-523192,"y":-296231},{"x":-520283,"y":-334315},{"x":-523921,"y":-316604},{"x":-534998,"y":-355534},{"x":-538351,"y":-337688},{"x":-516302,"y":-353216},{"x":-537152,"y":-379517},{"x":-525088,"y":-369877},{"x":-560953,"y":-246691},{"x":-545240,"y":-246279},{"x":-561054,"y":-280759},{"x":-545926,"y":-270612},{"x":-564029,"y":-261255},{"x":-562036,"y":-305489},{"x":-558013,"y":-328957},{"x":-554616,"y":-355649},{"x":-560525,"y":-383655},{"x":-563150,"y":-158254},{"x":-587538,"y":-272500},{"x":-587054,"y":-256566},{"x":-581624,"y":-301901},{"x":-586510,"y":-334142},{"x":-589065,"y":-358617},{"x":-571868,"y":-355606},{"x":-585696,"y":-381950},{"x":-587690,"y":-400607},{"x":-586253,"y":-178534},{"x":-576192,"y":-166964},{"x":-610220,"y":-258029},{"x":-609668,"y":-242305},{"x":-601033,"y":-276962},{"x":-599586,"y":-299216},{"x":-614013,"y":-321863},{"x":-596722,"y":-319363},{"x":-614652,"y":-351212},{"x":-602826,"y":-333940},{"x":-609125,"y":-385963},{"x":-612433,"y":-368762},{"x":-607127,"y":-401791},{"x":-605452,"y":-205982},{"x":-593716,"y":-192207},{"x":-613506,"y":-223569},{"x":-639464,"y":-254125},{"x":-630035,"y":-282779},{"x":-629940,"y":-267115},{"x":-632743,"y":-305515},{"x":-613663,"y":-291464},{"x":-635074,"y":-333724},{"x":-640736,"y":-380362},{"x":-629201,"y":-366354},{"x":-636963,"y":-409539},{"x":-631182,"y":-391142},{"x":-640033,"y":-423818},{"x":-626681,"y":-204229},{"x":-639319,"y":-218629},{"x":-661489,"y":-252888},{"x":-664050,"y":-232860},{"x":-648711,"y":-305551},{"x":-645466,"y":-284473},{"x":-662952,"y":-320742},{"x":-658357,"y":-352780},{"x":-657023,"y":-379068},{"x":-640764,"y":-359469},{"x":-663499,"y":-404406},{"x":-646370,"y":-397131},{"x":-664656,"y":-435072},{"x":-655500,"y":-421333},{"x":-650975,"y":-129043},{"x":-649912,"y":-152051},{"x":-662280,"y":-161276},{"x":-654749,"y":-176277},{"x":-660961,"y":-191512},{"x":-644398,"y":-201584},{"x":-660266,"y":-209687},{"x":-686419,"y":-246031},{"x":-685334,"y":-263002}],
+      },
+    ],
   },
   {
     id: 239,
@@ -5639,12 +8419,23 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "In older paintings, it is depicted as much smaller than it is today. For reasons unknown, various parts of its body have begun to elongate rapidly in recent years, and it is predicted to reach nearly ten times its current size within the next century.",
     workSuitability: [
+      { type: "Gathering", level: 2 },
     ],
     partnerSkill: { name: "Big Stretch", description: "While in party, reduces the effects of gravity on the player, making them more floaty while jumping and falling. (Does not stack)" },
     possibleDrops: [
       { resourceId: "leather", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 4,
+        sourceUrl: "https://palworld.th.gl/guides/Valentail",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-765140,"y":-11870},{"x":-790750,"y":-6325},{"x":-784480,"y":14630},{"x":-807025,"y":-1695}],
+      },
+    ],
   },
   {
     id: 240,
@@ -5655,13 +8446,24 @@ export const pals: Pal[] = [
     elements: ["Electric"],
     description: "Tossing an Snock into the bath for a shock spa is considered a traditional health practice. That is to say, the results may be rather shocking.",
     workSuitability: [
+      { type: "Generating Electricity", level: 4 },
     ],
     partnerSkill: { name: "Charging Shell", description: "While in party, the player's attacks inflict Unknown Status (ADDITIONAL_EFFECT_Electrical| style=|Effect_Electrical) <Status_Up>{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "electricorgan", notes: "1-2, 100%" },
       { resourceId: "palfluid", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 4,
+        sourceUrl: "https://palworld.th.gl/guides/Snock",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-767640,"y":-11870},{"x":-793250,"y":-6325},{"x":-778755,"y":-1430},{"x":-786980,"y":14630}],
+      },
+    ],
   },
   {
     id: 241,
@@ -5672,6 +8474,7 @@ export const pals: Pal[] = [
     elements: ["Electric", "Ground"],
     description: "Tossing a heated Snock Lux into the bath for a scorching spa was once a fad of the distant past. Owing to a recent revival, it is now quite literally a hot trend.",
     workSuitability: [
+      { type: "Generating Electricity", level: 4 },
     ],
     partnerSkill: { name: "Grounding Shell", description: "While in party, player and party Pals take <Status_Up>{Passive1_EffectValue1}%</> less <img id=|ElemIcon_Water|/>Unknown Status (COMMON_ELEMENT_NAME_Water| style=|Elem_Water) damage, and are immune to Unknown Status (ADDITIONAL_EFFECT_Wetness| style=|Effect_Wetness). (Does not stack)" },
     possibleDrops: [
@@ -5689,12 +8492,24 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "Its fluff can be used to hide away unpleasant memories. Once carried off by the wind, you can bid farewell to the darkness they carried.",
     workSuitability: [
+      { type: "Planting", level: 2 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Fuzzy Fairy", description: "While in party, increases the capture rate of Pals afflicted with Unknown Status (ADDITIONAL_EFFECT_IvyCling| style=|Effect_IvyCling). (Does not stack) {ReferenceMsgId_CaptureRate}" },
     possibleDrops: [
       { resourceId: "wheatseeds", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 9,
+        sourceUrl: "https://palworld.th.gl/guides/Souffline",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-790600,"y":31918},{"x":-813846,"y":21582},{"x":-795551,"y":17188},{"x":-791936,"y":51170},{"x":-813858,"y":47830},{"x":-828874,"y":10659},{"x":-842297,"y":18616},{"x":-824060,"y":35065},{"x":-830256,"y":47524}],
+      },
+    ],
   },
   {
     id: 243,
@@ -5705,12 +8520,26 @@ export const pals: Pal[] = [
     elements: ["Ground"],
     description: "Listens to the earth as it runs, avoiding unstable footing with ease. However, uncooperative terrain will trick it into falling over constantly.",
     workSuitability: [
+      { type: "Handiwork", level: 3 },
+      { type: "Gathering", level: 4 },
+      { type: "Mining", level: 2 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Friend of Earth", description: "While in party, increases the player's Defense by <Status_Up>{Passive1_EffectValue1}%</> while sprinting. (Does not stack)" },
     possibleDrops: [
       { resourceId: "leather", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 3,
+        sourceUrl: "https://palworld.th.gl/guides/Lapiron",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-752960,"y":24077},{"x":-765479,"y":39216},{"x":-777534,"y":55875}],
+      },
+    ],
   },
   {
     id: 244,
@@ -5721,13 +8550,25 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "When it sleeps, it deflates. When it sleeps, it's no longer there. A sleeping Hoodle cannot exist; Therefore, Hoodle never sleeps.",
     workSuitability: [
+      { type: "Handiwork", level: 1 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Void-Dweller", description: "While in party, increases the player's damage dealt to enemies that are not in combat by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "palupgradestone", notes: "1-2, 100%" },
       { resourceId: "horn", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 18,
+        sourceUrl: "https://palworld.th.gl/guides/Hoodle",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-750460,"y":24077},{"x":-762979,"y":39216},{"x":-791600,"y":-99890},{"x":-774105,"y":-111680},{"x":-791850,"y":34083},{"x":-779561,"y":42784},{"x":-805220,"y":-90560},{"x":-817590,"y":-99835},{"x":-815096,"y":23747},{"x":-793790,"y":17557},{"x":-793186,"y":53335},{"x":-815108,"y":49995},{"x":-824505,"y":-83145},{"x":-819258,"y":8576},{"x":-835531,"y":5188},{"x":-839797,"y":18616},{"x":-829612,"y":35278},{"x":-836035,"y":57515}],
+      },
+    ],
   },
   {
     id: 245,
@@ -5738,13 +8579,24 @@ export const pals: Pal[] = [
     elements: ["Electric"],
     description: "Doing as they please, sleeping when they wish, and eating whatever they like. Surely, Slowatt must be toiling in secret to maintain such a luxury. ...Or so the old islanders told themselves, just to get by.",
     workSuitability: [
+      { type: "Generating Electricity", level: 3 },
     ],
     partnerSkill: { name: "Chillswitch", description: "While in party, when the player attacks an enemy afflicted with Unknown Status (ADDITIONAL_EFFECT_Electrical| style=|Effect_Electrical), the enemy <Status_Keyword>discharges electricity</>, dealing damage equal to <Status_Up>{Passive1_EffectValue1}%</> of the player's attack damage to nearby enemies. (Does not stack.)" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "1-1, 100%" },
       { resourceId: "electricorgan", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 5,
+        sourceUrl: "https://palworld.th.gl/guides/Slowatt",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-762475,"y":-1071},{"x":-747473,"y":-2420},{"x":-743648,"y":-17767},{"x":-766727,"y":23461},{"x":-751405,"y":18470}],
+      },
+    ],
   },
   {
     id: 246,
@@ -5755,6 +8607,9 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "It lives entirely for the thrill of the scare, but is utterly un-frightening. As most cannot help but indulge it with feigned surprise for its cuteness, Bakemi now leaves a trail of smiles in its wake.",
     workSuitability: [
+      { type: "Handiwork", level: 3 },
+      { type: "Medicine Production", level: 4 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Grinning Death", description: "While in party, attacking enemies afflicted with Unknown Status (ADDITIONAL_EFFECT_Poison| style=|Effect_Poison) reduces their Attack by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -5762,7 +8617,17 @@ export const pals: Pal[] = [
       { resourceId: "horn", notes: "2-2, 100%" },
       { resourceId: "palupgradestone", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 18,
+        sourceUrl: "https://palworld.th.gl/guides/Bakemi",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-751710,"y":26242},{"x":-764229,"y":41381},{"x":-794100,"y":-99890},{"x":-776605,"y":-111680},{"x":-794350,"y":34083},{"x":-777061,"y":42784},{"x":-810045,"y":-88145},{"x":-820090,"y":-99835},{"x":-817596,"y":23747},{"x":-791290,"y":17557},{"x":-795686,"y":53335},{"x":-817608,"y":49995},{"x":-827005,"y":-83145},{"x":-816758,"y":8576},{"x":-833031,"y":5188},{"x":-841047,"y":20781},{"x":-827112,"y":35278},{"x":-833535,"y":57515}],
+      },
+    ],
   },
   {
     id: 247,
@@ -5773,13 +8638,24 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "Its corkscrew tail acts as a propeller. Research claims that if its body could withstand the strain, it could reach speeds beyond 88 mph.",
     workSuitability: [
+      { type: "Watering", level: 4 },
     ],
     partnerSkill: { name: "Charming Fish", description: "Can be ridden to travel on water. While in party, makes it easier to fish up <Status_Keyword>talented Pals</>. (Does not stack) {ReferenceMsgId_SwimSpeedUp}" },
     possibleDrops: [
       { resourceId: "paloil", notes: "2-3, 100%" },
       { resourceId: "palfluid", notes: "2-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 4,
+        sourceUrl: "https://palworld.th.gl/guides/Solmora",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-764245,"y":-23875},{"x":-753795,"y":-49620},{"x":-766435,"y":-58430},{"x":-791555,"y":-50355}],
+      },
+    ],
   },
   {
     id: 248,
@@ -5790,6 +8666,8 @@ export const pals: Pal[] = [
     elements: ["Water", "Electric"],
     description: "Its corkscrew tail acts as a propeller. Research claims that if its body could withstand the strain, it could generate over 1.21 gigawatts of power.",
     workSuitability: [
+      { type: "Watering", level: 4 },
+      { type: "Generating Electricity", level: 6 },
     ],
     partnerSkill: { name: "Shocking Fish", description: "Can be ridden to travel on water. While mounted, changes the player's attack type to <img id=|ElemIcon_Electric|/>Unknown Status (COMMON_ELEMENT_NAME_Electricity| style=|Elem_Electric) and increases Attack by <Status_Up>{Passive2_EffectValue1}%</>. While in party, makes it easier to fish up <Status_Keyword>talented Pals</>. (Does not stack) {ReferenceMsgId_SwimSpeedUp}" },
     possibleDrops: [
@@ -5807,12 +8685,24 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "It uses the long, flowing fur on its hands to attract attention, always taking the utmost care to keep them maintained. Highly sensitive to dirt and meticulously clean, kicking up dust nearby will invite a very disgusted glare.",
     workSuitability: [
+      { type: "Handiwork", level: 6 },
+      { type: "Gathering", level: 5 },
     ],
     partnerSkill: { name: "Long-Sleeved Hurray", description: "While in party, reduces the <Status_Keyword>Partner Skill cooldowns</> for other party Pals by <Status_Up>{Passive1_EffectValue2}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "leather", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 5,
+        sourceUrl: "https://palworld.th.gl/guides/Lapure",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-811381,"y":-12802},{"x":-811294,"y":-32931},{"x":-828908,"y":-1940},{"x":-831204,"y":-19571},{"x":-833059,"y":-36672}],
+      },
+    ],
   },
   {
     id: 250,
@@ -5823,6 +8713,7 @@ export const pals: Pal[] = [
     elements: ["Dragon", "Dark"],
     description: "A new Pal that was only recently discovered. Calm and entirely docile, it spends its time as it pleases. It is no longer bound by anything.",
     workSuitability: [
+      { type: "Transporting", level: 6 },
     ],
     partnerSkill: { name: "Liberated Pterosaur", description: "Can be ridden as a flying mount. This Pal's Attack and Movement Speed increase by <Status_Up>{Passive1_EffectValue1}%</> for each other <img id=|ElemIcon_Dragon|/>Unknown Status (COMMON_ELEMENT_NAME_Dragon| style=|Elem_Dragon)or <img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark) Pal in your party." },
     possibleDrops: [
@@ -5840,6 +8731,8 @@ export const pals: Pal[] = [
     elements: ["Dragon", "Fire"],
     description: "A new Pal that was only recently discovered. It trusts nothing and no one, and its tempermental nature leads to it constantly venting its rage at the nearest target.",
     workSuitability: [
+      { type: "Kindling", level: 6 },
+      { type: "Transporting", level: 6 },
     ],
     partnerSkill: { name: "Resentful Pterosaur", description: "Can be ridden as a flying mount. This Pal's Attack and Movement Speed increase by <Status_Up>{Passive1_EffectValue1}%</> or each other <img id=|ElemIcon_Dragon|/>Unknown Status (COMMON_ELEMENT_NAME_Dragon| style=|Elem_Dragon) or <img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) Pal in your party. (Excluding Eidrolon Ignis)" },
     possibleDrops: [
@@ -5858,12 +8751,25 @@ export const pals: Pal[] = [
     elements: ["Electric"],
     description: "With so little to eat at high altitudes, it will occasionally even feast on its enemies' brains. It is thought that groups seeking a more dependable food source descended to lower skies, ultimately diverging into Beakon.",
     workSuitability: [
+      { type: "Generating Electricity", level: 6 },
+      { type: "Gathering", level: 3 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Electro-Massage Incubation", description: "Can be ridden as a flying mount. While at a base, shortens the time it takes to incubate eggs by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "electricorgan", notes: "2-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 6,
+        sourceUrl: "https://palworld.th.gl/guides/Dynamoff",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-792850,"y":-102055},{"x":-775355,"y":-113845},{"x":-806470,"y":-92725},{"x":-818840,"y":-102000},{"x":-825755,"y":-85310},{"x":-820324,"y":16747}],
+      },
+    ],
   },
   {
     id: 253,
@@ -5874,13 +8780,25 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "While some say that it flails around to mimic flowers swaying in the wind and avoid predators, others argue that a crimson flower thrashing violently at high speeds is simply so unsettling that nothing dares approach it.",
     workSuitability: [
+      { type: "Planting", level: 5 },
+      { type: "Gathering", level: 5 },
     ],
     partnerSkill: { name: "Flower Dance", description: "While in party, extends the invincibility period during dodge rolls and dodge steps by <Status_Up>{Passive1_EffectValue2}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "poppy", notes: "1-2, 100%" },
       { resourceId: "fiber", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 8,
+        sourceUrl: "https://palworld.th.gl/guides/Tropicaw",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-759940,"y":-21080},{"x":-756610,"y":-43925},{"x":-746920,"y":-60490},{"x":-764585,"y":-55570},{"x":-780255,"y":-22550},{"x":-788930,"y":-40620},{"x":-781300,"y":-57395},{"x":-771780,"y":-70310}],
+      },
+    ],
   },
   {
     id: 254,
@@ -5891,6 +8809,9 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "It focuses its mind and reads the future through flames. Should it glimpse an inconvenient destiny, it relentlessly rerolls the prophecy until it gets a favorable result. That is why the future of Flaracle is always exceptionally bright!",
     workSuitability: [
+      { type: "Kindling", level: 7 },
+      { type: "Handiwork", level: 6 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Burning Future", description: "While in party, when the player attacks an enemy afflicted with Unknown Status (ADDITIONAL_EFFECT_Burn| style=|Effect_Burn), the enemy <Status_Keyword>explodes</>, dealing damage equal to <Status_Up>{Passive1_EffectValue1}%</> of the player's attack damage to nearby enemies. (Does not stack.)" },
     possibleDrops: [
@@ -5908,6 +8829,8 @@ export const pals: Pal[] = [
     elements: ["Grass", "Water"],
     description: "Waters where Ophydias dwell are often filled with flowers that mimic its form. Many attempts have been made to directly propagate these blooms, but they inevitably wither the moment human hands interfere.",
     workSuitability: [
+      { type: "Watering", level: 5 },
+      { type: "Planting", level: 7 },
     ],
     partnerSkill: { name: "Glorious Mist", description: "Can be ridden. While in party, the player's attacks inflict Unknown Status (ADDITIONAL_EFFECT_Wetness| style=|Effect_Wetness) <Status_Up>{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
@@ -5925,13 +8848,27 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "A copy it created might quietly replace it, leaving even the Dupin itself unsure whether it is still the original.",
     workSuitability: [
+      { type: "Kindling", level: 7 },
+      { type: "Handiwork", level: 5 },
+      { type: "Medicine Production", level: 4 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Trick-Loving Fluffle", description: "While in party, when the player's Health falls below 50%, Dupin generates an explosion around the player (<img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) / Power: <Status_Up>{Passive1_EffectValue1}</> / Unknown Status (ADDITIONAL_EFFECT_Burn| style=|Effect_Burn) buildup: <Status_Keyword>{ReferencePassive1_EffectValue1}</>). Additionally, while the player's Health is below 50%, the player's Attack is increased by <Status_Up>{Passive2_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
       { resourceId: "leather", notes: "2-3, 100%" },
       { resourceId: "fireorgan", notes: "2-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 21,
+        sourceUrl: "https://palworld.th.gl/guides/Dupin",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-310715,"y":189154},{"x":-343293,"y":-117832},{"x":-364317,"y":-288421},{"x":-374750,"y":279196},{"x":-405170,"y":-434437},{"x":-453088,"y":347605},{"x":-20470,"y":-133402},{"x":-552232,"y":-618153},{"x":-569496,"y":122664},{"x":-656858,"y":-286583},{"x":-793288,"y":-77922},{"x":-64506,"y":-252656},{"x":-1010270,"y":-373623},{"x":-139281,"y":325594},{"x":-164794,"y":578902},{"x":-200148,"y":451745},{"x":-211806,"y":-263927},{"x":39440,"y":313866},{"x":94135,"y":519297},{"x":86424,"y":94922},{"x":178655,"y":219376}],
+      },
+    ],
   },
   {
     id: 257,
@@ -5942,6 +8879,8 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "A thief by nature, it snatches items when no one is looking. No reason to be concerned when caught in the act. Once it swiftly steals your eyes, you won’t be seeing anything anyway.",
     workSuitability: [
+      { type: "Gathering", level: 5 },
+      { type: "Transporting", level: 5 },
     ],
     partnerSkill: { name: "Dark-Nester", description: "Can be ridden as a flying mount. While in party, increases player's and Pals' damage to enemies afflicted with Unknown Status (ADDITIONAL_EFFECT_Darkness| style=|Effect_Darkness) by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -5959,6 +8898,10 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Whenever it's confused, it resorts to consulting with the snakes on its head. However, since they're all ultimately the same being, it comes to understand that nothing is understood.",
     workSuitability: [
+      { type: "Handiwork", level: 6 },
+      { type: "Gathering", level: 6 },
+      { type: "Medicine Production", level: 5 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Snake's Sagacity", description: "While in party, the player's attacks inflict Unknown Status (ADDITIONAL_EFFECT_Darkness| style=|Elem_Dark) <Status_Up>{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
@@ -5976,6 +8919,10 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "It views humans as nothing more than convenient parasitic hosts. The reason Mycora has taken this form is to deceive humans into lowering their guard, allowing its spores to spread more efficiently.",
     workSuitability: [
+      { type: "Planting", level: 6 },
+      { type: "Handiwork", level: 4 },
+      { type: "Gathering", level: 4 },
+      { type: "Medicine Production", level: 6 },
     ],
     partnerSkill: { name: "Charming Spore", description: "While at a base, increases the Unknown Status (COMMON_WORK_SUITABILITY_ProductMedicine| style=|Status_Keyword) Work Suitability Level for all other Base Pals by <Status_Keyword>+{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
@@ -5993,6 +8940,9 @@ export const pals: Pal[] = [
     elements: ["Dark", "Fire"],
     description: "Its lantern glows with an eerie light that lays bare the truth of the world. If that light strikes you as blinding, then you most likely have something to hide.",
     workSuitability: [
+      { type: "Kindling", level: 4 },
+      { type: "Handiwork", level: 4 },
+      { type: "Medicine Production", level: 4 },
     ],
     partnerSkill: { name: "Lantern Enchantment", description: "While in party, the player's arrows <Status_Keyword>explode on contact</>, dealing additional damage equal to <Status_Up>{Passive1_EffectValue1}%</> of the player's attack damage. (Does not stack)" },
     possibleDrops: [
@@ -6011,6 +8961,9 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "At the end of its life, a new star appears somewhere in the skies, glowing with the weight of its memories.",
     workSuitability: [
+      { type: "Handiwork", level: 6 },
+      { type: "Medicine Production", level: 6 },
+      { type: "Transporting", level: 1 },
     ],
     partnerSkill: { name: "Hidden Dark Energy", description: "While in party, increases Defense of <img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark) Pals by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack)" },
     possibleDrops: [
@@ -6028,6 +8981,9 @@ export const pals: Pal[] = [
     elements: ["Dark", "Neutral"],
     description: "Joy and misery come in equal measure for Solenne. Those who choose to take care of one must be prepared for what that entails.",
     workSuitability: [
+      { type: "Handiwork", level: 8 },
+      { type: "Gathering", level: 4 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Untainted Maiden", description: "While in party, increases the player's Attack by <Status_Up>{Passive1_EffectValue1}%</> if all Pals in party are different species. (Does not stack)" },
     possibleDrops: [
@@ -6045,6 +9001,10 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "At a glance, its movements appear exaggerated and full of openings. Strangely, however, any opponents become overwhelmed, and become unable to look away, as if transfixed.",
     workSuitability: [
+      { type: "Kindling", level: 8 },
+      { type: "Handiwork", level: 6 },
+      { type: "Gathering", level: 5 },
+      { type: "Transporting", level: 5 },
     ],
     partnerSkill: { name: "Stage Combat", description: "While in party, the player's attacks inflict Unknown Status (ADDITIONAL_EFFECT_Burn| style=|Effect_Burn) <Status_Up>{Passive1_EffectValue1}</>. (Does not stack)" },
     possibleDrops: [
@@ -6062,6 +9022,7 @@ export const pals: Pal[] = [
     elements: ["Dragon", "Ground"],
     description: "In ancient times, when means of communication were limited, the light within Aegidron's wings was used to send simple flash signals.",
     workSuitability: [
+      { type: "Mining", level: 8 },
     ],
     partnerSkill: { name: "Indestructible Fortress", description: "Can be ridden. While in party, player and party Pals take <Status_Up>{Passive1_EffectValue2}%</> less damage from <Status_Keyword>explosive attacks</>, and are immune to Unknown Status (ADDITIONAL_EFFECT_Stun| style=|Effect_Stun). (Does not stack)" },
     possibleDrops: [
@@ -6079,13 +9040,27 @@ export const pals: Pal[] = [
     elements: ["Electric"],
     description: "With a friendly smile and a hardy physique, it is docile towards one it recognizes as a partner. For reasons unexplained, its personality undergoes a drastic change when wielding a minigun.",
     workSuitability: [
+      { type: "Generating Electricity", level: 5 },
+      { type: "Handiwork", level: 4 },
+      { type: "Lumbering", level: 3 },
+      { type: "Transporting", level: 5 },
     ],
     partnerSkill: { name: "Yellow Tank", description: "Can be ridden. Can rapidly fire a minigun while mounted. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
       { resourceId: "electricorgan", notes: "2-4, 100%" },
       { resourceId: "leather", notes: "2-3, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 2,
+        sourceUrl: "https://palworld.th.gl/guides/Grizzbolt",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-453583,"y":185386},{"x":-454312,"y":204016}],
+      },
+    ],
   },
   {
     id: 266,
@@ -6096,6 +9071,10 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "A docile Pal full of love. It watches over small Pals who have lost their parents. It uses a full-power Solar Blast to discipline naughty Pals.",
     workSuitability: [
+      { type: "Planting", level: 7 },
+      { type: "Handiwork", level: 5 },
+      { type: "Gathering", level: 6 },
+      { type: "Medicine Production", level: 5 },
     ],
     partnerSkill: { name: "Harvest Goddess", description: "When activated, the queen's soothing graces restore the Health of the player and Party Pals by <Status_Up>{ActiveSkillMainValueByRank}%</>." },
     possibleDrops: [
@@ -6103,7 +9082,17 @@ export const pals: Pal[] = [
       { resourceId: "poppy", notes: "1-2, 100%" },
       { resourceId: "technologybook-g2", notes: "1-1, 10%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 2,
+        sourceUrl: "https://palworld.th.gl/guides/Lyleen",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":156451,"y":460805},{"x":168324,"y":453912}],
+      },
+    ],
   },
   {
     id: 267,
@@ -6114,6 +9103,9 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "An elegant Pal full of grace. It admonishes any who are disrespectful with a painful slap. Some Pals actively seek out this punishment.",
     workSuitability: [
+      { type: "Handiwork", level: 5 },
+      { type: "Gathering", level: 6 },
+      { type: "Medicine Production", level: 7 },
     ],
     partnerSkill: { name: "Goddess of the Tranquil Light", description: "When activated, the queen's soothing graces restore the Health of the player and Party Pals by <Status_Up>{ActiveSkillMainValueByRank}%</>." },
     possibleDrops: [
@@ -6132,12 +9124,25 @@ export const pals: Pal[] = [
     elements: ["Dragon", "Electric"],
     description: "It sends electricity into its foes' wounds, roasting them from the inside out. Fights between Orserk end in the blink of an eye.",
     workSuitability: [
+      { type: "Generating Electricity", level: 8 },
+      { type: "Handiwork", level: 3 },
+      { type: "Transporting", level: 4 },
     ],
     partnerSkill: { name: "Ferocious Thunder Dragon", description: "While in party, hitting an enemy with a bullet increases the Attack and Defense of the Pal fighting alongside you by <Status_Up>{Passive1_EffectValue1}%</> for 5 seconds. This effect stacks up to 30 times. (Does not stack.)" },
     possibleDrops: [
       { resourceId: "electricorgan", notes: "1-2, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 1,
+        sourceUrl: "https://palworld.th.gl/guides/Orserk",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":157701,"y":458640}],
+      },
+    ],
   },
   {
     id: 269,
@@ -6148,12 +9153,24 @@ export const pals: Pal[] = [
     elements: ["Fire"],
     description: "When it finds its prey it unleashes a whirlwind of flames, burning the entire area to ash. Faleris breath is known for its pleasing scent.",
     workSuitability: [
+      { type: "Kindling", level: 6 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Scorching Predator", description: "Can be ridden as a flying mount. While in party, <img id=|ElemIcon_Ice|/>Unknown Status (COMMON_ELEMENT_NAME_Ice| style=|Elem_Ice) Pals drop <Status_Up>{Passive1_EffectValue1}%</> more items when defeated. (Does not stack)" },
     possibleDrops: [
       { resourceId: "fireorgan", notes: "1-4, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 3,
+        sourceUrl: "https://palworld.th.gl/guides/Faleris",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":153951,"y":456475},{"x":170824,"y":449582},{"x":172075,"y":464963}],
+      },
+    ],
   },
   {
     id: 270,
@@ -6164,12 +9181,24 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "When it finds its prey, it unleashes a mighty torrent, sweeping the entire area. More often than not, the prey gets swept away in the chaos, leaving one to wonder whether this truly counts as hunting.",
     workSuitability: [
+      { type: "Watering", level: 6 },
+      { type: "Transporting", level: 5 },
     ],
     partnerSkill: { name: "Tidal Predator", description: "Can be ridden as a flying mount. While in party, <img id=|ElemIcon_Fire|/>Unknown Status (COMMON_ELEMENT_NAME_Fire| style=|Elem_Fire) Pals drop <Status_Up>{Passive1_EffectValue1}%</> more items when defeated. (Does not stack)" },
     possibleDrops: [
       { resourceId: "palfluid", notes: "2-4, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 87,
+        sourceUrl: "https://palworld.th.gl/guides/Faleris%20Aqua",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":-484234,"y":-263623},{"x":-504708,"y":-240436},{"x":-510524,"y":-278482},{"x":-492258,"y":-277335},{"x":-499474,"y":-353454},{"x":-499395,"y":-376477},{"x":-494836,"y":-391034},{"x":-507751,"y":-401122},{"x":-495446,"y":-413597},{"x":-507758,"y":-222122},{"x":-532892,"y":-250218},{"x":-522080,"y":-238697},{"x":-518147,"y":-265312},{"x":-534678,"y":-175000},{"x":-535711,"y":-191085},{"x":-519985,"y":-201664},{"x":-530739,"y":-223061},{"x":-540901,"y":-237011},{"x":-559815,"y":-229602},{"x":-555302,"y":-401324},{"x":-556871,"y":-173901},{"x":-540246,"y":-158959},{"x":-557886,"y":-195395},{"x":-558136,"y":-210639},{"x":-586191,"y":-451804},{"x":-569149,"y":-457634},{"x":-581059,"y":-472319},{"x":-584124,"y":-497213},{"x":-587062,"y":-143335},{"x":-587292,"y":-162074},{"x":-582800,"y":-200651},{"x":-574947,"y":-226794},{"x":-603734,"y":-405177},{"x":-610129,"y":-430625},{"x":-611086,"y":-449398},{"x":-611263,"y":-468676},{"x":-604665,"y":-483644},{"x":-605711,"y":-123612},{"x":-611741,"y":-140534},{"x":-612691,"y":-159361},{"x":-612308,"y":-174777},{"x":-628251,"y":-402976},{"x":-635304,"y":-427040},{"x":-635124,"y":-446231},{"x":-636123,"y":-465484},{"x":-630452,"y":-140351},{"x":-637108,"y":-156814},{"x":-637449,"y":-176337},{"x":-663165,"y":-439186},{"x":-662067,"y":-460566},{"x":-651016,"y":-448492},{"x":-688863,"y":-423678},{"x":-689734,"y":-442326},{"x":-689603,"y":-458585},{"x":-674245,"y":-450707},{"x":-715492,"y":-427132},{"x":-728239,"y":-430048},{"x":-721551,"y":-414027},{"x":-786541,"y":-384879},{"x":-789326,"y":-402398},{"x":-815083,"y":-356273},{"x":-803008,"y":-376541},{"x":-805123,"y":-398216},{"x":-816767,"y":-414351},{"x":-808881,"y":-12802},{"x":-808794,"y":-32931},{"x":-831485,"y":-352662},{"x":-827225,"y":-370109},{"x":-828629,"y":-391885},{"x":-839676,"y":-434841},{"x":-835307,"y":-415064},{"x":-843873,"y":-449670},{"x":-826408,"y":-1940},{"x":-828704,"y":-19571},{"x":-830559,"y":-36672},{"x":-860676,"y":-382789},{"x":-846009,"y":-360181},{"x":-852661,"y":-400196},{"x":-868866,"y":-395458},{"x":-861057,"y":-417745}],
+      },
+    ],
   },
   {
     id: 271,
@@ -6180,6 +9209,7 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Born from the depths of insanity, its very existence defies reason. Having lost all genetic ties to other Pals, one wonders if it could still even be considered a Pal.",
     workSuitability: [
+      { type: "Gathering", level: 2 },
     ],
     partnerSkill: { name: "Modified DNA", description: "Can be ridden as a flying mount. While flying, Movement Speed is increased. Enhances <img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark) attacks by <Status_Up>{Passive1_EffectValue1}%</> while mounted." },
     possibleDrops: [
@@ -6188,7 +9218,17 @@ export const pals: Pal[] = [
       { resourceId: "technologybook-g2", notes: "1-1, 10%" },
       { resourceId: "palupgradestone3", notes: "1-1, 100%" },
     ],
-    habitats: [],
+    habitats: [
+      {
+        locationId: "palpagos-island",
+        time: "unknown",
+        mapName: "Palpagos Island",
+        spawnCount: 3,
+        sourceUrl: "https://palworld.th.gl/guides/Shadowbeak",
+        notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
+        coordinates: [{"x":150472,"y":454425},{"x":174574,"y":451747},{"x":162808,"y":465201}],
+      },
+    ],
   },
   {
     id: 272,
@@ -6199,6 +9239,9 @@ export const pals: Pal[] = [
     elements: ["Dark", "Neutral"],
     description: "The object floating behind, resembling the moon, is said to gradually become more circular with each passing generation. No one knows what will happen when the moon is full.",
     workSuitability: [
+      { type: "Handiwork", level: 7 },
+      { type: "Medicine Production", level: 6 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Celestial Darkness", description: "Can be ridden as a flying mount. While mounted, enhances <img id=|ElemIcon_Neutral|/>Unknown Status (COMMON_ELEMENT_NAME_Normal| style=|Elem_Neutral) and <img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark) attacks by <Status_Up>{Passive1_EffectValue1}%</>." },
     possibleDrops: [
@@ -6216,6 +9259,9 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "The sight of anything round gives it an uncontrollable urge to punch it. For Bastigor the toughest challenge, after simply living, is making a snowman.",
     workSuitability: [
+      { type: "Lumbering", level: 6 },
+      { type: "Mining", level: 5 },
+      { type: "Cooling", level: 8 },
     ],
     partnerSkill: { name: "Blizzard Crash", description: "Can be ridden. While mounted, delivers crushing blows with a hammer forged from <img id=|ElemIcon_Ice|/>Unknown Status (COMMON_ELEMENT_NAME_Ice| style=|Elem_Ice). {ReferenceMsgId_DamageUp}" },
     possibleDrops: [
@@ -6233,6 +9279,8 @@ export const pals: Pal[] = [
     elements: ["Dragon", "Water"],
     description: "Its ring is reserved for a special occasion: upon meeting its destined companion, the rings are traded, a symbol of their eternal partnership.",
     workSuitability: [
+      { type: "Watering", level: 8 },
+      { type: "Gathering", level: 5 },
     ],
     partnerSkill: { name: "Azure Sovereign", description: "Can be ridden as a flying mount. This Pal's Attack increases by <Status_Up>{Passive1_EffectValue1}%</> for each other <img id=|ElemIcon_Dragon|/>Unknown Status (COMMON_ELEMENT_NAME_Dragon| style=|Elem_Dragon) Pal in your party." },
     possibleDrops: [
@@ -6251,6 +9299,11 @@ export const pals: Pal[] = [
     elements: ["Grass"],
     description: "Since ancient times, it has remained within the World Tree, continuing its vigil. What it protects, and for what purpose, Silvance does not know. After all, the World Tree will tell it everything. The spores it commands surely know who the enemy is.",
     workSuitability: [
+      { type: "Planting", level: 6 },
+      { type: "Handiwork", level: 6 },
+      { type: "Gathering", level: 4 },
+      { type: "Medicine Production", level: 8 },
+      { type: "Transporting", level: 2 },
     ],
     partnerSkill: { name: "Spore Stalwart", description: "While in party, when the player attacks an enemy afflicted with Unknown Status (ADDITIONAL_EFFECT_IvyCling| style=|Effect_IvyCling), the enemy <Status_Keyword>explodes</>, dealing additional damage equal to <Status_Up>{Passive2_EffectValue1}%</> of the player's attack damage. (Does not stack) Also grants <Status_Keyword>immunity to the World Tree's Explosive Spores</> to both the player and their Pals." },
     possibleDrops: [
@@ -6268,6 +9321,11 @@ export const pals: Pal[] = [
     elements: ["Grass", "Dark"],
     description: "Since ancient times, it has remained within the World Tree, continuing its vigil. What it protects, and for what purpose, Dandilord does not care. After all, the World Tree knows everything. Only the mist it wields can reveal the truth.",
     workSuitability: [
+      { type: "Planting", level: 8 },
+      { type: "Handiwork", level: 6 },
+      { type: "Gathering", level: 5 },
+      { type: "Medicine Production", level: 6 },
+      { type: "Transporting", level: 3 },
     ],
     partnerSkill: { name: "Mist Stalwart", description: "When activated, the player's attacks inflict Unknown Status (ADDITIONAL_EFFECT_Poison| style=|Effect_Poison) <Status_Up>{ReferencePassive1_EffectValue1}</>. While in party, grants the player and party Pals immunity to Unknown Status (ADDITIONAL_EFFECT_Poison| style=|Effect_Poison), and <Status_Keyword>nullifies the effects of toxic gas</> in the World Tree area. (Does not stack)" },
     possibleDrops: [
@@ -6286,6 +9344,9 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Without existing, she quietly gazed upon the world. One day, she was seized with a longing to be seen. With unbridled lust for vengeance against reality, thus was born the Eclipsed Siren.",
     workSuitability: [
+      { type: "Handiwork", level: 5 },
+      { type: "Medicine Production", level: 5 },
+      { type: "Transporting", level: 4 },
     ],
     partnerSkill: { name: "Nightmare Iris", description: "When activated, attacks targeted enemy with Unique_NightLady_WarpBeam_Straight| style=|Status_Keyword. When this Pal uses Unique_NightLady_WarpBeam_Straight| style=|Status_Keyword, it has a <Status_Up>x{ActiveSkillMainValueByRank}</> damage multiplier." },
     possibleDrops: [
@@ -6302,6 +9363,9 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "With her desires set loose, she was soon overwhelmed. She longed for a self to gaze upon herself. And the sisters who gazed, resenting reality, were driven into the abyss and, at last, closed their eyes.",
     workSuitability: [
+      { type: "Handiwork", level: 6 },
+      { type: "Medicine Production", level: 7 },
+      { type: "Transporting", level: 4 },
     ],
     partnerSkill: { name: "Nightmare Stare", description: "When activated, attacks targeted enemy with Unique_NightLady_WarpBeam| style=|Status_Keyword. When this Pal uses Unique_NightLady_WarpBeam| style=|Status_Keyword, it has a <Status_Up>x{ActiveSkillMainValueByRank}</> damage multiplier." },
     possibleDrops: [
@@ -6319,6 +9383,7 @@ export const pals: Pal[] = [
     elements: ["Dark", "Dragon"],
     description: "-Destination reached. Priority: Locate entity |Supersonic Dragon| -Note: Conquest deadline exceeded by <://Error_Code:126DC> years. -Update: No conquest traces found. Naturalization confirmed. Commence elimination protocol. -Staff Memo: Refrain from forgetting or consuming critical data!",
     workSuitability: [
+      { type: "Gathering", level: 2 },
     ],
     partnerSkill: { name: "Meteor Wings", description: "Can be ridden as a flying mount. While in party, damage done by <Status_Keyword>Partner Skills of weapon-wielding Pals</> increases by <Status_Up>{Passive1_EffectValue1}%</>. (Does not stack) {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
@@ -6335,6 +9400,8 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "The silence is unsettling, yet strangely soothing. No one else remains. All have been delivered. O King of Salvation, carry me too into eternal stillness. -The ancient text cuts off here.",
     workSuitability: [
+      { type: "Gathering", level: 7 },
+      { type: "Lumbering", level: 7 },
     ],
     partnerSkill: { name: "Sacred Barrier", description: "Can be ridden. While mounted, it generates a barrier that blocks all attacks. Can <Status_Keyword>triple jump</> while mounted. {ReferenceMsgId_CooldownReduction}" },
     possibleDrops: [
@@ -6350,6 +9417,8 @@ export const pals: Pal[] = [
     elements: ["Neutral"],
     description: "Once one with Necromus. Its gleaming form is free of all negative emotions. However, a glimmer of hatred can still be seen deep within its eyes.",
     workSuitability: [
+      { type: "Lumbering", level: 6 },
+      { type: "Mining", level: 6 },
     ],
     partnerSkill: { name: "Holy Knight of the Firmament", description: "Can be ridden. Can <Status_Keyword>triple jump</> while mounted. Activate Unique_SaintCentaur_OneSpearRushes| style=|Status_Keyword to have Necromus stay by your side and attack enemies in tandem. {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
@@ -6369,6 +9438,8 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Once one with Paladius. Its darkened form is the embodiment of negative emotions. However, a glimmer of compassion can still be seen deep within its eyes.",
     workSuitability: [
+      { type: "Lumbering", level: 6 },
+      { type: "Mining", level: 6 },
     ],
     partnerSkill: { name: "Dark Knight of the Abyss", description: "Can be ridden. Can <Status_Keyword>double jump</> while mounted. When Unique_BlackCentaur_TwoSpearRushes| style=|Status_Keyword skill is activated, a Paladius in your party will appear and attack alongside you. {ReferenceMsgId_RideSpeedUp}" },
     possibleDrops: [
@@ -6388,6 +9459,7 @@ export const pals: Pal[] = [
     elements: ["Ice"],
     description: "Guardian deity of Palpagos Island, known as the Winter Caller. In the past, when a calamity struck the land, it soared into the sky and sealed away the threat by casting the island into eternal winter.",
     workSuitability: [
+      { type: "Cooling", level: 7 },
     ],
     partnerSkill: { name: "Icy Steed", description: "Can be ridden as a flying mount. While mounted, changes the player's attack type to <img id=|ElemIcon_Ice|/>Unknown Status (COMMON_ELEMENT_NAME_Ice| style=|Elem_Ice), inflict Unknown Status (ADDITIONAL_EFFECT_Freeze| style=|Elem_Ice) <Status_Up>{Passive3_EffectValue1}</>, increases Attack by <Status_Up>{Passive2_EffectValue1}%</>." },
     possibleDrops: [
@@ -6406,6 +9478,7 @@ export const pals: Pal[] = [
     elements: ["Dark"],
     description: "Guardian deity of Palpagos Island, known as the Night Caller. In the past, when a calamity struck the land, it soared into the sky and sealed away the threat by casting the island into eternal darkness.",
     workSuitability: [
+      { type: "Gathering", level: 7 },
     ],
     partnerSkill: { name: "Black Steed", description: "Can be ridden as a flying mount. While mounted, changes the player's attack type to <img id=|ElemIcon_Dark|/>Unknown Status (COMMON_ELEMENT_NAME_Dark| style=|Elem_Dark), inflict Unknown Status (ADDITIONAL_EFFECT_Darkness| style=|Elem_Dark) <Status_Up>{Passive3_EffectValue1}</>, increases Attack by <Status_Up>{Passive2_EffectValue1}%</>." },
     possibleDrops: [
@@ -6424,6 +9497,7 @@ export const pals: Pal[] = [
     elements: ["Water"],
     description: "After the sealing of the calamity, a champion from Feybreak emerged. It stares out to sea, awaiting one it deems worthy. For such encounters are no coincidence—they are fate.",
     workSuitability: [
+      { type: "Watering", level: 7 },
     ],
     partnerSkill: { name: "Sentinel of the Great Sea", description: "While in party, it follows up the player's attacks with <img id=|ElemIcon_Water|/>Unknown Status (COMMON_ELEMENT_NAME_Water| style=|Elem_Water) spear strikes. Can be ridden to travel on water. While mounted, it can leap high into the air over water. {ReferenceMsgId_SwimSpeedUp_CooldownReduction}" },
     possibleDrops: [
@@ -6443,6 +9517,7 @@ export const pals: Pal[] = [
     elements: ["Dragon"],
     description: "Watches over Palpagos Island from high above. When calamity returns to the land, the earth will split open, and the skies will burn. It is destined to strike down the calamity in a flash of total destruction.",
     workSuitability: [
+      { type: "Gathering", level: 8 },
     ],
     partnerSkill: { name: "Aerial Missile", description: "Can be ridden as a flying mount. Can rapidly fire a missile launcher while mounted. {ReferenceMsgId_DamageUp}" },
     possibleDrops: [

@@ -1,4 +1,4 @@
-export type HabitatTime = "day" | "night" | "both";
+export type HabitatTime = "day" | "night" | "both" | "unknown";
 
 export interface WorkSuitability {
   type: string;
@@ -14,6 +14,13 @@ export interface PalHabitat {
   locationId: string;
   time: HabitatTime;
   notes?: string;
+  sourceUrl?: string;
+  spawnCount?: number;
+  mapName?: string;
+  coordinates?: {
+    x: number;
+    y: number;
+  }[];
 }
 
 export interface Pal {
@@ -78,6 +85,7 @@ export interface Location {
     y: number;
   };
   description?: string;
+  mapImage?: string;
   recommendedLevel?: string;
 }
 

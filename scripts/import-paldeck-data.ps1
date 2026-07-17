@@ -74,7 +74,7 @@ foreach ($entry in $palUrls.GetEnumerator()) {
     Select-Object -Unique
 
   $workSection = ExtractSection $html "Work Suitability"
-  $work = [regex]::Matches($workSection, '<img src="[^"]*/assets/palworld/work/[^"]+" alt="([^"]+)".*?<span class="text-xs text-blue-400 font-semibold">Lv\s*([0-9]+)</span>', "Singleline") |
+  $work = [regex]::Matches($workSection, '<img src="[^"]*/assets/palworld/work/[^"]+" alt="([^"]+)".*?<span class="text-xs text-blue-400 font-semibold">Lv(?:\s|<!-- -->)*([0-9]+)</span>', "Singleline") |
     ForEach-Object {
       [pscustomobject]@{
         type = HtmlDecode $_.Groups[1].Value

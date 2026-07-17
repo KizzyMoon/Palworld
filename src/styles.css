@@ -477,6 +477,8 @@ button {
 .resource-link,
 .mini-list a,
 .breeding-row a {
+  display: inline-block;
+  margin: 0.15rem 0.45rem 0.15rem 0;
   color: var(--accent);
   font-weight: 800;
 }
@@ -484,6 +486,53 @@ button {
 .habitat-group {
   padding: 0.45rem 0;
   border-top: 1px solid var(--line);
+}
+
+.spawn-entry {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.spawn-map {
+  position: relative;
+  width: 100%;
+  min-height: 15rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 24% 28%, rgba(88, 208, 200, 0.18), transparent 12rem),
+    radial-gradient(circle at 72% 66%, rgba(255, 209, 102, 0.12), transparent 14rem),
+    var(--bg-soft);
+  background-size: 28px 28px, 28px 28px, auto, auto, auto;
+}
+
+.spawn-map::before {
+  position: absolute;
+  right: 0.7rem;
+  bottom: 0.55rem;
+  content: "sampled spawn markers";
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.spawn-dot {
+  position: absolute;
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 999px;
+  background: var(--accent-2);
+  box-shadow: 0 0 0 2px rgba(255, 209, 102, 0.18);
+  transform: translate(-50%, -50%);
+}
+
+.coordinate-sample {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
 }
 
 .habitat-group h4,

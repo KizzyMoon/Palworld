@@ -274,6 +274,7 @@ function PalBrowser({ palsToShow, context }: { palsToShow: Pal[]; context: "all"
           <option value="day">Day</option>
           <option value="night">Night</option>
           <option value="both">Both</option>
+          <option value="unknown">Map spawns</option>
         </select>
         {context === "favourites" && (
           <select value={favouriteState} onChange={(event) => setFavouriteState(event.target.value)} aria-label="Filter favourites by owned status">
@@ -415,7 +416,7 @@ function PalDetailsPage({ palKey }: { palKey: string }) {
 }
 
 function HabitatSection({ pal }: { pal: Pal }) {
-  const groups: HabitatTime[] = ["day", "night", "both"];
+  const groups: HabitatTime[] = ["unknown", "day", "night", "both"];
   const hasHabitats = pal.habitats.length > 0;
   return (
     <>
@@ -424,7 +425,22 @@ function HabitatSection({ pal }: { pal: Pal }) {
         return (
           <div key={time} className="habitat-group">
             <h4>{timeLabel(time)}</h4>
-            {entries.length ? entries.map((entry) => <p key={`${entry.locationId}-${entry.time}`}>{findLocation(entry.locationId)?.name || entry.locationId}: {entry.notes || "Information not currently available."}</p>) : <p>None listed.</p>}
+            {entries.length ? entries.map((entry) => (
+              <div key={`${entry.locationId}-${entry.time}`} className="spawn-entry">
+                <p>
+                  <strong>{entry.mapName || findLocation(entry.locationId)?.name || entry.locationId}</strong>
+                  {entry.spawnCount ? ` - ${entry.spawnCount} known markers` : ""}
+                </p>
+                <p>{entry.notes || "Information not currently available."}</p>
+                {entry.sourceUrl && <a className="resource-link" href={entry.sourceUrl} target="_blank" rel="noreferrer">Open interactive spawn map</a>}
+                {entry.coordinates?.length ? <SpawnMapPreview coordinates={entry.coordinates} /> : null}
+                {entry.coordinates?.length ? (
+                  <p className="coordinate-sample">
+                    Sample coordinates: {entry.coordinates.slice(0, 5).map((point) => `${point.x}, ${point.y}`).join(" | ")}
+                  </p>
+                ) : null}
+              </div>
+            )) : <p>None listed.</p>}
           </div>
         );
       })}
@@ -734,7 +750,34 @@ function textOrUnknown(value: unknown) {
 function timeLabel(time: HabitatTime) {
   if (time === "day") return "Day";
   if (time === "night") return "Night";
+  if (time === "unknown") return "Map spawns";
   return "Day/Night";
+}
+
+function SpawnMapPreview({ coordinates }: { coordinates: { x: number; y: number }[] }) {
+  const xs = coordinates.map((point) => point.x);
+  const ys = coordinates.map((point) => point.y);
+  const minX = Math.min(...xs);
+  const maxX = Math.max(...xs);
+  const minY = Math.min(...ys);
+  const maxY = Math.max(...ys);
+  const width = Math.max(1, maxX - minX);
+  const height = Math.max(1, maxY - minY);
+
+  return (
+    <div className="spawn-map" aria-label={`Spawn map preview with ${coordinates.length} sampled markers`}>
+      {coordinates.map((point, index) => (
+        <span
+          key={`${point.x}-${point.y}-${index}`}
+          className="spawn-dot"
+          style={{
+            left: `${((point.x - minX) / width) * 100}%`,
+            top: `${100 - ((point.y - minY) / height) * 100}%`,
+          }}
+        />
+      ))}
+    </div>
+  );
 }
 
 function sameParents(a: number, b: number, selectedA: number, selectedB: number) {
