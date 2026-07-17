@@ -2,16 +2,14 @@
 
 ## Current dataset
 
-- Dataset name: Palworld Companion starter Paldeck dataset
+- Dataset name: Palworld Companion Paldeck import
 - Original URLs:
-  - https://palworld.wiki.gg/wiki/Palpedia
-  - https://palworld.wiki.gg/wiki/Template:Icon
   - https://api.paldeck.cc/pals
-- Licence: Palworld wiki.gg page content is documented as Creative Commons Attribution-ShareAlike 4.0 unless otherwise noted; Paldeck.cc is a fan-made database and should be reviewed before importing bulk gameplay data.
+- Licence: Paldeck.cc is a fan-made project and is not affiliated with Pocketpair. Review upstream terms before redistributing bulk data outside this personal GitHub Pages project.
 - Date retrieved: 2026-07-17
 - Game version: Verification required
-- Transformations made: Added a starter list of visible Pal cards and linked Pal icon images through wiki.gg `Special:Redirect/file/<Pal>_icon.png` URLs.
-- Known missing information: This is not a complete Palworld dataset. Many habitat, breeding, drops, recipes, and resource details must be replaced with verified data before being treated as authoritative.
+- Transformations made: Imported Pal names, Paldeck numbers, icon URLs, elements, descriptions, partner skills, work suitability levels, and Pal drop resources from Paldeck pages using `scripts/import-paldeck-data.ps1`. Assigned local unique numeric IDs so variant Pals such as `5B` do not share collection state.
+- Known missing information: Habitat, breeding, recipes, non-Pal resource acquisition methods, resource uses, and some special flags still need separate verified imports. Missing information remains visibly labelled rather than invented.
 
 ## Data policy
 

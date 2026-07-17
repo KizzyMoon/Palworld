@@ -18,6 +18,7 @@ export interface PalHabitat {
 
 export interface Pal {
   id: number;
+  paldeckNumber?: string;
   key: string;
   name: string;
   variant?: string;

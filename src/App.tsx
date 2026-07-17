@@ -335,7 +335,7 @@ function PalCard({ pal, compact }: { pal: Pal; compact?: boolean }) {
       <a className="pal-link" href={`#/pals/${pal.key}`}>
         <Avatar text={pal.image} label={pal.name} />
         <div>
-          <span className="number">#{pal.id.toString().padStart(3, "0")}</span>
+          <span className="number">#{displayPalNumber(pal)}</span>
           <h3>{pal.name}</h3>
           <p>{pal.elements.join(" / ")} - {strongest ? `${strongest.type} ${strongest.level}` : "No work data"}</p>
           <HabitatBadges pal={pal} />
@@ -369,7 +369,7 @@ function PalDetailsPage({ palKey }: { palKey: string }) {
       <section className="detail-hero">
         <Avatar text={pal.image} label={pal.name} large />
         <div>
-          <span className="number">#{pal.id.toString().padStart(3, "0")}</span>
+          <span className="number">#{displayPalNumber(pal)}</span>
           <h1>{pal.name}</h1>
           <p>{pal.variant || pal.elements.join(" / ")}</p>
           <div className="card-actions">
@@ -627,7 +627,7 @@ function PalSelect({ label, value, onChange }: { label: string; value: number; o
     <label className="field">
       {label}
       <select value={value} onChange={(event) => onChange(Number(event.target.value))}>
-        {pals.map((pal) => <option key={pal.id} value={pal.id}>{pal.id.toString().padStart(3, "0")} - {pal.name}</option>)}
+        {pals.map((pal) => <option key={pal.id} value={pal.id}>{displayPalNumber(pal)} - {pal.name}</option>)}
       </select>
     </label>
   );
@@ -721,6 +721,10 @@ function strongestWork(pal: Pal) {
 
 function highestWork(pal: Pal) {
   return strongestWork(pal)?.level || 0;
+}
+
+function displayPalNumber(pal: Pal) {
+  return pal.paldeckNumber || pal.id.toString().padStart(3, "0");
 }
 
 function textOrUnknown(value: unknown) {
