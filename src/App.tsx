@@ -17,14 +17,71 @@ type Page =
 type SortMode = "number" | "name" | "rarity" | "breeding" | "work" | "owned" | "favourite";
 
 const navItems = [
-  { hash: "#/", label: "Home", icon: "H" },
-  { hash: "#/pals", label: "Pals", icon: "P" },
-  { hash: "#/breeding", label: "Breed", icon: "B" },
-  { hash: "#/resources", label: "Items", icon: "I" },
-  { hash: "#/owned", label: "Owned", icon: "O" },
-  { hash: "#/favourites", label: "Saved", icon: "★" },
-  { hash: "#/settings", label: "More", icon: "M" },
+  { hash: "#/", label: "Home", icon: "home" },
+  { hash: "#/pals", label: "Pals", icon: "pals" },
+  { hash: "#/breeding", label: "Breed", icon: "egg" },
+  { hash: "#/resources", label: "Items", icon: "resource" },
+  { hash: "#/owned", label: "Owned", icon: "heart" },
+  { hash: "#/favourites", label: "Wishlist", icon: "star" },
+  { hash: "#/settings", label: "Settings", icon: "settings" },
 ];
+
+function NavIcon({ name }: { name: string }) {
+  if (name === "home") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 11.5 12 4l9 7.5" />
+        <path d="M5.5 10.5V20h13v-9.5" />
+        <path d="M9.5 20v-5h5v5" />
+      </svg>
+    );
+  }
+  if (name === "egg") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3c4.5 4.1 6.5 8.1 6.5 12a6.5 6.5 0 0 1-13 0C5.5 11.1 7.5 7.1 12 3Z" />
+        <path d="M9 15.5c.8 1 1.8 1.5 3 1.5s2.2-.5 3-1.5" />
+      </svg>
+    );
+  }
+  if (name === "resource") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3 4.5 7.2v9.6L12 21l7.5-4.2V7.2L12 3Z" />
+        <path d="m4.5 7.2 7.5 4.2 7.5-4.2" />
+        <path d="M12 11.4V21" />
+      </svg>
+    );
+  }
+  if (name === "heart") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20.5 8.8c0 5.2-8.5 10.2-8.5 10.2S3.5 14 3.5 8.8A4.8 4.8 0 0 1 12 5.7a4.8 4.8 0 0 1 8.5 3.1Z" />
+      </svg>
+    );
+  }
+  if (name === "star") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.8-5.4 2.8 1-6-4.4-4.3 6.1-.9L12 3Z" />
+      </svg>
+    );
+  }
+  if (name === "settings") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" />
+        <path d="M19 12a7 7 0 0 0-.1-1.1l2-1.5-2-3.4-2.4 1a7.4 7.4 0 0 0-1.9-1.1L14.3 3h-4.6l-.3 2.9A7.4 7.4 0 0 0 7.5 7l-2.4-1-2 3.4 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.1l-2 1.5 2 3.4 2.4-1c.6.5 1.2.9 1.9 1.1l.3 2.9h4.6l.3-2.9c.7-.3 1.3-.6 1.9-1.1l2.4 1 2-3.4-2-1.5c.1-.3.1-.7.1-1.1Z" />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 4v16" />
+      <path d="M4 12h16" />
+    </svg>
+  );
+}
 
 function parseHash(): Page {
   const hash = window.location.hash || "#/";
@@ -75,7 +132,7 @@ function AppShell() {
         <nav>
           {navItems.map((item) => (
             <a key={item.hash} className={routeFor(page) === item.hash ? "active" : ""} href={item.hash}>
-              <span aria-hidden="true">{item.icon}</span>
+              <span className="nav-icon"><NavIcon name={item.icon} /></span>
               {item.label}
             </a>
           ))}
@@ -89,7 +146,7 @@ function AppShell() {
       <nav className="bottom-nav" aria-label="Mobile navigation">
         {navItems.slice(0, 6).map((item) => (
           <a key={item.hash} className={routeFor(page) === item.hash ? "active" : ""} href={item.hash}>
-            <span aria-hidden="true">{item.icon}</span>
+            <span className="nav-icon"><NavIcon name={item.icon} /></span>
             <small>{item.label}</small>
           </a>
         ))}

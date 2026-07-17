@@ -116,6 +116,24 @@ main {
   text-decoration: none;
 }
 
+.nav-icon {
+  display: inline-grid;
+  width: 1.25rem;
+  height: 1.25rem;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+.nav-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .brand {
   margin-bottom: 1.5rem;
 }
@@ -637,6 +655,12 @@ button {
     flex-direction: column;
     gap: 0.1rem;
     font-size: 1.05rem;
+  }
+
+  .bottom-nav .nav-icon,
+  .bottom-nav .nav-icon svg {
+    width: 1.2rem;
+    height: 1.2rem;
   }
 
   .bottom-nav small {
