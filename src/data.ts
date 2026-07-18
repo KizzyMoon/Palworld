@@ -24,7 +24,7 @@ export const resources: Resource[] = [
     name: "Advanced Technical Manual",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Consume_TechnologyBook_G1.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A book that contains secrets of amazing technology. Use it to obtain a few Technology Points.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Hoocrates", palId: 25, notes: "1-1, 1%" },
@@ -39,7 +39,7 @@ export const resources: Resource[] = [
     name: "Ancient Civilization Core",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_AncientParts2.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Core from technology that was lost long ago. Nearly impossible to find on the Palpagos Islands, it contains a wealth of forgotten knowledge.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Dandilord", palId: 276, notes: "1-1, 100%" },
@@ -51,7 +51,7 @@ export const resources: Resource[] = [
     name: "Aquatic Pal Fluids",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalFluid.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Bodily fluids taken from a Water Pal. Their high viscosity makes them a handy material.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Amione", palId: 66, notes: "2-2, 100%" },
@@ -98,7 +98,7 @@ export const resources: Resource[] = [
     name: "Arrow",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Ammo_Arrow.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Arrows for use with bows. Can be crafted at Primitive Workbench.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Robinquill", palId: 105, notes: "2-4, 100%" },
@@ -110,7 +110,7 @@ export const resources: Resource[] = [
     name: "Beautiful Flower",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Poppy.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A plant that blooms colorful flowers. Can be used to make Suspicious Juice and Strange Juice.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Bristla", palId: 83, notes: "1-1, 50%" },
@@ -133,7 +133,7 @@ export const resources: Resource[] = [
     name: "Berry Seeds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_BerrySeeds.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Seeds that produce Red Berries. Necessary for starting a farm. Can be obtained when picking Red Berries.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Clovee", palId: 17, notes: "1-2, 100%" },
@@ -146,7 +146,7 @@ export const resources: Resource[] = [
     name: "Bone",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Bone.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Bone collected from Pals. A valuable source of premium calcium.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Anubis", palId: 209, notes: "3-5, 100%" },
@@ -179,7 +179,7 @@ export const resources: Resource[] = [
     name: "Broncherry Meat",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_SakuraSaurus.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Broncherry meat. Giant meat full of massive stores of energy. Stuffed to the brim with nutrients gathered through photosynthesis.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Broncherry", palId: 160, notes: "2-2, 100%" },
@@ -191,7 +191,7 @@ export const resources: Resource[] = [
     name: "Cake",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Cake.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A dish eaten during celebrations. Put it in the chest at a Breeding Farm to make Pals lay a particularly healthy egg.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Lovander", palId: 94, notes: "1-1, 1%" },
@@ -202,7 +202,7 @@ export const resources: Resource[] = [
     name: "Caprity Meat",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_BerryGoat.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Caprity meat. Healthy and full of nutrients. Hints of berries scenting the meat stimulates the appetite.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Caprity", palId: 46, notes: "2-2, 100%" },
@@ -214,7 +214,7 @@ export const resources: Resource[] = [
     name: "Caramel Cotton Candy",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Sweet_Caramel.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Caramel cotton candy collected from Woolipop Terra. Its fluffy sweetness melts away in your mouth.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Woolipop Terra", palId: 55, notes: "1-2, 100%" },
@@ -225,7 +225,7 @@ export const resources: Resource[] = [
     name: "Carbon Fiber",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_CarbonFiber.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A lightweight yet sturdy material. Used to create armor and other equipment. Can be crafted at Production Assembly Line.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Shadowbeak", palId: 271, notes: "2-3, 100%" },
@@ -236,7 +236,7 @@ export const resources: Resource[] = [
     name: "Carrot",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Carrot.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A vibrant, nutrient-rich root vegetable. Not suitable for raw consumption.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Ribbuny Botan", palId: 63, notes: "1-1, 100%" },
@@ -247,7 +247,7 @@ export const resources: Resource[] = [
     name: "Carrot Seeds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_CarrotSeeds.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Seeds that produce Carrot. Necessary for starting a farm.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Dinossom Lux", palId: 120, notes: "1-2, 100%" },
@@ -263,7 +263,7 @@ export const resources: Resource[] = [
     name: "Chikipi Poultry",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_ChickenPal.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Chikipi meat. Light and easy to eat, it's a local favorite for residents of Palpagos Island.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Chikipi", palId: 3, notes: "1-1, 100%" },
@@ -274,7 +274,7 @@ export const resources: Resource[] = [
     name: "Chromite",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Chromium.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A type of metal buried underground. It can be detected with a Metal Detector on certain islands.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Silvegis", palId: 237, notes: "2-3, 100%" },
@@ -286,7 +286,7 @@ export const resources: Resource[] = [
     name: "Cloth",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Cloth.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Cloth woven from Wool. Required to create armor. Can be crafted at Primitive Workbench.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Azurobe", palId: 57, notes: "1-3, 100%" },
@@ -303,7 +303,7 @@ export const resources: Resource[] = [
     name: "Coal",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Coal.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Coal often found in caves and other places. Required to create high quality metal.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Blazamut", palId: 205, notes: "10-10, 100%" },
@@ -316,7 +316,7 @@ export const resources: Resource[] = [
     name: "Copper Key",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Consume_TreasureBoxKey01.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A key that can be used to open locked treasure chests.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Leezpunk", palId: 99, notes: "1-1, 100%" },
@@ -327,7 +327,7 @@ export const resources: Resource[] = [
     name: "Coralum Ore",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_ManganeseOre.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A rare ore formed over countless years in the deep sea. Can be retrieved from the depths with a magnet and fishing rod.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Neptilius", palId: 285, notes: "10-10, 100%" },
@@ -340,7 +340,7 @@ export const resources: Resource[] = [
     name: "Cotton Candy",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Sweet.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Cotton candy collected from Woolipop. Its sweetness fluffily melts away in your mouth.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Woolipop", palId: 54, notes: "1-2, 100%" },
@@ -351,7 +351,7 @@ export const resources: Resource[] = [
     name: "Crude Oil",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_CrudeOil.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A material that can be processed into various products. Obtained by installing a Crude Oil Extractor in an oil field.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Kikit", palId: 188, notes: "1-1, 50%" },
@@ -364,7 +364,7 @@ export const resources: Resource[] = [
     name: "Dark Fragment",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalDarkParts.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Dropped by some powerful Dark Pals. Used as a material for crafting powerful accessories and other items.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Bellanoir", palId: 277, notes: "2-3, 100%" },
@@ -383,7 +383,7 @@ export const resources: Resource[] = [
     name: "Dazzi Cloud",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_RaijinDaughter.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Cloud dropped from a Dazzi. Soft and fluffy, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Dazzi", palId: 133, notes: "1-1, 100%" },
@@ -395,7 +395,7 @@ export const resources: Resource[] = [
     name: "Diamond",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Diamond.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A rare gemstone that glows brilliantly. Can be sold to a merchant for a high price.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Frostallion", palId: 283, notes: "1-1, 100%" },
@@ -412,7 +412,7 @@ export const resources: Resource[] = [
     name: "Dog Coin",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_DogCoin.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A mysterious coin. Apparently there are people who collect these. A Mimog will usually have them, but for some reason, they cannot be obtained by butchering it.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Mimog", palId: 216, notes: "14-21, 100%" },
@@ -423,7 +423,7 @@ export const resources: Resource[] = [
     name: "Egg",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Egg.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Delicious when fried, but can also be used to cook various meals. Chikipi produce them.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Chikipi", palId: 3, notes: "1-1, 100%" },
@@ -434,7 +434,7 @@ export const resources: Resource[] = [
     name: "Eikthyrdeer Venison",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_Deer.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Eikthyrdeer meat. Light and lean, but rich in flavor.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Eikthyrdeer", palId: 43, notes: "2-2, 100%" },
@@ -446,7 +446,7 @@ export const resources: Resource[] = [
     name: "Electric Organ",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_ElectricOrgan.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Material obtainable from Electric Pals. It stores electricity, but requires caution when used.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Azurmane", palId: 238, notes: "2-3, 100%" },
@@ -479,7 +479,7 @@ export const resources: Resource[] = [
     name: "Elizabee's Staff",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Weapon_Spear_QueenBee.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A spear made from Elizabee's staff, altered for human use. It is imbued with Elizabee's indomitable spirit.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Elizabee", palId: 93, notes: "1-1, 3%" },
@@ -490,7 +490,7 @@ export const resources: Resource[] = [
     name: "Emerald",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Eemerald.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A gemstone that glows green. Can be sold to a merchant for a high price.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Tetroise Primo", palId: 214, notes: "1-2, 100%" },
@@ -501,7 +501,7 @@ export const resources: Resource[] = [
     name: "Fiber",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Fiber.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Fiber collected from trees. A material used when creating bows, etc.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Bulldosu", palId: 231, notes: "1-2, 100%" },
@@ -520,7 +520,7 @@ export const resources: Resource[] = [
     name: "Flame Organ",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_FireOrgan.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Material obtainable from Fire Pals. Can be used to make Fire Arrow and more.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Arsox", palId: 81, notes: "2-3, 100%" },
@@ -567,7 +567,7 @@ export const resources: Resource[] = [
     name: "Galeclaw Poultry",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_Eagle.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Galeclaw meat. Full of nutrition, its flavor packs a punch.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Galeclaw", palId: 69, notes: "1-1, 100%" },
@@ -578,7 +578,7 @@ export const resources: Resource[] = [
     name: "Giant Pal Soul",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_PalUpgradeStone4.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "The soul left behind by a highly trained Pal. It can draw out hidden abilities if offered to a Statue of Power.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Aegidron", palId: 264, notes: "1-1, 100%" },
@@ -592,7 +592,7 @@ export const resources: Resource[] = [
     name: "Gloopie Tentacle",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_food_Meat_OctopusGirl.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Gloopie tentacle. Known for its springy texture and light, refined flavor.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Gloopie", palId: 67, notes: "1-2, 100%" },
@@ -604,7 +604,7 @@ export const resources: Resource[] = [
     name: "Gold Coin",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Money.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Currency traded on Palpagos Island. Can be exchanged for items or Pals with merchants.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Direhowl", palId: 45, notes: "10-20, 3%" },
@@ -619,7 +619,7 @@ export const resources: Resource[] = [
     name: "Gumoss Leaf",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_PlantSlime.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Leaf dropped from a Gumoss. Fresh and sticky, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Gumoss", palId: 15, notes: "1-1, 50%" },
@@ -630,7 +630,7 @@ export const resources: Resource[] = [
     name: "Gunpowder",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Gunpowder.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Gunpowder",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Tocotoco", palId: 73, notes: "1-1, 100%" },
@@ -641,7 +641,7 @@ export const resources: Resource[] = [
     name: "Hardwood",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Wood_Fine.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "High-quality wood carefully selected from sturdy trees grown in harsh environments such as deserts, volcanic regions, and snowy mountains.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Mossanda", palId: 151, notes: "1-3, 100%" },
@@ -655,7 +655,7 @@ export const resources: Resource[] = [
     name: "Hexolite",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_StainlessSteel.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "An alloy of Chromite and Hexolite Quartz. Used for building advanced equipment and structures. Can be refined at Gigantic Furnace.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Necromus", palId: 282, notes: "10-10, 100%" },
@@ -668,7 +668,7 @@ export const resources: Resource[] = [
     name: "Hexolite Quartz",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_RainbowCrystal.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A rare crystal found only in Feybreak. Over many years, Paladium has condensed and transformed, now shining with a rainbow-like glow.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Celesdir", palId: 232, notes: "2-3, 100%" },
@@ -679,7 +679,7 @@ export const resources: Resource[] = [
     name: "High Quality Cloth",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Cloth.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "High Quality Cloth woven from a large amount of Wool. Required to create high quality armor. Can be crafted at High-Quality Workbench.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Selyne", palId: 272, notes: "1-2, 100%" },
@@ -692,7 +692,7 @@ export const resources: Resource[] = [
     name: "High Quality Pal Oil",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalOil.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "High-quality oil that can be extracted from Pal. Necessary for making Polymer.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Astralym", palId: 288, notes: "1-1, 100%" },
@@ -726,7 +726,7 @@ export const resources: Resource[] = [
     name: "High Quality Recovery Meds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Potion_High.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Medicine that heals wounds over time. High quality; restores a lot of Health.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Bellanoir Libero", palId: 278, notes: "1-2, 100%" },
@@ -740,7 +740,7 @@ export const resources: Resource[] = [
     name: "Honey",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Honey.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Honey harvested from Beegarde. It's sweet and tasty.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Beegarde", palId: 92, notes: "1-2, 100%" },
@@ -755,7 +755,7 @@ export const resources: Resource[] = [
     name: "Horn",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Horn.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Horn collected from Pals. Used to create medicines and more.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Arsox", palId: 81, notes: "1-1, 100%" },
@@ -784,7 +784,7 @@ export const resources: Resource[] = [
     name: "Ice Organ",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_IceOrgan.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Material obtainable from Ice Pals. Can be used to make Ice Mine and more.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Azurobe Cryst", palId: 58, notes: "1-3, 100%" },
@@ -825,7 +825,7 @@ export const resources: Resource[] = [
     name: "Ingot",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_CopperIngot.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A material required to create metal weapons and armor. Refined from Ore using a furnace.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Bushi", palId: 121, notes: "2-3, 100%" },
@@ -837,7 +837,7 @@ export const resources: Resource[] = [
     name: "Innovative Technical Manual",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Consume_TechnologyBook_G2.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A book that contains secrets of cutting-edge technology. Use it to obtain Technology Points.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Anubis", palId: 209, notes: "1-1, 5%" },
@@ -851,7 +851,7 @@ export const resources: Resource[] = [
     name: "Jelliette Bell Flesh",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_food_Meat_JellyfishFairy.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Jelliette's fleshy bell. Packed with ocean flavor and a delightfully chewy bite.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Jelliette", palId: 64, notes: "1-1, 100%" },
@@ -862,7 +862,7 @@ export const resources: Resource[] = [
     name: "Jellroy Bell Flesh",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_food_Meat_JellyfishGhost.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Jellroy's fleshy bell. Packed with ocean flavor and a delightfully plump texture.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Jellroy", palId: 65, notes: "1-1, 100%" },
@@ -873,7 +873,7 @@ export const resources: Resource[] = [
     name: "Katress Hair",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_CatMage.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Hair dropped from a Katress. Soft and supple, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Katress", palId: 110, notes: "1-1, 50%" },
@@ -885,7 +885,7 @@ export const resources: Resource[] = [
     name: "Killamari Tentacle",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_NegativeOctopus.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Tentacle dropped from a Killamari. Strange in texture, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Killamari", palId: 40, notes: "1-1, 50%" },
@@ -897,7 +897,7 @@ export const resources: Resource[] = [
     name: "Lamball Mutton",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_SheepBall.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Lamball meat. Red meat with a unique flavor. Delicious, but takes some getting used to.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Lamball", palId: 1, notes: "1-1, 100%" },
@@ -908,7 +908,7 @@ export const resources: Resource[] = [
     name: "Large Pal Soul",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_PalUpgradeStone3.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A spirit left behind by a large Pal. It can draw out hidden abilities if offered to a Statue of Power.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Anubis", palId: 209, notes: "1-1, 100%" },
@@ -935,7 +935,7 @@ export const resources: Resource[] = [
     name: "Leather",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Leather.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Leather taken from a Pal, it serves as a defensive material. It can be obtained from certain Pals.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Astralym", palId: 288, notes: "1-1, 100%" },
@@ -1022,7 +1022,7 @@ export const resources: Resource[] = [
     name: "Leezpunk Crest",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_LizardMan.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Crest dropped from a Leezpunk. Sharp and pointy, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Leezpunk", palId: 99, notes: "1-1, 50%" },
@@ -1034,7 +1034,7 @@ export const resources: Resource[] = [
     name: "Lettuce Seeds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_LettuceSeeds.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Seeds that produce Lettuce. Necessary for starting a farm. Can be purchased from a merchant.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Braloha", palId: 164, notes: "1-2, 50%" },
@@ -1048,7 +1048,7 @@ export const resources: Resource[] = [
     name: "Low Grade Medical Supplies",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Herbs.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Low Grade Medical Supplies good for Sick, Sprain, and Overfull. They don't heal Health when eaten, however.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Flopie", palId: 107, notes: "1-1, 20%" },
@@ -1062,7 +1062,7 @@ export const resources: Resource[] = [
     name: "Mammorest Meat",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_GrassMammoth.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Mammorest meat. With massive size comes massive flavor. Its overwhelming portions are sure to satisfy any glutton.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Mammorest", palId: 124, notes: "2-2, 100%" },
@@ -1074,7 +1074,7 @@ export const resources: Resource[] = [
     name: "Medium Pal Soul",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_PalUpgradeStone2.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A spirit left behind by a Pal. It can draw out hidden abilities if offered to a Statue of Power.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Blazamut Ryu", palId: 206, notes: "1-1, 5%" },
@@ -1094,7 +1094,7 @@ export const resources: Resource[] = [
     name: "Memory Wiping Medicine",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_StatusPointResetSan.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A potion that allows the player to reset their status points when consumed. It has no effect if consumed by a Pal.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Lovander", palId: 94, notes: "1-1, 1%" },
@@ -1105,7 +1105,7 @@ export const resources: Resource[] = [
     name: "Meteorite Fragment",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_MeteorDrop.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Fragment of a rock from outer space. Contains large amounts of Paldium Fragment, which can be extracted by placing it in a Crusher.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Xenogard", palId: 218, notes: "5-12, 100%" },
@@ -1118,7 +1118,7 @@ export const resources: Resource[] = [
     name: "Milk",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Milk.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Drink it as is, or use it in various meals. Can be milked from Mozzarina.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Mozzarina", palId: 56, notes: "1-1, 100%" },
@@ -1129,7 +1129,7 @@ export const resources: Resource[] = [
     name: "Mozzarina Meat",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_CowPal.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Mozzarina meat. Thick, juicy and marbled. Residents of Palpagos Island cherish it above all other meats.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Mozzarina", palId: 56, notes: "2-3, 100%" },
@@ -1140,7 +1140,7 @@ export const resources: Resource[] = [
     name: "Munchill Meat",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_food_Meat_IceCrocodile.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Munchill meat. Has a satisfying chew that brings out layers of umami as you eat.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Munchill", palId: 123, notes: "1-1, 100%" },
@@ -1151,7 +1151,7 @@ export const resources: Resource[] = [
     name: "Mushroom",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Mushroom.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A mushroom that can be eaten raw. They can be found anywhere on the island.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Lovander", palId: 94, notes: "2-4, 100%" },
@@ -1166,7 +1166,7 @@ export const resources: Resource[] = [
     name: "Mysterious Mushroom",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_PoisonMushroom.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Mushrooms that are not suitable for eating raw. Eating makes one more prone to feeling hungry.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Dualith Noct", palId: 208, notes: "3-5, 100%" },
@@ -1179,7 +1179,7 @@ export const resources: Resource[] = [
     name: "Nightstar Sand",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_NightStone.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Sand that can be found in the desert at night. Used as a material for crafting certain accessories and other items.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Starryon Primo", palId: 195, notes: "1-2, 100%" },
@@ -1191,7 +1191,7 @@ export const resources: Resource[] = [
     name: "Onion Seeds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_OnionSeeds.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Seeds that produce Onion. Necessary for starting a farm.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Broncherry", palId: 160, notes: "1-2, 100%" },
@@ -1205,7 +1205,7 @@ export const resources: Resource[] = [
     name: "Ore",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_CopperOre.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Becomes an ingot when refined using a furnace. Can be found in caves and other places.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Cryolinx Terra", palId: 199, notes: "2-3, 100%" },
@@ -1221,7 +1221,7 @@ export const resources: Resource[] = [
     name: "Paldium Fragment",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Pal_crystal_S.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Crystallized energy from the World Tree. Capable of creating supernatural items and structures.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Lunaris", palId: 116, notes: "2-3, 100%" },
@@ -1232,7 +1232,7 @@ export const resources: Resource[] = [
     name: "Penking Plume",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_CaptainPenguin.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Plume dropped from a Penking. Bright and colorful, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Penking", palId: 23, notes: "1-1, 50%" },
@@ -1244,7 +1244,7 @@ export const resources: Resource[] = [
     name: "Plasteel",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Plastic.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Plasteel created by processing Crude Oil and metal. Can be produced in a Electric Furnace.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Astegon", palId: 234, notes: "2-3, 100%" },
@@ -1256,7 +1256,7 @@ export const resources: Resource[] = [
     name: "Potato Seeds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PotatoSeeds.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Seeds that produce Potato. Necessary for starting a farm.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Petallia", palId: 128, notes: "1-1, 100%" },
@@ -1269,7 +1269,7 @@ export const resources: Resource[] = [
     name: "Pure Quartz",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Quartz.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Pure Quartz often found in snowy fields and similar places. Required to create Circuit Board.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Pierdon Cryst", palId: 197, notes: "4-5, 100%" },
@@ -1280,7 +1280,7 @@ export const resources: Resource[] = [
     name: "Raw Dumud",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_LazyCatfish.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Dumud meat. Fatty with a rich taste. Has a mouthwatering plump texture.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Dumud", palId: 162, notes: "2-2, 100%" },
@@ -1292,7 +1292,7 @@ export const resources: Resource[] = [
     name: "Raw Kelpsea",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_Kelpie.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Kelpsea meat. Tender and slightly sweet. Fish meat tends to spoil quickly.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Kelpsea", palId: 60, notes: "1-1, 100%" },
@@ -1304,7 +1304,7 @@ export const resources: Resource[] = [
     name: "Red Berries",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Berries.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A versatile ingredient that is delicious raw or cooked. They can be found anywhere on the island.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Braloha", palId: 164, notes: "1-2, 60%" },
@@ -1321,7 +1321,7 @@ export const resources: Resource[] = [
     name: "Reindrix Venison",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_IceDeer.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Reindrix meat. Strange venison capable of remaining at low temperatures. Takes a very long time to spoil.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Reindrix", palId: 150, notes: "2-2, 100%" },
@@ -1332,7 +1332,7 @@ export const resources: Resource[] = [
     name: "Ribbuny Ribbon",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_PinkRabbit.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Ribbon dropped from a Ribbuny. Cute in color and design, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Ribbuny", palId: 62, notes: "1-1, 100%" },
@@ -1344,7 +1344,7 @@ export const resources: Resource[] = [
     name: "Ruby",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Ruby.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A gemstone that glows red. Can be sold to a merchant for a high price.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Direhowl", palId: 45, notes: "1-1, 3%" },
@@ -1359,7 +1359,7 @@ export const resources: Resource[] = [
     name: "Rushoar Pork",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_Boar.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Rushoar meat. Full of the delicious flavors of wild game. Juicy and nutritious.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Rushoar", palId: 37, notes: "1-2, 100%" },
@@ -1370,7 +1370,7 @@ export const resources: Resource[] = [
     name: "Sapphire",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Sapphire.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A gemstone that glows blue. Can be sold to a merchant for a high price.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Mau Cryst", palId: 36, notes: "1-1, 1%" },
@@ -1385,7 +1385,7 @@ export const resources: Resource[] = [
     name: "Silver Key",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Consume_TreasureBoxKey02.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A key that can be used to open locked treasure chests.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Leezpunk", palId: 99, notes: "1-1, 1%" },
@@ -1397,7 +1397,7 @@ export const resources: Resource[] = [
     name: "Skutlass Sashimi",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_SwordCutlassFish.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Raw slices of Skutlass. Characterized by its supple, plump flesh. Caution is required when preparing it due to its sword-like spine.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Skutlass", palId: 190, notes: "1-2, 100%" },
@@ -1409,7 +1409,7 @@ export const resources: Resource[] = [
     name: "Small Pal Soul",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_PalUpgradeStone.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A spirit left behind by a small Pal. It can draw out hidden abilities if offered to a Statue of Power.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Bakemi", palId: 246, notes: "1-1, 100%" },
@@ -1432,7 +1432,7 @@ export const resources: Resource[] = [
     name: "Soralite",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_SkyIslandOre.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A rare ore produced only in Sunreach. Within its host rock of overwhelming density resides a mysterious pattern and radiance.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Jetragon", palId: 286, notes: "10-10, 100%" },
@@ -1444,7 +1444,7 @@ export const resources: Resource[] = [
     name: "Strange Juice",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Narcotic.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Juice that greatly improves mood when consumed. Drinking it significantly increases work speed for a period of time, but significantly lowers SAN.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Lovander", palId: 94, notes: "1-1, 1%" },
@@ -1455,7 +1455,7 @@ export const resources: Resource[] = [
     name: "Sulfur",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Sulfur.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Sulfur that can be found in volcanoes and such. Necessary for making Gunpowder.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Pierdon", palId: 196, notes: "4-5, 100%" },
@@ -1466,7 +1466,7 @@ export const resources: Resource[] = [
     name: "Suspicious Juice",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Opium.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Juice that improves mood when consumed. Drinking it increases work speed for a period of time, but lowers SAN.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Lovander", palId: 94, notes: "1-1, 1%" },
@@ -1477,7 +1477,7 @@ export const resources: Resource[] = [
     name: "Swee Hair",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_MopBaby.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Hair dropped from a Swee. Fluffy and soft, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Swee", palId: 48, notes: "1-1, 50%" },
@@ -1488,7 +1488,7 @@ export const resources: Resource[] = [
     name: "Thermal Core",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Thermal_Core.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "A high-temperature reaction core containing vast thermal energy. Used as a power component in advanced devices. Can be crafted at Production Assembly Line II.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Aegidron", palId: 264, notes: "1-2, 100%" },
@@ -1500,7 +1500,7 @@ export const resources: Resource[] = [
     name: "Tocotoco Feather",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_ColorfulBird.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Feathers dropped from a Tocotoco. Used to make clothing, as the beautifully vivid colors are quite popular.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Tocotoco", palId: 73, notes: "1-1, 50%" },
@@ -1511,7 +1511,7 @@ export const resources: Resource[] = [
     name: "Tomato Seeds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_TomatoSeeds.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Seeds that produce Tomato. Necessary for starting a farm. Can be purchased from a merchant.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Braloha", palId: 164, notes: "1-1, 50%" },
@@ -1527,7 +1527,7 @@ export const resources: Resource[] = [
     name: "Training Manual (XL)",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Consume_ExpBoost_04.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Training manual that grants a substantial amount of EXP when read by a Pal.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Mimog", palId: 216, notes: "1-1, 20%" },
@@ -1538,7 +1538,7 @@ export const resources: Resource[] = [
     name: "Venom Gland",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Venom.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Material obtainable from poisonous Pals. Can be used to make Poison Arrow and more.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Caprity Noct", palId: 47, notes: "1-1, 100%" },
@@ -1565,7 +1565,7 @@ export const resources: Resource[] = [
     name: "Wheat Seeds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_WheatSeeds.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Seeds that produce Wheat. Necessary for starting a farm. Can be purchased from a merchant.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Hangyu", palId: 52, notes: "1-1, 100%" },
@@ -1579,7 +1579,7 @@ export const resources: Resource[] = [
     name: "Wool",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Wool.webp",
     category: "Pal drops",
-    description: "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification.",
+    description: "Material sheared from sheep Pals. A necessity for creating bedding, Cloth and more.",
     usedFor: [],
     obtainedFrom: [
       { type: "pal-drop", name: "Dropped by Cremis", palId: 10, notes: "1-2, 100%" },

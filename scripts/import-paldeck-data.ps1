@@ -42,6 +42,10 @@ function ExtractSection([string]$html, [string]$heading) {
   return $html.Substring($start, $next - $start)
 }
 
+function ExtractMetaDescription([string]$html) {
+  return HtmlDecode ([regex]::Match($html, '<meta name="description" content="([^"]*)"', "Singleline").Groups[1].Value)
+}
+
 $pals = New-Object System.Collections.Generic.List[object]
 $resources = [ordered]@{}
 $i = 0
@@ -101,8 +105,10 @@ foreach ($entry in $palUrls.GetEnumerator()) {
       $resources[$resourceId] = [pscustomobject]@{
         id = $resourceId
         name = $resourceName
+        url = "/items/$($drop.Groups[1].Value)"
         image = if ($drop.Groups[2].Value.StartsWith("/")) { "$baseUrl$($drop.Groups[2].Value)" } else { $drop.Groups[2].Value }
         category = "Pal drops"
+        description = ""
         palSources = New-Object System.Collections.Generic.List[object]
       }
     }
@@ -126,6 +132,23 @@ foreach ($entry in $palUrls.GetEnumerator()) {
   [void]$pals.Add($palRecord)
 
   Start-Sleep -Milliseconds 80
+}
+
+$resourceIndex = 0
+foreach ($resource in $resources.Values) {
+  $resourceIndex++
+  Write-Host "[item $resourceIndex/$($resources.Count)] $($resource.name)"
+  try {
+    $itemHtml = (Invoke-WebRequest -UseBasicParsing -Uri "$baseUrl$($resource.url)" -TimeoutSec 40).Content
+    $itemDescription = ExtractMetaDescription $itemHtml
+    if ($itemDescription -and $itemDescription -ne "Item not found") {
+      $resource.description = $itemDescription
+    }
+  }
+  catch {
+    Write-Warning "Could not import item page for $($resource.name): $($_.Exception.Message)"
+  }
+  Start-Sleep -Milliseconds 50
 }
 
 $pals = @($pals | Where-Object { $_.id -gt 0 -and $_.name -notmatch "_Tower$" } | Sort-Object id, name)
@@ -156,7 +179,8 @@ foreach ($resource in $resources.Values | Sort-Object name) {
   $lines.Add("    name: $(TsString $resource.name),")
   $lines.Add("    image: $(TsString $resource.image),")
   $lines.Add('    category: "Pal drops",')
-  $lines.Add("    description: $(TsString "Imported Pal drop resource. Uses and non-Pal acquisition methods still need verification."),")
+  $description = if ($resource.description) { $resource.description } else { "Item description not currently available." }
+  $lines.Add("    description: $(TsString $description),")
   $lines.Add("    usedFor: [],")
   $lines.Add("    obtainedFrom: [")
   foreach ($source in ($resource.palSources | Sort-Object palName -Unique)) {
