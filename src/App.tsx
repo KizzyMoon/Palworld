@@ -440,8 +440,8 @@ function PalDetailsPage({ palKey }: { palKey: string }) {
           </div>
         </div>
       </section>
-      <section className="detail-grid">
-        <Panel title="Overview">
+      <section className="pal-detail-grid">
+        <Panel title="Overview" className="panel-wide">
           <p>{pal.description || "Information not currently available."}</p>
           <InfoRows rows={[
             ["Rarity", textOrUnknown(pal.rarity)],
@@ -461,7 +461,7 @@ function PalDetailsPage({ palKey }: { palKey: string }) {
             return <a className="resource-link" key={drop.resourceId} href={`#/resources/${drop.resourceId}`}>{resource?.name || drop.resourceId}{drop.notes ? ` - ${drop.notes}` : ""}</a>;
           }) : <p>Information not currently available.</p>}
         </Panel>
-        <Panel title="Habitat">
+        <Panel title="Habitat" className="panel-wide">
           <HabitatSection pal={pal} />
         </Panel>
         <Panel title="Breeding">
@@ -715,9 +715,9 @@ function MiniPalList({ pals: miniPals, empty }: { pals: Pal[]; empty: string }) 
   );
 }
 
-function Panel({ title, children }: { title: string; children: React.ReactNode }) {
+function Panel({ title, children, className = "" }: { title: string; children: React.ReactNode; className?: string }) {
   return (
-    <section className="panel">
+    <section className={className ? `panel ${className}` : "panel"}>
       <h2>{title}</h2>
       {children}
     </section>
