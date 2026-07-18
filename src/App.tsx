@@ -490,10 +490,10 @@ function HabitatSection({ pal }: { pal: Pal }) {
                 </p>
                 <p>{entry.notes || "Information not currently available."}</p>
                 {entry.sourceUrl && <a className="resource-link" href={entry.sourceUrl} target="_blank" rel="noreferrer">Open interactive spawn map</a>}
-                {entry.coordinates?.length ? <SpawnMapPreview coordinates={entry.coordinates} /> : null}
+                {entry.coordinates?.length ? <SpawnMapPreview coordinates={entry.coordinates} totalMarkers={entry.spawnCount} /> : null}
                 {entry.coordinates?.length ? (
                   <p className="coordinate-sample">
-                    Sample coordinates: {entry.coordinates.slice(0, 5).map((point) => `${point.x}, ${point.y}`).join(" | ")}
+                    Showing {entry.coordinates.length} sampled markers{entry.spawnCount && entry.spawnCount > entry.coordinates.length ? ` from ${entry.spawnCount} known spawns` : ""}.
                   </p>
                 ) : null}
               </div>
@@ -811,25 +811,33 @@ function timeLabel(time: HabitatTime) {
   return "Day/Night";
 }
 
-function SpawnMapPreview({ coordinates }: { coordinates: { x: number; y: number }[] }) {
-  const xs = coordinates.map((point) => point.x);
-  const ys = coordinates.map((point) => point.y);
-  const minX = Math.min(...xs);
-  const maxX = Math.max(...xs);
-  const minY = Math.min(...ys);
-  const maxY = Math.max(...ys);
-  const width = Math.max(1, maxX - minX);
-  const height = Math.max(1, maxY - minY);
+function SpawnMapPreview({ coordinates, totalMarkers }: { coordinates: { x: number; y: number }[]; totalMarkers?: number }) {
+  const bounds = {
+    minX: -1099399,
+    maxX: 349399,
+    minY: -724399,
+    maxY: 724399,
+  };
+  const width = bounds.maxX - bounds.minX;
+  const height = bounds.maxY - bounds.minY;
 
   return (
-    <div className="spawn-map" aria-label={`Spawn map preview with ${coordinates.length} sampled markers`}>
+    <div
+      className="spawn-map"
+      aria-label={`Palpagos Island spawn map preview with ${coordinates.length} sampled markers`}
+      data-marker-count={totalMarkers || coordinates.length}
+    >
+      <span className="map-label top-left">Astral Mountains</span>
+      <span className="map-label mid-left">Bamboo Groves</span>
+      <span className="map-label lower-left">Mount Obsidian</span>
+      <span className="map-label mid-right">Sakurajima</span>
       {coordinates.map((point, index) => (
         <span
           key={`${point.x}-${point.y}-${index}`}
           className="spawn-dot"
           style={{
-            left: `${((point.x - minX) / width) * 100}%`,
-            top: `${100 - ((point.y - minY) / height) * 100}%`,
+            left: `${((point.x - bounds.minX) / width) * 100}%`,
+            top: `${100 - ((point.y - bounds.minY) / height) * 100}%`,
           }}
         />
       ))}

@@ -514,37 +514,72 @@ button {
 .spawn-map {
   position: relative;
   width: 100%;
-  min-height: 15rem;
+  min-height: 18rem;
+  aspect-ratio: 1.6 / 1;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 0.85rem;
   background:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    radial-gradient(circle at 24% 28%, rgba(88, 208, 200, 0.18), transparent 12rem),
-    radial-gradient(circle at 72% 66%, rgba(255, 209, 102, 0.12), transparent 14rem),
+    linear-gradient(rgba(9, 15, 25, 0.12), rgba(9, 15, 25, 0.48)),
+    url("https://cdn.th.gl/palworld/map-tiles/default-733001e0986faa3f88b0a970412d7fb9/0/0/0.webp"),
     var(--bg-soft);
-  background-size: 28px 28px, 28px 28px, auto, auto, auto;
+  background-size: cover;
+  background-position: center;
 }
 
 .spawn-map::before {
   position: absolute;
   right: 0.7rem;
   bottom: 0.55rem;
-  content: "sampled spawn markers";
+  content: attr(data-marker-count) " known markers";
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 700;
+  text-shadow: 0 1px 2px #000;
 }
 
 .spawn-dot {
   position: absolute;
-  width: 0.48rem;
-  height: 0.48rem;
+  width: 0.55rem;
+  height: 0.55rem;
   border-radius: 999px;
   background: var(--accent-2);
-  box-shadow: 0 0 0 2px rgba(255, 209, 102, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.35), 0 0 12px rgba(255, 209, 102, 0.75);
   transform: translate(-50%, -50%);
+}
+
+.map-label {
+  position: absolute;
+  z-index: 1;
+  border-radius: 999px;
+  padding: 0.2rem 0.45rem;
+  color: rgba(255, 255, 255, 0.78);
+  background: rgba(0, 0, 0, 0.32);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-shadow: 0 1px 2px #000;
+  pointer-events: none;
+}
+
+.map-label.top-left {
+  top: 8%;
+  left: 8%;
+}
+
+.map-label.mid-left {
+  top: 45%;
+  left: 16%;
+}
+
+.map-label.lower-left {
+  bottom: 16%;
+  left: 10%;
+}
+
+.map-label.mid-right {
+  top: 38%;
+  right: 10%;
 }
 
 .coordinate-sample {
