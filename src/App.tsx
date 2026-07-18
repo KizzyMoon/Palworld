@@ -842,10 +842,16 @@ function SpawnMapPreview({ coordinates, totalMarkers }: { coordinates: { x: numb
 }
 
 function spawnMarkerStyle(point: { x: number; y: number }) {
-  // TH.GL's Palpagos tile layer uses these transform values in its map config.
-  const tileSize = 512;
-  const left = ((0.000353395913859746 * point.x + 256) / tileSize) * 100;
-  const top = ((-0.000353395913859746 * point.y + 123.47653230259525) / tileSize) * 100;
+  const mapX = (point.y - 158000) / 459;
+  const mapY = (point.x + 123888) / 459;
+  const mapBounds = {
+    left: -1954.07407407,
+    right: 1200.26143791,
+    top: 1245.7254902,
+    bottom: -1908.61002179,
+  };
+  const left = ((mapX - mapBounds.left) / (mapBounds.right - mapBounds.left)) * 100;
+  const top = ((mapBounds.top - mapY) / (mapBounds.top - mapBounds.bottom)) * 100;
   return {
     left: `${Math.max(0, Math.min(100, left))}%`,
     top: `${Math.max(0, Math.min(100, top))}%`,
