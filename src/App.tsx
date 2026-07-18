@@ -443,14 +443,7 @@ function PalDetailsPage({ palKey }: { palKey: string }) {
       <section className="pal-detail-grid">
         <Panel title="Overview" className="panel-wide">
           <p>{pal.description || "Information not currently available."}</p>
-          <InfoRows rows={[
-            ["Rarity", textOrUnknown(pal.rarity)],
-            ["Egg type", pal.eggType || "Information not currently available."],
-            ["Wild", pal.obtainableInWild ? "Yes" : "No or unknown"],
-            ["Breeding", pal.obtainableByBreeding ? "Yes" : "No or unknown"],
-            ["Alpha", pal.alpha ? "Yes" : "No"],
-            ["Legendary", pal.legendary ? "Yes" : "No"],
-          ]} />
+          <InfoRows rows={overviewRows(pal)} />
         </Panel>
         <Panel title="Work Suitability">
           {pal.workSuitability.length ? pal.workSuitability.map((work) => <Badge key={work.type}>{work.type} Lv. {work.level}</Badge>) : <p>Information not currently available.</p>}
@@ -794,6 +787,25 @@ function strongestWork(pal: Pal) {
 
 function highestWork(pal: Pal) {
   return strongestWork(pal)?.level || 0;
+}
+
+function overviewRows(pal: Pal): [string, string][] {
+  const rows: [string, string][] = [
+    ["Paldeck", `#${displayPalNumber(pal)}`],
+    ["Elements", pal.elements.length ? pal.elements.join(" / ") : "Information not currently available."],
+  ];
+  const work = strongestWork(pal);
+  if (work) rows.push(["Best work", `${work.type} Lv. ${work.level}`]);
+  if (pal.workSuitability.length) rows.push(["Work skills", pal.workSuitability.length.toString()]);
+  if (pal.possibleDrops.length) rows.push(["Known drops", pal.possibleDrops.length.toString()]);
+  const spawnCount = pal.habitats.reduce((total, habitat) => total + (habitat.spawnCount || 0), 0);
+  if (spawnCount) rows.push(["Wild spawns", `${spawnCount} map markers`]);
+  if (pal.eggType) rows.push(["Egg type", pal.eggType]);
+  if (typeof pal.rarity === "number") rows.push(["Rarity", pal.rarity.toString()]);
+  if (pal.alpha) rows.push(["Alpha", "Yes"]);
+  if (pal.legendary) rows.push(["Legendary", "Yes"]);
+  if (!spawnCount && !pal.alphaLocations?.length) rows.push(["Spawn data", "Not imported for this Pal yet"]);
+  return rows;
 }
 
 function displayPalNumber(pal: Pal) {
