@@ -824,37 +824,32 @@ function timeLabel(time: HabitatTime) {
 }
 
 function SpawnMapPreview({ coordinates, totalMarkers }: { coordinates: { x: number; y: number }[]; totalMarkers?: number }) {
-  const bounds = {
-    minX: -1099399,
-    maxX: 349399,
-    minY: -724399,
-    maxY: 724399,
-  };
-  const width = bounds.maxX - bounds.minX;
-  const height = bounds.maxY - bounds.minY;
-
   return (
     <div
       className="spawn-map"
       aria-label={`Palpagos Island spawn map preview with ${coordinates.length} sampled markers`}
       data-marker-count={totalMarkers || coordinates.length}
     >
-      <span className="map-label top-left">Astral Mountains</span>
-      <span className="map-label mid-left">Bamboo Groves</span>
-      <span className="map-label lower-left">Mount Obsidian</span>
-      <span className="map-label mid-right">Sakurajima</span>
       {coordinates.map((point, index) => (
         <span
           key={`${point.x}-${point.y}-${index}`}
           className="spawn-dot"
-          style={{
-            left: `${((point.x - bounds.minX) / width) * 100}%`,
-            top: `${100 - ((point.y - bounds.minY) / height) * 100}%`,
-          }}
+          style={spawnMarkerStyle(point)}
         />
       ))}
     </div>
   );
+}
+
+function spawnMarkerStyle(point: { x: number; y: number }) {
+  // TH.GL's Palpagos tile layer uses these transform values in its map config.
+  const tileSize = 512;
+  const left = ((0.000353395913859746 * point.x + 256) / tileSize) * 100;
+  const top = ((-0.000353395913859746 * point.y + 123.47653230259525) / tileSize) * 100;
+  return {
+    left: `${Math.max(0, Math.min(100, left))}%`,
+    top: `${Math.max(0, Math.min(100, top))}%`,
+  };
 }
 
 function sameParents(a: number, b: number, selectedA: number, selectedB: number) {

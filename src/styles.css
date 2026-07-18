@@ -537,8 +537,9 @@ button {
 .spawn-map {
   position: relative;
   width: 100%;
-  min-height: 22rem;
-  aspect-ratio: 2 / 1;
+  max-width: min(100%, 34rem);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 0.85rem;
@@ -546,7 +547,7 @@ button {
     linear-gradient(rgba(9, 15, 25, 0.12), rgba(9, 15, 25, 0.48)),
     url("https://cdn.th.gl/palworld/map-tiles/default-733001e0986faa3f88b0a970412d7fb9/0/0/0.webp"),
     var(--bg-soft);
-  background-size: cover;
+  background-size: 100% 100%;
   background-position: center;
 }
 
@@ -563,46 +564,13 @@ button {
 
 .spawn-dot {
   position: absolute;
-  width: 0.55rem;
-  height: 0.55rem;
+  width: 0.48rem;
+  height: 0.48rem;
   border-radius: 999px;
   background: var(--accent-2);
   border: 1px solid rgba(255, 255, 255, 0.88);
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.35), 0 0 12px rgba(255, 209, 102, 0.75);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.35), 0 0 8px rgba(255, 209, 102, 0.72);
   transform: translate(-50%, -50%);
-}
-
-.map-label {
-  position: absolute;
-  z-index: 1;
-  border-radius: 999px;
-  padding: 0.2rem 0.45rem;
-  color: rgba(255, 255, 255, 0.78);
-  background: rgba(0, 0, 0, 0.32);
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-shadow: 0 1px 2px #000;
-  pointer-events: none;
-}
-
-.map-label.top-left {
-  top: 8%;
-  left: 8%;
-}
-
-.map-label.mid-left {
-  top: 45%;
-  left: 16%;
-}
-
-.map-label.lower-left {
-  bottom: 16%;
-  left: 10%;
-}
-
-.map-label.mid-right {
-  top: 38%;
-  right: 10%;
 }
 
 .coordinate-sample {
