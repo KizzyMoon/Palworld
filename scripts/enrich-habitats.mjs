@@ -37,7 +37,6 @@ function palInternalFromImage(imageUrl) {
 }
 
 function habitatLiteral(palName, coordinates) {
-  const sample = coordinates.slice(0, 80);
   return `[
       {
         locationId: "palpagos-island",
@@ -46,7 +45,7 @@ function habitatLiteral(palName, coordinates) {
         spawnCount: ${coordinates.length},
         sourceUrl: "${pageBase}/guides/${encodeURIComponent(palName)}",
         notes: "Imported from TH.GL map markers. Spawn time is not specified by this import.",
-        coordinates: ${JSON.stringify(sample)},
+        coordinates: ${JSON.stringify(coordinates)},
       },
     ]`;
 }
@@ -92,14 +91,14 @@ source = source.replace(
 console.log(`Lamball marker sample: ${markerGroups.get("sheepball")?.length ?? 0}`);
 
 let matched = 0;
-source = source.replace(/  \{\r?\n    id: \d+,[\s\S]*?    habitats: \[\],/g, (block) => {
+source = source.replace(/  \{\r?\n    id: \d+,[\s\S]*?    habitats: (?:\[\]|\[[\s\S]*?\r?\n    \]),/g, (block) => {
   const name = block.match(/name: "([^"]+)"/)?.[1];
   const image = block.match(/image: "([^"]+)"/)?.[1];
   const internal = image ? palInternalFromImage(image) : null;
   const coordinates = internal ? markerGroups.get(internal) : null;
   if (!name || !coordinates?.length) return block;
   matched += 1;
-  return block.replace("    habitats: [],", `    habitats: ${habitatLiteral(name, coordinates)},`);
+  return block.replace(/    habitats: (?:\[\]|\[[\s\S]*?\r?\n    \]),/, `    habitats: ${habitatLiteral(name, coordinates)},`);
 });
 
 fs.writeFileSync(dataPath, source);

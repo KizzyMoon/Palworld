@@ -486,7 +486,7 @@ function HabitatSection({ pal }: { pal: Pal }) {
                 {entry.coordinates?.length ? <SpawnMapPreview coordinates={entry.coordinates} totalMarkers={entry.spawnCount} /> : null}
                 {entry.coordinates?.length ? (
                   <p className="coordinate-sample">
-                    Showing {entry.coordinates.length} sampled markers{entry.spawnCount && entry.spawnCount > entry.coordinates.length ? ` from ${entry.spawnCount} known spawns` : ""}.
+                    Showing {entry.coordinates.length === entry.spawnCount ? entry.coordinates.length : `${entry.coordinates.length} of ${entry.spawnCount || entry.coordinates.length}`} imported markers.
                   </p>
                 ) : null}
               </div>
@@ -827,7 +827,7 @@ function SpawnMapPreview({ coordinates, totalMarkers }: { coordinates: { x: numb
   return (
     <div
       className="spawn-map"
-      aria-label={`Palpagos Island spawn map preview with ${coordinates.length} sampled markers`}
+      aria-label={`Palpagos Island spawn map preview with ${coordinates.length} imported markers`}
       data-marker-count={totalMarkers || coordinates.length}
     >
       {coordinates.map((point, index) => (
