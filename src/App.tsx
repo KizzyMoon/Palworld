@@ -3,6 +3,18 @@ import { breeding, locations, metadata, pals, resources } from "./data";
 import { CollectionProvider, useCollection } from "./collection";
 import type { HabitatTime, Pal, Resource } from "./types";
 
+const elementIcons: Record<string, string> = {
+  Neutral: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_00.webp",
+  Fire: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_01.webp",
+  Water: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_02.webp",
+  Electric: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_03.webp",
+  Grass: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_04.webp",
+  Dark: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_05.webp",
+  Dragon: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_06.webp",
+  Ground: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_07.webp",
+  Ice: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_08.webp",
+};
+
 type Page =
   | { name: "home" }
   | { name: "pals" }
@@ -395,7 +407,10 @@ function PalCard({ pal, compact }: { pal: Pal; compact?: boolean }) {
         <div>
           <span className="number">#{displayPalNumber(pal)}</span>
           <h3>{pal.name}</h3>
-          <p>{pal.elements.join(" / ")} - {strongest ? `${strongest.type} ${strongest.level}` : "No work data"}</p>
+          <div className="pal-meta">
+            <ElementList elements={pal.elements} />
+            <span>{strongest ? `${strongest.type} ${strongest.level}` : "No work data"}</span>
+          </div>
           <HabitatBadges pal={pal} />
         </div>
       </a>
@@ -429,7 +444,7 @@ function PalDetailsPage({ palKey }: { palKey: string }) {
         <div>
           <span className="number">#{displayPalNumber(pal)}</span>
           <h1>{pal.name}</h1>
-          <p>{pal.variant || pal.elements.join(" / ")}</p>
+          {pal.variant ? <p>{pal.variant}</p> : <ElementList elements={pal.elements} />}
           <div className="card-actions">
             <button className={isOwned(pal.id) ? "toggle active" : "toggle"} onClick={() => toggleOwned(pal.id)} aria-pressed={isOwned(pal.id)}>✓ {isOwned(pal.id) ? "Owned" : "Mark owned"}</button>
             <button className={isFavourite(pal.id) ? "toggle active favourite" : "toggle"} onClick={() => toggleFavourite(pal.id)} aria-pressed={isFavourite(pal.id)}>{isFavourite(pal.id) ? "★ Favourite" : "☆ Add favourite"}</button>
@@ -730,6 +745,20 @@ function Badge({ children }: { children: React.ReactNode }) {
   return <span className="badge">{children}</span>;
 }
 
+function ElementList({ elements }: { elements: string[] }) {
+  if (!elements.length) return <span className="element-list">Element unknown</span>;
+  return (
+    <span className="element-list">
+      {elements.map((element) => (
+        <span className="element-chip" key={element}>
+          {elementIcons[element] ? <img src={elementIcons[element]} alt="" aria-hidden="true" /> : null}
+          {element}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 function EmptyState({ text }: { text: string }) {
   return <section className="empty-state">{text}</section>;
 }
@@ -744,8 +773,8 @@ function Avatar({ text, label, large }: { text: string; label: string; large?: b
 }
 
 function HabitatBadges({ pal }: { pal: Pal }) {
-  const times = unique(pal.habitats.map((habitat) => habitat.time));
-  if (!times.length && !pal.alphaLocations?.length) return <span className="badge">Habitat unknown</span>;
+  const times = unique(pal.habitats.map((habitat) => habitat.time)).filter((time) => time !== "unknown");
+  if (!times.length && !pal.alphaLocations?.length) return null;
   return (
     <div className="badges">
       {times.map((time) => <Badge key={time}>{timeLabel(time)}</Badge>)}

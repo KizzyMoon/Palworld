@@ -411,6 +411,41 @@ button {
   margin: 0.15rem 0;
 }
 
+.pal-meta,
+.element-list,
+.element-chip {
+  display: flex;
+  align-items: center;
+}
+
+.pal-meta {
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.15rem 0;
+  color: var(--muted);
+}
+
+.pal-meta > span + span::before {
+  margin-right: 0.35rem;
+  content: "-";
+}
+
+.element-list {
+  flex-wrap: wrap;
+  gap: 0.25rem 0.45rem;
+  color: var(--muted);
+}
+
+.element-chip {
+  gap: 0.22rem;
+}
+
+.element-chip img {
+  width: 1.05rem;
+  height: 1.05rem;
+  object-fit: contain;
+}
+
 .compact-card {
   grid-template-columns: 1fr auto;
   align-items: center;
