@@ -46,6 +46,35 @@ function ExtractMetaDescription([string]$html) {
   return HtmlDecode ([regex]::Match($html, '<meta name="description" content="([^"]*)"', "Singleline").Groups[1].Value)
 }
 
+function GetResourceCategory($resource) {
+  $name = [string]$resource.name
+  $description = [string]$resource.description
+  $key = $name.ToLowerInvariant()
+  $text = "$name $description".ToLowerInvariant()
+
+  if ($key -match "technical manual|training manual") { return "Manual" }
+  if ($key -match "medical supplies|recovery meds|medicine|juice") { return "Medicine" }
+  if ($key -match "coin|key|ruby|sapphire|emerald|diamond") { return "Treasure" }
+  if ($key -match "seeds|red berries|carrot|lettuce|potato|tomato|onion|mushroom") { return "Grown" }
+  if ($key -match "arrow|cloth|carbon fiber|ingot|plasteel|gunpowder|hexolite|thermal core|cake") { return "Crafted" }
+  if ($key -match "beautiful flower|\bfiber\b|hardwood") { return "Gathered" }
+  if ($key -match "\bore\b|coralum ore|\bcoal\b|\bsulfur\b|\bquartz\b|\bchromite\b|\bsoralite\b|paldium fragment|meteorite fragment|nightstar sand|crude oil") { return "Mined" }
+  if ($key -match "egg|milk|honey") { return "Pal product" }
+
+  if ($text -match "meat|poultry|venison|pork|mutton|sashimi|tentacle|flesh") { return "Pal drop" }
+  if ($text -match "pal fluids|bodily fluids|organ|horn|bone|wool|leather|hair|ribbon|crest|plume|feather|cloud|leaf dropped|staff|soul left behind|dropped from|dropped by|material obtainable from|taken from a .*pal|extracted from pal") { return "Pal drop" }
+  if ($text -match "produce them|harvested from|milked from") { return "Pal product" }
+  if ($text -match "coin|key|gemstone|can be sold|treasure chest") { return "Treasure" }
+  if ($text -match "medicine|medical supplies|recovery meds|juice") { return "Medicine" }
+  if ($text -match "technical manual|training manual|book that contains") { return "Manual" }
+  if ($text -match "seeds|produce red berries|produce carrot|produce tomato|produce lettuce|produce potato|produce onion|root vegetable|red berries|mushroom") { return "Grown" }
+  if ($text -match "collected from trees|found anywhere on the island|picking red berries|harvested from sturdy trees") { return "Gathered" }
+  if ($text -match "can be crafted|crafted at|refined from|refined using|woven from|created by processing|can be produced|processed into|alloy of|using a furnace|production assembly line|primitive workbench|high-quality workbench|electric furnace") { return "Crafted" }
+  if ($text -match "buried underground|found in caves|metal detector|\bore\b|\bcoal\b|\bsulfur\b|\bquartz\b|\bchromite\b|meteorite|nightstar sand|crude oil extractor|oil field|sand that can be found|retrieved from the depths") { return "Mined" }
+  if ($resource.palSources.Count -gt 0) { return "Pal drop" }
+  return "Other"
+}
+
 $pals = New-Object System.Collections.Generic.List[object]
 $resources = [ordered]@{}
 $i = 0
@@ -107,7 +136,7 @@ foreach ($entry in $palUrls.GetEnumerator()) {
         name = $resourceName
         url = "/items/$($drop.Groups[1].Value)"
         image = if ($drop.Groups[2].Value.StartsWith("/")) { "$baseUrl$($drop.Groups[2].Value)" } else { $drop.Groups[2].Value }
-        category = "Pal drops"
+        category = ""
         description = ""
         palSources = New-Object System.Collections.Generic.List[object]
       }
@@ -144,9 +173,11 @@ foreach ($resource in $resources.Values) {
     if ($itemDescription -and $itemDescription -ne "Item not found") {
       $resource.description = $itemDescription
     }
+    $resource.category = GetResourceCategory $resource
   }
   catch {
     Write-Warning "Could not import item page for $($resource.name): $($_.Exception.Message)"
+    $resource.category = GetResourceCategory $resource
   }
   Start-Sleep -Milliseconds 50
 }
@@ -178,7 +209,7 @@ foreach ($resource in $resources.Values | Sort-Object name) {
   $lines.Add("    id: $(TsString $resource.id),")
   $lines.Add("    name: $(TsString $resource.name),")
   $lines.Add("    image: $(TsString $resource.image),")
-  $lines.Add('    category: "Pal drops",')
+  $lines.Add("    category: $(TsString $resource.category),")
   $description = if ($resource.description) { $resource.description } else { "Item description not currently available." }
   $lines.Add("    description: $(TsString $description),")
   $lines.Add("    usedFor: [],")

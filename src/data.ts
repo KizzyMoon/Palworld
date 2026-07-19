@@ -23,7 +23,7 @@ export const resources: Resource[] = [
     id: "technologybook-g1",
     name: "Advanced Technical Manual",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Consume_TechnologyBook_G1.webp",
-    category: "Pal drops",
+    category: "Manual",
     description: "A book that contains secrets of amazing technology. Use it to obtain a few Technology Points.",
     usedFor: [],
     obtainedFrom: [
@@ -38,7 +38,7 @@ export const resources: Resource[] = [
     id: "ancientparts2",
     name: "Ancient Civilization Core",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_AncientParts2.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Core from technology that was lost long ago. Nearly impossible to find on the Palpagos Islands, it contains a wealth of forgotten knowledge.",
     usedFor: [],
     obtainedFrom: [
@@ -50,7 +50,7 @@ export const resources: Resource[] = [
     id: "palfluid",
     name: "Aquatic Pal Fluids",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalFluid.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Bodily fluids taken from a Water Pal. Their high viscosity makes them a handy material.",
     usedFor: [],
     obtainedFrom: [
@@ -97,7 +97,7 @@ export const resources: Resource[] = [
     id: "arrow",
     name: "Arrow",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Ammo_Arrow.webp",
-    category: "Pal drops",
+    category: "Crafted",
     description: "Arrows for use with bows. Can be crafted at Primitive Workbench.",
     usedFor: [],
     obtainedFrom: [
@@ -109,7 +109,7 @@ export const resources: Resource[] = [
     id: "poppy",
     name: "Beautiful Flower",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Poppy.webp",
-    category: "Pal drops",
+    category: "Gathered",
     description: "A plant that blooms colorful flowers. Can be used to make Suspicious Juice and Strange Juice.",
     usedFor: [],
     obtainedFrom: [
@@ -132,7 +132,7 @@ export const resources: Resource[] = [
     id: "berryseeds",
     name: "Berry Seeds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_BerrySeeds.webp",
-    category: "Pal drops",
+    category: "Grown",
     description: "Seeds that produce Red Berries. Necessary for starting a farm. Can be obtained when picking Red Berries.",
     usedFor: [],
     obtainedFrom: [
@@ -145,7 +145,7 @@ export const resources: Resource[] = [
     id: "bone",
     name: "Bone",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Bone.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Bone collected from Pals. A valuable source of premium calcium.",
     usedFor: [],
     obtainedFrom: [
@@ -178,7 +178,7 @@ export const resources: Resource[] = [
     id: "meat-sakurasaurus",
     name: "Broncherry Meat",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_SakuraSaurus.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Broncherry meat. Giant meat full of massive stores of energy. Stuffed to the brim with nutrients gathered through photosynthesis.",
     usedFor: [],
     obtainedFrom: [
@@ -190,7 +190,7 @@ export const resources: Resource[] = [
     id: "cake",
     name: "Cake",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Cake.webp",
-    category: "Pal drops",
+    category: "Crafted",
     description: "A dish eaten during celebrations. Put it in the chest at a Breeding Farm to make Pals lay a particularly healthy egg.",
     usedFor: [],
     obtainedFrom: [
@@ -201,7 +201,7 @@ export const resources: Resource[] = [
     id: "meat-berrygoat",
     name: "Caprity Meat",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_BerryGoat.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Caprity meat. Healthy and full of nutrients. Hints of berries scenting the meat stimulates the appetite.",
     usedFor: [],
     obtainedFrom: [
@@ -213,7 +213,7 @@ export const resources: Resource[] = [
     id: "sweet-caramel",
     name: "Caramel Cotton Candy",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Sweet_Caramel.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Caramel cotton candy collected from Woolipop Terra. Its fluffy sweetness melts away in your mouth.",
     usedFor: [],
     obtainedFrom: [
@@ -224,7 +224,7 @@ export const resources: Resource[] = [
     id: "carbonfiber",
     name: "Carbon Fiber",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_CarbonFiber.webp",
-    category: "Pal drops",
+    category: "Crafted",
     description: "A lightweight yet sturdy material. Used to create armor and other equipment. Can be crafted at Production Assembly Line.",
     usedFor: [],
     obtainedFrom: [
@@ -235,7 +235,7 @@ export const resources: Resource[] = [
     id: "carrot",
     name: "Carrot",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Carrot.webp",
-    category: "Pal drops",
+    category: "Grown",
     description: "A vibrant, nutrient-rich root vegetable. Not suitable for raw consumption.",
     usedFor: [],
     obtainedFrom: [
@@ -246,7 +246,7 @@ export const resources: Resource[] = [
     id: "carrotseeds",
     name: "Carrot Seeds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_CarrotSeeds.webp",
-    category: "Pal drops",
+    category: "Grown",
     description: "Seeds that produce Carrot. Necessary for starting a farm.",
     usedFor: [],
     obtainedFrom: [
@@ -262,7 +262,7 @@ export const resources: Resource[] = [
     id: "meat-chickenpal",
     name: "Chikipi Poultry",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_ChickenPal.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Chikipi meat. Light and easy to eat, it's a local favorite for residents of Palpagos Island.",
     usedFor: [],
     obtainedFrom: [
@@ -273,7 +273,7 @@ export const resources: Resource[] = [
     id: "chromium",
     name: "Chromite",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Chromium.webp",
-    category: "Pal drops",
+    category: "Mined",
     description: "A type of metal buried underground. It can be detected with a Metal Detector on certain islands.",
     usedFor: [],
     obtainedFrom: [
@@ -285,7 +285,7 @@ export const resources: Resource[] = [
     id: "cloth",
     name: "Cloth",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Cloth.webp",
-    category: "Pal drops",
+    category: "Crafted",
     description: "Cloth woven from Wool. Required to create armor. Can be crafted at Primitive Workbench.",
     usedFor: [],
     obtainedFrom: [
@@ -302,7 +302,7 @@ export const resources: Resource[] = [
     id: "coal",
     name: "Coal",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Coal.webp",
-    category: "Pal drops",
+    category: "Mined",
     description: "Coal often found in caves and other places. Required to create high quality metal.",
     usedFor: [],
     obtainedFrom: [
@@ -315,7 +315,7 @@ export const resources: Resource[] = [
     id: "treasureboxkey01",
     name: "Copper Key",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Consume_TreasureBoxKey01.webp",
-    category: "Pal drops",
+    category: "Treasure",
     description: "A key that can be used to open locked treasure chests.",
     usedFor: [],
     obtainedFrom: [
@@ -326,7 +326,7 @@ export const resources: Resource[] = [
     id: "manganeseore",
     name: "Coralum Ore",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_ManganeseOre.webp",
-    category: "Pal drops",
+    category: "Mined",
     description: "A rare ore formed over countless years in the deep sea. Can be retrieved from the depths with a magnet and fishing rod.",
     usedFor: [],
     obtainedFrom: [
@@ -339,7 +339,7 @@ export const resources: Resource[] = [
     id: "sweet",
     name: "Cotton Candy",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Sweet.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Cotton candy collected from Woolipop. Its sweetness fluffily melts away in your mouth.",
     usedFor: [],
     obtainedFrom: [
@@ -350,7 +350,7 @@ export const resources: Resource[] = [
     id: "crudeoil",
     name: "Crude Oil",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_CrudeOil.webp",
-    category: "Pal drops",
+    category: "Mined",
     description: "A material that can be processed into various products. Obtained by installing a Crude Oil Extractor in an oil field.",
     usedFor: [],
     obtainedFrom: [
@@ -363,7 +363,7 @@ export const resources: Resource[] = [
     id: "paldarkparts",
     name: "Dark Fragment",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalDarkParts.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Dropped by some powerful Dark Pals. Used as a material for crafting powerful accessories and other items.",
     usedFor: [],
     obtainedFrom: [
@@ -382,7 +382,7 @@ export const resources: Resource[] = [
     id: "palitem-raijindaughter",
     name: "Dazzi Cloud",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_RaijinDaughter.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Cloud dropped from a Dazzi. Soft and fluffy, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
@@ -394,7 +394,7 @@ export const resources: Resource[] = [
     id: "diamond",
     name: "Diamond",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Diamond.webp",
-    category: "Pal drops",
+    category: "Treasure",
     description: "A rare gemstone that glows brilliantly. Can be sold to a merchant for a high price.",
     usedFor: [],
     obtainedFrom: [
@@ -411,7 +411,7 @@ export const resources: Resource[] = [
     id: "dogcoin",
     name: "Dog Coin",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_DogCoin.webp",
-    category: "Pal drops",
+    category: "Treasure",
     description: "A mysterious coin. Apparently there are people who collect these. A Mimog will usually have them, but for some reason, they cannot be obtained by butchering it.",
     usedFor: [],
     obtainedFrom: [
@@ -422,7 +422,7 @@ export const resources: Resource[] = [
     id: "egg",
     name: "Egg",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Egg.webp",
-    category: "Pal drops",
+    category: "Pal product",
     description: "Delicious when fried, but can also be used to cook various meals. Chikipi produce them.",
     usedFor: [],
     obtainedFrom: [
@@ -433,7 +433,7 @@ export const resources: Resource[] = [
     id: "meat-deer",
     name: "Eikthyrdeer Venison",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_Deer.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Eikthyrdeer meat. Light and lean, but rich in flavor.",
     usedFor: [],
     obtainedFrom: [
@@ -445,7 +445,7 @@ export const resources: Resource[] = [
     id: "electricorgan",
     name: "Electric Organ",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_ElectricOrgan.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Material obtainable from Electric Pals. It stores electricity, but requires caution when used.",
     usedFor: [],
     obtainedFrom: [
@@ -478,7 +478,7 @@ export const resources: Resource[] = [
     id: "spear-queenbee",
     name: "Elizabee's Staff",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Weapon_Spear_QueenBee.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "A spear made from Elizabee's staff, altered for human use. It is imbued with Elizabee's indomitable spirit.",
     usedFor: [],
     obtainedFrom: [
@@ -489,7 +489,7 @@ export const resources: Resource[] = [
     id: "eemerald",
     name: "Emerald",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Eemerald.webp",
-    category: "Pal drops",
+    category: "Treasure",
     description: "A gemstone that glows green. Can be sold to a merchant for a high price.",
     usedFor: [],
     obtainedFrom: [
@@ -500,7 +500,7 @@ export const resources: Resource[] = [
     id: "fiber",
     name: "Fiber",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Fiber.webp",
-    category: "Pal drops",
+    category: "Gathered",
     description: "Fiber collected from trees. A material used when creating bows, etc.",
     usedFor: [],
     obtainedFrom: [
@@ -519,7 +519,7 @@ export const resources: Resource[] = [
     id: "fireorgan",
     name: "Flame Organ",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_FireOrgan.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Material obtainable from Fire Pals. Can be used to make Fire Arrow and more.",
     usedFor: [],
     obtainedFrom: [
@@ -566,7 +566,7 @@ export const resources: Resource[] = [
     id: "meat-eagle",
     name: "Galeclaw Poultry",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_Eagle.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Galeclaw meat. Full of nutrition, its flavor packs a punch.",
     usedFor: [],
     obtainedFrom: [
@@ -577,7 +577,7 @@ export const resources: Resource[] = [
     id: "palupgradestone4",
     name: "Giant Pal Soul",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_PalUpgradeStone4.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "The soul left behind by a highly trained Pal. It can draw out hidden abilities if offered to a Statue of Power.",
     usedFor: [],
     obtainedFrom: [
@@ -591,7 +591,7 @@ export const resources: Resource[] = [
     id: "meat-octopusgirl",
     name: "Gloopie Tentacle",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_food_Meat_OctopusGirl.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Gloopie tentacle. Known for its springy texture and light, refined flavor.",
     usedFor: [],
     obtainedFrom: [
@@ -603,7 +603,7 @@ export const resources: Resource[] = [
     id: "money",
     name: "Gold Coin",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Money.webp",
-    category: "Pal drops",
+    category: "Treasure",
     description: "Currency traded on Palpagos Island. Can be exchanged for items or Pals with merchants.",
     usedFor: [],
     obtainedFrom: [
@@ -618,7 +618,7 @@ export const resources: Resource[] = [
     id: "palitem-plantslime",
     name: "Gumoss Leaf",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_PlantSlime.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Leaf dropped from a Gumoss. Fresh and sticky, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
@@ -629,7 +629,7 @@ export const resources: Resource[] = [
     id: "gunpowder",
     name: "Gunpowder",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Gunpowder.webp",
-    category: "Pal drops",
+    category: "Crafted",
     description: "Gunpowder",
     usedFor: [],
     obtainedFrom: [
@@ -640,7 +640,7 @@ export const resources: Resource[] = [
     id: "wood-fine",
     name: "Hardwood",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Wood_Fine.webp",
-    category: "Pal drops",
+    category: "Gathered",
     description: "High-quality wood carefully selected from sturdy trees grown in harsh environments such as deserts, volcanic regions, and snowy mountains.",
     usedFor: [],
     obtainedFrom: [
@@ -654,7 +654,7 @@ export const resources: Resource[] = [
     id: "stainlesssteel",
     name: "Hexolite",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_StainlessSteel.webp",
-    category: "Pal drops",
+    category: "Crafted",
     description: "An alloy of Chromite and Hexolite Quartz. Used for building advanced equipment and structures. Can be refined at Gigantic Furnace.",
     usedFor: [],
     obtainedFrom: [
@@ -667,7 +667,7 @@ export const resources: Resource[] = [
     id: "rainbowcrystal",
     name: "Hexolite Quartz",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_RainbowCrystal.webp",
-    category: "Pal drops",
+    category: "Crafted",
     description: "A rare crystal found only in Feybreak. Over many years, Paladium has condensed and transformed, now shining with a rainbow-like glow.",
     usedFor: [],
     obtainedFrom: [
@@ -678,7 +678,7 @@ export const resources: Resource[] = [
     id: "cloth2",
     name: "High Quality Cloth",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Cloth.webp",
-    category: "Pal drops",
+    category: "Crafted",
     description: "High Quality Cloth woven from a large amount of Wool. Required to create high quality armor. Can be crafted at High-Quality Workbench.",
     usedFor: [],
     obtainedFrom: [
@@ -691,7 +691,7 @@ export const resources: Resource[] = [
     id: "paloil",
     name: "High Quality Pal Oil",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalOil.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "High-quality oil that can be extracted from Pal. Necessary for making Polymer.",
     usedFor: [],
     obtainedFrom: [
@@ -725,7 +725,7 @@ export const resources: Resource[] = [
     id: "potion-high",
     name: "High Quality Recovery Meds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Potion_High.webp",
-    category: "Pal drops",
+    category: "Medicine",
     description: "Medicine that heals wounds over time. High quality; restores a lot of Health.",
     usedFor: [],
     obtainedFrom: [
@@ -739,7 +739,7 @@ export const resources: Resource[] = [
     id: "honey",
     name: "Honey",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Honey.webp",
-    category: "Pal drops",
+    category: "Pal product",
     description: "Honey harvested from Beegarde. It's sweet and tasty.",
     usedFor: [],
     obtainedFrom: [
@@ -754,7 +754,7 @@ export const resources: Resource[] = [
     id: "horn",
     name: "Horn",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Horn.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Horn collected from Pals. Used to create medicines and more.",
     usedFor: [],
     obtainedFrom: [
@@ -783,7 +783,7 @@ export const resources: Resource[] = [
     id: "iceorgan",
     name: "Ice Organ",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_IceOrgan.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Material obtainable from Ice Pals. Can be used to make Ice Mine and more.",
     usedFor: [],
     obtainedFrom: [
@@ -824,7 +824,7 @@ export const resources: Resource[] = [
     id: "copperingot",
     name: "Ingot",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_CopperIngot.webp",
-    category: "Pal drops",
+    category: "Crafted",
     description: "A material required to create metal weapons and armor. Refined from Ore using a furnace.",
     usedFor: [],
     obtainedFrom: [
@@ -836,7 +836,7 @@ export const resources: Resource[] = [
     id: "technologybook-g2",
     name: "Innovative Technical Manual",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Consume_TechnologyBook_G2.webp",
-    category: "Pal drops",
+    category: "Manual",
     description: "A book that contains secrets of cutting-edge technology. Use it to obtain Technology Points.",
     usedFor: [],
     obtainedFrom: [
@@ -850,7 +850,7 @@ export const resources: Resource[] = [
     id: "meat-jellyfishfairy",
     name: "Jelliette Bell Flesh",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_food_Meat_JellyfishFairy.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Jelliette's fleshy bell. Packed with ocean flavor and a delightfully chewy bite.",
     usedFor: [],
     obtainedFrom: [
@@ -861,7 +861,7 @@ export const resources: Resource[] = [
     id: "meat-jellyfishghost",
     name: "Jellroy Bell Flesh",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_food_Meat_JellyfishGhost.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Jellroy's fleshy bell. Packed with ocean flavor and a delightfully plump texture.",
     usedFor: [],
     obtainedFrom: [
@@ -872,7 +872,7 @@ export const resources: Resource[] = [
     id: "palitem-catmage",
     name: "Katress Hair",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_CatMage.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Hair dropped from a Katress. Soft and supple, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
@@ -884,7 +884,7 @@ export const resources: Resource[] = [
     id: "palitem-negativeoctopus",
     name: "Killamari Tentacle",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_NegativeOctopus.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Tentacle dropped from a Killamari. Strange in texture, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
@@ -896,7 +896,7 @@ export const resources: Resource[] = [
     id: "meat-sheepball",
     name: "Lamball Mutton",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_SheepBall.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Lamball meat. Red meat with a unique flavor. Delicious, but takes some getting used to.",
     usedFor: [],
     obtainedFrom: [
@@ -907,7 +907,7 @@ export const resources: Resource[] = [
     id: "palupgradestone3",
     name: "Large Pal Soul",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_PalUpgradeStone3.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "A spirit left behind by a large Pal. It can draw out hidden abilities if offered to a Statue of Power.",
     usedFor: [],
     obtainedFrom: [
@@ -934,7 +934,7 @@ export const resources: Resource[] = [
     id: "leather",
     name: "Leather",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Leather.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Leather taken from a Pal, it serves as a defensive material. It can be obtained from certain Pals.",
     usedFor: [],
     obtainedFrom: [
@@ -1021,7 +1021,7 @@ export const resources: Resource[] = [
     id: "palitem-lizardman",
     name: "Leezpunk Crest",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_LizardMan.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Crest dropped from a Leezpunk. Sharp and pointy, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
@@ -1033,7 +1033,7 @@ export const resources: Resource[] = [
     id: "lettuceseeds",
     name: "Lettuce Seeds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_LettuceSeeds.webp",
-    category: "Pal drops",
+    category: "Grown",
     description: "Seeds that produce Lettuce. Necessary for starting a farm. Can be purchased from a merchant.",
     usedFor: [],
     obtainedFrom: [
@@ -1047,7 +1047,7 @@ export const resources: Resource[] = [
     id: "herbs",
     name: "Low Grade Medical Supplies",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Herbs.webp",
-    category: "Pal drops",
+    category: "Medicine",
     description: "Low Grade Medical Supplies good for Sick, Sprain, and Overfull. They don't heal Health when eaten, however.",
     usedFor: [],
     obtainedFrom: [
@@ -1061,7 +1061,7 @@ export const resources: Resource[] = [
     id: "meat-grassmammoth",
     name: "Mammorest Meat",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_GrassMammoth.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Mammorest meat. With massive size comes massive flavor. Its overwhelming portions are sure to satisfy any glutton.",
     usedFor: [],
     obtainedFrom: [
@@ -1073,7 +1073,7 @@ export const resources: Resource[] = [
     id: "palupgradestone2",
     name: "Medium Pal Soul",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_PalUpgradeStone2.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "A spirit left behind by a Pal. It can draw out hidden abilities if offered to a Statue of Power.",
     usedFor: [],
     obtainedFrom: [
@@ -1093,7 +1093,7 @@ export const resources: Resource[] = [
     id: "statuspointresetsan",
     name: "Memory Wiping Medicine",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_StatusPointResetSan.webp",
-    category: "Pal drops",
+    category: "Medicine",
     description: "A potion that allows the player to reset their status points when consumed. It has no effect if consumed by a Pal.",
     usedFor: [],
     obtainedFrom: [
@@ -1104,7 +1104,7 @@ export const resources: Resource[] = [
     id: "meteordrop",
     name: "Meteorite Fragment",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_MeteorDrop.webp",
-    category: "Pal drops",
+    category: "Mined",
     description: "Fragment of a rock from outer space. Contains large amounts of Paldium Fragment, which can be extracted by placing it in a Crusher.",
     usedFor: [],
     obtainedFrom: [
@@ -1117,7 +1117,7 @@ export const resources: Resource[] = [
     id: "milk",
     name: "Milk",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Milk.webp",
-    category: "Pal drops",
+    category: "Pal product",
     description: "Drink it as is, or use it in various meals. Can be milked from Mozzarina.",
     usedFor: [],
     obtainedFrom: [
@@ -1128,7 +1128,7 @@ export const resources: Resource[] = [
     id: "meat-cowpal",
     name: "Mozzarina Meat",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_CowPal.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Mozzarina meat. Thick, juicy and marbled. Residents of Palpagos Island cherish it above all other meats.",
     usedFor: [],
     obtainedFrom: [
@@ -1139,7 +1139,7 @@ export const resources: Resource[] = [
     id: "meat-icecrocodile",
     name: "Munchill Meat",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_food_Meat_IceCrocodile.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Munchill meat. Has a satisfying chew that brings out layers of umami as you eat.",
     usedFor: [],
     obtainedFrom: [
@@ -1150,7 +1150,7 @@ export const resources: Resource[] = [
     id: "mushroom",
     name: "Mushroom",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Mushroom.webp",
-    category: "Pal drops",
+    category: "Grown",
     description: "A mushroom that can be eaten raw. They can be found anywhere on the island.",
     usedFor: [],
     obtainedFrom: [
@@ -1165,7 +1165,7 @@ export const resources: Resource[] = [
     id: "poisonmushroom",
     name: "Mysterious Mushroom",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_PoisonMushroom.webp",
-    category: "Pal drops",
+    category: "Grown",
     description: "Mushrooms that are not suitable for eating raw. Eating makes one more prone to feeling hungry.",
     usedFor: [],
     obtainedFrom: [
@@ -1178,7 +1178,7 @@ export const resources: Resource[] = [
     id: "nightstone",
     name: "Nightstar Sand",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_NightStone.webp",
-    category: "Pal drops",
+    category: "Mined",
     description: "Sand that can be found in the desert at night. Used as a material for crafting certain accessories and other items.",
     usedFor: [],
     obtainedFrom: [
@@ -1190,7 +1190,7 @@ export const resources: Resource[] = [
     id: "onionseeds",
     name: "Onion Seeds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_OnionSeeds.webp",
-    category: "Pal drops",
+    category: "Grown",
     description: "Seeds that produce Onion. Necessary for starting a farm.",
     usedFor: [],
     obtainedFrom: [
@@ -1204,7 +1204,7 @@ export const resources: Resource[] = [
     id: "copperore",
     name: "Ore",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_CopperOre.webp",
-    category: "Pal drops",
+    category: "Mined",
     description: "Becomes an ingot when refined using a furnace. Can be found in caves and other places.",
     usedFor: [],
     obtainedFrom: [
@@ -1220,7 +1220,7 @@ export const resources: Resource[] = [
     id: "pal-crystal-s",
     name: "Paldium Fragment",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Pal_crystal_S.webp",
-    category: "Pal drops",
+    category: "Mined",
     description: "Crystallized energy from the World Tree. Capable of creating supernatural items and structures.",
     usedFor: [],
     obtainedFrom: [
@@ -1231,7 +1231,7 @@ export const resources: Resource[] = [
     id: "palitem-captainpenguin",
     name: "Penking Plume",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_CaptainPenguin.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Plume dropped from a Penking. Bright and colorful, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
@@ -1243,7 +1243,7 @@ export const resources: Resource[] = [
     id: "plastic",
     name: "Plasteel",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Plastic.webp",
-    category: "Pal drops",
+    category: "Crafted",
     description: "Plasteel created by processing Crude Oil and metal. Can be produced in a Electric Furnace.",
     usedFor: [],
     obtainedFrom: [
@@ -1255,7 +1255,7 @@ export const resources: Resource[] = [
     id: "potatoseeds",
     name: "Potato Seeds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PotatoSeeds.webp",
-    category: "Pal drops",
+    category: "Grown",
     description: "Seeds that produce Potato. Necessary for starting a farm.",
     usedFor: [],
     obtainedFrom: [
@@ -1268,7 +1268,7 @@ export const resources: Resource[] = [
     id: "quartz",
     name: "Pure Quartz",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Quartz.webp",
-    category: "Pal drops",
+    category: "Mined",
     description: "Pure Quartz often found in snowy fields and similar places. Required to create Circuit Board.",
     usedFor: [],
     obtainedFrom: [
@@ -1279,7 +1279,7 @@ export const resources: Resource[] = [
     id: "meat-lazycatfish",
     name: "Raw Dumud",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_LazyCatfish.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Dumud meat. Fatty with a rich taste. Has a mouthwatering plump texture.",
     usedFor: [],
     obtainedFrom: [
@@ -1291,7 +1291,7 @@ export const resources: Resource[] = [
     id: "meat-kelpie",
     name: "Raw Kelpsea",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_Kelpie.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Kelpsea meat. Tender and slightly sweet. Fish meat tends to spoil quickly.",
     usedFor: [],
     obtainedFrom: [
@@ -1303,7 +1303,7 @@ export const resources: Resource[] = [
     id: "berries",
     name: "Red Berries",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Berries.webp",
-    category: "Pal drops",
+    category: "Grown",
     description: "A versatile ingredient that is delicious raw or cooked. They can be found anywhere on the island.",
     usedFor: [],
     obtainedFrom: [
@@ -1320,7 +1320,7 @@ export const resources: Resource[] = [
     id: "meat-icedeer",
     name: "Reindrix Venison",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_IceDeer.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Reindrix meat. Strange venison capable of remaining at low temperatures. Takes a very long time to spoil.",
     usedFor: [],
     obtainedFrom: [
@@ -1331,7 +1331,7 @@ export const resources: Resource[] = [
     id: "palitem-pinkrabbit",
     name: "Ribbuny Ribbon",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_PinkRabbit.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Ribbon dropped from a Ribbuny. Cute in color and design, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
@@ -1343,7 +1343,7 @@ export const resources: Resource[] = [
     id: "ruby",
     name: "Ruby",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Ruby.webp",
-    category: "Pal drops",
+    category: "Treasure",
     description: "A gemstone that glows red. Can be sold to a merchant for a high price.",
     usedFor: [],
     obtainedFrom: [
@@ -1358,7 +1358,7 @@ export const resources: Resource[] = [
     id: "meat-boar",
     name: "Rushoar Pork",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_Boar.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Rushoar meat. Full of the delicious flavors of wild game. Juicy and nutritious.",
     usedFor: [],
     obtainedFrom: [
@@ -1369,7 +1369,7 @@ export const resources: Resource[] = [
     id: "sapphire",
     name: "Sapphire",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Sapphire.webp",
-    category: "Pal drops",
+    category: "Treasure",
     description: "A gemstone that glows blue. Can be sold to a merchant for a high price.",
     usedFor: [],
     obtainedFrom: [
@@ -1384,7 +1384,7 @@ export const resources: Resource[] = [
     id: "treasureboxkey02",
     name: "Silver Key",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Consume_TreasureBoxKey02.webp",
-    category: "Pal drops",
+    category: "Treasure",
     description: "A key that can be used to open locked treasure chests.",
     usedFor: [],
     obtainedFrom: [
@@ -1396,7 +1396,7 @@ export const resources: Resource[] = [
     id: "meat-swordcutlassfish",
     name: "Skutlass Sashimi",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Meat_SwordCutlassFish.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Raw slices of Skutlass. Characterized by its supple, plump flesh. Caution is required when preparing it due to its sword-like spine.",
     usedFor: [],
     obtainedFrom: [
@@ -1408,7 +1408,7 @@ export const resources: Resource[] = [
     id: "palupgradestone",
     name: "Small Pal Soul",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_PalUpgradeStone.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "A spirit left behind by a small Pal. It can draw out hidden abilities if offered to a Statue of Power.",
     usedFor: [],
     obtainedFrom: [
@@ -1431,7 +1431,7 @@ export const resources: Resource[] = [
     id: "skyislandore",
     name: "Soralite",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_SkyIslandOre.webp",
-    category: "Pal drops",
+    category: "Mined",
     description: "A rare ore produced only in Sunreach. Within its host rock of overwhelming density resides a mysterious pattern and radiance.",
     usedFor: [],
     obtainedFrom: [
@@ -1443,7 +1443,7 @@ export const resources: Resource[] = [
     id: "narcotic",
     name: "Strange Juice",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Narcotic.webp",
-    category: "Pal drops",
+    category: "Medicine",
     description: "Juice that greatly improves mood when consumed. Drinking it significantly increases work speed for a period of time, but significantly lowers SAN.",
     usedFor: [],
     obtainedFrom: [
@@ -1454,7 +1454,7 @@ export const resources: Resource[] = [
     id: "sulfur",
     name: "Sulfur",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Sulfur.webp",
-    category: "Pal drops",
+    category: "Mined",
     description: "Sulfur that can be found in volcanoes and such. Necessary for making Gunpowder.",
     usedFor: [],
     obtainedFrom: [
@@ -1465,7 +1465,7 @@ export const resources: Resource[] = [
     id: "opium",
     name: "Suspicious Juice",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Food_Opium.webp",
-    category: "Pal drops",
+    category: "Medicine",
     description: "Juice that improves mood when consumed. Drinking it increases work speed for a period of time, but lowers SAN.",
     usedFor: [],
     obtainedFrom: [
@@ -1476,7 +1476,7 @@ export const resources: Resource[] = [
     id: "palitem-mopbaby",
     name: "Swee Hair",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_MopBaby.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Hair dropped from a Swee. Fluffy and soft, it is used to make clothing.",
     usedFor: [],
     obtainedFrom: [
@@ -1487,7 +1487,7 @@ export const resources: Resource[] = [
     id: "thermal-core",
     name: "Thermal Core",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Thermal_Core.webp",
-    category: "Pal drops",
+    category: "Crafted",
     description: "A high-temperature reaction core containing vast thermal energy. Used as a power component in advanced devices. Can be crafted at Production Assembly Line II.",
     usedFor: [],
     obtainedFrom: [
@@ -1499,7 +1499,7 @@ export const resources: Resource[] = [
     id: "palitem-colorfulbird",
     name: "Tocotoco Feather",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_PalItem_ColorfulBird.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Feathers dropped from a Tocotoco. Used to make clothing, as the beautifully vivid colors are quite popular.",
     usedFor: [],
     obtainedFrom: [
@@ -1510,7 +1510,7 @@ export const resources: Resource[] = [
     id: "tomatoseeds",
     name: "Tomato Seeds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_TomatoSeeds.webp",
-    category: "Pal drops",
+    category: "Grown",
     description: "Seeds that produce Tomato. Necessary for starting a farm. Can be purchased from a merchant.",
     usedFor: [],
     obtainedFrom: [
@@ -1526,7 +1526,7 @@ export const resources: Resource[] = [
     id: "expboost-04",
     name: "Training Manual (XL)",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Consume_ExpBoost_04.webp",
-    category: "Pal drops",
+    category: "Manual",
     description: "Training manual that grants a substantial amount of EXP when read by a Pal.",
     usedFor: [],
     obtainedFrom: [
@@ -1537,7 +1537,7 @@ export const resources: Resource[] = [
     id: "venom",
     name: "Venom Gland",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Venom.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Material obtainable from poisonous Pals. Can be used to make Poison Arrow and more.",
     usedFor: [],
     obtainedFrom: [
@@ -1564,7 +1564,7 @@ export const resources: Resource[] = [
     id: "wheatseeds",
     name: "Wheat Seeds",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_WheatSeeds.webp",
-    category: "Pal drops",
+    category: "Grown",
     description: "Seeds that produce Wheat. Necessary for starting a farm. Can be purchased from a merchant.",
     usedFor: [],
     obtainedFrom: [
@@ -1578,7 +1578,7 @@ export const resources: Resource[] = [
     id: "wool",
     name: "Wool",
     image: "https://api.paldeck.cc/assets/palworld/items/T_itemicon_Material_Wool.webp",
-    category: "Pal drops",
+    category: "Pal drop",
     description: "Material sheared from sheep Pals. A necessity for creating bedding, Cloth and more.",
     usedFor: [],
     obtainedFrom: [

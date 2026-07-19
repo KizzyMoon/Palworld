@@ -10,7 +10,7 @@
 - Licence: Paldeck.cc is a fan-made project and is not affiliated with Pocketpair. Review upstream terms before redistributing bulk data outside this personal GitHub Pages project.
 - Date retrieved: 2026-07-17
 - Game version: Verification required
-- Transformations made: Imported Pal names, Paldeck numbers, icon URLs, elements, descriptions, partner skills, work suitability levels, and Pal drop resources from Paldeck pages using `scripts/import-paldeck-data.ps1`. Assigned local unique numeric IDs so variant Pals such as `5B` do not share collection state. Decoded TH.GL Palpagos Island map node data with `scripts/enrich-habitats.mjs` to add spawn marker counts, source guide links, and map coordinates for matching Pals.
+- Transformations made: Imported Pal names, Paldeck numbers, icon URLs, elements, descriptions, partner skills, work suitability levels, item descriptions, and Pal drop resources from Paldeck pages using `scripts/import-paldeck-data.ps1`. Resource category tags are derived from item-page descriptions and Pal drop links. Assigned local unique numeric IDs so variant Pals such as `5B` do not share collection state. Decoded TH.GL Palpagos Island map node data with `scripts/enrich-habitats.mjs` to add spawn marker counts, source guide links, and map coordinates for matching Pals.
 - Known missing information: Exact day/night restrictions, breeding combinations, recipes, non-Pal resource acquisition methods, resource uses, and some special flags still need separate verified imports. Missing information remains visibly labelled rather than invented.
 
 ## Data policy
