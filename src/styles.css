@@ -757,22 +757,26 @@ button {
   position: absolute;
   right: 0.7rem;
   bottom: 0.55rem;
-  content: attr(data-marker-count) " known markers";
+  content: attr(data-spawn-count) " spawn points";
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 700;
   text-shadow: 0 1px 2px #000;
 }
 
-.spawn-dot {
+.spawn-area {
   position: absolute;
-  width: 0.48rem;
-  height: 0.48rem;
-  border-radius: 999px;
-  background: var(--accent-2);
-  border: 1px solid rgba(255, 255, 255, 0.88);
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.35), 0 0 8px rgba(255, 209, 102, 0.72);
-  transform: translate(-50%, -50%);
+  min-width: 1.25rem;
+  min-height: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 48% 56% 46% 58%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 236, 141, 0.96) 0 25%, rgba(255, 214, 69, 0.74) 42%, rgba(255, 191, 0, 0.22) 72%, transparent 100%);
+  box-shadow:
+    0 0 0 1px rgba(52, 34, 0, 0.44),
+    0 0 18px rgba(255, 209, 102, 0.82);
+  mix-blend-mode: screen;
+  pointer-events: none;
 }
 
 .coordinate-note {

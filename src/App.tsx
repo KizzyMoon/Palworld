@@ -692,7 +692,7 @@ function HabitatSection({ pal }: { pal: Pal }) {
                 {entry.coordinates?.length ? <SpawnMapPreview coordinates={entry.coordinates} totalMarkers={entry.spawnCount} /> : null}
                 {entry.coordinates?.length ? (
                   <p className="coordinate-note">
-                    Showing {entry.coordinates.length === entry.spawnCount ? entry.coordinates.length : `${entry.coordinates.length} of ${entry.spawnCount || entry.coordinates.length}`} imported markers.
+                    Showing spawn areas from {entry.coordinates.length === entry.spawnCount ? entry.coordinates.length : `${entry.coordinates.length} of ${entry.spawnCount || entry.coordinates.length}`} imported spawn points.
                   </p>
                 ) : null}
               </div>
@@ -1044,24 +1044,78 @@ function timeLabel(time: HabitatTime) {
 }
 
 function SpawnMapPreview({ coordinates, totalMarkers }: { coordinates: { x: number; y: number }[]; totalMarkers?: number }) {
+  const areas = spawnAreaGroups(coordinates);
   return (
     <div
       className="spawn-map"
-      aria-label={`Palpagos Island spawn map preview with ${coordinates.length} imported markers`}
-      data-marker-count={totalMarkers || coordinates.length}
+      aria-label={`Palpagos Island spawn map preview with ${coordinates.length} imported spawn points`}
+      data-spawn-count={totalMarkers || coordinates.length}
     >
-      {coordinates.map((point, index) => (
+      {areas.map((area, index) => (
         <span
-          key={`${point.x}-${point.y}-${index}`}
-          className="spawn-dot"
-          style={spawnMarkerStyle(point)}
+          key={`${area.left}-${area.top}-${index}`}
+          className="spawn-area"
+          style={{
+            left: `${area.left}%`,
+            top: `${area.top}%`,
+            width: `${area.width}%`,
+            height: `${area.height}%`,
+            transform: `translate(-50%, -50%) rotate(${area.rotation}deg)`,
+          }}
         />
       ))}
     </div>
   );
 }
 
-function spawnMarkerStyle(point: { x: number; y: number }) {
+function spawnAreaGroups(coordinates: { x: number; y: number }[]) {
+  const points = coordinates.map(spawnMapPoint);
+  const maxDistance = coordinates.length > 80 ? 5.4 : coordinates.length > 24 ? 7.2 : 9;
+  const visited = new Set<number>();
+  const groups: { left: number; top: number; width: number; height: number; rotation: number }[] = [];
+
+  points.forEach((point, startIndex) => {
+    if (visited.has(startIndex)) return;
+    const queue = [startIndex];
+    const cluster: { left: number; top: number }[] = [];
+    visited.add(startIndex);
+
+    while (queue.length) {
+      const currentIndex = queue.shift()!;
+      const current = points[currentIndex];
+      cluster.push(current);
+      points.forEach((candidate, candidateIndex) => {
+        if (visited.has(candidateIndex)) return;
+        if (distance(current, candidate) <= maxDistance) {
+          visited.add(candidateIndex);
+          queue.push(candidateIndex);
+        }
+      });
+    }
+
+    const leftValues = cluster.map((item) => item.left);
+    const topValues = cluster.map((item) => item.top);
+    const minLeft = Math.min(...leftValues);
+    const maxLeft = Math.max(...leftValues);
+    const minTop = Math.min(...topValues);
+    const maxTop = Math.max(...topValues);
+    const padding = cluster.length > 12 ? 3.4 : cluster.length > 3 ? 2.7 : 2.1;
+    const width = Math.max(cluster.length > 1 ? maxLeft - minLeft + padding : 4.8, 4.8);
+    const height = Math.max(cluster.length > 1 ? maxTop - minTop + padding : 4.8, 4.8);
+
+    groups.push({
+      left: clamp((minLeft + maxLeft) / 2, 0, 100),
+      top: clamp((minTop + maxTop) / 2, 0, 100),
+      width: clamp(width, 4.8, 34),
+      height: clamp(height, 4.8, 34),
+      rotation: ((groups.length % 7) - 3) * 6,
+    });
+  });
+
+  return groups;
+}
+
+function spawnMapPoint(point: { x: number; y: number }) {
   const mapX = (point.y - 158000) / 459;
   const mapY = (point.x + 123888) / 459;
   const mapBounds = {
@@ -1073,9 +1127,17 @@ function spawnMarkerStyle(point: { x: number; y: number }) {
   const left = ((mapX - mapBounds.left) / (mapBounds.right - mapBounds.left)) * 100;
   const top = ((mapBounds.top - mapY) / (mapBounds.top - mapBounds.bottom)) * 100;
   return {
-    left: `${Math.max(0, Math.min(100, left))}%`,
-    top: `${Math.max(0, Math.min(100, top))}%`,
+    left: clamp(left, 0, 100),
+    top: clamp(top, 0, 100),
   };
+}
+
+function distance(a: { left: number; top: number }, b: { left: number; top: number }) {
+  return Math.hypot(a.left - b.left, a.top - b.top);
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, value));
 }
 
 function sameParents(a: number, b: number, selectedA: number, selectedB: number) {
