@@ -346,6 +346,165 @@ button {
   font-size: 1.1rem;
 }
 
+.home-dashboard {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.level-map-panel {
+  grid-row: span 2;
+}
+
+.level-map {
+  position: relative;
+  width: 100%;
+  max-width: 42rem;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 1rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  background:
+    linear-gradient(rgba(9, 15, 25, 0.08), rgba(9, 15, 25, 0.4)),
+    url("https://cdn.th.gl/palworld/map-tiles/default-733001e0986faa3f88b0a970412d7fb9/0/0/0.webp"),
+    var(--bg-soft);
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+.level-zone {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 999px;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85);
+  transform: translate(-50%, -50%) rotate(-8deg);
+}
+
+.level-zone strong {
+  font-size: clamp(0.9rem, 2.2vw, 1.45rem);
+  line-height: 1;
+}
+
+.level-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.55rem;
+}
+
+.level-legend div,
+.news-card,
+.planner-row {
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+  background: rgba(16, 24, 39, 0.32);
+}
+
+:root[data-theme="light"] .level-legend div,
+:root[data-theme="light"] .news-card,
+:root[data-theme="light"] .planner-row {
+  background: rgba(238, 244, 248, 0.78);
+}
+
+.level-legend div {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.65rem;
+}
+
+.level-legend strong,
+.news-card span,
+.planner-row small,
+.feed-status {
+  color: var(--muted);
+}
+
+.level-legend span {
+  font-weight: 800;
+}
+
+.news-list,
+.planner-grid,
+.priority-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.news-card {
+  display: grid;
+  gap: 0.28rem;
+  padding: 0.75rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.news-card:hover,
+.planner-row:hover {
+  border-color: rgba(88, 208, 200, 0.65);
+}
+
+.news-card p,
+.feed-status {
+  margin: 0;
+}
+
+.feed-status {
+  margin-top: 0.7rem;
+  font-size: 0.9rem;
+}
+
+.job-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.8rem;
+}
+
+.job-tabs .toggle {
+  min-height: 2.1rem;
+  padding: 0.45rem 0.65rem;
+}
+
+.planner-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: center;
+  width: 100%;
+  min-height: auto;
+  padding: 0.65rem;
+  color: var(--text);
+  text-align: left;
+}
+
+.planner-row.selected {
+  border-color: var(--accent-2);
+  box-shadow: inset 0 0 0 1px rgba(255, 209, 102, 0.45);
+}
+
+.planner-row span {
+  display: grid;
+  min-width: 0;
+}
+
+.planner-row small {
+  overflow-wrap: anywhere;
+}
+
+.priority-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.priority-list li {
+  color: var(--muted);
+}
+
 .browser {
   display: grid;
   gap: 0.8rem;
@@ -616,7 +775,7 @@ button {
   transform: translate(-50%, -50%);
 }
 
-.coordinate-sample {
+.coordinate-note {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.85rem;
   overflow-wrap: anywhere;
@@ -751,11 +910,16 @@ button {
   }
 
   .stats-grid,
+  .home-dashboard,
   .split,
   .detail-grid,
   .pal-detail-grid,
   .resource-grid {
     grid-template-columns: 1fr;
+  }
+
+  .level-map-panel {
+    grid-row: auto;
   }
 
   .panel-wide {

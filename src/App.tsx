@@ -28,6 +28,52 @@ type Page =
 
 type SortMode = "number" | "name" | "rarity" | "breeding" | "work" | "owned" | "favourite";
 
+type NewsItem = {
+  title: string;
+  url: string;
+  date: string;
+  summary: string;
+};
+
+const steamNewsApiUrl = "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=1623730&count=5&maxlength=900&format=json";
+
+const fallbackNews: NewsItem[] = [
+  {
+    title: "Every new Pal in Palworld 1.0 and where to catch them",
+    url: "https://store.steampowered.com/news/app/1623730",
+    date: "2026-07-19",
+    summary: "Palworld 1.0 added 72 new Pals alongside the expanded Palpagos map and World Tree region.",
+  },
+  {
+    title: "Palworld reduces survival grind",
+    url: "https://store.steampowered.com/news/app/1623730",
+    date: "2026-07-18",
+    summary: "Recent coverage highlights Palworld's faster base automation and less repetitive resource hauling.",
+  },
+  {
+    title: "Ancient Bone and Ancient Civilization Core guides",
+    url: "https://store.steampowered.com/news/app/1623730",
+    date: "2026-07-16",
+    summary: "Current update coverage points players toward rare late-game materials used for stronger equipment.",
+  },
+];
+
+const levelZones = [
+  { name: "Starter Coast", range: "1-20", left: "60%", top: "52%", width: "35%", height: "16%", color: "rgba(55, 210, 142, 0.68)" },
+  { name: "Central Islands", range: "20-30", left: "49%", top: "43%", width: "28%", height: "16%", color: "rgba(232, 215, 72, 0.68)" },
+  { name: "Northern Woods", range: "30-40", left: "66%", top: "31%", width: "30%", height: "20%", color: "rgba(181, 224, 78, 0.68)" },
+  { name: "Volcano and desert edge", range: "30-50", left: "39%", top: "38%", width: "25%", height: "24%", color: "rgba(226, 117, 69, 0.68)" },
+  { name: "High-risk islands", range: "50-60", left: "28%", top: "31%", width: "20%", height: "15%", color: "rgba(195, 112, 42, 0.72)" },
+  { name: "Endgame south-west", range: "60-70", left: "29%", top: "74%", width: "31%", height: "23%", color: "rgba(186, 67, 219, 0.68)" },
+];
+
+const priorityItems = [
+  "Pick the next level zone before travelling so you do not waste ammo or food on enemies too high for your team.",
+  "Keep one Pal focused on Kindling, one on Planting, one on Watering, one on Gathering, and two on Transporting for a stable starter base.",
+  "Wishlist rare Pals from the Paldeck, then use their habitat map before you leave base.",
+  "Check food, ingots, ammo, and repair materials before boss runs or dungeon loops.",
+];
+
 const navItems = [
   { hash: "#/", label: "Home", icon: "home" },
   { hash: "#/pals", label: "Pals", icon: "pals" },
@@ -199,7 +245,7 @@ function HomePage() {
 
   return (
     <>
-      <Hero title="Palworld Companion" eyebrow="Sample dataset">
+      <Hero title="Palworld Companion" eyebrow="Planning dashboard">
         <GlobalSearch />
       </Hero>
       <section className="stats-grid">
@@ -213,6 +259,16 @@ function HomePage() {
         <a className="primary-action" href="#/pals">Browse all Pals</a>
         <a className="primary-action" href="#/breeding">Breeding calculator</a>
         <a className="primary-action" href="#/resources">Browse resources</a>
+      </section>
+      <section className="home-dashboard">
+        <LevelMapPanel />
+        <LatestUpdatesPanel />
+        <BasePlanner />
+        <Panel title="Next Useful Checks">
+          <ul className="priority-list">
+            {priorityItems.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </Panel>
       </section>
       <section className="split">
         <Panel title="Recently Viewed">
@@ -228,6 +284,141 @@ function HomePage() {
       </section>
     </>
   );
+}
+
+function LevelMapPanel() {
+  return (
+    <Panel title="Map Level Guide" className="level-map-panel">
+      <div className="level-map" aria-label="Palpagos level range map">
+        {levelZones.map((zone) => (
+          <span
+            className="level-zone"
+            key={zone.name}
+            style={{
+              left: zone.left,
+              top: zone.top,
+              width: zone.width,
+              height: zone.height,
+              backgroundColor: zone.color,
+            }}
+          >
+            <strong>{zone.range}</strong>
+          </span>
+        ))}
+      </div>
+      <div className="level-legend">
+        {levelZones.map((zone) => (
+          <div key={zone.name}>
+            <strong>{zone.range}</strong>
+            <span>{zone.name}</span>
+          </div>
+        ))}
+      </div>
+    </Panel>
+  );
+}
+
+function LatestUpdatesPanel() {
+  const { news, status } = useLatestNews();
+  return (
+    <Panel title="Recent Updates">
+      <div className="news-list">
+        {news.map((item) => (
+          <a className="news-card" href={item.url} target="_blank" rel="noreferrer" key={`${item.date}-${item.title}`}>
+            <span>{item.date}</span>
+            <strong>{item.title}</strong>
+            <p>{item.summary}</p>
+          </a>
+        ))}
+      </div>
+      <p className="feed-status">{status}</p>
+    </Panel>
+  );
+}
+
+function BasePlanner() {
+  const { isOwned } = useCollection();
+  const jobs = useMemo(() => unique(pals.flatMap((pal) => pal.workSuitability.map((work) => work.type))), []);
+  const [job, setJob] = useState(jobs.includes("Mining") ? "Mining" : jobs[0] || "");
+  const [targets, setTargets] = useState<Record<string, number | undefined>>({});
+  const candidates = useMemo(() => {
+    return pals
+      .flatMap((pal) => pal.workSuitability.filter((work) => work.type === job).map((work) => ({ pal, work })))
+      .sort((a, b) => b.work.level - a.work.level || a.pal.name.localeCompare(b.pal.name))
+      .slice(0, 6);
+  }, [job]);
+  const selectedTarget = targets[job];
+
+  return (
+    <Panel title="Base Job Planner">
+      <div className="job-tabs" role="list" aria-label="Base jobs">
+        {jobs.slice(0, 10).map((item) => (
+          <button className={item === job ? "toggle active" : "toggle"} type="button" key={item} onClick={() => setJob(item)}>
+            {item}
+          </button>
+        ))}
+      </div>
+      <div className="planner-grid">
+        {candidates.map(({ pal, work }) => (
+          <button
+            className={selectedTarget === pal.id ? "planner-row selected" : "planner-row"}
+            type="button"
+            key={pal.id}
+            onClick={() => setTargets((current) => ({ ...current, [job]: current[job] === pal.id ? undefined : pal.id }))}
+          >
+            <Avatar text={pal.image} label={pal.name} />
+            <span>
+              <strong>{pal.name}</strong>
+              <small>{work.type} Lv. {work.level}{isOwned(pal.id) ? " - Owned" : ""}</small>
+            </span>
+          </button>
+        ))}
+      </div>
+    </Panel>
+  );
+}
+
+function useLatestNews() {
+  const [news, setNews] = useState(fallbackNews);
+  const [status, setStatus] = useState("Refreshing from Steam news...");
+
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch(steamNewsApiUrl, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error("News feed unavailable");
+        return response.json();
+      })
+      .then((data) => {
+        const items = (data?.appnews?.newsitems || [])
+          .map((item: { title?: string; url?: string; date?: number; contents?: string }) => ({
+            title: item.title || "Palworld update",
+            url: item.url || "https://store.steampowered.com/news/app/1623730",
+            date: item.date ? new Date(item.date * 1000).toISOString().slice(0, 10) : "",
+            summary: trimSummary(cleanNewsText(item.contents || "")),
+          }))
+          .filter((item: NewsItem) => item.title && item.summary);
+        if (items.length) setNews(items.slice(0, 4));
+        setStatus(`Updated when this page loaded: ${new Date().toLocaleString()}`);
+      })
+      .catch(() => setStatus("Showing saved update summary. Refresh to try the live feed again."));
+
+    return () => controller.abort();
+  }, []);
+
+  return { news, status };
+}
+
+function cleanNewsText(text: string) {
+  const withoutTags = text.replace(/<[^>]*>/g, " ");
+  const textarea = document.createElement("textarea");
+  textarea.innerHTML = withoutTags;
+  return textarea.value.replace(/\s+/g, " ").trim();
+}
+
+function trimSummary(text: string) {
+  if (text.length <= 180) return text;
+  return `${text.slice(0, 177).trim()}...`;
 }
 
 function GlobalSearch() {
@@ -500,7 +691,7 @@ function HabitatSection({ pal }: { pal: Pal }) {
                 {entry.sourceUrl && <a className="resource-link" href={entry.sourceUrl} target="_blank" rel="noreferrer">Open interactive spawn map</a>}
                 {entry.coordinates?.length ? <SpawnMapPreview coordinates={entry.coordinates} totalMarkers={entry.spawnCount} /> : null}
                 {entry.coordinates?.length ? (
-                  <p className="coordinate-sample">
+                  <p className="coordinate-note">
                     Showing {entry.coordinates.length === entry.spawnCount ? entry.coordinates.length : `${entry.coordinates.length} of ${entry.spawnCount || entry.coordinates.length}`} imported markers.
                   </p>
                 ) : null}
@@ -529,18 +720,18 @@ function BreedingPage() {
 
   return (
     <>
-      <Hero title="Breeding" eyebrow="Sample calculator">
-        <p>Combinations are sample data unless verified in DATA_SOURCES.md.</p>
+      <Hero title="Breeding" eyebrow="Breeding calculator">
+        <p>Combinations appear here when they are available in the companion data.</p>
       </Hero>
       <section className="split">
         <Panel title="Two Parents to Child">
           <PalSelect label="Parent A" value={parentA} onChange={setParentA} />
           <PalSelect label="Parent B" value={parentB} onChange={setParentB} />
-          {result ? <BreedingResult comboId={result.id} childId={result.childId} /> : <EmptyState text="No direct sample combination found." />}
+          {result ? <BreedingResult comboId={result.id} childId={result.childId} /> : <EmptyState text="No direct combination found." />}
         </Panel>
         <Panel title="Desired Child">
           <PalSelect label="Desired Pal" value={desired} onChange={setDesired} />
-          {desiredCombos.length ? desiredCombos.map((combo) => <BreedingPair key={combo.id} combo={combo} />) : <EmptyState text="No known sample combinations for this Pal." />}
+          {desiredCombos.length ? desiredCombos.map((combo) => <BreedingPair key={combo.id} combo={combo} />) : <EmptyState text="No known combinations for this Pal." />}
         </Panel>
       </section>
     </>

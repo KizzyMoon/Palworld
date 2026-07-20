@@ -23,4 +23,4 @@ In GitHub, enable **Pages** for the repository and select **GitHub Actions** as 
 
 ## Data status
 
-The current dataset is a labelled sample dataset intended to prove the app features and data model. Missing or unverified game information is shown as unavailable rather than guessed.
+The current dataset is an imported Palworld companion dataset with some areas still being verified. Missing or unverified game information is shown as unavailable rather than guessed.
