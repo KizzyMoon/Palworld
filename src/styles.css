@@ -505,6 +505,92 @@ button {
   color: var(--muted);
 }
 
+.build-layout {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.8fr) minmax(0, 1.2fr);
+  gap: 1rem;
+}
+
+.station-grid,
+.build-recommendations {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.station-card {
+  display: grid;
+  gap: 0.45rem;
+  width: 100%;
+  min-height: auto;
+  padding: 0.85rem;
+  text-align: left;
+}
+
+.station-card.selected {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px rgba(88, 208, 200, 0.55);
+}
+
+.station-card > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.station-card small,
+.recommendation-block p,
+.recommendation-row em {
+  color: var(--muted);
+}
+
+.station-card p {
+  margin: 0;
+}
+
+.station-work {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.recommendations-panel {
+  align-self: stretch;
+}
+
+.recommendation-block {
+  display: grid;
+  gap: 0.75rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.recommendation-block:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.recommendation-block header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.recommendation-block h3,
+.recommendation-block p {
+  margin: 0;
+}
+
+.recommendation-row {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  text-decoration: none;
+}
+
+.recommendation-row em {
+  font-style: normal;
+  font-weight: 900;
+}
+
 .browser {
   display: grid;
   gap: 0.8rem;
@@ -915,6 +1001,7 @@ button {
 
   .stats-grid,
   .home-dashboard,
+  .build-layout,
   .split,
   .detail-grid,
   .pal-detail-grid,

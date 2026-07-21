@@ -19,6 +19,7 @@ type Page =
   | { name: "home" }
   | { name: "pals" }
   | { name: "pal"; key: string }
+  | { name: "build" }
   | { name: "breeding" }
   | { name: "resources" }
   | { name: "resource"; id: string }
@@ -33,6 +34,14 @@ type NewsItem = {
   url: string;
   date: string;
   summary: string;
+};
+
+type BuildStation = {
+  id: string;
+  name: string;
+  category: string;
+  description: string;
+  requiredWork: { type: string; note?: string }[];
 };
 
 const steamNewsApiUrl = "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=1623730&count=5&maxlength=900&format=json";
@@ -74,9 +83,28 @@ const priorityItems = [
   "Check food, ingots, ammo, and repair materials before boss runs or dungeon loops.",
 ];
 
+const buildStations: BuildStation[] = [
+  { id: "furnace", name: "Furnace", category: "Production", description: "Smelting ore and ingots.", requiredWork: [{ type: "Kindling" }] },
+  { id: "cooking-pot", name: "Cooking Pot", category: "Food", description: "Cooking meals for base workers.", requiredWork: [{ type: "Kindling" }] },
+  { id: "cooler", name: "Cooler Box", category: "Food", description: "Keeping food fresh for longer.", requiredWork: [{ type: "Cooling" }] },
+  { id: "refrigerator", name: "Refrigerator", category: "Food", description: "Late-base food storage.", requiredWork: [{ type: "Cooling" }, { type: "Generating Electricity", note: "for powered bases" }] },
+  { id: "clinic", name: "Clinic", category: "Recovery", description: "Making medicine and treating base problems.", requiredWork: [{ type: "Medicine Production" }] },
+  { id: "medicine-bench", name: "Medicine Workbench", category: "Recovery", description: "Crafting medicine supplies.", requiredWork: [{ type: "Medicine Production" }, { type: "Handiwork" }] },
+  { id: "primitive-workbench", name: "Workbench", category: "Production", description: "General crafting and repairs.", requiredWork: [{ type: "Handiwork" }] },
+  { id: "assembly-line", name: "Assembly Line", category: "Production", description: "Higher-volume crafting.", requiredWork: [{ type: "Handiwork" }, { type: "Generating Electricity", note: "for powered lines" }] },
+  { id: "mill", name: "Mill", category: "Food", description: "Turning wheat into flour.", requiredWork: [{ type: "Watering" }] },
+  { id: "crusher", name: "Crusher", category: "Materials", description: "Processing stone and ore materials.", requiredWork: [{ type: "Watering" }] },
+  { id: "logging-site", name: "Logging Site", category: "Materials", description: "Base wood production.", requiredWork: [{ type: "Lumbering" }, { type: "Transporting" }] },
+  { id: "stone-pit", name: "Stone Pit", category: "Materials", description: "Base stone production.", requiredWork: [{ type: "Mining" }, { type: "Transporting" }] },
+  { id: "ranch", name: "Ranch", category: "Materials", description: "Passive Pal drops at base.", requiredWork: [{ type: "Farming" }, { type: "Transporting" }] },
+  { id: "plantation", name: "Plantation", category: "Food", description: "Growing berries, wheat, lettuce, tomatoes, and more.", requiredWork: [{ type: "Planting" }, { type: "Watering" }, { type: "Gathering" }, { type: "Transporting" }] },
+  { id: "generator", name: "Power Generator", category: "Power", description: "Keeping electric facilities running.", requiredWork: [{ type: "Generating Electricity" }] },
+];
+
 const navItems = [
   { hash: "#/", label: "Home", icon: "home" },
   { hash: "#/pals", label: "Pals", icon: "pals" },
+  { hash: "#/build", label: "Build", icon: "build" },
   { hash: "#/breeding", label: "Breed", icon: "egg" },
   { hash: "#/resources", label: "Items", icon: "resource" },
   { hash: "#/owned", label: "Owned", icon: "heart" },
@@ -108,6 +136,16 @@ function NavIcon({ name }: { name: string }) {
         <path d="M12 3 4.5 7.2v9.6L12 21l7.5-4.2V7.2L12 3Z" />
         <path d="m4.5 7.2 7.5 4.2 7.5-4.2" />
         <path d="M12 11.4V21" />
+      </svg>
+    );
+  }
+  if (name === "build") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m14.5 5 4.5 4.5" />
+        <path d="m16 3 5 5-2.5 2.5-5-5L16 3Z" />
+        <path d="M4 20h5l8.5-8.5-5-5L4 15v5Z" />
+        <path d="M4 15h5v5" />
       </svg>
     );
   }
@@ -146,6 +184,7 @@ function parseHash(): Page {
   const parts = hash.replace(/^#\/?/, "").split("/").filter(Boolean);
   if (parts[0] === "pals" && parts[1]) return { name: "pal", key: parts[1] };
   if (parts[0] === "pals") return { name: "pals" };
+  if (parts[0] === "build") return { name: "build" };
   if (parts[0] === "breeding") return { name: "breeding" };
   if (parts[0] === "resources" && parts[1]) return { name: "resource", id: parts[1] };
   if (parts[0] === "resources") return { name: "resources" };
@@ -216,6 +255,7 @@ function AppShell() {
 function PageContent({ page, theme, setTheme }: { page: Page; theme: string; setTheme: (theme: string) => void }) {
   if (page.name === "pals") return <PalsPage />;
   if (page.name === "pal") return <PalDetailsPage palKey={page.key} />;
+  if (page.name === "build") return <BuildPage />;
   if (page.name === "breeding") return <BreedingPage />;
   if (page.name === "resources") return <ResourcesPage />;
   if (page.name === "resource") return <ResourceDetailsPage resourceId={page.id} />;
@@ -257,6 +297,7 @@ function HomePage() {
       <section className="quick-actions">
         <a className="primary-action" href={`#/pals/${randomPal().key}`}>Random Pal</a>
         <a className="primary-action" href="#/pals">Browse all Pals</a>
+        <a className="primary-action" href="#/build">Build planner</a>
         <a className="primary-action" href="#/breeding">Breeding calculator</a>
         <a className="primary-action" href="#/resources">Browse resources</a>
       </section>
@@ -738,6 +779,99 @@ function BreedingPage() {
   );
 }
 
+function BuildPage() {
+  const [query, setQuery] = useState("");
+  const categories = unique(buildStations.map((station) => station.category));
+  const [category, setCategory] = useState("all");
+  const [selectedIds, setSelectedIds] = useState<string[]>(["furnace", "cooler", "clinic"]);
+  const selectedStations = selectedIds.map((id) => buildStations.find((station) => station.id === id)).filter(Boolean) as BuildStation[];
+  const filteredStations = buildStations.filter((station) => {
+    const searchText = `${station.name} ${station.category} ${station.description} ${station.requiredWork.map((work) => work.type).join(" ")}`.toLowerCase();
+    const matchesQuery = !query.trim() || searchText.includes(query.trim().toLowerCase());
+    const matchesCategory = category === "all" || station.category === category;
+    return matchesQuery && matchesCategory;
+  });
+
+  function toggleStation(id: string) {
+    setSelectedIds((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
+  }
+
+  return (
+    <>
+      <Hero title="Build Planner" eyebrow="Base work recommendations">
+        <p>Select the build items you want staffed, then use the Pal recommendations for each job.</p>
+      </Hero>
+      <section className="toolbar">
+        <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search furnace, clinic, cooling, mining..." aria-label="Search build items" />
+        <select value={category} onChange={(event) => setCategory(event.target.value)} aria-label="Filter build items">
+          <option value="all">All build types</option>
+          {categories.map((item) => <option key={item}>{item}</option>)}
+        </select>
+        <button type="button" onClick={() => setSelectedIds(buildStations.map((station) => station.id))}>Select all</button>
+        <button type="button" onClick={() => setSelectedIds([])}>Clear</button>
+      </section>
+      <section className="build-layout">
+        <Panel title="Build Items">
+          <div className="station-grid">
+            {filteredStations.map((station) => {
+              const selected = selectedIds.includes(station.id);
+              return (
+                <button className={selected ? "station-card selected" : "station-card"} type="button" key={station.id} onClick={() => toggleStation(station.id)} aria-pressed={selected}>
+                  <span>
+                    <strong>{station.name}</strong>
+                    <small>{station.category}</small>
+                  </span>
+                  <p>{station.description}</p>
+                  <div className="station-work">
+                    {station.requiredWork.map((work) => <Badge key={`${station.id}-${work.type}`}>{work.type}</Badge>)}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </Panel>
+        <Panel title="Recommended Pals" className="recommendations-panel">
+          {selectedStations.length ? (
+            <div className="build-recommendations">
+              {selectedStations.map((station) => <BuildRecommendation key={station.id} station={station} />)}
+            </div>
+          ) : (
+            <EmptyState text="Select at least one build item to see Pal recommendations." />
+          )}
+        </Panel>
+      </section>
+    </>
+  );
+}
+
+function BuildRecommendation({ station }: { station: BuildStation }) {
+  const { isOwned } = useCollection();
+  const recommendations = recommendPalsForStation(station).slice(0, 5);
+  return (
+    <article className="recommendation-block">
+      <header>
+        <div>
+          <h3>{station.name}</h3>
+          <p>{station.requiredWork.map((work) => work.note ? `${work.type} (${work.note})` : work.type).join(" / ")}</p>
+        </div>
+        <Badge>{station.category}</Badge>
+      </header>
+      <div className="planner-grid">
+        {recommendations.map(({ pal, matchedWork, score }) => (
+          <a className="planner-row recommendation-row" href={`#/pals/${pal.key}`} key={pal.id}>
+            <Avatar text={pal.image} label={pal.name} />
+            <span>
+              <strong>{pal.name}</strong>
+              <small>{matchedWork.map((work) => `${work.type} Lv. ${work.level}`).join(" - ")}{isOwned(pal.id) ? " - Owned" : ""}</small>
+            </span>
+            <em>{score}</em>
+          </a>
+        ))}
+      </div>
+    </article>
+  );
+}
+
 function BreedingForPal({ pal }: { pal: Pal }) {
   const childCombos = breeding.filter((combo) => combo.childId === pal.id);
   const parentCombos = breeding.filter((combo) => combo.parentAId === pal.id || combo.parentBId === pal.id);
@@ -1003,6 +1137,25 @@ function unique<T>(items: T[]) {
 
 function strongestWork(pal: Pal) {
   return [...pal.workSuitability].sort((a, b) => b.level - a.level)[0];
+}
+
+function recommendPalsForStation(station: BuildStation) {
+  return pals
+    .map((pal) => {
+      const matchedWork = station.requiredWork
+        .map((required) => pal.workSuitability.find((work) => work.type === required.type))
+        .filter(Boolean) as { type: string; level: number }[];
+      const coverage = matchedWork.length / station.requiredWork.length;
+      const levelScore = matchedWork.reduce((total, work) => total + work.level, 0);
+      const bestLevel = matchedWork.reduce((best, work) => Math.max(best, work.level), 0);
+      return {
+        pal,
+        matchedWork,
+        score: Math.round(coverage * 100 + levelScore * 10 + bestLevel),
+      };
+    })
+    .filter((item) => item.matchedWork.length)
+    .sort((a, b) => b.score - a.score || b.matchedWork.length - a.matchedWork.length || a.pal.name.localeCompare(b.pal.name));
 }
 
 function highestWork(pal: Pal) {
