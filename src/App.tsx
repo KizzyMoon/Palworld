@@ -82,21 +82,6 @@ const fallbackNews: NewsItem[] = [
   },
 ];
 
-const levelZones = [
-  { name: "Starter islands", range: "1-20", color: "#27d18a", labelX: 660, labelY: 585, path: "M516 559 C556 523 604 508 657 513 C706 518 759 536 783 568 C758 607 709 625 649 632 C592 638 536 623 501 596 C497 581 503 569 516 559 Z" },
-  { name: "Bamboo groves", range: "10-20", color: "#42dc77", labelX: 518, labelY: 424, path: "M430 407 C458 374 501 357 545 363 C584 367 615 390 623 421 C596 448 556 462 508 459 C463 456 429 439 407 416 C412 411 420 407 430 407 Z" },
-  { name: "Central islands", range: "20-30", color: "#e4d64a", labelX: 568, labelY: 510, path: "M468 486 C512 451 574 443 635 462 C674 474 705 500 714 533 C680 562 625 580 565 576 C513 572 466 553 438 522 C438 506 448 494 468 486 Z" },
-  { name: "Eastern shoals", range: "20-30", color: "#e4d64a", labelX: 610, labelY: 684, path: "M570 659 C603 646 642 650 668 668 C653 691 622 703 584 700 C558 698 537 688 528 672 C539 666 553 662 570 659 Z" },
-  { name: "Northern forest", range: "30-40", color: "#b9df52", labelX: 705, labelY: 363, path: "M615 288 C662 249 733 229 796 247 C853 263 895 306 902 358 C882 412 828 457 761 474 C700 490 633 478 590 445 C568 388 578 326 615 288 Z" },
-  { name: "Eastern island", range: "30-40", color: "#b9df52", labelX: 805, labelY: 492, path: "M740 456 C772 437 823 434 862 454 C886 466 901 488 895 509 C871 531 830 545 789 540 C753 535 728 516 720 493 C721 477 728 465 740 456 Z" },
-  { name: "Volcanic island", range: "30-50", color: "#df7441", labelX: 402, labelY: 530, path: "M287 460 C326 425 394 411 453 432 C511 452 552 501 544 557 C520 615 458 653 388 649 C324 645 272 608 251 555 C249 517 262 485 287 460 Z" },
-  { name: "Northern ridge", range: "30-50", color: "#df7441", labelX: 488, labelY: 346, path: "M396 306 C435 279 497 267 553 283 C594 295 626 319 637 351 C609 384 555 405 494 403 C437 401 391 381 369 348 C373 330 382 317 396 306 Z" },
-  { name: "Western highlands", range: "50-60", color: "#b96a27", labelX: 312, labelY: 424, path: "M236 381 C269 357 316 349 361 360 C396 369 421 389 427 416 C404 443 360 461 312 459 C267 457 230 440 211 414 C215 402 223 391 236 381 Z" },
-  { name: "Far eastern island", range: "50-60", color: "#b96a27", labelX: 910, labelY: 340, path: "M879 318 C899 301 932 301 952 319 C966 331 967 350 953 364 C934 381 901 382 880 365 C866 352 866 331 879 318 Z" },
-  { name: "Astral mountains", range: "60-70", color: "#bc41dc", labelX: 330, labelY: 784, path: "M193 705 C238 666 312 643 382 650 C447 657 501 692 521 744 C509 805 456 863 382 890 C311 916 238 904 188 859 C153 811 156 749 193 705 Z" },
-  { name: "Southern island", range: "60-70", color: "#bc41dc", labelX: 566, labelY: 850, path: "M503 814 C539 789 595 779 638 797 C667 810 683 832 677 856 C653 883 607 897 559 892 C516 887 484 866 473 838 C480 827 489 819 503 814 Z" },
-];
-
 const priorityItems = [
   "Pick the next level zone before travelling so you do not waste ammo or food on enemies too high for your team.",
   "Keep one Pal focused on Kindling, one on Planting, one on Watering, one on Gathering, and two on Transporting for a stable starter base.",
@@ -425,33 +410,7 @@ function CategoryCard({ href, icon, title, detail }: { href: string; icon: strin
 function LevelMapPanel() {
   return (
     <Panel title="Map Level Guide" className="level-map-panel">
-      <div className="level-map" aria-label="Palpagos level range map">
-        <svg className="level-map-overlay" viewBox="0 0 1000 1000" aria-hidden="true">
-          <defs>
-            <filter id="levelGlow" x="-12%" y="-12%" width="124%" height="124%">
-              <feGaussianBlur stdDeviation="5" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-          {levelZones.map((zone) => (
-            <g className="level-zone" key={zone.name}>
-              <path d={zone.path} style={{ color: zone.color }} />
-              <text x={zone.labelX} y={zone.labelY}>{zone.range}</text>
-            </g>
-          ))}
-        </svg>
-      </div>
-      <div className="level-legend">
-        {levelZones.map((zone) => (
-          <div key={zone.name}>
-            <strong>{zone.range}</strong>
-            <span>{zone.name}</span>
-          </div>
-        ))}
-      </div>
+      <img className="level-map-image" src="level-map-guide.png" alt="Palworld map level guide" loading="lazy" />
     </Panel>
   );
 }
