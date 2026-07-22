@@ -19,6 +19,8 @@ type Page =
   | { name: "home" }
   | { name: "pals" }
   | { name: "pal"; key: string }
+  | { name: "ranch" }
+  | { name: "work" }
   | { name: "build" }
   | { name: "breeding" }
   | { name: "resources" }
@@ -42,6 +44,12 @@ type BuildStation = {
   category: string;
   description: string;
   requiredWork: { type: string; note?: string }[];
+};
+
+type NavItem = {
+  hash: string;
+  label: string;
+  icon: string;
 };
 
 const steamNewsApiUrl = "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=1623730&count=5&maxlength=900&format=json";
@@ -101,16 +109,46 @@ const buildStations: BuildStation[] = [
   { id: "generator", name: "Power Generator", category: "Power", description: "Keeping electric facilities running.", requiredWork: [{ type: "Generating Electricity" }] },
 ];
 
-const navItems = [
-  { hash: "#/", label: "Home", icon: "home" },
-  { hash: "#/pals", label: "Pals", icon: "pals" },
-  { hash: "#/build", label: "Build", icon: "build" },
-  { hash: "#/breeding", label: "Breed", icon: "egg" },
-  { hash: "#/resources", label: "Items", icon: "resource" },
-  { hash: "#/owned", label: "Owned", icon: "heart" },
-  { hash: "#/favourites", label: "Wishlist", icon: "star" },
-  { hash: "#/settings", label: "Settings", icon: "settings" },
+const workTypeNotes: Record<string, string> = {
+  Cooling: "Keeps food and storage cold.",
+  Farming: "Works at ranches for passive drops.",
+  Gathering: "Harvests crops after they grow.",
+  "Generating Electricity": "Charges power facilities.",
+  Handiwork: "Crafts items and builds structures.",
+  Kindling: "Cooks food and runs furnaces.",
+  Lumbering: "Produces wood at logging sites.",
+  "Medicine Production": "Makes medicine and clinic supplies.",
+  Mining: "Produces stone, ore, and mining materials.",
+  Planting: "Plants crops in plantations.",
+  Transporting: "Moves dropped items into storage.",
+  Watering: "Waters crops and powers mills/crushers.",
+};
+
+const navGroups: { title: string; items: NavItem[] }[] = [
+  { title: "Dashboard", items: [{ hash: "#/", label: "Dashboard", icon: "home" }] },
+  {
+    title: "Pals",
+    items: [
+      { hash: "#/pals", label: "All Pals", icon: "pals" },
+      { hash: "#/owned", label: "Owned", icon: "heart" },
+      { hash: "#/favourites", label: "Wishlist", icon: "star" },
+      { hash: "#/ranch", label: "Ranch", icon: "ranch" },
+    ],
+  },
+  {
+    title: "Guides",
+    items: [
+      { hash: "#/work", label: "Work Types", icon: "work" },
+      { hash: "#/build", label: "Build Planner", icon: "build" },
+      { hash: "#/breeding", label: "Breeding", icon: "egg" },
+    ],
+  },
+  { title: "Items", items: [{ hash: "#/resources", label: "All Items", icon: "resource" }] },
+  { title: "Settings", items: [{ hash: "#/settings", label: "Settings", icon: "settings" }] },
 ];
+
+const navItems = navGroups.flatMap((group) => group.items);
+const mobileNavItems = navItems.filter((item) => ["#/", "#/pals", "#/build", "#/resources", "#/owned", "#/settings"].includes(item.hash));
 
 function NavIcon({ name }: { name: string }) {
   if (name === "home") {
@@ -149,6 +187,24 @@ function NavIcon({ name }: { name: string }) {
       </svg>
     );
   }
+  if (name === "ranch") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 11h16" />
+        <path d="M6 11v9" />
+        <path d="M18 11v9" />
+        <path d="M8 11V7l4-3 4 3v4" />
+        <path d="M9.5 20v-5h5v5" />
+      </svg>
+    );
+  }
+  if (name === "work") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M13 2 5 13h6l-1 9 8-12h-6l1-8Z" />
+      </svg>
+    );
+  }
   if (name === "heart") {
     return (
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -184,6 +240,8 @@ function parseHash(): Page {
   const parts = hash.replace(/^#\/?/, "").split("/").filter(Boolean);
   if (parts[0] === "pals" && parts[1]) return { name: "pal", key: parts[1] };
   if (parts[0] === "pals") return { name: "pals" };
+  if (parts[0] === "ranch") return { name: "ranch" };
+  if (parts[0] === "work") return { name: "work" };
   if (parts[0] === "build") return { name: "build" };
   if (parts[0] === "breeding") return { name: "breeding" };
   if (parts[0] === "resources" && parts[1]) return { name: "resource", id: parts[1] };
@@ -227,11 +285,16 @@ function AppShell() {
           </span>
         </a>
         <nav>
-          {navItems.map((item) => (
-            <a key={item.hash} className={routeFor(page) === item.hash ? "active" : ""} href={item.hash}>
-              <span className="nav-icon"><NavIcon name={item.icon} /></span>
-              {item.label}
-            </a>
+          {navGroups.map((group) => (
+            <div className="nav-group" key={group.title}>
+              <p>{group.title}</p>
+              {group.items.map((item) => (
+                <a key={item.hash} className={routeFor(page) === item.hash ? "active" : ""} href={item.hash}>
+                  <span className="nav-icon"><NavIcon name={item.icon} /></span>
+                  {item.label}
+                </a>
+              ))}
+            </div>
           ))}
         </nav>
       </aside>
@@ -241,7 +304,7 @@ function AppShell() {
       </main>
 
       <nav className="bottom-nav" aria-label="Mobile navigation">
-        {navItems.slice(0, 6).map((item) => (
+        {mobileNavItems.map((item) => (
           <a key={item.hash} className={routeFor(page) === item.hash ? "active" : ""} href={item.hash}>
             <span className="nav-icon"><NavIcon name={item.icon} /></span>
             <small>{item.label}</small>
@@ -255,6 +318,8 @@ function AppShell() {
 function PageContent({ page, theme, setTheme }: { page: Page; theme: string; setTheme: (theme: string) => void }) {
   if (page.name === "pals") return <PalsPage />;
   if (page.name === "pal") return <PalDetailsPage palKey={page.key} />;
+  if (page.name === "ranch") return <RanchPage />;
+  if (page.name === "work") return <WorkPage />;
   if (page.name === "build") return <BuildPage />;
   if (page.name === "breeding") return <BreedingPage />;
   if (page.name === "resources") return <ResourcesPage />;
@@ -301,6 +366,14 @@ function HomePage() {
         <a className="primary-action" href="#/breeding">Breeding calculator</a>
         <a className="primary-action" href="#/resources">Browse resources</a>
       </section>
+      <section className="category-grid">
+        <CategoryCard href="#/pals" icon="pals" title="All Pals" detail={`${pals.length} Paldeck entries`} />
+        <CategoryCard href="#/owned" icon="heart" title="Owned Pals" detail={`${owned} marked owned`} />
+        <CategoryCard href="#/favourites" icon="star" title="Wishlist" detail={`${favourites} saved targets`} />
+        <CategoryCard href="#/ranch" icon="ranch" title="Ranch Drops" detail={`${ranchPals().length} Farming Pals`} />
+        <CategoryCard href="#/work" icon="work" title="Work Types" detail={`${unique(pals.flatMap((pal) => pal.workSuitability.map((work) => work.type))).length} base jobs`} />
+        <CategoryCard href="#/resources" icon="resource" title="Items" detail={`${resources.length} resources`} />
+      </section>
       <section className="home-dashboard">
         <LevelMapPanel />
         <LatestUpdatesPanel />
@@ -324,6 +397,16 @@ function HomePage() {
         <span>Data update: {metadata.lastUpdated}</span>
       </section>
     </>
+  );
+}
+
+function CategoryCard({ href, icon, title, detail }: { href: string; icon: string; title: string; detail: string }) {
+  return (
+    <a className="category-card" href={href}>
+      <span className="nav-icon"><NavIcon name={icon} /></span>
+      <strong>{title}</strong>
+      <small>{detail}</small>
+    </a>
   );
 }
 
@@ -872,6 +955,89 @@ function BuildRecommendation({ station }: { station: BuildStation }) {
   );
 }
 
+function WorkPage() {
+  const jobs = unique(pals.flatMap((pal) => pal.workSuitability.map((work) => work.type)));
+  const [selectedWork, setSelectedWork] = useState(jobs.includes("Kindling") ? "Kindling" : jobs[0] || "");
+  const bestPals = pals
+    .flatMap((pal) => pal.workSuitability.filter((work) => work.type === selectedWork).map((work) => ({ pal, work })))
+    .sort((a, b) => b.work.level - a.work.level || a.pal.name.localeCompare(b.pal.name))
+    .slice(0, 10);
+
+  return (
+    <>
+      <Hero title="Work Types" eyebrow="Base job guide">
+        <p>Pick a work type to see what it does and which Pals are best suited to it.</p>
+      </Hero>
+      <section className="work-layout">
+        <Panel title="Work Overview">
+          <div className="work-type-list">
+            {jobs.map((job) => {
+              const example = pals.find((pal) => pal.workSuitability.some((work) => work.type === job));
+              return (
+                <button className={selectedWork === job ? "work-type-card active" : "work-type-card"} type="button" key={job} onClick={() => setSelectedWork(job)}>
+                  <span className="work-icon">{job.slice(0, 1)}</span>
+                  <span>
+                    <strong>{job}</strong>
+                    <small>{workTypeNotes[job] || "Base work suitability."}</small>
+                  </span>
+                  {example ? <Avatar text={example.image} label={example.name} /> : null}
+                </button>
+              );
+            })}
+          </div>
+        </Panel>
+        <Panel title={`Best ${selectedWork} Pals`} className="recommendations-panel">
+          <div className="ranked-list">
+            {bestPals.map(({ pal, work }, index) => (
+              <a className="ranked-row" href={`#/pals/${pal.key}`} key={pal.id}>
+                <span>{index + 1}</span>
+                <Avatar text={pal.image} label={pal.name} />
+                <strong>{pal.name}</strong>
+                <small>Lv. {work.level}</small>
+              </a>
+            ))}
+          </div>
+        </Panel>
+      </section>
+    </>
+  );
+}
+
+function RanchPage() {
+  const ranchAnimals = ranchPals();
+  return (
+    <>
+      <Hero title="Ranch Animals" eyebrow="Farming Pals and drops">
+        <p>Pals shown here have Farming work suitability. Drops are pulled from each Pal entry.</p>
+      </Hero>
+      <section className="ranch-list">
+        {ranchAnimals.map((pal) => (
+          <article className="ranch-row" key={pal.id}>
+            <a className="pal-link" href={`#/pals/${pal.key}`}>
+              <Avatar text={pal.image} label={pal.name} />
+              <span>
+                <strong>{pal.name}</strong>
+                <small>Farming Lv. {pal.workSuitability.find((work) => work.type === "Farming")?.level || "?"}</small>
+              </span>
+            </a>
+            <div className="drop-strip">
+              {pal.possibleDrops.length ? pal.possibleDrops.slice(0, 5).map((drop) => {
+                const resource = findResource(drop.resourceId);
+                return resource ? (
+                  <a href={`#/resources/${resource.id}`} key={drop.resourceId} title={resource.name}>
+                    <Avatar text={resource.image} label={resource.name} />
+                    <span>{resource.name}</span>
+                  </a>
+                ) : null;
+              }) : <span>Drop data unavailable</span>}
+            </div>
+          </article>
+        ))}
+      </section>
+    </>
+  );
+}
+
 function BreedingForPal({ pal }: { pal: Pal }) {
   const childCombos = breeding.filter((combo) => combo.childId === pal.id);
   const parentCombos = breeding.filter((combo) => combo.parentAId === pal.id || combo.parentBId === pal.id);
@@ -1311,6 +1477,16 @@ function findLocation(id: string) {
 
 function randomPal() {
   return pals[Math.floor(Math.random() * pals.length)];
+}
+
+function ranchPals() {
+  return pals
+    .filter((pal) => pal.workSuitability.some((work) => work.type === "Farming"))
+    .sort((a, b) => {
+      const aLevel = a.workSuitability.find((work) => work.type === "Farming")?.level || 0;
+      const bLevel = b.workSuitability.find((work) => work.type === "Farming")?.level || 0;
+      return bLevel - aLevel || a.id - b.id;
+    });
 }
 
 export default function App() {
