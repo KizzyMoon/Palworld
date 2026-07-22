@@ -38,14 +38,6 @@ type NewsItem = {
   summary: string;
 };
 
-type BuildStation = {
-  id: string;
-  name: string;
-  category: string;
-  description: string;
-  requiredWork: { type: string; note?: string }[];
-};
-
 type NavItem = {
   hash: string;
   label: string;
@@ -97,24 +89,6 @@ const priorityItems = [
   "Check food, ingots, ammo, and repair materials before boss runs or dungeon loops.",
 ];
 
-const buildStations: BuildStation[] = [
-  { id: "furnace", name: "Furnace", category: "Production", description: "Smelting ore and ingots.", requiredWork: [{ type: "Kindling" }] },
-  { id: "cooking-pot", name: "Cooking Pot", category: "Food", description: "Cooking meals for base workers.", requiredWork: [{ type: "Kindling" }] },
-  { id: "cooler", name: "Cooler Box", category: "Food", description: "Keeping food fresh for longer.", requiredWork: [{ type: "Cooling" }] },
-  { id: "refrigerator", name: "Refrigerator", category: "Food", description: "Late-base food storage.", requiredWork: [{ type: "Cooling" }, { type: "Generating Electricity", note: "for powered bases" }] },
-  { id: "clinic", name: "Clinic", category: "Recovery", description: "Making medicine and treating base problems.", requiredWork: [{ type: "Medicine Production" }] },
-  { id: "medicine-bench", name: "Medicine Workbench", category: "Recovery", description: "Crafting medicine supplies.", requiredWork: [{ type: "Medicine Production" }, { type: "Handiwork" }] },
-  { id: "primitive-workbench", name: "Workbench", category: "Production", description: "General crafting and repairs.", requiredWork: [{ type: "Handiwork" }] },
-  { id: "assembly-line", name: "Assembly Line", category: "Production", description: "Higher-volume crafting.", requiredWork: [{ type: "Handiwork" }, { type: "Generating Electricity", note: "for powered lines" }] },
-  { id: "mill", name: "Mill", category: "Food", description: "Turning wheat into flour.", requiredWork: [{ type: "Watering" }] },
-  { id: "crusher", name: "Crusher", category: "Materials", description: "Processing stone and ore materials.", requiredWork: [{ type: "Watering" }] },
-  { id: "logging-site", name: "Logging Site", category: "Materials", description: "Base wood production.", requiredWork: [{ type: "Lumbering" }, { type: "Transporting" }] },
-  { id: "stone-pit", name: "Stone Pit", category: "Materials", description: "Base stone production.", requiredWork: [{ type: "Mining" }, { type: "Transporting" }] },
-  { id: "ranch", name: "Ranch", category: "Materials", description: "Passive Pal drops at base.", requiredWork: [{ type: "Farming" }, { type: "Transporting" }] },
-  { id: "plantation", name: "Plantation", category: "Food", description: "Growing berries, wheat, lettuce, tomatoes, and more.", requiredWork: [{ type: "Planting" }, { type: "Watering" }, { type: "Gathering" }, { type: "Transporting" }] },
-  { id: "generator", name: "Power Generator", category: "Power", description: "Keeping electric facilities running.", requiredWork: [{ type: "Generating Electricity" }] },
-];
-
 const workTypeNotes: Record<string, string> = {
   Cooling: "Keeps food and storage cold.",
   Farming: "Works at ranches for passive drops.",
@@ -145,7 +119,7 @@ const navGroups: { title: string; items: NavItem[] }[] = [
     title: "Guides",
     items: [
       { hash: "#/work", label: "Work Types", icon: "work" },
-      { hash: "#/build", label: "Build Planner", icon: "build" },
+      { hash: "#/build", label: "Work Pals", icon: "build" },
       { hash: "#/breeding", label: "Breeding", icon: "egg" },
     ],
   },
@@ -376,7 +350,6 @@ function HomePage() {
       <section className="home-dashboard">
         <LevelMapPanel />
         <LatestUpdatesPanel />
-        <BasePlanner />
         <Panel title="Next Useful Checks">
           <ul className="priority-list">
             {priorityItems.map((item) => <li key={item}>{item}</li>)}
@@ -461,7 +434,7 @@ function LatestUpdatesPanel() {
   );
 }
 
-function BasePlanner() {
+function WorkPalsPlanner({ title = "Work Pals" }: { title?: string }) {
   const { isOwned } = useCollection();
   const jobs = useMemo(() => unique(pals.flatMap((pal) => pal.workSuitability.map((work) => work.type))), []);
   const [job, setJob] = useState(jobs.includes("Mining") ? "Mining" : jobs[0] || "");
@@ -475,7 +448,7 @@ function BasePlanner() {
   const selectedTarget = targets[job];
 
   return (
-    <Panel title="Base Job Planner">
+    <Panel title={title} className="work-pals-panel">
       <div className="job-tabs" role="list" aria-label="Base jobs">
         {jobs.slice(0, 10).map((item) => (
           <button className={item === job ? "toggle active" : "toggle"} type="button" key={item} onClick={() => setJob(item)}>
@@ -864,95 +837,13 @@ function BreedingPage() {
 }
 
 function BuildPage() {
-  const [query, setQuery] = useState("");
-  const categories = unique(buildStations.map((station) => station.category));
-  const [category, setCategory] = useState("all");
-  const [selectedIds, setSelectedIds] = useState<string[]>(["furnace", "cooler", "clinic"]);
-  const selectedStations = selectedIds.map((id) => buildStations.find((station) => station.id === id)).filter(Boolean) as BuildStation[];
-  const filteredStations = buildStations.filter((station) => {
-    const searchText = `${station.name} ${station.category} ${station.description} ${station.requiredWork.map((work) => work.type).join(" ")}`.toLowerCase();
-    const matchesQuery = !query.trim() || searchText.includes(query.trim().toLowerCase());
-    const matchesCategory = category === "all" || station.category === category;
-    return matchesQuery && matchesCategory;
-  });
-
-  function toggleStation(id: string) {
-    setSelectedIds((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
-  }
-
   return (
     <>
-      <Hero title="Build Planner" eyebrow="Base work recommendations">
-        <p>Select the build items you want staffed, then use the Pal recommendations for each job.</p>
+      <Hero title="Work Pals" eyebrow="Base job recommendations">
+        <p>Pick a work type to see the strongest Pals for that job.</p>
       </Hero>
-      <section className="toolbar">
-        <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search furnace, clinic, cooling, mining..." aria-label="Search build items" />
-        <select value={category} onChange={(event) => setCategory(event.target.value)} aria-label="Filter build items">
-          <option value="all">All build types</option>
-          {categories.map((item) => <option key={item}>{item}</option>)}
-        </select>
-        <button type="button" onClick={() => setSelectedIds(buildStations.map((station) => station.id))}>Select all</button>
-        <button type="button" onClick={() => setSelectedIds([])}>Clear</button>
-      </section>
-      <section className="build-layout">
-        <Panel title="Build Items">
-          <div className="station-grid">
-            {filteredStations.map((station) => {
-              const selected = selectedIds.includes(station.id);
-              return (
-                <button className={selected ? "station-card selected" : "station-card"} type="button" key={station.id} onClick={() => toggleStation(station.id)} aria-pressed={selected}>
-                  <span>
-                    <strong>{station.name}</strong>
-                    <small>{station.category}</small>
-                  </span>
-                  <p>{station.description}</p>
-                  <div className="station-work">
-                    {station.requiredWork.map((work) => <Badge key={`${station.id}-${work.type}`}>{work.type}</Badge>)}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </Panel>
-        <Panel title="Recommended Pals" className="recommendations-panel">
-          {selectedStations.length ? (
-            <div className="build-recommendations">
-              {selectedStations.map((station) => <BuildRecommendation key={station.id} station={station} />)}
-            </div>
-          ) : (
-            <EmptyState text="Select at least one build item to see Pal recommendations." />
-          )}
-        </Panel>
-      </section>
+      <WorkPalsPlanner />
     </>
-  );
-}
-
-function BuildRecommendation({ station }: { station: BuildStation }) {
-  const { isOwned } = useCollection();
-  const recommendations = recommendPalsForStation(station).slice(0, 5);
-  return (
-    <article className="recommendation-block">
-      <header>
-        <div>
-          <h3>{station.name}</h3>
-          <p>{station.requiredWork.map((work) => work.note ? `${work.type} (${work.note})` : work.type).join(" / ")}</p>
-        </div>
-        <Badge>{station.category}</Badge>
-      </header>
-      <div className="planner-grid">
-        {recommendations.map(({ pal, matchedWork, score }) => (
-          <a className="planner-row recommendation-row" href={`#/pals/${pal.key}`} key={pal.id}>
-            <Avatar text={pal.image} label={pal.name} />
-            <span>
-              <strong>{pal.name}</strong>
-              <small>{matchedWork.map((work) => `${work.type} Lv. ${work.level}`).join(" - ")}{isOwned(pal.id) ? " - Owned" : ""}</small>
-            </span>
-            <em>{score}</em>
-          </a>
-        ))}
-      </div>
-    </article>
   );
 }
 
@@ -1304,25 +1195,6 @@ function unique<T>(items: T[]) {
 
 function strongestWork(pal: Pal) {
   return [...pal.workSuitability].sort((a, b) => b.level - a.level)[0];
-}
-
-function recommendPalsForStation(station: BuildStation) {
-  return pals
-    .map((pal) => {
-      const matchedWork = station.requiredWork
-        .map((required) => pal.workSuitability.find((work) => work.type === required.type))
-        .filter(Boolean) as { type: string; level: number }[];
-      const coverage = matchedWork.length / station.requiredWork.length;
-      const levelScore = matchedWork.reduce((total, work) => total + work.level, 0);
-      const bestLevel = matchedWork.reduce((best, work) => Math.max(best, work.level), 0);
-      return {
-        pal,
-        matchedWork,
-        score: Math.round(coverage * 100 + levelScore * 10 + bestLevel),
-      };
-    })
-    .filter((item) => item.matchedWork.length)
-    .sort((a, b) => b.score - a.score || b.matchedWork.length - a.matchedWork.length || a.pal.name.localeCompare(b.pal.name));
 }
 
 function highestWork(pal: Pal) {
