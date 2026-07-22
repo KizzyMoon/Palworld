@@ -36,7 +36,6 @@ type Page =
   | { name: "pal"; key: string }
   | { name: "ranch" }
   | { name: "work" }
-  | { name: "build" }
   | { name: "party" }
   | { name: "breeding" }
   | { name: "resources" }
@@ -140,7 +139,6 @@ const navGroups: { title: string; items: NavItem[] }[] = [
     title: "Guides",
     items: [
       { hash: "#/work", label: "Work Types", icon: "work" },
-      { hash: "#/build", label: "Work Pals", icon: "build" },
       { hash: "#/party", label: "Party Analyzer", icon: "party" },
       { hash: "#/breeding", label: "Breeding", icon: "egg" },
     ],
@@ -149,7 +147,7 @@ const navGroups: { title: string; items: NavItem[] }[] = [
 ];
 
 const navItems = navGroups.flatMap((group) => group.items);
-const mobileNavItems = navItems.filter((item) => ["#/", "#/pals", "#/build", "#/resources", "#/owned"].includes(item.hash));
+const mobileNavItems = navItems.filter((item) => ["#/", "#/pals", "#/work", "#/resources", "#/owned"].includes(item.hash));
 
 function NavIcon({ name }: { name: string }) {
   if (name === "home") {
@@ -175,16 +173,6 @@ function NavIcon({ name }: { name: string }) {
         <path d="M12 3 4.5 7.2v9.6L12 21l7.5-4.2V7.2L12 3Z" />
         <path d="m4.5 7.2 7.5 4.2 7.5-4.2" />
         <path d="M12 11.4V21" />
-      </svg>
-    );
-  }
-  if (name === "build") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="m14.5 5 4.5 4.5" />
-        <path d="m16 3 5 5-2.5 2.5-5-5L16 3Z" />
-        <path d="M4 20h5l8.5-8.5-5-5L4 15v5Z" />
-        <path d="M4 15h5v5" />
       </svg>
     );
   }
@@ -248,7 +236,6 @@ function parseHash(): Page {
   if (parts[0] === "pals") return { name: "pals" };
   if (parts[0] === "ranch") return { name: "ranch" };
   if (parts[0] === "work") return { name: "work" };
-  if (parts[0] === "build") return { name: "build" };
   if (parts[0] === "party") return { name: "party" };
   if (parts[0] === "breeding") return { name: "breeding" };
   if (parts[0] === "resources" && parts[1]) return { name: "resource", id: parts[1] };
@@ -325,7 +312,6 @@ function PageContent({ page }: { page: Page }) {
   if (page.name === "pal") return <PalDetailsPage palKey={page.key} />;
   if (page.name === "ranch") return <RanchPage />;
   if (page.name === "work") return <WorkPage />;
-  if (page.name === "build") return <BuildPage />;
   if (page.name === "party") return <PartyPage />;
   if (page.name === "breeding") return <BreedingPage />;
   if (page.name === "resources") return <ResourcesPage />;
@@ -408,48 +394,6 @@ function LatestUpdatesPanel() {
         ))}
       </div>
       <p className="feed-status">{status}</p>
-    </Panel>
-  );
-}
-
-function WorkPalsPlanner({ title = "Work Pals" }: { title?: string }) {
-  const { isOwned } = useCollection();
-  const jobs = useMemo(() => unique(pals.flatMap((pal) => pal.workSuitability.map((work) => work.type))), []);
-  const [job, setJob] = useStoredState("palworld-companion.workPals.job", jobs.includes("Mining") ? "Mining" : jobs[0] || "");
-  const [targets, setTargets] = useStoredState<Record<string, number | undefined>>("palworld-companion.workPals.targets", {});
-  const candidates = useMemo(() => {
-    return pals
-      .flatMap((pal) => pal.workSuitability.filter((work) => work.type === job).map((work) => ({ pal, work })))
-      .sort((a, b) => b.work.level - a.work.level || a.pal.name.localeCompare(b.pal.name))
-      .slice(0, 6);
-  }, [job]);
-  const selectedTarget = targets[job];
-
-  return (
-    <Panel title={title} className="work-pals-panel">
-      <div className="job-tabs" role="list" aria-label="Base jobs">
-        {jobs.slice(0, 10).map((item) => (
-          <button className={item === job ? "toggle active" : "toggle"} type="button" key={item} onClick={() => setJob(item)}>
-            {item}
-          </button>
-        ))}
-      </div>
-      <div className="planner-grid">
-        {candidates.map(({ pal, work }) => (
-          <button
-            className={selectedTarget === pal.id ? "planner-row selected" : "planner-row"}
-            type="button"
-            key={pal.id}
-            onClick={() => setTargets((current) => ({ ...current, [job]: current[job] === pal.id ? undefined : pal.id }))}
-          >
-            <Avatar text={pal.image} label={pal.name} />
-            <span>
-              <strong>{pal.name}</strong>
-              <small>{work.type} Lv. {work.level}{isOwned(pal.id) ? " - Owned" : ""}</small>
-            </span>
-          </button>
-        ))}
-      </div>
     </Panel>
   );
 }
@@ -810,17 +754,6 @@ function BreedingPage() {
           {desiredCombos.length ? desiredCombos.map((combo) => <BreedingPair key={combo.id} combo={combo} />) : <EmptyState text="No known combinations for this Pal." />}
         </Panel>
       </section>
-    </>
-  );
-}
-
-function BuildPage() {
-  return (
-    <>
-      <Hero title="Work Pals" eyebrow="Base job recommendations">
-        <p>Pick a work type to see the strongest Pals for that job.</p>
-      </Hero>
-      <WorkPalsPlanner />
     </>
   );
 }
