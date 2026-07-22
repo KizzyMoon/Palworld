@@ -76,12 +76,18 @@ const fallbackNews: NewsItem[] = [
 ];
 
 const levelZones = [
-  { name: "Starter Coast", range: "1-20", left: "60%", top: "52%", width: "35%", height: "16%", color: "rgba(55, 210, 142, 0.68)" },
-  { name: "Central Islands", range: "20-30", left: "49%", top: "43%", width: "28%", height: "16%", color: "rgba(232, 215, 72, 0.68)" },
-  { name: "Northern Woods", range: "30-40", left: "66%", top: "31%", width: "30%", height: "20%", color: "rgba(181, 224, 78, 0.68)" },
-  { name: "Volcano and desert edge", range: "30-50", left: "39%", top: "38%", width: "25%", height: "24%", color: "rgba(226, 117, 69, 0.68)" },
-  { name: "High-risk islands", range: "50-60", left: "28%", top: "31%", width: "20%", height: "15%", color: "rgba(195, 112, 42, 0.72)" },
-  { name: "Endgame south-west", range: "60-70", left: "29%", top: "74%", width: "31%", height: "23%", color: "rgba(186, 67, 219, 0.68)" },
+  { name: "Starter islands", range: "1-20", left: "61%", top: "56%", width: "27%", height: "11%", tilt: -10, color: "rgba(37, 207, 135, 0.7)" },
+  { name: "Bamboo groves", range: "10-20", left: "49%", top: "42%", width: "17%", height: "8%", tilt: -8, color: "rgba(44, 222, 118, 0.68)" },
+  { name: "Central islands", range: "20-30", left: "52%", top: "49%", width: "23%", height: "11%", tilt: -10, color: "rgba(226, 214, 68, 0.68)" },
+  { name: "Small eastern isle", range: "20-30", left: "62%", top: "66%", width: "10%", height: "5%", tilt: -6, color: "rgba(226, 214, 68, 0.68)" },
+  { name: "Northern island", range: "30-40", left: "69%", top: "35%", width: "23%", height: "15%", tilt: -8, color: "rgba(181, 224, 78, 0.68)" },
+  { name: "Eastern strip", range: "30-40", left: "75%", top: "48%", width: "12%", height: "8%", tilt: -8, color: "rgba(181, 224, 78, 0.68)" },
+  { name: "Volcanic island", range: "30-50", left: "39%", top: "51%", width: "22%", height: "16%", tilt: -8, color: "rgba(219, 103, 61, 0.68)" },
+  { name: "Northern ridge", range: "30-50", left: "46%", top: "33%", width: "20%", height: "11%", tilt: -9, color: "rgba(219, 103, 61, 0.68)" },
+  { name: "Western highlands", range: "50-60", left: "33%", top: "40%", width: "15%", height: "8%", tilt: -7, color: "rgba(183, 98, 33, 0.72)" },
+  { name: "Far eastern island", range: "50-60", left: "86%", top: "34%", width: "8%", height: "5%", tilt: -4, color: "rgba(183, 98, 33, 0.72)" },
+  { name: "Astral mountains", range: "60-70", left: "31%", top: "78%", width: "28%", height: "18%", tilt: -10, color: "rgba(188, 62, 217, 0.7)" },
+  { name: "Southern island", range: "60-70", left: "52%", top: "83%", width: "16%", height: "9%", tilt: -8, color: "rgba(188, 62, 217, 0.7)" },
 ];
 
 const priorityItems = [
@@ -424,6 +430,7 @@ function LevelMapPanel() {
               width: zone.width,
               height: zone.height,
               backgroundColor: zone.color,
+              transform: `translate(-50%, -50%) rotate(${zone.tilt}deg)`,
             }}
           >
             <strong>{zone.range}</strong>
