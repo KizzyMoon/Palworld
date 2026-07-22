@@ -564,8 +564,7 @@ button {
 }
 
 .work-type-list,
-.ranked-list,
-.ranch-list {
+.ranked-list {
   display: grid;
   gap: 0.75rem;
 }
@@ -599,13 +598,12 @@ button {
 
 .work-type-card small,
 .ranked-row small,
-.ranch-row small,
-.drop-strip span {
+.ranch-drop-card small,
+.ranch-pal-chip small {
   color: var(--muted);
 }
 
-.ranked-row,
-.ranch-row {
+.ranked-row {
   border: 1px solid var(--line);
   border-radius: 0.45rem;
   background: rgba(16, 27, 45, 0.75);
@@ -631,33 +629,61 @@ button {
   font-weight: 950;
 }
 
-.ranch-row {
+.ranch-drop-grid {
   display: grid;
-  grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.3fr);
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 0.85rem;
+}
+
+.ranch-drop-card {
+  display: grid;
   gap: 0.75rem;
-  align-items: center;
-  padding: 0.75rem;
+  align-content: start;
+  padding: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 0.45rem;
+  background: rgba(16, 27, 45, 0.75);
 }
 
-.drop-strip {
+.ranch-drop-card header a {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-  justify-content: flex-end;
-}
-
-.drop-strip a {
-  display: grid;
-  gap: 0.2rem;
-  justify-items: center;
-  max-width: 5.8rem;
-  text-align: center;
+  align-items: center;
+  gap: 0.75rem;
   text-decoration: none;
 }
 
-.drop-strip .avatar {
-  width: 3rem;
-  height: 3rem;
+.ranch-drop-card header .avatar {
+  width: 4rem;
+  height: 4rem;
+}
+
+.ranch-pal-grid {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.ranch-pal-chip {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 0.45rem;
+  background: rgba(8, 18, 30, 0.46);
+  text-decoration: none;
+}
+
+.ranch-pal-chip .avatar {
+  width: 3.1rem;
+  height: 3.1rem;
+}
+
+.empty-card {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.45rem;
+  background: rgba(16, 27, 45, 0.75);
 }
 
 .browser {
@@ -1108,14 +1134,6 @@ button {
 
   .pal-list {
     grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
-  }
-
-  .ranch-row {
-    grid-template-columns: 1fr;
-  }
-
-  .drop-strip {
-    justify-content: flex-start;
   }
 
   .compact-card {

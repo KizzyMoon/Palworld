@@ -104,6 +104,27 @@ const workTypeNotes: Record<string, string> = {
   Watering: "Waters crops and powers mills/crushers.",
 };
 
+const ranchDropTokens: Record<string, string[]> = {
+  berries: ["berries"],
+  bone: ["bone"],
+  cloth2: ["cloth2"],
+  electricorgan: ["electricorgan"],
+  egg: ["egg"],
+  fireorgan: ["fireorgan"],
+  honey: ["honey"],
+  iceorgan: ["iceorgan"],
+  leather: ["leather"],
+  milk: ["milk"],
+  money: ["money"],
+  mushroom: ["mushroom"],
+  palfluid: ["palfluid"],
+  paloil: ["paloil"],
+  sweet: ["sweet"],
+  sweet_caramel: ["sweet-caramel"],
+  venom: ["venom"],
+  wool: ["wool"],
+};
+
 const navGroups: { title: string; items: NavItem[] }[] = [
   { title: "Dashboard", items: [{ hash: "#/", label: "Dashboard", icon: "home" }] },
   {
@@ -896,38 +917,92 @@ function WorkPage() {
 }
 
 function RanchPage() {
-  const ranchAnimals = ranchPals();
+  const dropGroups = ranchDropGroups();
   return (
     <>
-      <Hero title="Ranch Animals" eyebrow="Farming Pals and drops">
-        <p>Pals shown here have Farming work suitability. Drops are pulled from each Pal entry.</p>
+      <Hero title="Ranch Drops" eyebrow="Grouped by item">
+        <p>Pick the item you need, then choose a Farming Pal that can make it at the Ranch.</p>
       </Hero>
-      <section className="ranch-list">
-        {ranchAnimals.map((pal) => (
-          <article className="ranch-row" key={pal.id}>
-            <a className="pal-link" href={`#/pals/${pal.key}`}>
-              <Avatar text={pal.image} label={pal.name} />
-              <span>
-                <strong>{pal.name}</strong>
-                <small>Farming Lv. {pal.workSuitability.find((work) => work.type === "Farming")?.level || "?"}</small>
-              </span>
-            </a>
-            <div className="drop-strip">
-              {pal.possibleDrops.length ? pal.possibleDrops.slice(0, 5).map((drop) => {
-                const resource = findResource(drop.resourceId);
-                return resource ? (
-                  <a href={`#/resources/${resource.id}`} key={drop.resourceId} title={resource.name}>
-                    <Avatar text={resource.image} label={resource.name} />
-                    <span>{resource.name}</span>
-                  </a>
-                ) : null;
-              }) : <span>Drop data unavailable</span>}
+      <section className="ranch-drop-grid">
+        {dropGroups.map((group) => (
+          <article className="ranch-drop-card" key={group.resource.id}>
+            <header>
+              <a href={`#/resources/${group.resource.id}`}>
+                <Avatar text={group.resource.image} label={group.resource.name} />
+                <span>
+                  <strong>{group.resource.name}</strong>
+                  <small>{group.pals.length} {group.pals.length === 1 ? "Pal" : "Pals"}</small>
+                </span>
+              </a>
+            </header>
+            <div className="ranch-pal-grid">
+              {group.pals.map(({ pal, farmingLevel }) => (
+                <a className="ranch-pal-chip" href={`#/pals/${pal.key}`} key={pal.id}>
+                  <Avatar text={pal.image} label={pal.name} />
+                  <span>
+                    <strong>{pal.name}</strong>
+                    <small>Farming Lv. {farmingLevel || "?"}</small>
+                  </span>
+                </a>
+              ))}
             </div>
           </article>
         ))}
+        {!dropGroups.length && (
+          <article className="empty-card">
+            <h3>No Ranch drops found</h3>
+            <p>Ranch drop data is not currently available.</p>
+          </article>
+        )}
       </section>
     </>
   );
+}
+
+function ranchDropIdsForPal(pal: Pal) {
+  const description = pal.partnerSkill?.description || "";
+  const ids = new Set<string>();
+
+  Object.entries(ranchDropTokens).forEach(([token, resourceIds]) => {
+    if (description.includes(`${token}|`)) {
+      resourceIds.forEach((resourceId) => ids.add(resourceId));
+    }
+  });
+
+  if (description.includes("various seeds")) {
+    pal.possibleDrops.forEach((drop) => {
+      if (drop.resourceId.includes("seeds")) ids.add(drop.resourceId);
+    });
+  }
+
+  if (description.includes("digs up items")) {
+    ["arrow", "bone", "money"].forEach((resourceId) => ids.add(resourceId));
+  }
+
+  return Array.from(ids);
+}
+
+function ranchDropGroups() {
+  const groups = new Map<string, { resource: Resource; pals: { pal: Pal; farmingLevel: number }[] }>();
+
+  ranchPals().forEach((pal) => {
+    const farmingLevel = pal.workSuitability.find((work) => work.type === "Farming")?.level || 0;
+    ranchDropIdsForPal(pal).forEach((resourceId) => {
+      const resource = findResource(resourceId);
+      if (!resource) return;
+      if (!groups.has(resource.id)) {
+        groups.set(resource.id, { resource, pals: [] });
+      }
+      groups.get(resource.id)?.pals.push({ pal, farmingLevel });
+    });
+  });
+
+  return Array.from(groups.values())
+    .map((group) => ({
+      ...group,
+      pals: group.pals.sort((a, b) => b.farmingLevel - a.farmingLevel || a.pal.name.localeCompare(b.pal.name)),
+    }))
+    .sort((a, b) => a.resource.name.localeCompare(b.resource.name));
 }
 
 function BreedingForPal({ pal }: { pal: Pal }) {
