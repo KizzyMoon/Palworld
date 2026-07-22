@@ -76,18 +76,18 @@ const fallbackNews: NewsItem[] = [
 ];
 
 const levelZones = [
-  { name: "Starter islands", range: "1-20", left: "61%", top: "56%", width: "27%", height: "11%", tilt: -10, color: "rgba(37, 207, 135, 0.7)" },
-  { name: "Bamboo groves", range: "10-20", left: "49%", top: "42%", width: "17%", height: "8%", tilt: -8, color: "rgba(44, 222, 118, 0.68)" },
-  { name: "Central islands", range: "20-30", left: "52%", top: "49%", width: "23%", height: "11%", tilt: -10, color: "rgba(226, 214, 68, 0.68)" },
-  { name: "Small eastern isle", range: "20-30", left: "62%", top: "66%", width: "10%", height: "5%", tilt: -6, color: "rgba(226, 214, 68, 0.68)" },
-  { name: "Northern island", range: "30-40", left: "69%", top: "35%", width: "23%", height: "15%", tilt: -8, color: "rgba(181, 224, 78, 0.68)" },
-  { name: "Eastern strip", range: "30-40", left: "75%", top: "48%", width: "12%", height: "8%", tilt: -8, color: "rgba(181, 224, 78, 0.68)" },
-  { name: "Volcanic island", range: "30-50", left: "39%", top: "51%", width: "22%", height: "16%", tilt: -8, color: "rgba(219, 103, 61, 0.68)" },
-  { name: "Northern ridge", range: "30-50", left: "46%", top: "33%", width: "20%", height: "11%", tilt: -9, color: "rgba(219, 103, 61, 0.68)" },
-  { name: "Western highlands", range: "50-60", left: "33%", top: "40%", width: "15%", height: "8%", tilt: -7, color: "rgba(183, 98, 33, 0.72)" },
-  { name: "Far eastern island", range: "50-60", left: "86%", top: "34%", width: "8%", height: "5%", tilt: -4, color: "rgba(183, 98, 33, 0.72)" },
-  { name: "Astral mountains", range: "60-70", left: "31%", top: "78%", width: "28%", height: "18%", tilt: -10, color: "rgba(188, 62, 217, 0.7)" },
-  { name: "Southern island", range: "60-70", left: "52%", top: "83%", width: "16%", height: "9%", tilt: -8, color: "rgba(188, 62, 217, 0.7)" },
+  { name: "Starter islands", range: "1-20", left: "61%", top: "56%", width: "29%", height: "13%", tilt: -10, color: "rgba(37, 207, 135, 0.7)", shape: "polygon(5% 44%, 16% 18%, 42% 4%, 74% 9%, 96% 34%, 91% 67%, 62% 91%, 27% 88%, 7% 68%)" },
+  { name: "Bamboo groves", range: "10-20", left: "49%", top: "42%", width: "18%", height: "9%", tilt: -8, color: "rgba(44, 222, 118, 0.68)", shape: "polygon(4% 54%, 18% 22%, 48% 4%, 83% 17%, 97% 50%, 83% 80%, 44% 96%, 12% 78%)" },
+  { name: "Central islands", range: "20-30", left: "52%", top: "49%", width: "24%", height: "12%", tilt: -10, color: "rgba(226, 214, 68, 0.68)", shape: "polygon(3% 48%, 19% 17%, 47% 5%, 79% 14%, 98% 43%, 90% 72%, 61% 92%, 27% 86%, 8% 68%)" },
+  { name: "Small eastern isle", range: "20-30", left: "62%", top: "66%", width: "10%", height: "6%", tilt: -6, color: "rgba(226, 214, 68, 0.68)", shape: "polygon(8% 41%, 31% 12%, 73% 16%, 94% 49%, 76% 84%, 29% 88%, 6% 64%)" },
+  { name: "Northern island", range: "30-40", left: "69%", top: "35%", width: "24%", height: "17%", tilt: -8, color: "rgba(181, 224, 78, 0.68)", shape: "polygon(8% 32%, 22% 8%, 53% 2%, 82% 14%, 98% 42%, 90% 72%, 60% 96%, 27% 85%, 5% 60%)" },
+  { name: "Eastern strip", range: "30-40", left: "75%", top: "48%", width: "13%", height: "9%", tilt: -8, color: "rgba(181, 224, 78, 0.68)", shape: "polygon(3% 45%, 20% 18%, 53% 5%, 85% 19%, 97% 53%, 76% 84%, 34% 94%, 9% 72%)" },
+  { name: "Volcanic island", range: "30-50", left: "39%", top: "51%", width: "23%", height: "18%", tilt: -8, color: "rgba(219, 103, 61, 0.68)", shape: "polygon(8% 34%, 27% 9%, 60% 4%, 88% 21%, 98% 55%, 80% 85%, 42% 95%, 12% 74%, 2% 52%)" },
+  { name: "Northern ridge", range: "30-50", left: "46%", top: "33%", width: "21%", height: "12%", tilt: -9, color: "rgba(219, 103, 61, 0.68)", shape: "polygon(4% 46%, 18% 18%, 51% 4%, 85% 16%, 97% 49%, 75% 82%, 35% 92%, 8% 70%)" },
+  { name: "Western highlands", range: "50-60", left: "33%", top: "40%", width: "16%", height: "9%", tilt: -7, color: "rgba(183, 98, 33, 0.72)", shape: "polygon(7% 48%, 25% 16%, 66% 7%, 94% 34%, 87% 70%, 48% 91%, 12% 75%)" },
+  { name: "Far eastern island", range: "50-60", left: "86%", top: "34%", width: "8%", height: "6%", tilt: -4, color: "rgba(183, 98, 33, 0.72)", shape: "polygon(9% 47%, 31% 12%, 72% 15%, 94% 49%, 73% 86%, 26% 83%)" },
+  { name: "Astral mountains", range: "60-70", left: "31%", top: "78%", width: "29%", height: "20%", tilt: -10, color: "rgba(188, 62, 217, 0.7)", shape: "polygon(5% 46%, 18% 17%, 47% 4%, 79% 10%, 96% 36%, 91% 66%, 64% 91%, 29% 95%, 7% 72%)" },
+  { name: "Southern island", range: "60-70", left: "52%", top: "83%", width: "17%", height: "10%", tilt: -8, color: "rgba(188, 62, 217, 0.7)", shape: "polygon(8% 43%, 25% 14%, 66% 10%, 93% 36%, 86% 73%, 48% 92%, 13% 73%)" },
 ];
 
 const priorityItems = [
@@ -430,6 +430,7 @@ function LevelMapPanel() {
               width: zone.width,
               height: zone.height,
               backgroundColor: zone.color,
+              clipPath: zone.shape,
               transform: `translate(-50%, -50%) rotate(${zone.tilt}deg)`,
             }}
           >
