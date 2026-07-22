@@ -388,9 +388,8 @@ function AppShell() {
     <div className="app-shell">
       <aside className="sidebar" aria-label="Main navigation">
         <a className="brand" href="#/" aria-label="Palworld Companion home">
-          <span className="brand-mark">P</span>
+          <img className="brand-logo" src="palworld-logo.png" alt="Palworld" />
           <span>
-            <strong>Palworld</strong>
             <small>Companion</small>
           </span>
         </a>

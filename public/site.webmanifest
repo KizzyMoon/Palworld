@@ -1,0 +1,23 @@
+{
+  "name": "Palworld Companion",
+  "short_name": "Palworld",
+  "description": "A mobile-first Palworld companion for Pals, habitats, breeding, resources, owned tracking, and favourites.",
+  "start_url": "/Palworld/",
+  "scope": "/Palworld/",
+  "display": "standalone",
+  "background_color": "#08121e",
+  "theme_color": "#101827",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
