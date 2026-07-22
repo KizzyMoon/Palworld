@@ -22,6 +22,7 @@ type Page =
   | { name: "ranch" }
   | { name: "work" }
   | { name: "build" }
+  | { name: "party" }
   | { name: "breeding" }
   | { name: "resources" }
   | { name: "resource"; id: string }
@@ -140,6 +141,7 @@ const navGroups: { title: string; items: NavItem[] }[] = [
     items: [
       { hash: "#/work", label: "Work Types", icon: "work" },
       { hash: "#/build", label: "Work Pals", icon: "build" },
+      { hash: "#/party", label: "Party Analyzer", icon: "party" },
       { hash: "#/breeding", label: "Breeding", icon: "egg" },
     ],
   },
@@ -215,6 +217,15 @@ function NavIcon({ name }: { name: string }) {
     return (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.8-5.4 2.8 1-6-4.4-4.3 6.1-.9L12 3Z" />
+      </svg>
+    );
+  }
+  if (name === "party") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3 20 7v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4Z" />
+        <path d="M8.5 12h7" />
+        <path d="M12 8.5v7" />
       </svg>
     );
   }
@@ -342,6 +353,7 @@ function parseHash(): Page {
   if (parts[0] === "ranch") return { name: "ranch" };
   if (parts[0] === "work") return { name: "work" };
   if (parts[0] === "build") return { name: "build" };
+  if (parts[0] === "party") return { name: "party" };
   if (parts[0] === "breeding") return { name: "breeding" };
   if (parts[0] === "resources" && parts[1]) return { name: "resource", id: parts[1] };
   if (parts[0] === "resources") return { name: "resources" };
@@ -419,6 +431,7 @@ function PageContent({ page }: { page: Page }) {
   if (page.name === "ranch") return <RanchPage />;
   if (page.name === "work") return <WorkPage />;
   if (page.name === "build") return <BuildPage />;
+  if (page.name === "party") return <PartyPage />;
   if (page.name === "breeding") return <BreedingPage />;
   if (page.name === "resources") return <ResourcesPage />;
   if (page.name === "resource") return <ResourceDetailsPage resourceId={page.id} />;
@@ -964,6 +977,74 @@ function BuildPage() {
   );
 }
 
+function PartyPage() {
+  const [partyIds, setPartyIds] = useState(() => pals.slice(0, 5).map((pal) => pal.id));
+  const party = unique(partyIds).map(findPal).filter((pal): pal is Pal => Boolean(pal));
+  const analysis = analyzeParty(party);
+
+  function updateSlot(index: number, value: number) {
+    setPartyIds((current) => current.map((id, slot) => (slot === index ? value : id)));
+  }
+
+  return (
+    <>
+      <Hero title="Party Analyzer" eyebrow="Team coverage">
+        <p>Select five Pals to check movement, support, and elemental coverage.</p>
+      </Hero>
+      <section className="party-layout">
+        <Panel title="Party">
+          <div className="party-select-grid">
+            {partyIds.map((id, index) => (
+              <PalSelect key={index} label={`Slot ${index + 1}`} value={id} onChange={(value) => updateSlot(index, value)} />
+            ))}
+          </div>
+          <div className="party-preview">
+            {party.map((pal) => (
+              <a className="party-pal" href={`#/pals/${pal.key}`} key={pal.id}>
+                <Avatar text={pal.image} label={pal.name} plain />
+                <span>
+                  <strong>{pal.name}</strong>
+                  <ElementList elements={pal.elements} />
+                </span>
+              </a>
+            ))}
+          </div>
+        </Panel>
+        <Panel title={`Party Score: ${analysis.score} / 10`} className="party-score-panel">
+          <div className="party-checks">
+            {analysis.checks.map((check) => (
+              <div className={check.passed ? "party-check passed" : "party-check missing"} key={check.label}>
+                <span>{check.passed ? "✓" : "△"}</span>
+                <strong>{check.label}</strong>
+              </div>
+            ))}
+          </div>
+          <h3>Missing</h3>
+          {analysis.missing.length ? (
+            <div className="party-missing-list">
+              {analysis.missing.map((item) => <Badge key={item}>{item}</Badge>)}
+            </div>
+          ) : <p>No major gaps found.</p>}
+          <h3>Suggested Upgrades</h3>
+          {analysis.suggestions.length ? (
+            <div className="upgrade-list">
+              {analysis.suggestions.map((suggestion) => (
+                <a href={`#/pals/${suggestion.pal.key}`} key={`${suggestion.reason}-${suggestion.pal.id}`}>
+                  <Avatar text={suggestion.pal.image} label={suggestion.pal.name} plain />
+                  <span>
+                    <strong>{suggestion.pal.name}</strong>
+                    <small>{suggestion.reason}</small>
+                  </span>
+                </a>
+              ))}
+            </div>
+          ) : <p>This party has broad coverage.</p>}
+        </Panel>
+      </section>
+    </>
+  );
+}
+
 function WorkPage() {
   const jobs = unique(pals.flatMap((pal) => pal.workSuitability.map((work) => work.type)));
   const [selectedWork, setSelectedWork] = useState(jobs.includes("Kindling") ? "Kindling" : jobs[0] || "");
@@ -1491,6 +1572,90 @@ function ranchPals() {
       const bLevel = b.workSuitability.find((work) => work.type === "Farming")?.level || 0;
       return bLevel - aLevel || a.id - b.id;
     });
+}
+
+function analyzeParty(party: Pal[]) {
+  const coreElements = ["Fire", "Water", "Electric", "Grass", "Ground", "Ice", "Dragon", "Dark"];
+  const coveredElements = unique(party.flatMap((pal) => pal.elements));
+  const missingElements = coreElements.filter((element) => !coveredElements.includes(element));
+  const checks = [
+    { label: "Water mount", passed: party.some(hasWaterMount) },
+    { label: "Flying mount", passed: party.some(hasFlyingMount) },
+    { label: "Ground mount", passed: party.some((pal) => hasGroundMount(pal) && !hasFlyingMount(pal) && !hasWaterMount(pal)) },
+    { label: "Support / revive", passed: party.some(hasSupportSkill) },
+    { label: "Fire coverage", passed: coveredElements.includes("Fire") },
+    { label: "Water coverage", passed: coveredElements.includes("Water") },
+    { label: "Electric coverage", passed: coveredElements.includes("Electric") },
+    { label: "Ground coverage", passed: coveredElements.includes("Ground") },
+  ];
+  const utilityScore = checks.filter((check) => check.passed).length / checks.length;
+  const elementScore = (coreElements.length - missingElements.length) / coreElements.length;
+  const sizeScore = Math.min(party.length, 5) / 5;
+  const score = Math.round((utilityScore * 4 + elementScore * 4 + sizeScore * 2) * 10) / 10;
+  const missing = [
+    ...checks.filter((check) => !check.passed && !check.label.endsWith("coverage")).map((check) => check.label),
+    ...missingElements.map((element) => `${element} damage`),
+  ];
+  const suggestions = partySuggestions(party, missingElements);
+
+  return { score, checks, missing, suggestions };
+}
+
+function partySuggestions(party: Pal[], missingElements: string[]) {
+  const selectedIds = new Set(party.map((pal) => pal.id));
+  const suggestions: { pal: Pal; reason: string }[] = [];
+  const needs = [
+    { missing: !party.some(hasFlyingMount), reason: "Adds flying travel", match: hasFlyingMount },
+    { missing: !party.some(hasWaterMount), reason: "Adds water travel", match: hasWaterMount },
+    { missing: !party.some(hasSupportSkill), reason: "Adds support or revive utility", match: hasSupportSkill },
+  ];
+
+  needs.forEach((need) => {
+    if (!need.missing) return;
+    const pal = bestPartyCandidate((candidate) => need.match(candidate) && !selectedIds.has(candidate.id));
+    if (pal) suggestions.push({ pal, reason: need.reason });
+  });
+
+  missingElements.slice(0, 4).forEach((element) => {
+    const pal = bestPartyCandidate((candidate) => candidate.elements.includes(element) && !selectedIds.has(candidate.id));
+    if (pal && !suggestions.some((suggestion) => suggestion.pal.id === pal.id)) {
+      suggestions.push({ pal, reason: `Adds ${element} damage` });
+    }
+  });
+
+  return suggestions.slice(0, 5);
+}
+
+function bestPartyCandidate(match: (pal: Pal) => boolean) {
+  return pals
+    .filter(match)
+    .sort((a, b) => partyCandidateScore(b) - partyCandidateScore(a) || a.name.localeCompare(b.name))[0];
+}
+
+function partyCandidateScore(pal: Pal) {
+  const topWork = Math.max(0, ...pal.workSuitability.map((work) => work.level));
+  return (pal.rarity || 0) * 2 + topWork + pal.elements.length + (hasFlyingMount(pal) ? 4 : 0) + (hasWaterMount(pal) ? 3 : 0) + (hasSupportSkill(pal) ? 3 : 0);
+}
+
+function partnerDescription(pal: Pal) {
+  return `${pal.partnerSkill?.name || ""} ${pal.partnerSkill?.description || ""}`.toLowerCase();
+}
+
+function hasFlyingMount(pal: Pal) {
+  return partnerDescription(pal).includes("flying mount");
+}
+
+function hasWaterMount(pal: Pal) {
+  return partnerDescription(pal).includes("travel on water");
+}
+
+function hasGroundMount(pal: Pal) {
+  const description = partnerDescription(pal);
+  return description.includes("can be ridden") || description.includes("while mounted");
+}
+
+function hasSupportSkill(pal: Pal) {
+  return /revives|restore|restores|recovers health|life steal/.test(partnerDescription(pal));
 }
 
 export default function App() {

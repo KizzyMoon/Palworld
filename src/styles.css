@@ -708,6 +708,88 @@ button {
   height: 3.1rem;
 }
 
+.party-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.party-select-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 0.5rem 0.75rem;
+}
+
+.party-preview,
+.party-checks,
+.party-missing-list,
+.upgrade-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.party-preview {
+  margin-top: 0.85rem;
+}
+
+.party-pal,
+.upgrade-list a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 0.45rem;
+  background: rgba(8, 18, 30, 0.4);
+  text-decoration: none;
+}
+
+.party-pal .avatar,
+.upgrade-list .avatar {
+  width: 3.4rem;
+  height: 3.4rem;
+}
+
+.party-score-panel h3 {
+  margin: 1rem 0 0.45rem;
+  font-size: 0.95rem;
+}
+
+.party-check {
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 0.45rem;
+  background: rgba(16, 27, 45, 0.7);
+}
+
+.party-check span {
+  display: grid;
+  width: 1.35rem;
+  height: 1.35rem;
+  place-items: center;
+  border-radius: 999px;
+  font-weight: 950;
+}
+
+.party-check.passed span {
+  color: #08121b;
+  background: var(--accent);
+}
+
+.party-check.missing span {
+  color: var(--accent-2);
+  border: 1px solid currentColor;
+}
+
+.party-missing-list {
+  grid-template-columns: repeat(auto-fit, minmax(8rem, max-content));
+}
+
 .empty-card {
   padding: 1rem;
   border: 1px solid var(--line);
@@ -1146,6 +1228,7 @@ button {
   .stats-grid,
   .home-dashboard,
   .split,
+  .party-layout,
   .detail-grid,
   .pal-detail-grid,
   .resource-grid {
