@@ -1023,17 +1023,16 @@ function RanchPage() {
           <article className="ranch-drop-card" key={group.resource.id}>
             <header>
               <a href={`#/resources/${group.resource.id}`}>
-                <Avatar text={group.resource.image} label={group.resource.name} />
+                <Avatar text={group.resource.image} label={group.resource.name} plain />
                 <span>
                   <strong>{group.resource.name}</strong>
-                  <small>{group.pals.length} {group.pals.length === 1 ? "Pal" : "Pals"}</small>
                 </span>
               </a>
             </header>
             <div className="ranch-pal-grid">
               {group.pals.map(({ pal, farmingLevel }) => (
                 <a className="ranch-pal-chip" href={`#/pals/${pal.key}`} key={pal.id}>
-                  <Avatar text={pal.image} label={pal.name} />
+                  <Avatar text={pal.image} label={pal.name} plain />
                   <span>
                     <strong>{pal.name}</strong>
                     <small>Farming Lv. {farmingLevel || "?"}</small>
@@ -1277,10 +1276,11 @@ function EmptyState({ text }: { text: string }) {
   return <section className="empty-state">{text}</section>;
 }
 
-function Avatar({ text, label, large }: { text: string; label: string; large?: boolean }) {
+function Avatar({ text, label, large, plain }: { text: string; label: string; large?: boolean; plain?: boolean }) {
   const isUrl = /^https?:\/\//.test(text);
+  const className = ["avatar", large ? "large" : "", plain ? "plain" : ""].filter(Boolean).join(" ");
   return (
-    <span className={large ? "avatar large" : "avatar"} aria-label={label}>
+    <span className={className} aria-label={label}>
       {isUrl ? <img src={text} alt={label} loading="lazy" /> : text}
     </span>
   );
