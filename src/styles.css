@@ -297,7 +297,6 @@ textarea {
   background: var(--panel);
 }
 
-.stats-grid,
 .resource-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -305,7 +304,6 @@ textarea {
   margin-bottom: 1rem;
 }
 
-.stat,
 .panel,
 .pal-card,
 .resource-card,
@@ -317,16 +315,6 @@ textarea {
   box-shadow: var(--shadow);
 }
 
-.stat {
-  padding: 1rem;
-}
-
-.stat strong {
-  display: block;
-  font-size: 1.7rem;
-}
-
-.stat span,
 .pal-card p,
 .resource-card p,
 .resource-card small,
@@ -1207,7 +1195,6 @@ button {
     font-size: 0.68rem;
   }
 
-  .stats-grid,
   .home-dashboard,
   .split,
   .party-layout,

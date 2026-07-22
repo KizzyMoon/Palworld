@@ -349,7 +349,6 @@ function HomePage() {
   const { collection } = useCollection();
   const owned = collection.ownedPalIds.length;
   const favourites = collection.favouritePalIds.length;
-  const completion = Math.round((owned / pals.length) * 100);
   const recentlyViewed = collection.recentlyViewedPalIds.map(findPal).filter(Boolean) as Pal[];
   const favouritePals = collection.favouritePalIds.map(findPal).filter(Boolean) as Pal[];
 
@@ -358,19 +357,9 @@ function HomePage() {
       <Hero title="Palworld Companion" eyebrow="Planning dashboard">
         <GlobalSearch />
       </Hero>
-      <section className="stats-grid">
-        <Stat label="Total Pals" value={pals.length.toString()} />
-        <Stat label="Owned" value={`${owned} / ${pals.length}`} />
-        <Stat label="Favourites" value={favourites.toString()} />
-        <Stat label="Completion" value={`${completion}%`} />
-      </section>
       <section className="category-grid">
-        <CategoryCard href="#/pals" icon="pals" title="All Pals" detail={`${pals.length} Paldeck entries`} />
         <CategoryCard href="#/owned" icon="heart" title="Owned Pals" detail={`${owned} marked owned`} />
         <CategoryCard href="#/favourites" icon="star" title="Wishlist" detail={`${favourites} saved targets`} />
-        <CategoryCard href="#/ranch" icon="ranch" title="Ranch Drops" detail={`${ranchPals().length} Farming Pals`} />
-        <CategoryCard href="#/work" icon="work" title="Work Types" detail={`${unique(pals.flatMap((pal) => pal.workSuitability.map((work) => work.type))).length} base jobs`} />
-        <CategoryCard href="#/resources" icon="resource" title="Items" detail={`${resources.length} resources`} />
       </section>
       <section className="home-dashboard">
         <LevelMapPanel />
@@ -1250,15 +1239,6 @@ function Panel({ title, children, className = "" }: { title: string; children: R
       <h2>{title}</h2>
       {children}
     </section>
-  );
-}
-
-function Stat({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="stat">
-      <strong>{value}</strong>
-      <span>{label}</span>
-    </div>
   );
 }
 
