@@ -226,6 +226,114 @@ function NavIcon({ name }: { name: string }) {
   );
 }
 
+function WorkIcon({ type }: { type: string }) {
+  if (type === "Cooling") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3v18" />
+        <path d="m6 6 12 12" />
+        <path d="m18 6-12 12" />
+      </svg>
+    );
+  }
+  if (type === "Farming") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 20V9" />
+        <path d="M12 13c-4 0-6-2-7-6 4 0 6 2 7 6Z" />
+        <path d="M12 11c4 0 6-2 7-6-4 0-6 2-7 6Z" />
+      </svg>
+    );
+  }
+  if (type === "Gathering") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 19h12" />
+        <path d="M8 19V9l4-4 4 4v10" />
+        <path d="M9 12h6" />
+      </svg>
+    );
+  }
+  if (type === "Generating Electricity") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m13 2-7 12h6l-1 8 7-12h-6l1-8Z" />
+      </svg>
+    );
+  }
+  if (type === "Handiwork") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m14 5 5 5" />
+        <path d="M4 20 17 7l-2-2L2 18v2h2Z" />
+        <path d="m12 8 4 4" />
+      </svg>
+    );
+  }
+  if (type === "Kindling") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 21c4 0 7-3 7-7 0-3-2-5-5-9-.2 3-1.4 4.2-3 5.4C9.4 8.8 9 7 9 5c-3 3-4 5.5-4 9 0 4 3 7 7 7Z" />
+      </svg>
+    );
+  }
+  if (type === "Lumbering") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 20 20 4" />
+        <path d="m14 4 6 6" />
+        <path d="M5 15h7v7" />
+      </svg>
+    );
+  }
+  if (type === "Medicine Production") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M10 3h4" />
+        <path d="M11 3v5l-5 8a4 4 0 0 0 3.4 6h5.2A4 4 0 0 0 18 16l-5-8V3" />
+        <path d="M8 16h8" />
+      </svg>
+    );
+  }
+  if (type === "Mining") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m14 4 6 6" />
+        <path d="M13 5 4 14" />
+        <path d="m7 21 4-4" />
+        <path d="M5 19 3 17l4-4 2 2-4 4Z" />
+      </svg>
+    );
+  }
+  if (type === "Planting") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 21V10" />
+        <path d="M12 14c-5 0-7-3-8-8 5 0 7 3 8 8Z" />
+        <path d="M12 12c5 0 7-3 8-8-5 0-7 3-8 8Z" />
+      </svg>
+    );
+  }
+  if (type === "Transporting") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 7h11v10H3z" />
+        <path d="M14 10h4l3 3v4h-7" />
+        <path d="M7 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+        <path d="M17 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+      </svg>
+    );
+  }
+  if (type === "Watering") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3s6 6.2 6 11a6 6 0 0 1-12 0c0-4.8 6-11 6-11Z" />
+      </svg>
+    );
+  }
+  return <NavIcon name="work" />;
+}
+
 function parseHash(): Page {
   const hash = window.location.hash || "#/";
   const parts = hash.replace(/^#\/?/, "").split("/").filter(Boolean);
@@ -869,25 +977,24 @@ function WorkPage() {
       <Hero title="Work Types" eyebrow="Base job guide">
         <p>Pick a work type to see what it does and which Pals are best suited to it.</p>
       </Hero>
-      <section className="work-layout">
-        <Panel title="Work Overview">
-          <div className="work-type-list">
-            {jobs.map((job) => {
-              const example = pals.find((pal) => pal.workSuitability.some((work) => work.type === job));
-              return (
-                <button className={selectedWork === job ? "work-type-card active" : "work-type-card"} type="button" key={job} onClick={() => setSelectedWork(job)}>
-                  <span className="work-icon">{job.slice(0, 1)}</span>
-                  <span>
-                    <strong>{job}</strong>
-                    <small>{workTypeNotes[job] || "Base work suitability."}</small>
-                  </span>
-                  {example ? <Avatar text={example.image} label={example.name} /> : null}
-                </button>
-              );
-            })}
-          </div>
-        </Panel>
+      <section className="work-page">
+        <div className="work-filter-bar" role="list" aria-label="Work type filters">
+          {jobs.map((job) => (
+            <button
+              className={selectedWork === job ? "work-filter active" : "work-filter"}
+              type="button"
+              key={job}
+              onClick={() => setSelectedWork(job)}
+              aria-pressed={selectedWork === job}
+              title={workTypeNotes[job] || job}
+            >
+              <span className="work-icon"><WorkIcon type={job} /></span>
+              <span>{job}</span>
+            </button>
+          ))}
+        </div>
         <Panel title={`Best ${selectedWork} Pals`} className="recommendations-panel">
+          <p>{workTypeNotes[selectedWork] || "Base work suitability."}</p>
           <div className="ranked-list">
             {bestPals.map(({ pal, work }, index) => (
               <a className="ranked-row" href={`#/pals/${pal.key}`} key={pal.id}>
