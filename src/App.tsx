@@ -477,8 +477,8 @@ function LatestUpdatesPanel() {
 function WorkPalsPlanner({ title = "Work Pals" }: { title?: string }) {
   const { isOwned } = useCollection();
   const jobs = useMemo(() => unique(pals.flatMap((pal) => pal.workSuitability.map((work) => work.type))), []);
-  const [job, setJob] = useState(jobs.includes("Mining") ? "Mining" : jobs[0] || "");
-  const [targets, setTargets] = useState<Record<string, number | undefined>>({});
+  const [job, setJob] = useStoredState("palworld-companion.workPals.job", jobs.includes("Mining") ? "Mining" : jobs[0] || "");
+  const [targets, setTargets] = useStoredState<Record<string, number | undefined>>("palworld-companion.workPals.targets", {});
   const candidates = useMemo(() => {
     return pals
       .flatMap((pal) => pal.workSuitability.filter((work) => work.type === job).map((work) => ({ pal, work })))
@@ -850,9 +850,9 @@ function HabitatSection({ pal }: { pal: Pal }) {
 }
 
 function BreedingPage() {
-  const [parentA, setParentA] = useState(pals[0].id);
-  const [parentB, setParentB] = useState(pals[1].id);
-  const [desired, setDesired] = useState(pals[3].id);
+  const [parentA, setParentA] = useStoredState("palworld-companion.breeding.parentA", pals[0].id);
+  const [parentB, setParentB] = useStoredState("palworld-companion.breeding.parentB", pals[1].id);
+  const [desired, setDesired] = useStoredState("palworld-companion.breeding.desired", pals[3].id);
   const result = breeding.find((combo) => sameParents(combo.parentAId, combo.parentBId, parentA, parentB));
   const desiredCombos = breeding.filter((combo) => combo.childId === desired);
 
@@ -888,9 +888,16 @@ function BuildPage() {
 }
 
 function PartyPage() {
-  const [partyIds, setPartyIds] = useState(() => pals.slice(0, 5).map((pal) => pal.id));
+  const defaultPartyIds = useMemo(() => pals.slice(0, 5).map((pal) => pal.id), []);
+  const [partyIds, setPartyIds] = useStoredState("palworld-companion.party.ids", defaultPartyIds);
   const party = unique(partyIds).map(findPal).filter((pal): pal is Pal => Boolean(pal));
   const analysis = analyzeParty(party);
+
+  useEffect(() => {
+    if (partyIds.length !== 5 || partyIds.some((id) => !findPal(id))) {
+      setPartyIds(defaultPartyIds);
+    }
+  }, [partyIds, setPartyIds, defaultPartyIds]);
 
   function updateSlot(index: number, value: number) {
     setPartyIds((current) => current.map((id, slot) => (slot === index ? value : id)));
@@ -957,7 +964,7 @@ function PartyPage() {
 
 function WorkPage() {
   const jobs = unique(pals.flatMap((pal) => pal.workSuitability.map((work) => work.type)));
-  const [selectedWork, setSelectedWork] = useState(jobs.includes("Kindling") ? "Kindling" : jobs[0] || "");
+  const [selectedWork, setSelectedWork] = useStoredState("palworld-companion.workTypes.selected", jobs.includes("Kindling") ? "Kindling" : jobs[0] || "");
   const bestPals = pals
     .flatMap((pal) => pal.workSuitability.filter((work) => work.type === selectedWork).map((work) => ({ pal, work })))
     .sort((a, b) => b.work.level - a.work.level || a.pal.name.localeCompare(b.pal.name))
@@ -1208,13 +1215,64 @@ function ResourceCard({ resource }: { resource: Resource }) {
 }
 
 function PalSelect({ label, value, onChange }: { label: string; value: number; onChange: (value: number) => void }) {
+  const selectedPal = findPal(value) || pals[0];
+  const [query, setQuery] = useState(palOptionLabel(selectedPal));
+  const [open, setOpen] = useState(false);
+  const matches = useMemo(() => {
+    const normalized = query.trim().toLowerCase();
+    return pals
+      .filter((pal) => !normalized || palOptionLabel(pal).toLowerCase().includes(normalized) || pal.elements.join(" ").toLowerCase().includes(normalized))
+      .slice(0, 8);
+  }, [query]);
+
+  useEffect(() => {
+    setQuery(palOptionLabel(selectedPal));
+  }, [selectedPal.id]);
+
+  function choosePal(pal: Pal) {
+    onChange(pal.id);
+    setQuery(palOptionLabel(pal));
+    setOpen(false);
+  }
+
   return (
-    <label className="field">
-      {label}
-      <select value={value} onChange={(event) => onChange(Number(event.target.value))}>
-        {pals.map((pal) => <option key={pal.id} value={pal.id}>{displayPalNumber(pal)} - {pal.name}</option>)}
-      </select>
-    </label>
+    <div className="field pal-picker">
+      <label>{label}</label>
+      <input
+        value={query}
+        onChange={(event) => {
+          setQuery(event.target.value);
+          setOpen(true);
+        }}
+        onFocus={() => setOpen(true)}
+        onBlur={() => window.setTimeout(() => {
+          setOpen(false);
+          setQuery(palOptionLabel(findPal(value) || pals[0]));
+        }, 120)}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" && matches[0]) {
+            event.preventDefault();
+            choosePal(matches[0]);
+          }
+        }}
+        placeholder="Type a Pal name"
+        aria-autocomplete="list"
+      />
+      {open ? (
+        <div className="pal-picker-results">
+          {matches.map((pal) => (
+            <button type="button" key={pal.id} onMouseDown={(event) => event.preventDefault()} onClick={() => choosePal(pal)}>
+              <Avatar text={pal.image} label={pal.name} plain />
+              <span>
+                <strong>{pal.name}</strong>
+                <small>#{displayPalNumber(pal)} - {pal.elements.join(" / ") || "Element unknown"}</small>
+              </span>
+            </button>
+          ))}
+          {!matches.length ? <p>No Pals found.</p> : null}
+        </div>
+      ) : null}
+    </div>
   );
 }
 
@@ -1482,6 +1540,27 @@ function ranchPals() {
       const bLevel = b.workSuitability.find((work) => work.type === "Farming")?.level || 0;
       return bLevel - aLevel || a.id - b.id;
     });
+}
+
+function palOptionLabel(pal: Pal) {
+  return `${displayPalNumber(pal)} - ${pal.name}`;
+}
+
+function useStoredState<T>(key: string, fallback: T) {
+  const [value, setValue] = useState<T>(() => {
+    try {
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) as T : fallback;
+    } catch {
+      return fallback;
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue] as const;
 }
 
 function analyzeParty(party: Pal[]) {
