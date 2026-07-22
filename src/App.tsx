@@ -26,8 +26,7 @@ type Page =
   | { name: "resources" }
   | { name: "resource"; id: string }
   | { name: "owned" }
-  | { name: "favourites" }
-  | { name: "settings" };
+  | { name: "favourites" };
 
 type SortMode = "number" | "name" | "rarity" | "breeding" | "work" | "owned" | "favourite";
 
@@ -145,11 +144,10 @@ const navGroups: { title: string; items: NavItem[] }[] = [
     ],
   },
   { title: "Items", items: [{ hash: "#/resources", label: "All Items", icon: "resource" }] },
-  { title: "Settings", items: [{ hash: "#/settings", label: "Settings", icon: "settings" }] },
 ];
 
 const navItems = navGroups.flatMap((group) => group.items);
-const mobileNavItems = navItems.filter((item) => ["#/", "#/pals", "#/build", "#/resources", "#/owned", "#/settings"].includes(item.hash));
+const mobileNavItems = navItems.filter((item) => ["#/", "#/pals", "#/build", "#/resources", "#/owned"].includes(item.hash));
 
 function NavIcon({ name }: { name: string }) {
   if (name === "home") {
@@ -220,14 +218,6 @@ function NavIcon({ name }: { name: string }) {
       </svg>
     );
   }
-  if (name === "settings") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" />
-        <path d="M19 12a7 7 0 0 0-.1-1.1l2-1.5-2-3.4-2.4 1a7.4 7.4 0 0 0-1.9-1.1L14.3 3h-4.6l-.3 2.9A7.4 7.4 0 0 0 7.5 7l-2.4-1-2 3.4 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.1l-2 1.5 2 3.4 2.4-1c.6.5 1.2.9 1.9 1.1l.3 2.9h4.6l.3-2.9c.7-.3 1.3-.6 1.9-1.1l2.4 1 2-3.4-2-1.5c.1-.3.1-.7.1-1.1Z" />
-      </svg>
-    );
-  }
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M12 4v16" />
@@ -249,7 +239,6 @@ function parseHash(): Page {
   if (parts[0] === "resources") return { name: "resources" };
   if (parts[0] === "owned") return { name: "owned" };
   if (parts[0] === "favourites") return { name: "favourites" };
-  if (parts[0] === "settings") return { name: "settings" };
   return { name: "home" };
 }
 
@@ -262,7 +251,7 @@ function routeFor(page: Page) {
 
 function AppShell() {
   const [page, setPage] = useState<Page>(parseHash);
-  const [theme, setTheme] = useState(localStorage.getItem("palworld-companion.theme") || "dark");
+  const [theme] = useState(localStorage.getItem("palworld-companion.theme") || "dark");
 
   useEffect(() => {
     const onHash = () => setPage(parseHash());
@@ -301,7 +290,7 @@ function AppShell() {
       </aside>
 
       <main>
-        <PageContent page={page} theme={theme} setTheme={setTheme} />
+        <PageContent page={page} />
       </main>
 
       <nav className="bottom-nav" aria-label="Mobile navigation">
@@ -316,7 +305,7 @@ function AppShell() {
   );
 }
 
-function PageContent({ page, theme, setTheme }: { page: Page; theme: string; setTheme: (theme: string) => void }) {
+function PageContent({ page }: { page: Page }) {
   if (page.name === "pals") return <PalsPage />;
   if (page.name === "pal") return <PalDetailsPage palKey={page.key} />;
   if (page.name === "ranch") return <RanchPage />;
@@ -327,7 +316,6 @@ function PageContent({ page, theme, setTheme }: { page: Page; theme: string; set
   if (page.name === "resource") return <ResourceDetailsPage resourceId={page.id} />;
   if (page.name === "owned") return <PalCollectionPage mode="owned" />;
   if (page.name === "favourites") return <PalCollectionPage mode="favourites" />;
-  if (page.name === "settings") return <SettingsPage theme={theme} setTheme={setTheme} />;
   return <HomePage />;
 }
 
@@ -1119,45 +1107,6 @@ function ResourceCard({ resource }: { resource: Resource }) {
         <small>{resource.description || "Information not currently available."}</small>
       </div>
     </a>
-  );
-}
-
-function SettingsPage({ theme, setTheme }: { theme: string; setTheme: (theme: string) => void }) {
-  const { exportCollection, importCollection, clearOwned, clearFavourites, clearAll } = useCollection();
-  const [importText, setImportText] = useState("");
-  const [message, setMessage] = useState("");
-
-  return (
-    <>
-      <Hero title="Settings" eyebrow="Progress and display" />
-      <section className="detail-grid">
-        <Panel title="Display">
-          <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>Switch to {theme === "dark" ? "light" : "dark"} mode</button>
-          <p>Reduced motion follows your device setting.</p>
-        </Panel>
-        <Panel title="Export Progress">
-          <textarea readOnly value={exportCollection()} aria-label="Exported progress data" />
-        </Panel>
-        <Panel title="Import Progress">
-          <textarea value={importText} onChange={(event) => setImportText(event.target.value)} placeholder="Paste exported progress JSON" aria-label="Progress import JSON" />
-          <button onClick={() => setMessage(importCollection(importText) ? "Progress imported." : "Import failed. Check the JSON and try again.")}>Import</button>
-          {message && <p>{message}</p>}
-        </Panel>
-        <Panel title="Clear Progress">
-          <button onClick={() => window.confirm("Clear all owned Pals?") && clearOwned()}>Clear Owned Pals</button>
-          <button onClick={() => window.confirm("Clear all favourites?") && clearFavourites()}>Clear Favourites</button>
-          <button onClick={() => window.confirm("Clear all Palworld Companion progress?") && clearAll()}>Clear All Progress</button>
-        </Panel>
-        <Panel title="About">
-          <InfoRows rows={[
-            ["App version", metadata.appVersion],
-            ["Dataset version", metadata.datasetVersion],
-            ["Last update", metadata.lastUpdated],
-            ["Game data", metadata.gameVersion],
-          ]} />
-        </Panel>
-      </section>
-    </>
   );
 }
 
