@@ -349,8 +349,6 @@ function HomePage() {
   const { collection } = useCollection();
   const owned = collection.ownedPalIds.length;
   const favourites = collection.favouritePalIds.length;
-  const recentlyViewed = collection.recentlyViewedPalIds.map(findPal).filter(Boolean) as Pal[];
-  const favouritePals = collection.favouritePalIds.map(findPal).filter(Boolean) as Pal[];
 
   return (
     <>
@@ -368,14 +366,6 @@ function HomePage() {
           <ul className="priority-list">
             {priorityItems.map((item) => <li key={item}>{item}</li>)}
           </ul>
-        </Panel>
-      </section>
-      <section className="split">
-        <Panel title="Recently Viewed">
-          <MiniPalList pals={recentlyViewed} empty="No recently viewed Pals yet." />
-        </Panel>
-        <Panel title="Favourite Pals">
-          <MiniPalList pals={favouritePals.slice(0, 6)} empty="No favourites yet." />
         </Panel>
       </section>
       <section className="metadata">
