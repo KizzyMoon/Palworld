@@ -67,18 +67,18 @@ const fallbackNews: NewsItem[] = [
 ];
 
 const levelZones = [
-  { name: "Starter islands", range: "1-20", left: "61%", top: "56%", width: "29%", height: "13%", tilt: -10, color: "rgba(37, 207, 135, 0.7)", shape: "polygon(5% 44%, 16% 18%, 42% 4%, 74% 9%, 96% 34%, 91% 67%, 62% 91%, 27% 88%, 7% 68%)" },
-  { name: "Bamboo groves", range: "10-20", left: "49%", top: "42%", width: "18%", height: "9%", tilt: -8, color: "rgba(44, 222, 118, 0.68)", shape: "polygon(4% 54%, 18% 22%, 48% 4%, 83% 17%, 97% 50%, 83% 80%, 44% 96%, 12% 78%)" },
-  { name: "Central islands", range: "20-30", left: "52%", top: "49%", width: "24%", height: "12%", tilt: -10, color: "rgba(226, 214, 68, 0.68)", shape: "polygon(3% 48%, 19% 17%, 47% 5%, 79% 14%, 98% 43%, 90% 72%, 61% 92%, 27% 86%, 8% 68%)" },
-  { name: "Small eastern isle", range: "20-30", left: "62%", top: "66%", width: "10%", height: "6%", tilt: -6, color: "rgba(226, 214, 68, 0.68)", shape: "polygon(8% 41%, 31% 12%, 73% 16%, 94% 49%, 76% 84%, 29% 88%, 6% 64%)" },
-  { name: "Northern island", range: "30-40", left: "69%", top: "35%", width: "24%", height: "17%", tilt: -8, color: "rgba(181, 224, 78, 0.68)", shape: "polygon(8% 32%, 22% 8%, 53% 2%, 82% 14%, 98% 42%, 90% 72%, 60% 96%, 27% 85%, 5% 60%)" },
-  { name: "Eastern strip", range: "30-40", left: "75%", top: "48%", width: "13%", height: "9%", tilt: -8, color: "rgba(181, 224, 78, 0.68)", shape: "polygon(3% 45%, 20% 18%, 53% 5%, 85% 19%, 97% 53%, 76% 84%, 34% 94%, 9% 72%)" },
-  { name: "Volcanic island", range: "30-50", left: "39%", top: "51%", width: "23%", height: "18%", tilt: -8, color: "rgba(219, 103, 61, 0.68)", shape: "polygon(8% 34%, 27% 9%, 60% 4%, 88% 21%, 98% 55%, 80% 85%, 42% 95%, 12% 74%, 2% 52%)" },
-  { name: "Northern ridge", range: "30-50", left: "46%", top: "33%", width: "21%", height: "12%", tilt: -9, color: "rgba(219, 103, 61, 0.68)", shape: "polygon(4% 46%, 18% 18%, 51% 4%, 85% 16%, 97% 49%, 75% 82%, 35% 92%, 8% 70%)" },
-  { name: "Western highlands", range: "50-60", left: "33%", top: "40%", width: "16%", height: "9%", tilt: -7, color: "rgba(183, 98, 33, 0.72)", shape: "polygon(7% 48%, 25% 16%, 66% 7%, 94% 34%, 87% 70%, 48% 91%, 12% 75%)" },
-  { name: "Far eastern island", range: "50-60", left: "86%", top: "34%", width: "8%", height: "6%", tilt: -4, color: "rgba(183, 98, 33, 0.72)", shape: "polygon(9% 47%, 31% 12%, 72% 15%, 94% 49%, 73% 86%, 26% 83%)" },
-  { name: "Astral mountains", range: "60-70", left: "31%", top: "78%", width: "29%", height: "20%", tilt: -10, color: "rgba(188, 62, 217, 0.7)", shape: "polygon(5% 46%, 18% 17%, 47% 4%, 79% 10%, 96% 36%, 91% 66%, 64% 91%, 29% 95%, 7% 72%)" },
-  { name: "Southern island", range: "60-70", left: "52%", top: "83%", width: "17%", height: "10%", tilt: -8, color: "rgba(188, 62, 217, 0.7)", shape: "polygon(8% 43%, 25% 14%, 66% 10%, 93% 36%, 86% 73%, 48% 92%, 13% 73%)" },
+  { name: "Starter islands", range: "1-20", color: "#27d18a", labelX: 660, labelY: 585, path: "M516 559 C556 523 604 508 657 513 C706 518 759 536 783 568 C758 607 709 625 649 632 C592 638 536 623 501 596 C497 581 503 569 516 559 Z" },
+  { name: "Bamboo groves", range: "10-20", color: "#42dc77", labelX: 518, labelY: 424, path: "M430 407 C458 374 501 357 545 363 C584 367 615 390 623 421 C596 448 556 462 508 459 C463 456 429 439 407 416 C412 411 420 407 430 407 Z" },
+  { name: "Central islands", range: "20-30", color: "#e4d64a", labelX: 568, labelY: 510, path: "M468 486 C512 451 574 443 635 462 C674 474 705 500 714 533 C680 562 625 580 565 576 C513 572 466 553 438 522 C438 506 448 494 468 486 Z" },
+  { name: "Eastern shoals", range: "20-30", color: "#e4d64a", labelX: 610, labelY: 684, path: "M570 659 C603 646 642 650 668 668 C653 691 622 703 584 700 C558 698 537 688 528 672 C539 666 553 662 570 659 Z" },
+  { name: "Northern forest", range: "30-40", color: "#b9df52", labelX: 705, labelY: 363, path: "M615 288 C662 249 733 229 796 247 C853 263 895 306 902 358 C882 412 828 457 761 474 C700 490 633 478 590 445 C568 388 578 326 615 288 Z" },
+  { name: "Eastern island", range: "30-40", color: "#b9df52", labelX: 805, labelY: 492, path: "M740 456 C772 437 823 434 862 454 C886 466 901 488 895 509 C871 531 830 545 789 540 C753 535 728 516 720 493 C721 477 728 465 740 456 Z" },
+  { name: "Volcanic island", range: "30-50", color: "#df7441", labelX: 402, labelY: 530, path: "M287 460 C326 425 394 411 453 432 C511 452 552 501 544 557 C520 615 458 653 388 649 C324 645 272 608 251 555 C249 517 262 485 287 460 Z" },
+  { name: "Northern ridge", range: "30-50", color: "#df7441", labelX: 488, labelY: 346, path: "M396 306 C435 279 497 267 553 283 C594 295 626 319 637 351 C609 384 555 405 494 403 C437 401 391 381 369 348 C373 330 382 317 396 306 Z" },
+  { name: "Western highlands", range: "50-60", color: "#b96a27", labelX: 312, labelY: 424, path: "M236 381 C269 357 316 349 361 360 C396 369 421 389 427 416 C404 443 360 461 312 459 C267 457 230 440 211 414 C215 402 223 391 236 381 Z" },
+  { name: "Far eastern island", range: "50-60", color: "#b96a27", labelX: 910, labelY: 340, path: "M879 318 C899 301 932 301 952 319 C966 331 967 350 953 364 C934 381 901 382 880 365 C866 352 866 331 879 318 Z" },
+  { name: "Astral mountains", range: "60-70", color: "#bc41dc", labelX: 330, labelY: 784, path: "M193 705 C238 666 312 643 382 650 C447 657 501 692 521 744 C509 805 456 863 382 890 C311 916 238 904 188 859 C153 811 156 749 193 705 Z" },
+  { name: "Southern island", range: "60-70", color: "#bc41dc", labelX: 566, labelY: 850, path: "M503 814 C539 789 595 779 638 797 C667 810 683 832 677 856 C653 883 607 897 559 892 C516 887 484 866 473 838 C480 827 489 819 503 814 Z" },
 ];
 
 const priorityItems = [
@@ -503,23 +503,23 @@ function LevelMapPanel() {
   return (
     <Panel title="Map Level Guide" className="level-map-panel">
       <div className="level-map" aria-label="Palpagos level range map">
-        {levelZones.map((zone) => (
-          <span
-            className="level-zone"
-            key={zone.name}
-            style={{
-              left: zone.left,
-              top: zone.top,
-              width: zone.width,
-              height: zone.height,
-              backgroundColor: zone.color,
-              clipPath: zone.shape,
-              transform: `translate(-50%, -50%) rotate(${zone.tilt}deg)`,
-            }}
-          >
-            <strong>{zone.range}</strong>
-          </span>
-        ))}
+        <svg className="level-map-overlay" viewBox="0 0 1000 1000" aria-hidden="true">
+          <defs>
+            <filter id="levelGlow" x="-12%" y="-12%" width="124%" height="124%">
+              <feGaussianBlur stdDeviation="5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          {levelZones.map((zone) => (
+            <g className="level-zone" key={zone.name}>
+              <path d={zone.path} style={{ color: zone.color }} />
+              <text x={zone.labelX} y={zone.labelY}>{zone.range}</text>
+            </g>
+          ))}
+        </svg>
       </div>
       <div className="level-legend">
         {levelZones.map((zone) => (
