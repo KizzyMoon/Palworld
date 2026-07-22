@@ -365,13 +365,6 @@ function HomePage() {
         <Stat label="Favourites" value={favourites.toString()} />
         <Stat label="Completion" value={`${completion}%`} />
       </section>
-      <section className="quick-actions">
-        <a className="primary-action" href={`#/pals/${randomPal().key}`}>Random Pal</a>
-        <a className="primary-action" href="#/pals">Browse all Pals</a>
-        <a className="primary-action" href="#/build">Build planner</a>
-        <a className="primary-action" href="#/breeding">Breeding calculator</a>
-        <a className="primary-action" href="#/resources">Browse resources</a>
-      </section>
       <section className="category-grid">
         <CategoryCard href="#/pals" icon="pals" title="All Pals" detail={`${pals.length} Paldeck entries`} />
         <CategoryCard href="#/owned" icon="heart" title="Owned Pals" detail={`${owned} marked owned`} />
