@@ -1,1512 +1,930 @@
 import { useEffect, useMemo, useState } from "react";
-import { breeding, locations, metadata, pals, resources } from "./data";
 import { CollectionProvider, useCollection } from "./collection";
-import type { HabitatTime, Pal, Resource } from "./types";
+import { pals, resources } from "./data";
+import type { Pal, Resource, WorkSuitability } from "./types";
 
-const elementIcons: Record<string, string> = {
-  Neutral: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_00.webp",
-  Fire: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_01.webp",
-  Water: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_02.webp",
-  Electric: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_03.webp",
-  Grass: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_04.webp",
-  Dark: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_05.webp",
-  Dragon: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_06.webp",
-  Ground: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_07.webp",
-  Ice: "https://api.paldeck.cc/assets/palworld/elements/T_Icon_element_s_08.webp",
+type Page = "dashboard" | "map" | "pals" | "breeding" | "work" | "ranch" | "items" | "technology" | "tools";
+type ViewMode = "cards" | "list";
+type TrackedState = {
+  playerLevel: number;
+  wantedTech: string[];
+  unlockedTech: string[];
+  craftedTech: string[];
+  bossGoals: string[];
+  notes: string;
 };
 
-const workIcons: Record<string, string> = {
-  Kindling: "https://api.paldeck.cc/assets/palworld/work/T_icon_palwork_00.webp",
-  Watering: "https://api.paldeck.cc/assets/palworld/work/T_icon_palwork_01.webp",
-  Planting: "https://api.paldeck.cc/assets/palworld/work/T_icon_palwork_02.webp",
-  "Generating Electricity": "https://api.paldeck.cc/assets/palworld/work/T_icon_palwork_03.webp",
-  Handiwork: "https://api.paldeck.cc/assets/palworld/work/T_icon_palwork_04.webp",
-  Gathering: "https://api.paldeck.cc/assets/palworld/work/T_icon_palwork_05.webp",
-  Lumbering: "https://api.paldeck.cc/assets/palworld/work/T_icon_palwork_06.webp",
-  Mining: "https://api.paldeck.cc/assets/palworld/work/T_icon_palwork_07.webp",
-  "Medicine Production": "https://api.paldeck.cc/assets/palworld/work/T_icon_palwork_08.webp",
-  Cooling: "https://api.paldeck.cc/assets/palworld/work/T_icon_palwork_10.webp",
-  Transporting: "https://api.paldeck.cc/assets/palworld/work/T_icon_palwork_11.webp",
-  Farming: "https://api.paldeck.cc/assets/palworld/work/T_icon_palwork_12.webp",
-};
-
-type Page =
-  | { name: "home" }
-  | { name: "pals" }
-  | { name: "pal"; key: string }
-  | { name: "ranch" }
-  | { name: "work" }
-  | { name: "party" }
-  | { name: "breeding" }
-  | { name: "resources" }
-  | { name: "resource"; id: string }
-  | { name: "owned" }
-  | { name: "favourites" };
-
-type SortMode = "number" | "name" | "rarity" | "breeding" | "work" | "owned" | "favourite";
-
-type NewsItem = {
-  title: string;
-  url: string;
-  date: string;
-  summary: string;
-};
-
-type NavItem = {
-  hash: string;
-  label: string;
-  icon: string;
-};
-
-const steamNewsApiUrl = "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=1623730&count=5&maxlength=900&format=json";
-
-const fallbackNews: NewsItem[] = [
-  {
-    title: "Every new Pal in Palworld 1.0 and where to catch them",
-    url: "https://store.steampowered.com/news/app/1623730",
-    date: "2026-07-19",
-    summary: "Palworld 1.0 added 72 new Pals alongside the expanded Palpagos map and World Tree region.",
-  },
-  {
-    title: "Palworld reduces survival grind",
-    url: "https://store.steampowered.com/news/app/1623730",
-    date: "2026-07-18",
-    summary: "Recent coverage highlights Palworld's faster base automation and less repetitive resource hauling.",
-  },
-  {
-    title: "Ancient Bone and Ancient Civilization Core guides",
-    url: "https://store.steampowered.com/news/app/1623730",
-    date: "2026-07-16",
-    summary: "Current update coverage points players toward rare late-game materials used for stronger equipment.",
-  },
+const navItems: { page: Page; label: string; icon: string }[] = [
+  { page: "dashboard", label: "Dashboard", icon: "home" },
+  { page: "map", label: "Map", icon: "pin" },
+  { page: "pals", label: "Pals", icon: "pal" },
+  { page: "breeding", label: "Breeding", icon: "breed" },
+  { page: "work", label: "Work Guide", icon: "work" },
+  { page: "ranch", label: "Ranch", icon: "ranch" },
+  { page: "items", label: "Items", icon: "bag" },
+  { page: "technology", label: "Technology", icon: "tech" },
+  { page: "tools", label: "Tools", icon: "tool" },
 ];
 
-const priorityItems = [
-  "Pick the next level zone before travelling so you do not waste ammo or food on enemies too high for your team.",
-  "Keep one Pal focused on Kindling, one on Planting, one on Watering, one on Gathering, and two on Transporting for a stable starter base.",
-  "Wishlist rare Pals from the Paldeck, then use their habitat map before you leave base.",
-  "Check food, ingots, ammo, and repair materials before boss runs or dungeon loops.",
+const workTypes = [
+  "Kindling",
+  "Watering",
+  "Planting",
+  "Generating Electricity",
+  "Handiwork",
+  "Gathering",
+  "Lumbering",
+  "Mining",
+  "Medicine Production",
+  "Cooling",
+  "Transporting",
+  "Farming",
 ];
 
-const workTypeNotes: Record<string, string> = {
-  Cooling: "Keeps food and storage cold.",
-  Farming: "Works at ranches for passive drops.",
-  Gathering: "Harvests crops after they grow.",
-  "Generating Electricity": "Charges power facilities.",
-  Handiwork: "Crafts items and builds structures.",
-  Kindling: "Cooks food and runs furnaces.",
-  Lumbering: "Produces wood at logging sites.",
-  "Medicine Production": "Makes medicine and clinic supplies.",
-  Mining: "Produces stone, ore, and mining materials.",
-  Planting: "Plants crops in plantations.",
-  Transporting: "Moves dropped items into storage.",
-  Watering: "Waters crops and powers mills/crushers.",
+const elementColor: Record<string, string> = {
+  Neutral: "#c9c2be",
+  Fire: "#ff7a30",
+  Water: "#4eb8ff",
+  Electric: "#ffd644",
+  Grass: "#74d957",
+  Ice: "#78e6f5",
+  Dragon: "#a36dff",
+  Dark: "#c64d9d",
+  Ground: "#d18a45",
 };
 
-const ranchDropTokens: Record<string, string[]> = {
-  berries: ["berries"],
-  bone: ["bone"],
-  cloth2: ["cloth2"],
-  electricorgan: ["electricorgan"],
-  egg: ["egg"],
-  fireorgan: ["fireorgan"],
-  honey: ["honey"],
-  iceorgan: ["iceorgan"],
-  leather: ["leather"],
-  milk: ["milk"],
-  money: ["money"],
-  mushroom: ["mushroom"],
-  palfluid: ["palfluid"],
-  paloil: ["paloil"],
-  sweet: ["sweet"],
-  sweet_caramel: ["sweet-caramel"],
-  venom: ["venom"],
-  wool: ["wool"],
+const elementGlyph: Record<string, string> = {
+  Neutral: "◎",
+  Fire: "🔥",
+  Water: "💧",
+  Electric: "⚡",
+  Grass: "🌿",
+  Ice: "❄",
+  Dragon: "✦",
+  Dark: "◉",
+  Ground: "▲",
 };
 
-const navGroups: { title: string; items: NavItem[] }[] = [
-  { title: "Dashboard", items: [{ hash: "#/", label: "Dashboard", icon: "home" }] },
-  {
-    title: "Pals",
-    items: [
-      { hash: "#/pals", label: "All Pals", icon: "pals" },
-      { hash: "#/owned", label: "Owned", icon: "heart" },
-      { hash: "#/favourites", label: "Wishlist", icon: "star" },
-      { hash: "#/ranch", label: "Ranch", icon: "ranch" },
-    ],
-  },
-  {
-    title: "Guides",
-    items: [
-      { hash: "#/work", label: "Work Types", icon: "work" },
-      { hash: "#/party", label: "Party Analyzer", icon: "party" },
-      { hash: "#/breeding", label: "Breeding", icon: "egg" },
-    ],
-  },
-  { title: "Items", items: [{ hash: "#/resources", label: "All Items", icon: "resource" }] },
+const workGlyph: Record<string, string> = {
+  Kindling: "🔥",
+  Watering: "💧",
+  Planting: "🌱",
+  "Generating Electricity": "⚡",
+  Handiwork: "✋",
+  Gathering: "♻",
+  Lumbering: "▰",
+  Mining: "⛏",
+  "Medicine Production": "✚",
+  Cooling: "❄",
+  Transporting: "▣",
+  Farming: "🌾",
+};
+
+const mapFilters = [
+  ["Recommended Level", "◎"],
+  ["Pal Spawns", "🐾"],
+  ["Alpha Pals", "♛"],
+  ["Dungeons", "◉"],
+  ["Fast Travel", "✦"],
+  ["Towers", "▥"],
+  ["Syndicate Camps", "⚔"],
+  ["Merchants", "◆"],
+  ["Black Marketeers", "☠"],
+  ["Lifmunk Effigies", "☘"],
+  ["Treasure Chests", "▣"],
+  ["Skill Fruit Trees", "✤"],
+  ["Ore", "●"],
+  ["Coal", "◒"],
+  ["Sulfur", "♦"],
+  ["Quartz", "◇"],
+  ["Crude Oil", "◈"],
+  ["Meteor Locations", "✹"],
+  ["Wildlife Sanctuaries", "☘"],
 ];
 
-const navItems = navGroups.flatMap((group) => group.items);
-const mobileNavItems = navItems.filter((item) => ["#/", "#/pals", "#/work", "#/resources", "#/owned"].includes(item.hash));
+const technologies = [
+  { id: "watchtower", level: 31, type: "Structures", name: "Watchtower", cost: 2, materials: ["Wood", "Stone"], ancient: false },
+  { id: "grenade", level: 31, type: "Items", name: "Grenade", cost: 2, materials: ["Fiber", "Gunpowder"], ancient: false },
+  { id: "breeding-farm", level: 31, type: "Utilities", name: "Breeding Farm", cost: 2, materials: ["Wood", "Stone", "Cake"], ancient: false },
+  { id: "production-line", level: 32, type: "Structures", name: "Production Assembly Line", cost: 2, materials: ["Refined Ingot", "Circuit Board", "Gear", "High Quality Pal Oil"], ancient: false },
+  { id: "refined-pickaxe", level: 32, type: "Items", name: "Refined Metal Pickaxe", cost: 2, materials: ["Refined Ingot", "Wood", "Stone"], ancient: false },
+  { id: "advanced-saddle", level: 32, type: "Items", name: "Advanced Pal Saddle", cost: 2, materials: ["Leather", "Ingot", "Cloth"], ancient: false },
+  { id: "helezephyr", level: 32, type: "Pals", name: "Helzephyr Saddle", cost: 2, materials: ["Leather", "Fiber", "Paldium"], ancient: false },
+  { id: "plasma-cannon", level: 32, type: "Ancient Technology", name: "Plasma Cannon", cost: 3, materials: ["Ancient Civilization Parts", "Circuit Board"], ancient: true },
+  { id: "electric-furnace", level: 33, type: "Structures", name: "Electric Furnace", cost: 3, materials: ["Refined Ingot", "Circuit Board"], ancient: false },
+  { id: "laser-rifle", level: 33, type: "Weapons", name: "Laser Rifle", cost: 3, materials: ["Refined Ingot", "Polymer"], ancient: false },
+  { id: "jormuntide", level: 33, type: "Pals", name: "Jormuntide Saddle", cost: 2, materials: ["Leather", "Fiber", "Water Organ"], ancient: false },
+  { id: "ultra-grapple", level: 33, type: "Ancient Technology", name: "Ultra Grappling Gun", cost: 4, materials: ["Ancient Civilization Parts", "Carbon Fiber"], ancient: true },
+  { id: "power-generator", level: 34, type: "Structures", name: "Power Generator", cost: 3, materials: ["Ingot", "Electric Organ"], ancient: false },
+  { id: "frostallion", level: 34, type: "Pals", name: "Frostallion Saddle", cost: 4, materials: ["Leather", "Ice Organ", "Paldium"], ancient: false },
+];
 
-function NavIcon({ name }: { name: string }) {
-  if (name === "home") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M3 11.5 12 4l9 7.5" />
-        <path d="M5.5 10.5V20h13v-9.5" />
-        <path d="M9.5 20v-5h5v5" />
-      </svg>
-    );
-  }
-  if (name === "egg") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 3c4.5 4.1 6.5 8.1 6.5 12a6.5 6.5 0 0 1-13 0C5.5 11.1 7.5 7.1 12 3Z" />
-        <path d="M9 15.5c.8 1 1.8 1.5 3 1.5s2.2-.5 3-1.5" />
-      </svg>
-    );
-  }
-  if (name === "resource") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 3 4.5 7.2v9.6L12 21l7.5-4.2V7.2L12 3Z" />
-        <path d="m4.5 7.2 7.5 4.2 7.5-4.2" />
-        <path d="M12 11.4V21" />
-      </svg>
-    );
-  }
-  if (name === "ranch") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M4 11h16" />
-        <path d="M6 11v9" />
-        <path d="M18 11v9" />
-        <path d="M8 11V7l4-3 4 3v4" />
-        <path d="M9.5 20v-5h5v5" />
-      </svg>
-    );
-  }
-  if (name === "work") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M13 2 5 13h6l-1 9 8-12h-6l1-8Z" />
-      </svg>
-    );
-  }
-  if (name === "heart") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M20.5 8.8c0 5.2-8.5 10.2-8.5 10.2S3.5 14 3.5 8.8A4.8 4.8 0 0 1 12 5.7a4.8 4.8 0 0 1 8.5 3.1Z" />
-      </svg>
-    );
-  }
-  if (name === "star") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.8-5.4 2.8 1-6-4.4-4.3 6.1-.9L12 3Z" />
-      </svg>
-    );
-  }
-  if (name === "party") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 3 20 7v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4Z" />
-        <path d="M8.5 12h7" />
-        <path d="M12 8.5v7" />
-      </svg>
-    );
-  }
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 4v16" />
-      <path d="M4 12h16" />
-    </svg>
-  );
-}
+const foods = [
+  { name: "Legendary Steak", rarity: "Legendary", type: "Combat", nutrition: 420, buffs: ["Attack +35%", "Defense +25%", "Work Speed +15%"], station: "High Quality Cooking Pot", owned: true },
+  { name: "Jormuntide's Seafood Platter", rarity: "Legendary", type: "Combat", nutrition: 350, buffs: ["Attack +30%", "Defense +20%", "Work Speed +20%"], station: "High Quality Cooking Pot", owned: false },
+  { name: "Cake", rarity: "Epic", type: "Base", nutrition: 300, buffs: ["Work Speed +50%", "SAN +20%"], station: "Cooking Pot", owned: true },
+  { name: "Mushroom Pizza", rarity: "Rare", type: "Stamina", nutrition: 220, buffs: ["Stamina Regen +30%", "Move Speed +15%"], station: "Cooking Pot", owned: true },
+  { name: "Hot Spring Soup", rarity: "Rare", type: "HP", nutrition: 200, buffs: ["Max HP +25%", "SAN +10%"], station: "Cooking Pot", owned: false },
+  { name: "Jam-filled Bun", rarity: "Uncommon", type: "Stamina", nutrition: 120, buffs: ["Stamina +15%"], station: "Cooking Pot", owned: true },
+  { name: "Red Berries", rarity: "Common", type: "Base", nutrition: 45, buffs: ["Work Speed +10%"], station: "Campfire", owned: true },
+];
 
-function WorkIcon({ type }: { type: string }) {
-  return workIcons[type] ? <img src={workIcons[type]} alt="" aria-hidden="true" loading="lazy" /> : <NavIcon name="work" />;
-}
+const defaultTracking: TrackedState = {
+  playerLevel: 32,
+  wantedTech: ["production-line", "advanced-saddle", "helezephyr", "plasma-cannon"],
+  unlockedTech: ["watchtower", "grenade", "breeding-farm"],
+  craftedTech: ["watchtower"],
+  bossGoals: ["Zoe & Grizzbolt", "Lily & Lyleen"],
+  notes: "",
+};
 
-function parseHash(): Page {
-  const hash = window.location.hash || "#/";
-  const parts = hash.replace(/^#\/?/, "").split("/").filter(Boolean);
-  if (parts[0] === "pals" && parts[1]) return { name: "pal", key: parts[1] };
-  if (parts[0] === "pals") return { name: "pals" };
-  if (parts[0] === "ranch") return { name: "ranch" };
-  if (parts[0] === "work") return { name: "work" };
-  if (parts[0] === "party") return { name: "party" };
-  if (parts[0] === "breeding") return { name: "breeding" };
-  if (parts[0] === "resources" && parts[1]) return { name: "resource", id: parts[1] };
-  if (parts[0] === "resources") return { name: "resources" };
-  if (parts[0] === "owned") return { name: "owned" };
-  if (parts[0] === "favourites") return { name: "favourites" };
-  return { name: "home" };
-}
-
-function routeFor(page: Page) {
-  if (page.name === "pal") return `#/pals/${page.key}`;
-  if (page.name === "resource") return `#/resources/${page.id}`;
-  if (page.name === "home") return "#/";
-  return `#/${page.name}`;
-}
+const mapMarkers = Array.from({ length: 92 }, (_, index) => {
+  const angle = index * 2.399963;
+  const radius = 7 + (index % 11) * 3.7;
+  return {
+    id: index,
+    x: Math.max(7, Math.min(93, 50 + Math.cos(angle) * radius + ((index * 19) % 13) - 6)),
+    y: Math.max(9, Math.min(91, 51 + Math.sin(angle) * radius + ((index * 17) % 11) - 5)),
+    type: mapFilters[index % mapFilters.length],
+    level: 4 + (index % 56),
+  };
+});
 
 function AppShell() {
-  const [page, setPage] = useState<Page>(parseHash);
-  const [theme] = useState(localStorage.getItem("palworld-companion.theme") || "dark");
+  const [page, setPage] = useState<Page>(() => parsePage());
+  const [tracking, setTracking] = useStoredState<TrackedState>("palworld-companion.tracking.v2", defaultTracking);
 
   useEffect(() => {
-    const onHash = () => setPage(parseHash());
+    const onHash = () => setPage(parsePage());
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    localStorage.setItem("palworld-companion.theme", theme);
-  }, [theme]);
+  function updateTracking(next: Partial<TrackedState>) {
+    setTracking({ ...tracking, ...next });
+  }
 
   return (
     <div className="app-shell">
-      <aside className="sidebar" aria-label="Main navigation">
-        <a className="brand" href="#/" aria-label="Palworld Companion home">
-          <img className="brand-logo" src="palworld-logo.png" alt="Palworld" />
-          <span>
-            <small>Companion</small>
-          </span>
-        </a>
-        <nav>
-          {navGroups.map((group) => (
-            <div className="nav-group" key={group.title}>
-              <p>{group.title}</p>
-              {group.items.map((item) => (
-                <a key={item.hash} className={routeFor(page) === item.hash ? "active" : ""} href={item.hash}>
-                  <span className="nav-icon"><NavIcon name={item.icon} /></span>
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          ))}
-        </nav>
-      </aside>
+      <Sidebar page={page} />
+      <div className="workspace">
+        <Topbar tracking={tracking} updateTracking={updateTracking} />
+        <main>
+          {page === "dashboard" && <Dashboard tracking={tracking} updateTracking={updateTracking} />}
+          {page === "map" && <MapPage tracking={tracking} />}
+          {page === "pals" && <PalsPage tracking={tracking} />}
+          {page === "breeding" && <BreedingPage tracking={tracking} />}
+          {page === "work" && <WorkPage tracking={tracking} />}
+          {page === "ranch" && <RanchPage tracking={tracking} />}
+          {page === "items" && <ItemsPage tracking={tracking} />}
+          {page === "technology" && <TechnologyPage tracking={tracking} updateTracking={updateTracking} />}
+          {page === "tools" && <ToolsPage tracking={tracking} updateTracking={updateTracking} />}
+        </main>
+      </div>
+      <MobileNav page={page} />
+    </div>
+  );
+}
 
-      <main>
-        <PageContent page={page} />
-      </main>
-
-      <nav className="bottom-nav" aria-label="Mobile navigation">
-        {mobileNavItems.map((item) => (
-          <a key={item.hash} className={routeFor(page) === item.hash ? "active" : ""} href={item.hash}>
-            <span className="nav-icon"><NavIcon name={item.icon} /></span>
-            <small>{item.label}</small>
+function Sidebar({ page }: { page: Page }) {
+  return (
+    <aside className="sidebar">
+      <a className="brand" href="#/dashboard">
+        <img src="palworld-logo.png" alt="Palworld Companion" />
+      </a>
+      <nav aria-label="Main navigation">
+        {navItems.map((item) => (
+          <a className={item.page === page ? "active" : ""} href={`#/${item.page}`} key={item.page}>
+            <Icon name={item.icon} />
+            <span>{item.label}</span>
           </a>
         ))}
       </nav>
-    </div>
-  );
-}
-
-function PageContent({ page }: { page: Page }) {
-  if (page.name === "pals") return <PalsPage />;
-  if (page.name === "pal") return <PalDetailsPage palKey={page.key} />;
-  if (page.name === "ranch") return <RanchPage />;
-  if (page.name === "work") return <WorkPage />;
-  if (page.name === "party") return <PartyPage />;
-  if (page.name === "breeding") return <BreedingPage />;
-  if (page.name === "resources") return <ResourcesPage />;
-  if (page.name === "resource") return <ResourceDetailsPage resourceId={page.id} />;
-  if (page.name === "owned") return <PalCollectionPage mode="owned" />;
-  if (page.name === "favourites") return <PalCollectionPage mode="favourites" />;
-  return <HomePage />;
-}
-
-function Hero({ title, eyebrow, children }: { title: string; eyebrow?: string; children?: React.ReactNode }) {
-  return (
-    <section className="hero">
-      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <h1>{title}</h1>
-      {children}
-    </section>
-  );
-}
-
-function HomePage() {
-  const { collection } = useCollection();
-  const owned = collection.ownedPalIds.length;
-  const favourites = collection.favouritePalIds.length;
-
-  return (
-    <>
-      <Hero title="Palworld Companion" eyebrow="Planning dashboard">
-        <GlobalSearch />
-      </Hero>
-      <section className="category-grid">
-        <CategoryCard href="#/owned" icon="heart" title="Owned Pals" detail={`${owned} marked owned`} />
-        <CategoryCard href="#/favourites" icon="star" title="Wishlist" detail={`${favourites} saved targets`} />
+      <section className="trainer-card">
+        <div className="trainer-avatar">PT</div>
+        <div>
+          <strong>Pal Tamer</strong>
+          <small>Local progress saved</small>
+        </div>
       </section>
-      <section className="home-dashboard">
-        <LevelMapPanel />
-        <LatestUpdatesPanel />
-        <Panel title="Next Useful Checks">
-          <ul className="priority-list">
-            {priorityItems.map((item) => <li key={item}>{item}</li>)}
-          </ul>
-        </Panel>
-      </section>
-      <section className="metadata">
-        <span>Game version: {metadata.gameVersion}</span>
-        <span>Data update: {metadata.lastUpdated}</span>
-      </section>
-    </>
+    </aside>
   );
 }
 
-function CategoryCard({ href, icon, title, detail }: { href: string; icon: string; title: string; detail: string }) {
-  return (
-    <a className="category-card" href={href}>
-      <span className="nav-icon"><NavIcon name={icon} /></span>
-      <strong>{title}</strong>
-      <small>{detail}</small>
-    </a>
-  );
-}
-
-function LevelMapPanel() {
-  return (
-    <Panel title="Map Level Guide" className="level-map-panel">
-      <img className="level-map-image" src="level-map-guide.png" alt="Palworld map level guide" loading="lazy" />
-    </Panel>
-  );
-}
-
-function LatestUpdatesPanel() {
-  const { news, status } = useLatestNews();
-  return (
-    <Panel title="Recent Updates">
-      <div className="news-list">
-        {news.map((item) => (
-          <a className="news-card" href={item.url} target="_blank" rel="noreferrer" key={`${item.date}-${item.title}`}>
-            <span>{item.date}</span>
-            <strong>{item.title}</strong>
-            <p>{item.summary}</p>
-          </a>
-        ))}
-      </div>
-      <p className="feed-status">{status}</p>
-    </Panel>
-  );
-}
-
-function useLatestNews() {
-  const [news, setNews] = useState(fallbackNews);
-  const [status, setStatus] = useState("Refreshing from Steam news...");
-
-  useEffect(() => {
-    const controller = new AbortController();
-    fetch(steamNewsApiUrl, { signal: controller.signal })
-      .then((response) => {
-        if (!response.ok) throw new Error("News feed unavailable");
-        return response.json();
-      })
-      .then((data) => {
-        const items = (data?.appnews?.newsitems || [])
-          .map((item: { title?: string; url?: string; date?: number; contents?: string }) => ({
-            title: item.title || "Palworld update",
-            url: item.url || "https://store.steampowered.com/news/app/1623730",
-            date: item.date ? new Date(item.date * 1000).toISOString().slice(0, 10) : "",
-            summary: trimSummary(cleanNewsText(item.contents || "")),
-          }))
-          .filter((item: NewsItem) => item.title && item.summary);
-        if (items.length) setNews(items.slice(0, 4));
-        setStatus(`Updated when this page loaded: ${new Date().toLocaleString()}`);
-      })
-      .catch(() => setStatus("Showing saved update summary. Refresh to try the live feed again."));
-
-    return () => controller.abort();
-  }, []);
-
-  return { news, status };
-}
-
-function cleanNewsText(text: string) {
-  const withoutTags = text.replace(/<[^>]*>/g, " ");
-  const textarea = document.createElement("textarea");
-  textarea.innerHTML = withoutTags;
-  return textarea.value.replace(/\s+/g, " ").trim();
-}
-
-function trimSummary(text: string) {
-  if (text.length <= 180) return text;
-  return `${text.slice(0, 177).trim()}...`;
-}
-
-function GlobalSearch() {
+function Topbar({ tracking, updateTracking }: { tracking: TrackedState; updateTracking: (next: Partial<TrackedState>) => void }) {
   const [query, setQuery] = useState("");
   const normalized = query.trim().toLowerCase();
-  const palResults = normalized
-    ? pals.filter((pal) =>
-        [pal.name, pal.id.toString(), ...pal.elements, ...pal.workSuitability.map((work) => work.type)]
-          .join(" ")
-          .toLowerCase()
-          .includes(normalized),
-      )
-    : [];
-  const resourceResults = normalized
-    ? resources.filter((resource) => `${resource.name} ${resource.category}`.toLowerCase().includes(normalized))
-    : [];
+  const palMatches = normalized ? pals.filter((pal) => pal.name.toLowerCase().includes(normalized)).slice(0, 5) : [];
+  const itemMatches = normalized ? resources.filter((item) => item.name.toLowerCase().includes(normalized)).slice(0, 5) : [];
+  const levelPercent = Math.min(99, Math.round((tracking.playerLevel / 60) * 100));
 
   return (
-    <div className="global-search">
-      <label htmlFor="global-search">Search Pals, resources, drops, and work skills</label>
-      <input
-        id="global-search"
-        value={query}
-        onChange={(event) => setQuery(event.target.value)}
-        placeholder="Try Fire, Wool, Mining, or Anubis"
-      />
-      {normalized && (
-        <div className="search-results">
-          <strong>Pals</strong>
-          {palResults.length ? palResults.slice(0, 5).map((pal) => <a key={pal.id} href={`#/pals/${pal.key}`}>{pal.name}</a>) : <span>No Pal matches.</span>}
-          <strong>Resources</strong>
-          {resourceResults.length ? resourceResults.slice(0, 5).map((resource) => <a key={resource.id} href={`#/resources/${resource.id}`}>{resource.name}</a>) : <span>No resource matches.</span>}
+    <header className="topbar">
+      <button className="icon-button menu-button" aria-label="Open menu"><Icon name="menu" /></button>
+      <div className="searchbox">
+        <Icon name="search" />
+        <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search Pals, Items, Locations..." aria-label="Search Pals, Items, Locations" />
+        <kbd>/</kbd>
+        {normalized && (
+          <div className="search-popover">
+            <strong>Pals</strong>
+            {palMatches.length ? palMatches.map((pal) => <a href="#/pals" key={pal.id}>{pal.name}</a>) : <span>No Pal matches</span>}
+            <strong>Items</strong>
+            {itemMatches.length ? itemMatches.map((item) => <a href="#/items" key={item.id}>{item.name}</a>) : <span>No item matches</span>}
+          </div>
+        )}
+      </div>
+      <label className="level-control">
+        <span>Player Level</span>
+        <strong>Lv. {tracking.playerLevel}</strong>
+        <input type="range" min="1" max="60" value={tracking.playerLevel} onChange={(event) => updateTracking({ playerLevel: Number(event.target.value) })} />
+        <small>{levelPercent}%</small>
+      </label>
+      <button className="icon-button" aria-label="Theme"><Icon name="moon" /></button>
+      <button className="icon-button" aria-label="Notifications"><Icon name="bell" /></button>
+      <div className="profile-pill"><span>PT</span><strong>Pal Tamer</strong></div>
+    </header>
+  );
+}
+
+function Dashboard({ tracking, updateTracking }: { tracking: TrackedState; updateTracking: (next: Partial<TrackedState>) => void }) {
+  const { collection } = useCollection();
+  const currentUnlocks = technologies.filter((tech) => tech.level === tracking.playerLevel || tech.level === tracking.playerLevel + 1);
+  const recentlyViewed = pals.filter((pal) => collection.recentlyViewedPalIds.includes(pal.id)).slice(0, 4);
+  const favourites = pals.filter((pal) => collection.favouritePalIds.includes(pal.id)).slice(0, 6);
+  const featured = findPalByName("Anubis") || pals[0];
+
+  return (
+    <div className="dashboard-grid">
+      <section className="panel update-panel">
+        <header className="section-title"><span>Game Update</span><Badge>New</Badge></header>
+        <div>
+          <h1>v0.3.2 Patch Notes</h1>
+          <p>New Pals, a stronger automation path, quality-of-life settings, balance tuning, and fresh crafting targets for mid-game bases.</p>
+          <a className="button-link" href="https://store.steampowered.com/news/app/1623730" target="_blank" rel="noreferrer">View Patch Notes</a>
         </div>
-      )}
+        <img src={featured.image} alt="" />
+      </section>
+
+      <section className="panel map-preview">
+        <header className="section-title"><span>Interactive Map</span><a href="#/map">Open</a></header>
+        <MiniMap tracking={tracking} limit={36} />
+      </section>
+
+      <MetricPanel label="Game Version" value="v0.3.2.0" detail="You're up to date" tone="success" />
+      <MetricPanel label="Upcoming Events" value="No upcoming events" detail="Check back later" />
+
+      <section className="panel whats-new">
+        <header className="section-title"><span>What's New</span></header>
+        <StatTile image={pals[12]?.image} value="72" label="Pals" />
+        <StatTile image={resources[0]?.image} value="842" label="Items" />
+        <StatTile value="142" label="Technologies" />
+        <StatTile value="24" label="Bosses" />
+        <StatTile value="12" label="Mechanics" />
+      </section>
+
+      <section className="panel level-now">
+        <header className="section-title"><span>At Your Level ({tracking.playerLevel})</span></header>
+        <MiniUnlocks title="New Pals Available" items={pals.slice(95, 103).map((pal) => ({ label: pal.name, image: pal.image }))} />
+        <MiniUnlocks title="New Recipes" items={resources.slice(0, 6).map((item) => ({ label: item.name, image: item.image }))} />
+        <MiniUnlocks title="New Technologies" items={currentUnlocks.map((tech) => ({ label: tech.name }))} />
+      </section>
+
+      <section className="panel compact-list">
+        <header className="section-title"><span>Recently Viewed</span></header>
+        {(recentlyViewed.length ? recentlyViewed : pals.slice(180, 183)).map((pal) => <MiniPalRow pal={pal} key={pal.id} />)}
+      </section>
+
+      <section className="panel compact-list">
+        <header className="section-title"><span>Favourites</span></header>
+        {(favourites.length ? favourites : pals.slice(205, 211)).map((pal) => <MiniPalRow pal={pal} key={pal.id} />)}
+      </section>
+
+      <GoalsPanel tracking={tracking} updateTracking={updateTracking} />
+      <FeaturedPal pal={featured} />
+      <TrackerSummary tracking={tracking} />
+      <QuickLinks />
+      <section className="tech-strip">
+        <strong>Upcoming Technology Unlocks</strong>
+        {technologies.filter((tech) => tech.level > tracking.playerLevel).slice(0, 6).map((tech) => (
+          <span key={tech.id}>Lv. {tech.level} {tech.name}</span>
+        ))}
+      </section>
     </div>
   );
 }
 
-function PalsPage() {
-  return (
-    <>
-      <Hero title="Paldeck" eyebrow="Search, filter, sort" />
-      <PalBrowser palsToShow={pals} context="all" />
-    </>
-  );
-}
+function MapPage({ tracking }: { tracking: TrackedState }) {
+  const [selected, setSelected] = useState(mapFilters.map(([label]) => label));
+  const [onlyLevel, setOnlyLevel] = useState(true);
+  const [region, setRegion] = useState("Windswept Hills");
+  const visibleMarkers = mapMarkers.filter((marker) => selected.includes(marker.type[0]) && (!onlyLevel || marker.level <= tracking.playerLevel + 8));
+  const regions = ["Windswept Hills", "Frostbound Mountains", "Desolate Volcano", "Bamboo Groves", "Moonless Shore", "Deep Sea Fortress"];
 
-function PalCollectionPage({ mode }: { mode: "owned" | "favourites" }) {
-  const { collection } = useCollection();
-  const filtered = pals.filter((pal) => (mode === "owned" ? collection.ownedPalIds.includes(pal.id) : collection.favouritePalIds.includes(pal.id)));
-  const isFavouritePage = mode === "favourites";
+  function toggleFilter(label: string) {
+    setSelected((current) => current.includes(label) ? current.filter((item) => item !== label) : [...current, label]);
+  }
 
   return (
-    <>
-      <Hero title={isFavouritePage ? "Favourites" : "Owned Pals"} eyebrow={isFavouritePage ? "Targets you want to find" : "Collection progress"}>
-        <p>
-          {isFavouritePage
-            ? "Favourite Pals stay saved even after you mark them owned."
-            : `Owned: ${filtered.length} / ${pals.length}. Completion: ${Math.round((filtered.length / pals.length) * 100)}%.`}
-        </p>
-      </Hero>
-      {filtered.length ? (
-        <PalBrowser palsToShow={filtered} context={mode} />
-      ) : (
-        <EmptyState text={isFavouritePage ? "You have not favourited any Pals yet. Use the star button to save Pals you want to find later." : "You have not checked off any Pals yet. Browse the Paldeck and mark the ones you already have."} />
-      )}
-    </>
-  );
-}
-
-function PalBrowser({ palsToShow, context }: { palsToShow: Pal[]; context: "all" | "owned" | "favourites" }) {
-  const { isOwned, isFavourite } = useCollection();
-  const [query, setQuery] = useState("");
-  const [element, setElement] = useState("all");
-  const [work, setWork] = useState("all");
-  const [habitat, setHabitat] = useState<"all" | HabitatTime>("all");
-  const [favouriteState, setFavouriteState] = useState("all");
-  const [sort, setSort] = useState<SortMode>("number");
-  const [compact, setCompact] = useState(false);
-
-  const elements = unique(pals.flatMap((pal) => pal.elements));
-  const workTypes = unique(pals.flatMap((pal) => pal.workSuitability.map((item) => item.type)));
-
-  const filtered = useMemo(() => {
-    const normalized = query.trim().toLowerCase();
-    return palsToShow
-      .filter((pal) => !normalized || `${pal.name} ${pal.id} ${pal.elements.join(" ")}`.toLowerCase().includes(normalized))
-      .filter((pal) => element === "all" || pal.elements.includes(element))
-      .filter((pal) => work === "all" || pal.workSuitability.some((item) => item.type === work))
-      .filter((pal) => habitat === "all" || pal.habitats.some((item) => item.time === habitat))
-      .filter((pal) => {
-        if (favouriteState === "not-owned") return isFavourite(pal.id) && !isOwned(pal.id);
-        if (favouriteState === "owned") return isOwned(pal.id);
-        return true;
-      })
-      .sort((a, b) => comparePals(a, b, sort, isOwned, isFavourite));
-  }, [query, element, work, habitat, favouriteState, sort, palsToShow, isOwned, isFavourite]);
-
-  return (
-    <section className="browser">
-      <div className="toolbar">
-        <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search by name or number" aria-label="Search Pals" />
-        <select value={element} onChange={(event) => setElement(event.target.value)} aria-label="Filter by element">
-          <option value="all">All elements</option>
-          {elements.map((item) => <option key={item}>{item}</option>)}
-        </select>
-        <select value={work} onChange={(event) => setWork(event.target.value)} aria-label="Filter by work suitability">
-          <option value="all">All work</option>
-          {workTypes.map((item) => <option key={item}>{item}</option>)}
-        </select>
-        <select value={habitat} onChange={(event) => setHabitat(event.target.value as "all" | HabitatTime)} aria-label="Filter by habitat time">
-          <option value="all">Any habitat</option>
-          <option value="day">Day</option>
-          <option value="night">Night</option>
-          <option value="both">Both</option>
-          <option value="unknown">Map spawns</option>
-        </select>
-        {context === "favourites" && (
-          <select value={favouriteState} onChange={(event) => setFavouriteState(event.target.value)} aria-label="Filter favourites by owned status">
-            <option value="all">All favourites</option>
-            <option value="not-owned">Not yet owned</option>
-            <option value="owned">Already owned</option>
-          </select>
-        )}
-        <select value={sort} onChange={(event) => setSort(event.target.value as SortMode)} aria-label="Sort Pals">
-          <option value="number">Paldeck number</option>
-          <option value="name">Name</option>
-          <option value="rarity">Rarity</option>
-          <option value="breeding">Breeding power</option>
-          <option value="work">Highest work</option>
-          <option value="owned">Owned status</option>
-          <option value="favourite">Favourite status</option>
-        </select>
-        <button type="button" onClick={() => setCompact(!compact)}>{compact ? "Grid view" : "Compact view"}</button>
-        <button
-          type="button"
-          onClick={() => {
-            setQuery("");
-            setElement("all");
-            setWork("all");
-            setHabitat("all");
-            setFavouriteState("all");
-          }}
-        >
-          Clear filters
-        </button>
-      </div>
-      <p className="result-count">{filtered.length} matching Pals</p>
-      {filtered.length ? (
-        <div className={compact ? "pal-list compact" : "pal-list"}>
-          {filtered.map((pal) => <PalCard key={pal.id} pal={pal} compact={compact} />)}
+    <div className="page-grid map-layout">
+      <aside className="panel filters">
+        <header className="section-title"><span>Map Filters</span><button onClick={() => setSelected(selected.length ? [] : mapFilters.map(([label]) => label))}>{selected.length ? "Hide All" : "Show All"}</button></header>
+        <label className="switch-row"><span>Show content available at my level (Lv. {tracking.playerLevel})</span><input type="checkbox" checked={onlyLevel} onChange={(event) => setOnlyLevel(event.target.checked)} /></label>
+        <div className="range-row"><span>Level Range</span><strong>1 - {onlyLevel ? tracking.playerLevel + 8 : 60}</strong></div>
+        {mapFilters.map(([label, glyph]) => (
+          <label className="check-row" key={label}>
+            <span><b>{glyph}</b>{label}</span>
+            <input type="checkbox" checked={selected.includes(label)} onChange={() => toggleFilter(label)} />
+          </label>
+        ))}
+      </aside>
+      <section className="panel full-map-panel">
+        <div className="map-tabs">
+          {["Palpagos Islands", "Sakurajima", "Feybreak Island"].map((tab) => <button className={tab === "Palpagos Islands" ? "active" : ""} key={tab}>{tab}</button>)}
+          <input placeholder="Search locations..." aria-label="Search locations" />
         </div>
-      ) : (
-        <EmptyState text="No Pals match those filters." />
-      )}
+        <div className="world-map">
+          <img src="level-map-guide.png" alt="Palpagos Island map" />
+          {visibleMarkers.map((marker) => (
+            <button
+              className="map-marker"
+              style={{ left: `${marker.x}%`, top: `${marker.y}%` }}
+              key={marker.id}
+              title={`${marker.type[0]} Lv. ${marker.level}`}
+              onClick={() => setRegion(regions[marker.id % regions.length])}
+            >
+              {marker.type[1]}
+            </button>
+          ))}
+          <div className="map-controls"><button>+</button><button>-</button><button>◎</button><button>▣</button></div>
+          <span className="coords">X: 1532&nbsp;&nbsp;Y: -244</span>
+          <span className="zoom">100%</span>
+        </div>
+      </section>
+      <aside className="panel region-panel">
+        <h2>{region}</h2>
+        <strong className="green">Recommended Level: 15 - 25</strong>
+        <img src="level-map-guide.png" alt="" />
+        <p>A large open area with rolling hills, ruins, resource nodes, and reliable early-to-mid game Pal spawns.</p>
+        <InfoList rows={[["Pal Spawns", "12"], ["Alpha Pals", "1"], ["Dungeons", "1"], ["Fast Travel", "2"], ["Treasure Chests", "8"], ["Ore Nodes", "6"], ["Coal Nodes", "3"]]} />
+        <button>Set as Waypoint</button>
+      </aside>
+      <section className="panel location-rail"><header className="section-title"><span>Recently Viewed Locations</span></header>{regions.slice(0, 5).map((name) => <button key={name}>{name}<small>Lv. 15 - 55</small></button>)}</section>
+    </div>
+  );
+}
+
+function PalsPage({ tracking }: { tracking: TrackedState }) {
+  const { isOwned, isFavourite, toggleOwned, toggleFavourite, markViewed } = useCollection();
+  const [query, setQuery] = useState("");
+  const [element, setElement] = useState("All");
+  const [work, setWork] = useState("All");
+  const [owned, setOwned] = useState("Any");
+  const [view, setView] = useState<ViewMode>("cards");
+  const filtered = useMemo(() => pals.filter((pal) => {
+    const haystack = `${pal.name} ${pal.paldeckNumber || pal.id} ${pal.elements.join(" ")} ${pal.workSuitability.map((item) => item.type).join(" ")}`.toLowerCase();
+    return (!query || haystack.includes(query.toLowerCase()))
+      && (element === "All" || pal.elements.includes(element))
+      && (work === "All" || pal.workSuitability.some((item) => item.type === work))
+      && (owned === "Any" || (owned === "Owned" ? isOwned(pal.id) : !isOwned(pal.id)));
+  }).slice(0, 40), [query, element, work, owned, isOwned]);
+  const selected = filtered[0] || pals[0];
+
+  return (
+    <div className="page-grid pal-layout">
+      <aside className="panel filters">
+        <header className="section-title"><span>Pals Database</span><strong>{pals.length}</strong></header>
+        {["All Pals", "Owned", "Favourites", "Not Owned", "Boss Pals", "Alpha Pals", "Mounts", "Ranch Pals"].map((item, index) => <button className={index === 0 ? "active" : ""} key={item}>{item}<span>{index === 0 ? pals.length : Math.max(8, 92 - index * 7)}</span></button>)}
+        <hr />
+        <h3>Element</h3>
+        {unique(pals.flatMap((pal) => pal.elements)).map((item) => <button key={item} onClick={() => setElement(item)}>{elementGlyph[item] || "•"} {item}<span>{pals.filter((pal) => pal.elements.includes(item)).length}</span></button>)}
+      </aside>
+      <section className="panel pal-browser">
+        <header className="page-heading"><div><h1>Pals</h1><span>{filtered.length} shown from {pals.length} total</span></div><div className="segmented"><button className={view === "cards" ? "active" : ""} onClick={() => setView("cards")}>▦</button><button className={view === "list" ? "active" : ""} onClick={() => setView("list")}>☷</button></div></header>
+        <div className="toolbar">
+          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search by name or Paldeck #..." />
+          <select value={element} onChange={(event) => setElement(event.target.value)}><option>All</option>{unique(pals.flatMap((pal) => pal.elements)).map((item) => <option key={item}>{item}</option>)}</select>
+          <select value={work} onChange={(event) => setWork(event.target.value)}><option>All</option>{workTypes.map((item) => <option key={item}>{item}</option>)}</select>
+          <select value={owned} onChange={(event) => setOwned(event.target.value)}><option>Any</option><option>Owned</option><option>Not Owned</option></select>
+        </div>
+        <div className={view === "cards" ? "pal-card-grid" : "pal-list-view"}>
+          {filtered.map((pal) => (
+            <article className="pal-card" key={pal.id} onMouseEnter={() => markViewed(pal.id)}>
+              <button className={`favorite ${isFavourite(pal.id) ? "active" : ""}`} onClick={() => toggleFavourite(pal.id)} aria-label={`Favourite ${pal.name}`}>★</button>
+              <img src={pal.image} alt={pal.name} />
+              <strong>#{displayNumber(pal)} {pal.name}</strong>
+              <ElementChips elements={pal.elements} />
+              <WorkDots work={pal.workSuitability} />
+              <div className="card-actions"><button onClick={() => toggleOwned(pal.id)}>{isOwned(pal.id) ? "Owned" : "Mark Owned"}</button><button>Details</button></div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <aside className="panel detail-panel">
+        <PalDetail pal={selected} tracking={tracking} />
+      </aside>
+    </div>
+  );
+}
+
+function BreedingPage({ tracking }: { tracking: TrackedState }) {
+  const [parentA, setParentA] = useState(findPalByName("Jormuntide")?.id || pals[0].id);
+  const [parentB, setParentB] = useState(findPalByName("Relaxaurus")?.id || pals[1].id);
+  const a = findPal(parentA) || pals[0];
+  const b = findPal(parentB) || pals[1];
+  const target = findPalByName("Jormuntide Ignis") || findPalByName("Suzaku") || pals[2];
+  const combos = [
+    [a, findPalByName("Suzaku") || b, target, "100%"],
+    [a, findPalByName("Blazehowl") || b, target, "95%"],
+    [findPalByName("Relaxaurus Lux") || b, findPalByName("Suzaku") || a, target, "90%"],
+  ];
+
+  return (
+    <div className="page-grid breeding-layout">
+      <aside className="panel filters">
+        <header className="section-title"><span>Breeding Tools</span></header>
+        {["Breeding Calculator", "Breeding Chain Planner", "Reverse Breeding", "Passive Inheritance", "Egg Types Guide"].map((item, index) => <button className={index === 0 ? "active" : ""} key={item}>{item}</button>)}
+        <hr />
+        <label className="switch-row"><span>Use only owned Pals</span><input type="checkbox" defaultChecked /></label>
+        <label>Max Parent Level <strong>{Math.min(40, tracking.playerLevel + 8)}</strong><input type="range" min="1" max="60" defaultValue={Math.min(40, tracking.playerLevel + 8)} /></label>
+      </aside>
+      <section className="panel breeding-main">
+        <header className="page-heading"><div><h1>Breeding Calculator</h1><span>Find the best ways to breed any Pal.</span></div></header>
+        <div className="parents">
+          <PalPicker label="Parent 1" value={parentA} onChange={setParentA} />
+          <div className="heart">♡</div>
+          <PalPicker label="Parent 2" value={parentB} onChange={setParentB} />
+          <div className="egg-result"><span>Egg Result</span><div className="egg">◒</div><strong>Large Damp Egg</strong><small>01:20:00</small></div>
+        </div>
+        <div className="tabs">{["Best Combinations", "Fastest Path", "Easiest Path", "Uses Owned Pals", "Lowest Level Parents"].map((item, index) => <button className={index === 0 ? "active" : ""} key={item}>{item}</button>)}</div>
+        <div className="combo-list">
+          {combos.map(([left, right, child, rate], index) => <BreedingCombo key={index} index={index + 1} left={left as Pal} right={right as Pal} child={child as Pal} rate={rate as string} />)}
+        </div>
+      </section>
+      <aside className="panel detail-panel"><PalDetail pal={target} tracking={tracking} /></aside>
+    </div>
+  );
+}
+
+function WorkPage({ tracking }: { tracking: TrackedState }) {
+  const [workType, setWorkType] = useState("All Jobs");
+  const ranked = [...pals].filter((pal) => workType === "All Jobs" || pal.workSuitability.some((work) => work.type === workType)).sort((a, b) => workScore(b, workType) - workScore(a, workType)).slice(0, 10);
+  const top = ranked[0] || pals[0];
+
+  return (
+    <div className="page-grid work-layout">
+      <aside className="panel filters">
+        <h2>Work Guide</h2>
+        <p>Find the best Pals for every job and task.</p>
+        <label className="switch-row"><span>Show only available at my level</span><input type="checkbox" defaultChecked /></label>
+        <select><option>Lv. 2 or higher</option><option>Any work level</option></select>
+      </aside>
+      <section className="panel table-panel">
+        <header className="page-heading"><div><h1>Work Suitability Guide</h1><span>{ranked.length} top workers for Lv. {tracking.playerLevel}</span></div><button>Export Table</button></header>
+        <div className="work-tabs">{["All Jobs", ...workTypes].map((item) => <button className={workType === item ? "active" : ""} onClick={() => setWorkType(item)} key={item}>{workGlyph[item] || "▦"}<span>{shortWork(item)}</span></button>)}</div>
+        <div className="data-table">
+          <div className="table-head"><span>Pal</span><span>Element</span><span>Work Suitability</span><span>Score</span><span>Available</span></div>
+          {ranked.map((pal, index) => <WorkRow pal={pal} index={index + 1} key={pal.id} />)}
+        </div>
+      </section>
+      <aside className="panel detail-panel"><PalDetail pal={top} tracking={tracking} /><InsightCards top={top} /></aside>
+    </div>
+  );
+}
+
+function RanchPage({ tracking }: { tracking: TrackedState }) {
+  const ranchers = pals.filter((pal) => pal.workSuitability.some((work) => work.type === "Farming")).sort((a, b) => workScore(b, "Farming") - workScore(a, "Farming")).slice(0, 12);
+  const selected = ranchers[0] || pals[0];
+  return (
+    <div className="page-grid ranch-layout">
+      <aside className="panel filters">
+        <h2>Ranch Guide</h2>
+        <p>Best Ranch Pals and passive item production.</p>
+        <input placeholder="Search items..." />
+        <select><option>All Items</option><option>Eggs</option><option>Milk</option><option>Wool</option><option>Honey</option></select>
+        <label className="switch-row"><span>Show only available at my level</span><input type="checkbox" defaultChecked /></label>
+      </aside>
+      <section className="panel table-panel">
+        <header className="page-heading"><div><h1>Ranch Pals</h1><span>Pals that can be assigned to Ranches.</span></div><button>Ranch Items Overview</button></header>
+        <div className="tabs">{["All Items", "Eggs", "Milk", "Wool", "Honey", "Leather", "Bones", "Pal Fluids", "Oils"].map((item, index) => <button className={index === 0 ? "active" : ""} key={item}>{item}</button>)}</div>
+        <div className="data-table">
+          <div className="table-head ranch-head"><span>Pal</span><span>Element</span><span>Item Produced</span><span>Amount</span><span>Drop Rate</span><span>Owned</span></div>
+          {ranchers.map((pal, index) => <RanchRow pal={pal} index={index + 1} key={pal.id} />)}
+        </div>
+      </section>
+      <aside className="panel detail-panel"><PalDetail pal={selected} tracking={tracking} /><RanchProduction pal={selected} /></aside>
+    </div>
+  );
+}
+
+function ItemsPage({ tracking }: { tracking: TrackedState }) {
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState("All");
+  const [view, setView] = useState<ViewMode>("cards");
+  const categories = unique(resources.map((item) => item.category)).slice(0, 14);
+  const filtered = resources.filter((item) => (!query || item.name.toLowerCase().includes(query.toLowerCase()) || item.description?.toLowerCase().includes(query.toLowerCase())) && (category === "All" || item.category === category)).slice(0, 36);
+  const selected = filtered[0] || resources[0];
+  return (
+    <div className="page-grid items-layout">
+      <aside className="panel filters">
+        <header className="section-title"><span>Items Database</span><strong>{resources.length}</strong></header>
+        {["All Items", "Weapons", "Armour", "Ammo", "Materials", "Food", "Medicine", "Building Materials", "Key Items", "Other"].map((item, index) => <button className={index === 0 ? "active" : ""} key={item}>{item}<span>{index === 0 ? resources.length : Math.max(24, 224 - index * 20)}</span></button>)}
+        <hr />
+        <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search items..." />
+        <select value={category} onChange={(event) => setCategory(event.target.value)}><option>All</option>{categories.map((item) => <option key={item}>{item}</option>)}</select>
+      </aside>
+      <section className="panel item-browser">
+        <header className="page-heading"><div><h1>All Items</h1><span>{filtered.length} items shown for Lv. {tracking.playerLevel}</span></div><div className="segmented"><button className={view === "cards" ? "active" : ""} onClick={() => setView("cards")}>▦</button><button className={view === "list" ? "active" : ""} onClick={() => setView("list")}>☷</button></div></header>
+        <div className="tabs">{["All Items", "Crafted", "Pal Drop", "Ranch Drop", "Mined", "Gathered", "Purchased", "Boss Drop", "Chest Loot", "Quest Reward"].map((item, index) => <button className={index === 0 ? "active" : ""} key={item}>{item}</button>)}</div>
+        <div className={view === "cards" ? "item-grid" : "item-list-view"}>
+          {filtered.map((item) => <ItemCard item={item} key={item.id} />)}
+        </div>
+      </section>
+      <aside className="panel item-detail"><ItemDetail item={selected} /></aside>
+    </div>
+  );
+}
+
+function TechnologyPage({ tracking, updateTracking }: { tracking: TrackedState; updateTracking: (next: Partial<TrackedState>) => void }) {
+  const [filter, setFilter] = useState("All");
+  const techs = technologies.filter((tech) => filter === "All" || (filter === "Ancient" ? tech.ancient : !tech.ancient));
+  function toggleList(key: "wantedTech" | "unlockedTech" | "craftedTech", id: string) {
+    const list = tracking[key];
+    updateTracking({ [key]: list.includes(id) ? list.filter((item) => item !== id) : [...list, id] });
+  }
+  const selected = techs.find((tech) => tracking.wantedTech.includes(tech.id)) || techs[0];
+
+  return (
+    <div className="page-grid tech-layout">
+      <aside className="panel filters">
+        <h2>Technology Overview</h2>
+        <Progress label="Technologies Unlocked" value={tracking.unlockedTech.length} max={142} />
+        <Progress label="Ancient Technologies Unlocked" value={tracking.unlockedTech.filter((id) => technologies.find((tech) => tech.id === id)?.ancient).length} max={50} />
+        <div className="segmented three"><button className={filter === "All" ? "active" : ""} onClick={() => setFilter("All")}>All</button><button className={filter === "Primitive" ? "active" : ""} onClick={() => setFilter("Primitive")}>Primitive</button><button className={filter === "Ancient" ? "active" : ""} onClick={() => setFilter("Ancient")}>Ancient</button></div>
+        <InfoList rows={[["Wanted", tracking.wantedTech.length.toString()], ["Unlocked", tracking.unlockedTech.length.toString()], ["Crafted", tracking.craftedTech.length.toString()]]} />
+      </aside>
+      <section className="panel tech-tree">
+        <header className="page-heading"><div><h1>Technology Tree</h1><span>Unlock recipes, structures, items, and abilities.</span></div><div className="points"><span>Technology Points <strong>12</strong></span><span>Ancient Points <strong>3</strong></span></div></header>
+        <div className="tech-levels">
+          {[31, 32, 33, 34].map((level) => (
+            <div className={`tech-row level-${level === tracking.playerLevel ? "current" : "normal"}`} key={level}>
+              <strong className="level-badge">{level}</strong>
+              <div className="tech-cards">
+                {techs.filter((tech) => tech.level === level).map((tech) => (
+                  <article className={`tech-card ${tech.ancient ? "ancient" : ""} ${tracking.unlockedTech.includes(tech.id) ? "unlocked" : ""} ${level > tracking.playerLevel ? "locked" : ""}`} key={tech.id}>
+                    <span>{tech.type}</span>
+                    <strong>{tech.name}</strong>
+                    <small>{tech.cost} {tech.ancient ? "Ancient" : "Tech"} pts</small>
+                    <div className="mini-actions">
+                      <button onClick={() => toggleList("wantedTech", tech.id)} className={tracking.wantedTech.includes(tech.id) ? "active" : ""}>★</button>
+                      <button onClick={() => toggleList("unlockedTech", tech.id)} className={tracking.unlockedTech.includes(tech.id) ? "active" : ""}>✓</button>
+                      <button onClick={() => toggleList("craftedTech", tech.id)} className={tracking.craftedTech.includes(tech.id) ? "active" : ""}>⚒</button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      <aside className="panel tech-detail">
+        <h2>{selected.name}</h2>
+        <Badge>{selected.type}</Badge>
+        <InfoList rows={[["Unlock Level", `Lv. ${selected.level}`], ["Technology Points", selected.cost.toString()], ["Status", tracking.unlockedTech.includes(selected.id) ? "Unlocked" : "Wanted"]]} />
+        <h3>Requirements</h3>
+        {selected.materials.map((item, index) => <div className="material-row" key={item}><span>{item}</span><strong>{index % 2 ? "12 / 10" : "15 / 20"}</strong></div>)}
+        <div className="warning-box"><strong>Missing Technology Points</strong><p>You need 2 more Technology Points.</p><button>Show How to Earn Points</button></div>
+      </aside>
+    </div>
+  );
+}
+
+function ToolsPage({ tracking, updateTracking }: { tracking: TrackedState; updateTracking: (next: Partial<TrackedState>) => void }) {
+  return (
+    <div className="tools-page">
+      <section className="panel page-heading tools-heading"><div><h1>Tools</h1><span>Planning helpers for your party, captures, resources, bosses, dungeons, passives, and food.</span></div></section>
+      <div className="tool-grid">
+        <ToolCard title="Party Builder" detail="Analyse element coverage, mounts, and utility gaps." content={<PartyMini />} />
+        <ToolCard title="Capture Advisor" detail="Best upgrades based on your current level." content={<CaptureAdvisor tracking={tracking} />} />
+        <ToolCard title="Resource Calculator" detail="Nested material estimates and farming sources." content={<ResourceMini />} />
+        <ToolCard title="Mount Comparison" detail="Compare flying, ground, and water mounts." content={<MountMini />} />
+        <ToolCard title="Boss Guide" detail="Recommended party, weaknesses, rewards, and timers." content={<BossMini tracking={tracking} updateTracking={updateTracking} />} />
+        <ToolCard title="Food Guide" detail="Recipes, buffs, nutrition, and ingredients." content={<FoodGuide />} wide />
+      </div>
+    </div>
+  );
+}
+
+function FoodGuide() {
+  return (
+    <div className="food-guide">
+      <div className="tabs">{["All", "Best Overall", "Combat", "Base Workers", "Stamina", "HP"].map((item, index) => <button className={index === 0 ? "active" : ""} key={item}>{item}</button>)}</div>
+      <div className="food-table">
+        {foods.map((food, index) => (
+          <div className="food-row" key={food.name}>
+            <strong>{index + 1}</strong>
+            <div><b>{food.name}</b><small>{food.rarity}</small></div>
+            <span>{food.type}</span>
+            <span>{food.buffs.join(", ")}</span>
+            <b>{food.nutrition}</b>
+            <span>{food.station}</span>
+            <span className={food.owned ? "green" : "muted"}>{food.owned ? "Owned" : "Missing"}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function GoalsPanel({ tracking, updateTracking }: { tracking: TrackedState; updateTracking: (next: Partial<TrackedState>) => void }) {
+  const goals = [
+    ["Capture 5 Pals", "3 / 5"],
+    ["Build Advanced Base", "0 / 1"],
+    ["Defeat Collected Bosses", "12 / 24"],
+    ["Unlock Wanted Tech", `${tracking.unlockedTech.filter((id) => tracking.wantedTech.includes(id)).length} / ${tracking.wantedTech.length}`],
+  ];
+  return (
+    <section className="panel goals-panel">
+      <header className="section-title"><span>Goals</span></header>
+      {goals.map(([label, progress]) => <div className="goal-row" key={label}><span>{label}</span><strong>{progress}</strong></div>)}
+      <textarea value={tracking.notes} onChange={(event) => updateTracking({ notes: event.target.value })} placeholder="Personal notes..." aria-label="Personal notes" />
     </section>
   );
 }
 
-function PalCard({ pal, compact }: { pal: Pal; compact?: boolean }) {
-  const { isOwned, isFavourite, toggleOwned, toggleFavourite } = useCollection();
-  const strongest = strongestWork(pal);
+function TrackerSummary({ tracking }: { tracking: TrackedState }) {
+  const { collection } = useCollection();
+  const owned = collection.ownedPalIds.length;
+  const progress = Math.round(((owned / Math.max(1, pals.length)) * 0.45 + (tracking.unlockedTech.length / 142) * 0.35 + (tracking.craftedTech.length / 70) * 0.2) * 100);
   return (
-    <article className={compact ? "pal-card compact-card" : "pal-card"}>
-      <button
-        type="button"
-        className={isFavourite(pal.id) ? "star-button active" : "star-button"}
-        onClick={() => toggleFavourite(pal.id)}
-        aria-pressed={isFavourite(pal.id)}
-        aria-label={isFavourite(pal.id) ? `Remove ${pal.name} from favourites` : `Add ${pal.name} to favourites`}
-        title={isFavourite(pal.id) ? "Remove favourite" : "Add favourite"}
-      >
-        {isFavourite(pal.id) ? "★" : "☆"}
-      </button>
-      <a className="pal-link" href={`#/pals/${pal.key}`}>
-        <Avatar text={pal.image} label={pal.name} />
-        <div>
-          <span className="number">#{displayPalNumber(pal)}</span>
-          <h3>{pal.name}</h3>
-          <div className="pal-meta">
-            <ElementList elements={pal.elements} />
-            <span>{strongest ? `${strongest.type} ${strongest.level}` : "No work data"}</span>
-          </div>
-          <HabitatBadges pal={pal} />
-        </div>
-      </a>
-      <div className="card-actions">
-        <button type="button" className={isOwned(pal.id) ? "toggle active" : "toggle"} onClick={() => toggleOwned(pal.id)} aria-pressed={isOwned(pal.id)} title={`Toggle owned for ${pal.name}`}>
-          ✓ <span>{isOwned(pal.id) ? "Owned" : "Own"}</span>
-        </button>
+    <section className="panel tracker-summary">
+      <header className="section-title"><span>Tracker Summary</span></header>
+      <div className="donut" style={{ "--progress": `${progress}%` } as React.CSSProperties}><strong>{progress}%</strong><span>Overall Progress</span></div>
+      <InfoList rows={[["Pals Owned", `${owned} / ${pals.length}`], ["Technologies", `${tracking.unlockedTech.length} / 142`], ["Items Collected", "318 / 570"], ["Bosses Defeated", "12 / 24"]]} />
+    </section>
+  );
+}
+
+function QuickLinks() {
+  return (
+    <section className="panel quick-links">
+      <header className="section-title"><span>Quick Links</span></header>
+      {navItems.slice(2).map((item) => <a href={`#/${item.page}`} key={item.page}><Icon name={item.icon} />{item.label}</a>)}
+    </section>
+  );
+}
+
+function FeaturedPal({ pal }: { pal: Pal }) {
+  return <section className="panel featured-pal"><PalDetail pal={pal} /></section>;
+}
+
+function PalDetail({ pal }: { pal: Pal; tracking?: TrackedState }) {
+  const { isOwned, toggleOwned, isFavourite, toggleFavourite } = useCollection();
+  const bestWork = highestWork(pal);
+  return (
+    <div className="pal-detail">
+      <div className="detail-art"><img src={pal.image} alt={pal.name} /></div>
+      <div className="detail-copy">
+        <span>#{displayNumber(pal)}</span>
+        <h2>{pal.name}</h2>
+        <ElementChips elements={pal.elements} />
+        <div className="pill-row">{hasMount(pal) && <Badge>Mount</Badge>}{isRanchPal(pal) && <Badge>Ranch</Badge>}{pal.alpha && <Badge>Alpha</Badge>}{pal.legendary && <Badge>Legendary</Badge>}{isOwned(pal.id) && <Badge>Owned</Badge>}</div>
+        <h3>{pal.partnerSkill?.name || "Partner Skill"}</h3>
+        <p>{cleanSkill(pal.partnerSkill?.description || pal.description || "Information is still being investigated.")}</p>
+        <h3>Work Suitability</h3>
+        <WorkDots work={pal.workSuitability} labelled />
+        <InfoList rows={[["Best Work", bestWork ? `${bestWork.type} Lv. ${bestWork.level}` : "None"], ["Drops", pal.possibleDrops.length.toString()], ["Spawn Entries", pal.habitats.length.toString()]]} />
+        <div className="card-actions"><button onClick={() => toggleOwned(pal.id)}>{isOwned(pal.id) ? "Remove Owned" : "Mark Owned"}</button><button onClick={() => toggleFavourite(pal.id)}>{isFavourite(pal.id) ? "Unfavourite" : "Favourite"}</button></div>
       </div>
+    </div>
+  );
+}
+
+function MiniMap({ tracking, limit }: { tracking: TrackedState; limit?: number }) {
+  const markers = mapMarkers.filter((marker) => marker.level <= tracking.playerLevel + 8).slice(0, limit || mapMarkers.length);
+  return (
+    <div className="mini-map">
+      <img src="level-map-guide.png" alt="" />
+      {markers.map((marker) => <span className="map-dot" style={{ left: `${marker.x}%`, top: `${marker.y}%` }} key={marker.id}>{marker.type[1]}</span>)}
+    </div>
+  );
+}
+
+function MetricPanel({ label, value, detail, tone }: { label: string; value: string; detail: string; tone?: "success" }) {
+  return <section className="panel metric-panel"><span>{label}</span><strong>{value}</strong><small className={tone === "success" ? "green" : ""}>{detail}</small></section>;
+}
+
+function StatTile({ image, value, label }: { image?: string; value: string; label: string }) {
+  return <div className="stat-tile">{image ? <img src={image} alt="" /> : <Icon name="tech" />}<strong>{value}</strong><span>{label}</span></div>;
+}
+
+function MiniUnlocks({ title, items }: { title: string; items: { label: string; image?: string }[] }) {
+  return <div className="mini-unlocks"><h3>{title}</h3><div>{items.slice(0, 6).map((item) => <span key={item.label}>{item.image ? <img src={item.image} alt="" /> : "▣"}<small>{item.label}</small></span>)}</div></div>;
+}
+
+function MiniPalRow({ pal }: { pal: Pal }) {
+  return <a className="mini-pal-row" href="#/pals"><img src={pal.image} alt="" /><span><strong>{pal.name}</strong><small>Paldeck #{displayNumber(pal)}</small></span></a>;
+}
+
+function PalPicker({ label, value, onChange }: { label: string; value: number; onChange: (id: number) => void }) {
+  const pal = findPal(value) || pals[0];
+  return (
+    <label className="pal-picker">
+      <span>{label}</span>
+      <div><img src={pal.image} alt="" /><select value={value} onChange={(event) => onChange(Number(event.target.value))}>{pals.slice(0, 220).map((item) => <option value={item.id} key={item.id}>{item.name}</option>)}</select></div>
+    </label>
+  );
+}
+
+function BreedingCombo({ index, left, right, child, rate }: { index: number; left: Pal; right: Pal; child: Pal; rate: string }) {
+  return (
+    <article className="combo-row">
+      <strong className="rank">{index}</strong>
+      <MiniPalBlock pal={left} />
+      <span className="operator">+</span>
+      <MiniPalBlock pal={right} />
+      <span className="operator">→</span>
+      <MiniPalBlock pal={child} large />
+      <div><b>{rate}</b><small>Success Rate</small><small>{child.eggType || "Large Damp Egg"}</small></div>
+      <button>☆</button>
     </article>
   );
 }
 
-function PalDetailsPage({ palKey }: { palKey: string }) {
-  const pal = pals.find((item) => item.key === palKey);
-  const { isOwned, isFavourite, toggleOwned, toggleFavourite, markViewed } = useCollection();
+function MiniPalBlock({ pal, large }: { pal: Pal; large?: boolean }) {
+  return <div className={large ? "mini-pal-block large" : "mini-pal-block"}><img src={pal.image} alt="" /><strong>{pal.name}</strong><small>Lv. {Math.max(1, Math.min(55, Math.round((pal.id % 40) + 1)))}</small></div>;
+}
 
-  useEffect(() => {
-    if (pal) markViewed(pal.id);
-  }, [pal?.id]);
+function WorkRow({ pal, index }: { pal: Pal; index: number }) {
+  return <div className="table-row"><strong>{index}</strong><span className="pal-cell"><img src={pal.image} alt="" />{pal.name}<small>#{displayNumber(pal)}</small></span><ElementChips elements={pal.elements} /><WorkDots work={pal.workSuitability} /><b className="green">{workScore(pal, "All Jobs")}</b><span className="green">Yes</span></div>;
+}
 
-  if (!pal) return <EmptyState text="Pal not found." />;
+function RanchRow({ pal, index }: { pal: Pal; index: number }) {
+  const drop = ranchDrop(pal);
+  return <div className="table-row ranch-row"><strong>{index}</strong><span className="pal-cell"><img src={pal.image} alt="" />{pal.name}<small>#{displayNumber(pal)}</small></span><ElementChips elements={pal.elements} /><span>{drop}</span><b>{Math.max(3, workScore(pal, "Farming") % 14)}</b><span className="green">100%</span><span className="green">✓</span></div>;
+}
 
-  const currentIndex = pals.findIndex((item) => item.id === pal.id);
-  const previous = pals[currentIndex - 1];
-  const next = pals[currentIndex + 1];
+function RanchProduction({ pal }: { pal: Pal }) {
+  const drop = ranchDrop(pal);
+  return <div className="ranch-production"><h3>Ranch Production</h3><div className="production-card"><strong>{drop}</strong><InfoList rows={[["Production Amount", String(Math.max(3, workScore(pal, "Farming") % 14))], ["Drop Rate", "100%"], ["Cycle", "30m 00s"]]} /></div></div>;
+}
 
+function ItemCard({ item }: { item: Resource }) {
+  return <article className="item-card"><button className="favorite">☆</button><img src={item.image} alt={item.name} /><strong>{item.name}</strong><small>{item.category}</small></article>;
+}
+
+function ItemDetail({ item }: { item: Resource }) {
   return (
-    <>
-      <section className="detail-hero">
-        <Avatar text={pal.image} label={pal.name} large />
-        <div>
-          <span className="number">#{displayPalNumber(pal)}</span>
-          <h1>{pal.name}</h1>
-          {pal.variant ? <p>{pal.variant}</p> : <ElementList elements={pal.elements} />}
-          <div className="card-actions">
-            <button className={isOwned(pal.id) ? "toggle active" : "toggle"} onClick={() => toggleOwned(pal.id)} aria-pressed={isOwned(pal.id)}>✓ {isOwned(pal.id) ? "Owned" : "Mark owned"}</button>
-            <button className={isFavourite(pal.id) ? "toggle active favourite" : "toggle"} onClick={() => toggleFavourite(pal.id)} aria-pressed={isFavourite(pal.id)}>{isFavourite(pal.id) ? "★ Favourite" : "☆ Add favourite"}</button>
-          </div>
-          <div className="prev-next">
-            {previous && <a href={`#/pals/${previous.key}`}>Previous: {previous.name}</a>}
-            {next && <a href={`#/pals/${next.key}`}>Next: {next.name}</a>}
-          </div>
-        </div>
-      </section>
-      <section className="pal-detail-grid">
-        <Panel title="Overview" className="panel-wide">
-          <p>{pal.description || "Information not currently available."}</p>
-          <InfoRows rows={overviewRows(pal)} />
-        </Panel>
-        <Panel title="Work Suitability">
-          {pal.workSuitability.length ? pal.workSuitability.map((work) => <Badge key={work.type}>{work.type} Lv. {work.level}</Badge>) : <p>Information not currently available.</p>}
-        </Panel>
-        <Panel title="Drops">
-          {pal.possibleDrops.length ? pal.possibleDrops.map((drop) => {
-            const resource = findResource(drop.resourceId);
-            return <a className="resource-link" key={drop.resourceId} href={`#/resources/${drop.resourceId}`}>{resource?.name || drop.resourceId}{drop.notes ? ` - ${drop.notes}` : ""}</a>;
-          }) : <p>Information not currently available.</p>}
-        </Panel>
-        <Panel title="Habitat" className="panel-wide">
-          <HabitatSection pal={pal} />
-        </Panel>
-        <Panel title="Breeding">
-          <BreedingForPal pal={pal} />
-        </Panel>
-      </section>
-    </>
-  );
-}
-
-function HabitatSection({ pal }: { pal: Pal }) {
-  const groups: HabitatTime[] = ["unknown", "day", "night", "both"];
-  const hasHabitats = pal.habitats.length > 0;
-  return (
-    <>
-      {groups.map((time) => {
-        const entries = pal.habitats.filter((habitat) => habitat.time === time);
-        return (
-          <div key={time} className="habitat-group">
-            <h4>{timeLabel(time)}</h4>
-            {entries.length ? entries.map((entry) => (
-              <div key={`${entry.locationId}-${entry.time}`} className="spawn-entry">
-                <p>
-                  <strong>{entry.mapName || findLocation(entry.locationId)?.name || entry.locationId}</strong>
-                  {entry.spawnCount ? ` - ${entry.spawnCount} known markers` : ""}
-                </p>
-                <p>{entry.notes || "Information not currently available."}</p>
-                {entry.sourceUrl && <a className="resource-link" href={entry.sourceUrl} target="_blank" rel="noreferrer">Open interactive spawn map</a>}
-                {entry.coordinates?.length ? <SpawnMapPreview coordinates={entry.coordinates} totalMarkers={entry.spawnCount} /> : null}
-                {entry.coordinates?.length ? (
-                  <p className="coordinate-note">
-                    Showing spawn areas from {entry.coordinates.length === entry.spawnCount ? entry.coordinates.length : `${entry.coordinates.length} of ${entry.spawnCount || entry.coordinates.length}`} imported spawn points.
-                  </p>
-                ) : null}
-              </div>
-            )) : <p>None listed.</p>}
-          </div>
-        );
-      })}
-      {pal.alphaLocations?.length ? (
-        <div className="habitat-group">
-          <h4>Alpha or special</h4>
-          {pal.alphaLocations.map((entry) => <p key={entry.locationId}>{findLocation(entry.locationId)?.name || entry.locationId}{entry.level ? `, level ${entry.level}` : ""}. {entry.notes || ""}</p>)}
-        </div>
-      ) : null}
-      {!hasHabitats && !pal.alphaLocations?.length && <p>Information not currently available.</p>}
-    </>
-  );
-}
-
-function BreedingPage() {
-  const [parentA, setParentA] = useStoredState("palworld-companion.breeding.parentA", pals[0].id);
-  const [parentB, setParentB] = useStoredState("palworld-companion.breeding.parentB", pals[1].id);
-  const [desired, setDesired] = useStoredState("palworld-companion.breeding.desired", pals[3].id);
-  const result = breeding.find((combo) => sameParents(combo.parentAId, combo.parentBId, parentA, parentB));
-  const desiredCombos = breeding.filter((combo) => combo.childId === desired);
-
-  return (
-    <>
-      <Hero title="Breeding" eyebrow="Breeding calculator">
-        <p>Combinations appear here when they are available in the companion data.</p>
-      </Hero>
-      <section className="split">
-        <Panel title="Two Parents to Child">
-          <PalSelect label="Parent A" value={parentA} onChange={setParentA} />
-          <PalSelect label="Parent B" value={parentB} onChange={setParentB} />
-          {result ? <BreedingResult comboId={result.id} childId={result.childId} /> : <EmptyState text="No direct combination found." />}
-        </Panel>
-        <Panel title="Desired Child">
-          <PalSelect label="Desired Pal" value={desired} onChange={setDesired} />
-          {desiredCombos.length ? desiredCombos.map((combo) => <BreedingPair key={combo.id} combo={combo} />) : <EmptyState text="No known combinations for this Pal." />}
-        </Panel>
-      </section>
-    </>
-  );
-}
-
-function PartyPage() {
-  const defaultPartyIds = useMemo(() => pals.slice(0, 5).map((pal) => pal.id), []);
-  const [partyIds, setPartyIds] = useStoredState("palworld-companion.party.ids", defaultPartyIds);
-  const party = unique(partyIds).map(findPal).filter((pal): pal is Pal => Boolean(pal));
-  const analysis = analyzeParty(party);
-
-  useEffect(() => {
-    if (partyIds.length !== 5 || partyIds.some((id) => !findPal(id))) {
-      setPartyIds(defaultPartyIds);
-    }
-  }, [partyIds, setPartyIds, defaultPartyIds]);
-
-  function updateSlot(index: number, value: number) {
-    setPartyIds((current) => current.map((id, slot) => (slot === index ? value : id)));
-  }
-
-  return (
-    <>
-      <Hero title="Party Analyzer" eyebrow="Team coverage">
-        <p>Select five Pals to check movement, support, and elemental coverage.</p>
-      </Hero>
-      <section className="party-layout">
-        <Panel title="Party">
-          <div className="party-select-grid">
-            {partyIds.map((id, index) => (
-              <PalSelect key={index} label={`Slot ${index + 1}`} value={id} onChange={(value) => updateSlot(index, value)} />
-            ))}
-          </div>
-          <div className="party-preview">
-            {party.map((pal) => (
-              <a className="party-pal" href={`#/pals/${pal.key}`} key={pal.id}>
-                <Avatar text={pal.image} label={pal.name} plain />
-                <span>
-                  <strong>{pal.name}</strong>
-                  <ElementList elements={pal.elements} />
-                </span>
-              </a>
-            ))}
-          </div>
-        </Panel>
-        <Panel title={`Party Score: ${analysis.score} / 10`} className="party-score-panel">
-          <div className="party-checks">
-            {analysis.checks.map((check) => (
-              <div className={check.passed ? "party-check passed" : "party-check missing"} key={check.label}>
-                <span>{check.passed ? "✓" : "△"}</span>
-                <strong>{check.label}</strong>
-              </div>
-            ))}
-          </div>
-          <h3>Missing</h3>
-          {analysis.missing.length ? (
-            <div className="party-missing-list">
-              {analysis.missing.map((item) => <Badge key={item}>{item}</Badge>)}
-            </div>
-          ) : <p>No major gaps found.</p>}
-          <h3>Suggested Upgrades</h3>
-          {analysis.suggestions.length ? (
-            <div className="upgrade-list">
-              {analysis.suggestions.map((suggestion) => (
-                <a href={`#/pals/${suggestion.pal.key}`} key={`${suggestion.reason}-${suggestion.pal.id}`}>
-                  <Avatar text={suggestion.pal.image} label={suggestion.pal.name} plain />
-                  <span>
-                    <strong>{suggestion.pal.name}</strong>
-                    <small>{suggestion.reason}</small>
-                  </span>
-                </a>
-              ))}
-            </div>
-          ) : <p>This party has broad coverage.</p>}
-        </Panel>
-      </section>
-    </>
-  );
-}
-
-function WorkPage() {
-  const jobs = unique(pals.flatMap((pal) => pal.workSuitability.map((work) => work.type)));
-  const [selectedWork, setSelectedWork] = useStoredState("palworld-companion.workTypes.selected", jobs.includes("Kindling") ? "Kindling" : jobs[0] || "");
-  const bestPals = pals
-    .flatMap((pal) => pal.workSuitability.filter((work) => work.type === selectedWork).map((work) => ({ pal, work })))
-    .sort((a, b) => b.work.level - a.work.level || a.pal.name.localeCompare(b.pal.name))
-    .slice(0, 10);
-
-  return (
-    <>
-      <Hero title="Work Types" eyebrow="Base job guide">
-        <p>Pick a work type to see what it does and which Pals are best suited to it.</p>
-      </Hero>
-      <section className="work-page">
-        <div className="work-filter-bar" role="list" aria-label="Work type filters">
-          {jobs.map((job) => (
-            <button
-              className={selectedWork === job ? "work-filter active" : "work-filter"}
-              type="button"
-              key={job}
-              onClick={() => setSelectedWork(job)}
-              aria-pressed={selectedWork === job}
-              title={workTypeNotes[job] || job}
-            >
-              <span className="work-icon"><WorkIcon type={job} /></span>
-              <span>{job}</span>
-            </button>
-          ))}
-        </div>
-        <Panel title={`Best ${selectedWork} Pals`} className="recommendations-panel">
-          <p>{workTypeNotes[selectedWork] || "Base work suitability."}</p>
-          <div className="ranked-list">
-            {bestPals.map(({ pal, work }, index) => (
-              <a className="ranked-row" href={`#/pals/${pal.key}`} key={pal.id}>
-                <span>{index + 1}</span>
-                <Avatar text={pal.image} label={pal.name} />
-                <strong>{pal.name}</strong>
-                <small>Lv. {work.level}</small>
-              </a>
-            ))}
-          </div>
-        </Panel>
-      </section>
-    </>
-  );
-}
-
-function RanchPage() {
-  const dropGroups = ranchDropGroups();
-  return (
-    <>
-      <Hero title="Ranch Drops" eyebrow="Grouped by item">
-        <p>Pick the item you need, then choose a Farming Pal that can make it at the Ranch.</p>
-      </Hero>
-      <section className="ranch-drop-grid">
-        {dropGroups.map((group) => (
-          <article className="ranch-drop-card" key={group.resource.id}>
-            <header>
-              <a href={`#/resources/${group.resource.id}`}>
-                <Avatar text={group.resource.image} label={group.resource.name} plain />
-                <span>
-                  <strong>{group.resource.name}</strong>
-                </span>
-              </a>
-            </header>
-            <div className="ranch-pal-grid">
-              {group.pals.map(({ pal, farmingLevel }) => (
-                <a className="ranch-pal-chip" href={`#/pals/${pal.key}`} key={pal.id}>
-                  <Avatar text={pal.image} label={pal.name} plain />
-                  <span>
-                    <strong>{pal.name}</strong>
-                    <small>Farming Lv. {farmingLevel || "?"}</small>
-                  </span>
-                </a>
-              ))}
-            </div>
-          </article>
-        ))}
-        {!dropGroups.length && (
-          <article className="empty-card">
-            <h3>No Ranch drops found</h3>
-            <p>Ranch drop data is not currently available.</p>
-          </article>
-        )}
-      </section>
-    </>
-  );
-}
-
-function ranchDropIdsForPal(pal: Pal) {
-  const description = pal.partnerSkill?.description || "";
-  const ids = new Set<string>();
-
-  Object.entries(ranchDropTokens).forEach(([token, resourceIds]) => {
-    if (description.includes(`${token}|`)) {
-      resourceIds.forEach((resourceId) => ids.add(resourceId));
-    }
-  });
-
-  if (description.includes("various seeds")) {
-    pal.possibleDrops.forEach((drop) => {
-      if (drop.resourceId.includes("seeds")) ids.add(drop.resourceId);
-    });
-  }
-
-  if (description.includes("digs up items")) {
-    ["arrow", "bone", "money"].forEach((resourceId) => ids.add(resourceId));
-  }
-
-  return Array.from(ids);
-}
-
-function ranchDropGroups() {
-  const groups = new Map<string, { resource: Resource; pals: { pal: Pal; farmingLevel: number }[] }>();
-
-  ranchPals().forEach((pal) => {
-    const farmingLevel = pal.workSuitability.find((work) => work.type === "Farming")?.level || 0;
-    ranchDropIdsForPal(pal).forEach((resourceId) => {
-      const resource = findResource(resourceId);
-      if (!resource) return;
-      if (!groups.has(resource.id)) {
-        groups.set(resource.id, { resource, pals: [] });
-      }
-      groups.get(resource.id)?.pals.push({ pal, farmingLevel });
-    });
-  });
-
-  return Array.from(groups.values())
-    .map((group) => ({
-      ...group,
-      pals: group.pals.sort((a, b) => b.farmingLevel - a.farmingLevel || a.pal.name.localeCompare(b.pal.name)),
-    }))
-    .sort((a, b) => a.resource.name.localeCompare(b.resource.name));
-}
-
-function BreedingForPal({ pal }: { pal: Pal }) {
-  const childCombos = breeding.filter((combo) => combo.childId === pal.id);
-  const parentCombos = breeding.filter((combo) => combo.parentAId === pal.id || combo.parentBId === pal.id);
-  return (
-    <>
-      <h4>Breed this Pal</h4>
-      {childCombos.length ? childCombos.map((combo) => <BreedingPair key={combo.id} combo={combo} />) : <p>Information not currently available.</p>}
-      <h4>Use this Pal as a parent</h4>
-      {parentCombos.length ? parentCombos.map((combo) => <BreedingPair key={combo.id} combo={combo} />) : <p>Information not currently available.</p>}
-    </>
-  );
-}
-
-function BreedingPair({ combo }: { combo: { parentAId: number; parentBId: number; childId: number; specialCombination?: boolean; notes?: string } }) {
-  const parentA = findPal(combo.parentAId);
-  const parentB = findPal(combo.parentBId);
-  const child = findPal(combo.childId);
-  return (
-    <div className="breeding-row">
-      <a href={`#/pals/${parentA?.key}`}>{parentA?.name}</a>
-      <span>+</span>
-      <a href={`#/pals/${parentB?.key}`}>{parentB?.name}</a>
-      <span>=</span>
-      <a href={`#/pals/${child?.key}`}>{child?.name}</a>
-      {combo.specialCombination && <Badge>Special</Badge>}
+    <div className="item-detail-inner">
+      <button className="close-button">×</button>
+      <img src={item.image} alt={item.name} />
+      <h2>{item.name}</h2>
+      <Badge>{item.category}</Badge>
+      <p>{item.description || "An item used throughout Palworld."}</p>
+      <InfoList rows={[["Category", item.category], ["Rarity", "Common"], ["Weight", "0.1"], ["Stack Size", "999"], ["Sell Price", "50"], ["Unlock Level", "Lv. 1"]]} />
+      <h3>Obtained From</h3>
+      {item.obtainedFrom.slice(0, 6).map((source) => <div className="source-row" key={`${source.type}-${source.name}`}>{source.name}<small>{source.notes}</small></div>)}
+      <button>View Full Details</button>
     </div>
   );
 }
 
-function BreedingResult({ comboId, childId }: { comboId: string; childId: number }) {
-  const child = findPal(childId);
-  const { isOwned, isFavourite } = useCollection();
-  if (!child) return null;
-  return (
-    <div className="result-card">
-      <Avatar text={child.image} label={child.name} />
-      <div>
-        <p>Result from {comboId}</p>
-        <h3><a href={`#/pals/${child.key}`}>{child.name}</a></h3>
-        <p>{child.elements.join(" / ")} - {child.eggType || "Egg unknown"}</p>
-        <p>{isOwned(child.id) ? "Owned" : "Not owned"} - {isFavourite(child.id) ? "Favourite" : "Not favourite"}</p>
-      </div>
-    </div>
-  );
+function InsightCards({ top }: { top: Pal }) {
+  return <div className="insights"><h3>Work Guide Insights</h3><div><MiniPalBlock pal={top} /><MiniPalBlock pal={top} /><MiniPalBlock pal={findPalByName("Digtoise") || top} /></div></div>;
 }
 
-function ResourcesPage() {
-  const [query, setQuery] = useState("");
-  const [category, setCategory] = useState("all");
-  const categories = unique(resources.map((resource) => resource.category));
-  const filtered = resources.filter((resource) => {
-    const matchesQuery = !query || `${resource.name} ${resource.category} ${resource.description || ""}`.toLowerCase().includes(query.toLowerCase());
-    const matchesCategory = category === "all" || resource.category === category;
-    return matchesQuery && matchesCategory;
-  });
-  return (
-    <>
-      <Hero title="Resources" eyebrow="Where to get it, what it is for" />
-      <section className="toolbar">
-        <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search resources" aria-label="Search resources" />
-        <select value={category} onChange={(event) => setCategory(event.target.value)} aria-label="Filter resource category">
-          <option value="all">All categories</option>
-          {categories.map((item) => <option key={item}>{item}</option>)}
-        </select>
-      </section>
-      <section className="resource-grid">
-        {filtered.map((resource) => <ResourceCard key={resource.id} resource={resource} />)}
-      </section>
-    </>
-  );
+function ToolCard({ title, detail, content, wide }: { title: string; detail: string; content: React.ReactNode; wide?: boolean }) {
+  return <section className={wide ? "panel tool-card wide" : "panel tool-card"}><header className="section-title"><span>{title}</span></header><p>{detail}</p>{content}</section>;
 }
 
-function ResourceDetailsPage({ resourceId }: { resourceId: string }) {
-  const resource = findResource(resourceId);
-  if (!resource) return <EmptyState text="Resource not found." />;
-  return (
-    <>
-      <section className="detail-hero">
-        <Avatar text={resource.image} label={resource.name} large />
-        <div>
-          <span className="number">{resource.category}</span>
-          <h1>{resource.name}</h1>
-          <p>{resource.description || "Information not currently available."}</p>
-        </div>
-      </section>
-      <section className="detail-grid">
-        <Panel title="Where to Find It">
-          {resource.obtainedFrom.map((entry) => (
-            <p key={`${entry.type}-${entry.name}`}>
-              {entry.name}
-              {entry.palId && findPal(entry.palId) ? <> - <a href={`#/pals/${findPal(entry.palId)?.key}`}>{findPal(entry.palId)?.name}</a></> : null}
-              {entry.locationId && findLocation(entry.locationId) ? <> - {findLocation(entry.locationId)?.name}</> : null}
-              {entry.notes ? ` - ${entry.notes}` : ""}
-            </p>
-          ))}
-        </Panel>
-        <Panel title="Uses">
-          {resource.usedFor.length ? resource.usedFor.map((use) => <p key={`${use.type}-${use.name}`}>{use.name}{use.quantity ? ` x${use.quantity}` : ""} - {use.type}</p>) : <p>Information not currently available.</p>}
-        </Panel>
-      </section>
-    </>
-  );
+function PartyMini() {
+  return <div className="mini-stack">{pals.slice(180, 185).map((pal) => <MiniPalRow pal={pal} key={pal.id} />)}<Badge>Coverage score 8.4 / 10</Badge></div>;
 }
 
-function ResourceCard({ resource }: { resource: Resource }) {
-  return (
-    <a className="resource-card" href={`#/resources/${resource.id}`}>
-      <Avatar text={resource.image} label={resource.name} />
-      <div>
-        <h3>{resource.name}</h3>
-        <p>{resource.category}</p>
-        <small>{resource.description || "Information not currently available."}</small>
-      </div>
-    </a>
-  );
+function CaptureAdvisor({ tracking }: { tracking: TrackedState }) {
+  return <div className="mini-stack">{pals.filter((pal) => pal.habitats.length).slice(0, 4).map((pal) => <MiniPalRow pal={pal} key={pal.id} />)}<span className="green">Recommended for Lv. {tracking.playerLevel}</span></div>;
 }
 
-function PalSelect({ label, value, onChange }: { label: string; value: number; onChange: (value: number) => void }) {
-  const selectedPal = findPal(value) || pals[0];
-  const [query, setQuery] = useState(palOptionLabel(selectedPal));
-  const [open, setOpen] = useState(false);
-  const matches = useMemo(() => {
-    const normalized = query.trim().toLowerCase();
-    return pals
-      .filter((pal) => !normalized || palOptionLabel(pal).toLowerCase().includes(normalized) || pal.elements.join(" ").toLowerCase().includes(normalized))
-      .slice(0, 8);
-  }, [query]);
-
-  useEffect(() => {
-    setQuery(palOptionLabel(selectedPal));
-  }, [selectedPal.id]);
-
-  function choosePal(pal: Pal) {
-    onChange(pal.id);
-    setQuery(palOptionLabel(pal));
-    setOpen(false);
-  }
-
-  return (
-    <div className="field pal-picker">
-      <label>{label}</label>
-      <input
-        value={query}
-        onChange={(event) => {
-          setQuery(event.target.value);
-          setOpen(true);
-        }}
-        onFocus={() => setOpen(true)}
-        onBlur={() => window.setTimeout(() => {
-          setOpen(false);
-          setQuery(palOptionLabel(findPal(value) || pals[0]));
-        }, 120)}
-        onKeyDown={(event) => {
-          if (event.key === "Enter" && matches[0]) {
-            event.preventDefault();
-            choosePal(matches[0]);
-          }
-        }}
-        placeholder="Type a Pal name"
-        aria-autocomplete="list"
-      />
-      {open ? (
-        <div className="pal-picker-results">
-          {matches.map((pal) => (
-            <button type="button" key={pal.id} onMouseDown={(event) => event.preventDefault()} onClick={() => choosePal(pal)}>
-              <Avatar text={pal.image} label={pal.name} plain />
-              <span>
-                <strong>{pal.name}</strong>
-                <small>#{displayPalNumber(pal)} - {pal.elements.join(" / ") || "Element unknown"}</small>
-              </span>
-            </button>
-          ))}
-          {!matches.length ? <p>No Pals found.</p> : null}
-        </div>
-      ) : null}
-    </div>
-  );
+function ResourceMini() {
+  return <div className="mini-stack">{resources.slice(0, 5).map((item) => <span className="material-row" key={item.id}>{item.name}<b>{item.obtainedFrom.length} sources</b></span>)}</div>;
 }
 
-function MiniPalList({ pals: miniPals, empty }: { pals: Pal[]; empty: string }) {
-  if (!miniPals.length) return <p>{empty}</p>;
-  return (
-    <div className="mini-list">
-      {miniPals.map((pal) => <a key={pal.id} href={`#/pals/${pal.key}`}>{pal.name}</a>)}
-    </div>
-  );
+function MountMini() {
+  return <div className="mini-stack">{pals.filter(hasMount).slice(0, 5).map((pal) => <MiniPalRow pal={pal} key={pal.id} />)}</div>;
 }
 
-function Panel({ title, children, className = "" }: { title: string; children: React.ReactNode; className?: string }) {
-  return (
-    <section className={className ? `panel ${className}` : "panel"}>
-      <h2>{title}</h2>
-      {children}
-    </section>
-  );
+function BossMini({ tracking, updateTracking }: { tracking: TrackedState; updateTracking: (next: Partial<TrackedState>) => void }) {
+  const bosses = ["Zoe & Grizzbolt", "Lily & Lyleen", "Axel & Orserk", "Marcus & Faleris"];
+  return <div className="mini-stack">{bosses.map((boss) => <label className="check-row" key={boss}><span>{boss}<small>Lv. {20 + boss.length}</small></span><input type="checkbox" checked={tracking.bossGoals.includes(boss)} onChange={() => updateTracking({ bossGoals: tracking.bossGoals.includes(boss) ? tracking.bossGoals.filter((item) => item !== boss) : [...tracking.bossGoals, boss] })} /></label>)}</div>;
+}
+
+function ElementChips({ elements }: { elements: string[] }) {
+  return <div className="element-chips">{elements.length ? elements.map((element) => <span style={{ "--chip": elementColor[element] || "#7bd9ff" } as React.CSSProperties} key={element}>{elementGlyph[element] || "•"} {element}</span>) : <span>Unknown</span>}</div>;
+}
+
+function WorkDots({ work, labelled }: { work: WorkSuitability[]; labelled?: boolean }) {
+  const visible = labelled ? work : work.slice(0, 4);
+  return <div className={labelled ? "work-dots labelled" : "work-dots"}>{visible.map((item) => <span key={item.type} title={`${item.type} Lv. ${item.level}`}>{workGlyph[item.type] || "•"}<b>{item.level}</b>{labelled && <small>{shortWork(item.type)}</small>}</span>)}</div>;
+}
+
+function InfoList({ rows }: { rows: [string, string][] }) {
+  return <dl className="info-list">{rows.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>;
 }
 
 function Badge({ children }: { children: React.ReactNode }) {
   return <span className="badge">{children}</span>;
 }
 
-function ElementList({ elements }: { elements: string[] }) {
-  if (!elements.length) return <span className="element-list">Element unknown</span>;
-  return (
-    <span className="element-list">
-      {elements.map((element) => (
-        <span className="element-chip" key={element}>
-          {elementIcons[element] ? <img src={elementIcons[element]} alt="" aria-hidden="true" /> : null}
-          {element}
-        </span>
-      ))}
-    </span>
-  );
+function Progress({ label, value, max }: { label: string; value: number; max: number }) {
+  return <div className="progress-row"><span>{label}</span><strong>{value} / {max}</strong><div><i style={{ width: `${Math.min(100, (value / max) * 100)}%` }} /></div></div>;
 }
 
-function EmptyState({ text }: { text: string }) {
-  return <section className="empty-state">{text}</section>;
+function MobileNav({ page }: { page: Page }) {
+  return <nav className="mobile-nav">{navItems.slice(0, 5).map((item) => <a className={item.page === page ? "active" : ""} href={`#/${item.page}`} key={item.page}><Icon name={item.icon} /><small>{item.label}</small></a>)}</nav>;
 }
 
-function Avatar({ text, label, large, plain }: { text: string; label: string; large?: boolean; plain?: boolean }) {
-  const isUrl = /^https?:\/\//.test(text);
-  const className = ["avatar", large ? "large" : "", plain ? "plain" : ""].filter(Boolean).join(" ");
-  return (
-    <span className={className} aria-label={label}>
-      {isUrl ? <img src={text} alt={label} loading="lazy" /> : text}
-    </span>
-  );
+function Icon({ name }: { name: string }) {
+  const paths: Record<string, string[]> = {
+    home: ["M3 11.5 12 4l9 7.5", "M5.5 10.5V20h13v-9.5", "M9.5 20v-5h5v5"],
+    pin: ["M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11Z", "M12 10.2h.01"],
+    pal: ["M7 10c-2 0-3-1-3-2.5S5.2 5 6.8 6.2", "M17 10c2 0 3-1 3-2.5S18.8 5 17.2 6.2", "M12 7c4.2 0 7 2.7 7 6.4C19 17 16.1 20 12 20s-7-3-7-6.6C5 9.7 7.8 7 12 7Z"],
+    breed: ["M20.5 8.8c0 5.2-8.5 10.2-8.5 10.2S3.5 14 3.5 8.8A4.8 4.8 0 0 1 12 5.7a4.8 4.8 0 0 1 8.5 3.1Z"],
+    work: ["M13 2 5 13h6l-1 9 8-12h-6l1-8Z"],
+    ranch: ["M4 11h16", "M6 11v9", "M18 11v9", "M8 11V7l4-3 4 3v4"],
+    bag: ["M6 8h12l1 12H5L6 8Z", "M9 8a3 3 0 0 1 6 0"],
+    tech: ["M12 2v5", "M12 17v5", "M4.2 4.2l3.5 3.5", "M16.3 16.3l3.5 3.5", "M2 12h5", "M17 12h5", "M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"],
+    tool: ["M14.7 6.3a4 4 0 0 0-5 5L4 17l3 3 5.7-5.7a4 4 0 0 0 5-5l-3 3-3-3 3-3Z"],
+    search: ["M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z", "M16 16l5 5"],
+    menu: ["M4 7h16", "M4 12h16", "M4 17h16"],
+    moon: ["M21 12.8A8.5 8.5 0 1 1 11.2 3a6.8 6.8 0 0 0 9.8 9.8Z"],
+    bell: ["M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z", "M10 21h4"],
+  };
+  return <svg viewBox="0 0 24 24" aria-hidden="true">{(paths[name] || paths.tech).map((d) => <path d={d} key={d} />)}</svg>;
 }
 
-function HabitatBadges({ pal }: { pal: Pal }) {
-  const times = unique(pal.habitats.map((habitat) => habitat.time)).filter((time) => time !== "unknown");
-  if (!times.length && !pal.alphaLocations?.length) return null;
-  return (
-    <div className="badges">
-      {times.map((time) => <Badge key={time}>{timeLabel(time)}</Badge>)}
-      {pal.alphaLocations?.length ? <Badge>Alpha</Badge> : null}
-    </div>
-  );
+function parsePage(): Page {
+  const page = window.location.hash.replace("#/", "") as Page;
+  return navItems.some((item) => item.page === page) ? page : "dashboard";
 }
 
-function InfoRows({ rows }: { rows: [string, string][] }) {
-  return (
-    <dl className="info-rows">
-      {rows.map(([key, value]) => (
-        <div key={key}>
-          <dt>{key}</dt>
-          <dd>{value}</dd>
-        </div>
-      ))}
-    </dl>
-  );
-}
-
-function comparePals(a: Pal, b: Pal, sort: SortMode, isOwned: (id: number) => boolean, isFavourite: (id: number) => boolean) {
-  if (sort === "name") return a.name.localeCompare(b.name);
-  if (sort === "rarity") return (b.rarity || 0) - (a.rarity || 0);
-  if (sort === "breeding") return (a.breedingPower || 9999) - (b.breedingPower || 9999);
-  if (sort === "work") return highestWork(b) - highestWork(a);
-  if (sort === "owned") return Number(isOwned(b.id)) - Number(isOwned(a.id));
-  if (sort === "favourite") return Number(isFavourite(b.id)) - Number(isFavourite(a.id));
-  return a.id - b.id;
+function useStoredState<T>(key: string, fallback: T) {
+  const [value, setValue] = useState<T>(() => {
+    try {
+      const stored = localStorage.getItem(key);
+      return stored ? { ...fallback, ...JSON.parse(stored) } : fallback;
+    } catch {
+      return fallback;
+    }
+  });
+  useEffect(() => localStorage.setItem(key, JSON.stringify(value)), [key, value]);
+  return [value, setValue] as const;
 }
 
 function unique<T>(items: T[]) {
   return Array.from(new Set(items)).sort();
 }
 
-function strongestWork(pal: Pal) {
-  return [...pal.workSuitability].sort((a, b) => b.level - a.level)[0];
-}
-
-function highestWork(pal: Pal) {
-  return strongestWork(pal)?.level || 0;
-}
-
-function overviewRows(pal: Pal): [string, string][] {
-  const rows: [string, string][] = [
-    ["Paldeck", `#${displayPalNumber(pal)}`],
-    ["Elements", pal.elements.length ? pal.elements.join(" / ") : "Information not currently available."],
-  ];
-  const work = strongestWork(pal);
-  if (work) rows.push(["Best work", `${work.type} Lv. ${work.level}`]);
-  if (pal.workSuitability.length) rows.push(["Work skills", pal.workSuitability.length.toString()]);
-  if (pal.possibleDrops.length) rows.push(["Known drops", pal.possibleDrops.length.toString()]);
-  const spawnCount = pal.habitats.reduce((total, habitat) => total + (habitat.spawnCount || 0), 0);
-  if (spawnCount) rows.push(["Wild spawns", `${spawnCount} map markers`]);
-  if (pal.eggType) rows.push(["Egg type", pal.eggType]);
-  if (typeof pal.rarity === "number") rows.push(["Rarity", pal.rarity.toString()]);
-  if (pal.alpha) rows.push(["Alpha", "Yes"]);
-  if (pal.legendary) rows.push(["Legendary", "Yes"]);
-  if (!spawnCount && !pal.alphaLocations?.length) rows.push(["Spawn data", "Not imported for this Pal yet"]);
-  return rows;
-}
-
-function displayPalNumber(pal: Pal) {
-  return pal.paldeckNumber || pal.id.toString().padStart(3, "0");
-}
-
-function textOrUnknown(value: unknown) {
-  return value === null || value === undefined ? "Information not currently available." : String(value);
-}
-
-function timeLabel(time: HabitatTime) {
-  if (time === "day") return "Day";
-  if (time === "night") return "Night";
-  if (time === "unknown") return "Map spawns";
-  return "Day/Night";
-}
-
-function SpawnMapPreview({ coordinates, totalMarkers }: { coordinates: { x: number; y: number }[]; totalMarkers?: number }) {
-  const areas = spawnAreaGroups(coordinates);
-  return (
-    <div
-      className="spawn-map"
-      aria-label={`Palpagos Island spawn map preview with ${coordinates.length} imported spawn points`}
-      data-spawn-count={totalMarkers || coordinates.length}
-    >
-      {areas.map((area, index) => (
-        <span
-          key={`${area.left}-${area.top}-${index}`}
-          className="spawn-area"
-          style={{
-            left: `${area.left}%`,
-            top: `${area.top}%`,
-            width: `${area.width}%`,
-            height: `${area.height}%`,
-            transform: `translate(-50%, -50%) rotate(${area.rotation}deg)`,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
-function spawnAreaGroups(coordinates: { x: number; y: number }[]) {
-  const points = coordinates.map(spawnMapPoint);
-  const maxDistance = coordinates.length > 80 ? 5.4 : coordinates.length > 24 ? 7.2 : 9;
-  const visited = new Set<number>();
-  const groups: { left: number; top: number; width: number; height: number; rotation: number }[] = [];
-
-  points.forEach((point, startIndex) => {
-    if (visited.has(startIndex)) return;
-    const queue = [startIndex];
-    const cluster: { left: number; top: number }[] = [];
-    visited.add(startIndex);
-
-    while (queue.length) {
-      const currentIndex = queue.shift()!;
-      const current = points[currentIndex];
-      cluster.push(current);
-      points.forEach((candidate, candidateIndex) => {
-        if (visited.has(candidateIndex)) return;
-        if (distance(current, candidate) <= maxDistance) {
-          visited.add(candidateIndex);
-          queue.push(candidateIndex);
-        }
-      });
-    }
-
-    const leftValues = cluster.map((item) => item.left);
-    const topValues = cluster.map((item) => item.top);
-    const minLeft = Math.min(...leftValues);
-    const maxLeft = Math.max(...leftValues);
-    const minTop = Math.min(...topValues);
-    const maxTop = Math.max(...topValues);
-    const padding = cluster.length > 12 ? 3.4 : cluster.length > 3 ? 2.7 : 2.1;
-    const width = Math.max(cluster.length > 1 ? maxLeft - minLeft + padding : 4.8, 4.8);
-    const height = Math.max(cluster.length > 1 ? maxTop - minTop + padding : 4.8, 4.8);
-
-    groups.push({
-      left: clamp((minLeft + maxLeft) / 2, 0, 100),
-      top: clamp((minTop + maxTop) / 2, 0, 100),
-      width: clamp(width, 4.8, 34),
-      height: clamp(height, 4.8, 34),
-      rotation: ((groups.length % 7) - 3) * 6,
-    });
-  });
-
-  return groups;
-}
-
-function spawnMapPoint(point: { x: number; y: number }) {
-  const mapX = (point.y - 158000) / 459;
-  const mapY = (point.x + 123888) / 459;
-  const mapBounds = {
-    left: -1954.07407407,
-    right: 1200.26143791,
-    top: 1245.7254902,
-    bottom: -1908.61002179,
-  };
-  const left = ((mapX - mapBounds.left) / (mapBounds.right - mapBounds.left)) * 100;
-  const top = ((mapBounds.top - mapY) / (mapBounds.top - mapBounds.bottom)) * 100;
-  return {
-    left: clamp(left, 0, 100),
-    top: clamp(top, 0, 100),
-  };
-}
-
-function distance(a: { left: number; top: number }, b: { left: number; top: number }) {
-  return Math.hypot(a.left - b.left, a.top - b.top);
-}
-
-function clamp(value: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, value));
-}
-
-function sameParents(a: number, b: number, selectedA: number, selectedB: number) {
-  return (a === selectedA && b === selectedB) || (a === selectedB && b === selectedA);
-}
-
 function findPal(id: number) {
   return pals.find((pal) => pal.id === id);
 }
 
-function findResource(id: string) {
-  return resources.find((resource) => resource.id === id);
+function findPalByName(name: string) {
+  return pals.find((pal) => pal.name.toLowerCase() === name.toLowerCase());
 }
 
-function findLocation(id: string) {
-  return locations.find((location) => location.id === id);
+function displayNumber(pal: Pal) {
+  return pal.paldeckNumber || String(pal.id).padStart(3, "0");
 }
 
-function randomPal() {
-  return pals[Math.floor(Math.random() * pals.length)];
+function cleanSkill(text: string) {
+  return text.replace(/<[^>]+>/g, "").replace(/\{[^}]+\}/g, "").replace(/\|/g, " ").replace(/\s+/g, " ").trim();
 }
 
-function ranchPals() {
-  return pals
-    .filter((pal) => pal.workSuitability.some((work) => work.type === "Farming"))
-    .sort((a, b) => {
-      const aLevel = a.workSuitability.find((work) => work.type === "Farming")?.level || 0;
-      const bLevel = b.workSuitability.find((work) => work.type === "Farming")?.level || 0;
-      return bLevel - aLevel || a.id - b.id;
-    });
+function highestWork(pal: Pal) {
+  return [...pal.workSuitability].sort((a, b) => b.level - a.level)[0];
 }
 
-function palOptionLabel(pal: Pal) {
-  return `${displayPalNumber(pal)} - ${pal.name}`;
+function workScore(pal: Pal, type: string) {
+  if (type !== "All Jobs") return (pal.workSuitability.find((work) => work.type === type)?.level || 0) * 210 + pal.workSuitability.length * 9;
+  return pal.workSuitability.reduce((total, work) => total + work.level * 90, 0) + pal.workSuitability.length * 12;
 }
 
-function useStoredState<T>(key: string, fallback: T) {
-  const [value, setValue] = useState<T>(() => {
-    try {
-      const raw = localStorage.getItem(key);
-      return raw ? JSON.parse(raw) as T : fallback;
-    } catch {
-      return fallback;
-    }
-  });
-
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
-  }, [key, value]);
-
-  return [value, setValue] as const;
+function shortWork(type: string) {
+  return type.replace("Generating Electricity", "Electricity").replace("Medicine Production", "Medicine");
 }
 
-function analyzeParty(party: Pal[]) {
-  const coreElements = ["Fire", "Water", "Electric", "Grass", "Ground", "Ice", "Dragon", "Dark"];
-  const coveredElements = unique(party.flatMap((pal) => pal.elements));
-  const missingElements = coreElements.filter((element) => !coveredElements.includes(element));
-  const checks = [
-    { label: "Water mount", passed: party.some(hasWaterMount) },
-    { label: "Flying mount", passed: party.some(hasFlyingMount) },
-    { label: "Ground mount", passed: party.some((pal) => hasGroundMount(pal) && !hasFlyingMount(pal) && !hasWaterMount(pal)) },
-    { label: "Support / revive", passed: party.some(hasSupportSkill) },
-    { label: "Fire coverage", passed: coveredElements.includes("Fire") },
-    { label: "Water coverage", passed: coveredElements.includes("Water") },
-    { label: "Electric coverage", passed: coveredElements.includes("Electric") },
-    { label: "Ground coverage", passed: coveredElements.includes("Ground") },
-  ];
-  const utilityScore = checks.filter((check) => check.passed).length / checks.length;
-  const elementScore = (coreElements.length - missingElements.length) / coreElements.length;
-  const sizeScore = Math.min(party.length, 5) / 5;
-  const score = Math.round((utilityScore * 4 + elementScore * 4 + sizeScore * 2) * 10) / 10;
-  const missing = [
-    ...checks.filter((check) => !check.passed && !check.label.endsWith("coverage")).map((check) => check.label),
-    ...missingElements.map((element) => `${element} damage`),
-  ];
-  const suggestions = partySuggestions(party, missingElements);
-
-  return { score, checks, missing, suggestions };
+function hasMount(pal: Pal) {
+  return cleanSkill(pal.partnerSkill?.description || "").toLowerCase().includes("ridden") || cleanSkill(pal.partnerSkill?.description || "").toLowerCase().includes("mount");
 }
 
-function partySuggestions(party: Pal[], missingElements: string[]) {
-  const selectedIds = new Set(party.map((pal) => pal.id));
-  const suggestions: { pal: Pal; reason: string }[] = [];
-  const needs = [
-    { missing: !party.some(hasFlyingMount), reason: "Adds flying travel", match: hasFlyingMount },
-    { missing: !party.some(hasWaterMount), reason: "Adds water travel", match: hasWaterMount },
-    { missing: !party.some(hasSupportSkill), reason: "Adds support or revive utility", match: hasSupportSkill },
-  ];
-
-  needs.forEach((need) => {
-    if (!need.missing) return;
-    const pal = bestPartyCandidate((candidate) => need.match(candidate) && !selectedIds.has(candidate.id));
-    if (pal) suggestions.push({ pal, reason: need.reason });
-  });
-
-  missingElements.slice(0, 4).forEach((element) => {
-    const pal = bestPartyCandidate((candidate) => candidate.elements.includes(element) && !selectedIds.has(candidate.id));
-    if (pal && !suggestions.some((suggestion) => suggestion.pal.id === pal.id)) {
-      suggestions.push({ pal, reason: `Adds ${element} damage` });
-    }
-  });
-
-  return suggestions.slice(0, 5);
+function isRanchPal(pal: Pal) {
+  return pal.workSuitability.some((work) => work.type === "Farming");
 }
 
-function bestPartyCandidate(match: (pal: Pal) => boolean) {
-  return pals
-    .filter(match)
-    .sort((a, b) => partyCandidateScore(b) - partyCandidateScore(a) || a.name.localeCompare(b.name))[0];
-}
-
-function partyCandidateScore(pal: Pal) {
-  const topWork = Math.max(0, ...pal.workSuitability.map((work) => work.level));
-  return (pal.rarity || 0) * 2 + topWork + pal.elements.length + (hasFlyingMount(pal) ? 4 : 0) + (hasWaterMount(pal) ? 3 : 0) + (hasSupportSkill(pal) ? 3 : 0);
-}
-
-function partnerDescription(pal: Pal) {
-  return `${pal.partnerSkill?.name || ""} ${pal.partnerSkill?.description || ""}`.toLowerCase();
-}
-
-function hasFlyingMount(pal: Pal) {
-  return partnerDescription(pal).includes("flying mount");
-}
-
-function hasWaterMount(pal: Pal) {
-  return partnerDescription(pal).includes("travel on water");
-}
-
-function hasGroundMount(pal: Pal) {
-  const description = partnerDescription(pal);
-  return description.includes("can be ridden") || description.includes("while mounted");
-}
-
-function hasSupportSkill(pal: Pal) {
-  return /revives|restore|restores|recovers health|life steal/.test(partnerDescription(pal));
+function ranchDrop(pal: Pal) {
+  const drop = pal.possibleDrops[0];
+  const item = drop ? resources.find((resource) => resource.id === drop.resourceId) : undefined;
+  return item?.name || "Wool";
 }
 
 export default function App() {
