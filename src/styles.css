@@ -369,7 +369,7 @@ main {
 }
 
 .map-preview {
-  grid-row: span 3;
+  grid-row: span 2;
 }
 
 .mini-map,
@@ -382,7 +382,7 @@ main {
 }
 
 .mini-map {
-  aspect-ratio: 1.34;
+  aspect-ratio: 1.72;
 }
 
 .mini-map img,
@@ -398,17 +398,49 @@ main {
 .map-marker {
   position: absolute;
   display: grid;
-  width: 1.55rem;
-  height: 1.55rem;
+  width: 1.2rem;
+  height: 1.2rem;
   place-items: center;
   border: 2px solid rgba(255, 255, 255, 0.75);
   border-radius: 50%;
   color: white;
-  background: linear-gradient(135deg, #1da0ff, #8b47ff);
+  background: var(--blue);
   font-size: 0.78rem;
   line-height: 1;
   transform: translate(-50%, -50%);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+.labelled-dot {
+  width: auto;
+  height: auto;
+  grid-template-columns: auto max-content;
+  gap: 0.32rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.25rem 0.45rem;
+  background: rgba(4, 12, 20, 0.82);
+  transform: translate(-0.45rem, -50%);
+}
+
+.labelled-dot i,
+.map-marker span {
+  display: block;
+  width: 0.72rem;
+  height: 0.72rem;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 0 3px rgba(46, 168, 255, 0.26);
+}
+
+.labelled-dot b {
+  max-width: 8rem;
+  overflow: hidden;
+  color: #fff;
+  font-size: 0.72rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .metric-panel {
@@ -435,35 +467,72 @@ main {
   font-weight: 800;
 }
 
-.whats-new {
+.update-summary {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.4rem;
 }
 
-.whats-new .section-title,
+.update-summary .section-title,
 .level-now .section-title {
   grid-column: 1 / -1;
 }
 
-.stat-tile {
+.update-tile {
   display: grid;
-  min-height: 4.1rem;
-  place-items: center;
+  gap: 0.25rem;
+  min-height: 5rem;
+  align-content: start;
   border: 1px solid var(--line);
   border-radius: 0.35rem;
+  padding: 0.65rem;
   background: rgba(11, 26, 42, 0.8);
+}
+
+.update-tile strong {
+  color: #dff6ff;
+}
+
+.update-tile span {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.35;
+}
+
+.level-panel {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.level-editor {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: end;
+}
+
+.level-editor label {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.level-editor label span {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.level-editor input[type="number"] {
+  min-height: 3rem;
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 900;
   text-align: center;
 }
 
-.stat-tile img {
-  width: 2.1rem;
-  height: 2.1rem;
-  object-fit: contain;
-}
-
-.stat-tile strong {
-  font-size: 1.3rem;
+.level-editor input[type="range"] {
+  min-height: auto;
+  padding: 0;
+  accent-color: var(--blue);
 }
 
 .level-now {
@@ -778,10 +847,9 @@ hr {
 }
 
 .map-marker {
-  width: 1.75rem;
-  min-height: 1.75rem;
+  width: 1.2rem;
+  min-height: 1.2rem;
   padding: 0;
-  font-size: 0.75rem;
 }
 
 .map-controls {
@@ -1519,7 +1587,7 @@ hr {
     width: 70%;
   }
 
-  .whats-new,
+  .update-summary,
   .level-now,
   .quick-links,
   .location-rail,

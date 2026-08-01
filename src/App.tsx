@@ -138,17 +138,18 @@ const defaultTracking: TrackedState = {
   notes: "",
 };
 
-const mapMarkers = Array.from({ length: 92 }, (_, index) => {
-  const angle = index * 2.399963;
-  const radius = 7 + (index % 11) * 3.7;
-  return {
-    id: index,
-    x: Math.max(7, Math.min(93, 50 + Math.cos(angle) * radius + ((index * 19) % 13) - 6)),
-    y: Math.max(9, Math.min(91, 51 + Math.sin(angle) * radius + ((index * 17) % 11) - 5)),
-    type: mapFilters[index % mapFilters.length],
-    level: 4 + (index % 56),
-  };
-});
+const mapMarkers = [
+  { id: 1, x: 58, y: 54, type: ["Pal Spawns", "🐾"], level: 12, name: "Windswept Hills" },
+  { id: 2, x: 42, y: 46, type: ["Fast Travel", "✦"], level: 18, name: "Small Settlement" },
+  { id: 3, x: 32, y: 36, type: ["Dungeons", "◉"], level: 23, name: "Hillside Cavern" },
+  { id: 4, x: 28, y: 65, type: ["Ore", "●"], level: 25, name: "Ore Field" },
+  { id: 5, x: 48, y: 72, type: ["Merchants", "◆"], level: 28, name: "Trading Post" },
+  { id: 6, x: 66, y: 38, type: ["Alpha Pals", "♛"], level: 31, name: "Alpha Den" },
+  { id: 7, x: 73, y: 62, type: ["Towers", "▥"], level: 35, name: "Tower Approach" },
+  { id: 8, x: 18, y: 78, type: ["Sulfur", "♦"], level: 42, name: "Volcanic Sulfur" },
+  { id: 9, x: 24, y: 22, type: ["Coal", "◒"], level: 45, name: "Frostbound Coal" },
+  { id: 10, x: 81, y: 25, type: ["Wildlife Sanctuaries", "☘"], level: 50, name: "Sanctuary Coast" },
+];
 
 function AppShell() {
   const [page, setPage] = useState<Page>(() => parsePage());
@@ -267,20 +268,19 @@ function Dashboard({ tracking, updateTracking }: { tracking: TrackedState; updat
       </section>
 
       <section className="panel map-preview">
-        <header className="section-title"><span>Interactive Map</span><a href="#/map">Open</a></header>
-        <MiniMap tracking={tracking} limit={36} />
+        <header className="section-title"><span>Map Preview</span><a href="#/map">Open Full Map</a></header>
+        <MiniMap tracking={tracking} />
       </section>
 
+      <LevelPanel tracking={tracking} updateTracking={updateTracking} />
       <MetricPanel label="Game Version" value="v0.3.2.0" detail="You're up to date" tone="success" />
-      <MetricPanel label="Upcoming Events" value="No upcoming events" detail="Check back later" />
 
-      <section className="panel whats-new">
-        <header className="section-title"><span>What's New</span></header>
-        <StatTile image={pals[12]?.image} value="72" label="Pals" />
-        <StatTile image={resources[0]?.image} value="842" label="Items" />
-        <StatTile value="142" label="Technologies" />
-        <StatTile value="24" label="Bosses" />
-        <StatTile value="12" label="Mechanics" />
+      <section className="panel update-summary">
+        <header className="section-title"><span>Current Update Summary</span></header>
+        <UpdateTile title="Patch Notes" detail="Latest official update link is in the game update card." />
+        <UpdateTile title="Data Set" detail={`${pals.length} Pals and ${resources.length} items imported into this companion.`} />
+        <UpdateTile title="Tracking" detail="Owned Pals, favourites, tech status, notes and goals save locally." />
+        <UpdateTile title="Next Focus" detail={`Your level is set to ${tracking.playerLevel}, so unlock lists and map filters use that level.`} />
       </section>
 
       <section className="panel level-now">
@@ -350,10 +350,10 @@ function MapPage({ tracking }: { tracking: TrackedState }) {
               className="map-marker"
               style={{ left: `${marker.x}%`, top: `${marker.y}%` }}
               key={marker.id}
-              title={`${marker.type[0]} Lv. ${marker.level}`}
+              title={`${marker.name}: ${marker.type[0]} Lv. ${marker.level}`}
               onClick={() => setRegion(regions[marker.id % regions.length])}
             >
-              {marker.type[1]}
+              <span />
             </button>
           ))}
           <div className="map-controls"><button>+</button><button>-</button><button>◎</button><button>▣</button></div>
@@ -700,12 +700,17 @@ function PalDetail({ pal }: { pal: Pal; tracking?: TrackedState }) {
   );
 }
 
-function MiniMap({ tracking, limit }: { tracking: TrackedState; limit?: number }) {
-  const markers = mapMarkers.filter((marker) => marker.level <= tracking.playerLevel + 8).slice(0, limit || mapMarkers.length);
+function MiniMap({ tracking }: { tracking: TrackedState }) {
+  const markers = mapMarkers.filter((marker) => marker.level <= tracking.playerLevel + 8).slice(0, 4);
   return (
     <div className="mini-map">
       <img src="level-map-guide.png" alt="" />
-      {markers.map((marker) => <span className="map-dot" style={{ left: `${marker.x}%`, top: `${marker.y}%` }} key={marker.id}>{marker.type[1]}</span>)}
+      {markers.map((marker) => (
+        <span className="map-dot labelled-dot" style={{ left: `${marker.x}%`, top: `${marker.y}%` }} key={marker.id}>
+          <i />
+          <b>{marker.name}</b>
+        </span>
+      ))}
     </div>
   );
 }
@@ -714,8 +719,33 @@ function MetricPanel({ label, value, detail, tone }: { label: string; value: str
   return <section className="panel metric-panel"><span>{label}</span><strong>{value}</strong><small className={tone === "success" ? "green" : ""}>{detail}</small></section>;
 }
 
-function StatTile({ image, value, label }: { image?: string; value: string; label: string }) {
-  return <div className="stat-tile">{image ? <img src={image} alt="" /> : <Icon name="tech" />}<strong>{value}</strong><span>{label}</span></div>;
+function LevelPanel({ tracking, updateTracking }: { tracking: TrackedState; updateTracking: (next: Partial<TrackedState>) => void }) {
+  function setLevel(value: number) {
+    updateTracking({ playerLevel: Math.max(1, Math.min(60, Number.isFinite(value) ? Math.round(value) : 1)) });
+  }
+
+  return (
+    <section className="panel level-panel">
+      <header className="section-title"><span>My Player Level</span></header>
+      <div className="level-editor">
+        <label>
+          <span>Level</span>
+          <input type="number" min="1" max="60" value={tracking.playerLevel} onChange={(event) => setLevel(Number(event.target.value))} />
+        </label>
+        <input type="range" min="1" max="60" value={tracking.playerLevel} onChange={(event) => setLevel(Number(event.target.value))} aria-label="Player level" />
+      </div>
+      <p>Used for map availability, unlocks, breeding filters, tools, and dashboard recommendations.</p>
+    </section>
+  );
+}
+
+function UpdateTile({ title, detail }: { title: string; detail: string }) {
+  return (
+    <div className="update-tile">
+      <strong>{title}</strong>
+      <span>{detail}</span>
+    </div>
+  );
 }
 
 function MiniUnlocks({ title, items }: { title: string; items: { label: string; image?: string }[] }) {
