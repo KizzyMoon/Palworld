@@ -218,6 +218,7 @@ function Topbar({ tracking, updateTracking }: { tracking: TrackedState; updateTr
   const palMatches = normalized ? pals.filter((pal) => pal.name.toLowerCase().includes(normalized)).slice(0, 5) : [];
   const itemMatches = normalized ? resources.filter((item) => item.name.toLowerCase().includes(normalized)).slice(0, 5) : [];
   const levelPercent = Math.min(99, Math.round((tracking.playerLevel / 60) * 100));
+  const setLevel = (value: number) => updateTracking({ playerLevel: Math.max(1, Math.min(60, Number.isFinite(value) ? Math.round(value) : 1)) });
 
   return (
     <header className="topbar">
@@ -237,8 +238,9 @@ function Topbar({ tracking, updateTracking }: { tracking: TrackedState; updateTr
       </div>
       <label className="level-control">
         <span>Player Level</span>
-        <strong>Lv. {tracking.playerLevel}</strong>
-        <input type="range" min="1" max="60" value={tracking.playerLevel} onChange={(event) => updateTracking({ playerLevel: Number(event.target.value) })} />
+        <strong>Lv.</strong>
+        <input className="level-number" type="number" min="1" max="60" value={tracking.playerLevel} onChange={(event) => setLevel(Number(event.target.value))} aria-label="Player level" />
+        <input type="range" min="1" max="60" value={tracking.playerLevel} onChange={(event) => setLevel(Number(event.target.value))} aria-label="Player level slider" />
         <small>{levelPercent}%</small>
       </label>
       <button className="icon-button" aria-label="Theme"><Icon name="moon" /></button>
@@ -268,19 +270,23 @@ function Dashboard({ tracking, updateTracking }: { tracking: TrackedState; updat
       </section>
 
       <section className="panel map-preview">
-        <header className="section-title"><span>Map Preview</span><a href="#/map">Open Full Map</a></header>
-        <MiniMap tracking={tracking} />
+        <header className="section-title"><span>Interactive Map</span><a href="#/map">Open Full Map</a></header>
+        <div className="dashboard-map-shell">
+          <MiniMap tracking={tracking} />
+          <DashboardMapFilters tracking={tracking} />
+        </div>
       </section>
 
-      <LevelPanel tracking={tracking} updateTracking={updateTracking} />
-      <MetricPanel label="Game Version" value="v0.3.2.0" detail="You're up to date" tone="success" />
+      <MetricPanel className="version-panel" label="Game Version" value="v0.3.2.0" detail="You're up to date" tone="success" />
+      <MetricPanel className="events-panel" label="Upcoming Events" value="No upcoming events" detail="Check back later" />
 
-      <section className="panel update-summary">
-        <header className="section-title"><span>Current Update Summary</span></header>
-        <UpdateTile title="Patch Notes" detail="Latest official update link is in the game update card." />
-        <UpdateTile title="Data Set" detail={`${pals.length} Pals and ${resources.length} items imported into this companion.`} />
-        <UpdateTile title="Tracking" detail="Owned Pals, favourites, tech status, notes and goals save locally." />
-        <UpdateTile title="Next Focus" detail={`Your level is set to ${tracking.playerLevel}, so unlock lists and map filters use that level.`} />
+      <section className="panel whats-new">
+        <header className="section-title"><span>What's New in v0.3.2</span></header>
+        <UpdateTile title="3" detail="New Pals" image={pals[12]?.image} />
+        <UpdateTile title="5" detail="New Items" image={resources[0]?.image} />
+        <UpdateTile title="4" detail="Technologies" />
+        <UpdateTile title="2" detail="Buildings" />
+        <UpdateTile title="1" detail="Mechanic" />
       </section>
 
       <section className="panel level-now">
@@ -290,12 +296,12 @@ function Dashboard({ tracking, updateTracking }: { tracking: TrackedState; updat
         <MiniUnlocks title="New Technologies" items={currentUnlocks.map((tech) => ({ label: tech.name }))} />
       </section>
 
-      <section className="panel compact-list">
+      <section className="panel compact-list recent-panel">
         <header className="section-title"><span>Recently Viewed</span></header>
         {(recentlyViewed.length ? recentlyViewed : pals.slice(180, 183)).map((pal) => <MiniPalRow pal={pal} key={pal.id} />)}
       </section>
 
-      <section className="panel compact-list">
+      <section className="panel compact-list favorites-panel">
         <header className="section-title"><span>Favourites</span></header>
         {(favourites.length ? favourites : pals.slice(205, 211)).map((pal) => <MiniPalRow pal={pal} key={pal.id} />)}
       </section>
@@ -715,36 +721,36 @@ function MiniMap({ tracking }: { tracking: TrackedState }) {
   );
 }
 
-function MetricPanel({ label, value, detail, tone }: { label: string; value: string; detail: string; tone?: "success" }) {
-  return <section className="panel metric-panel"><span>{label}</span><strong>{value}</strong><small className={tone === "success" ? "green" : ""}>{detail}</small></section>;
+function MetricPanel({ label, value, detail, tone, className = "" }: { label: string; value: string; detail: string; tone?: "success"; className?: string }) {
+  return <section className={`panel metric-panel ${className}`.trim()}><span>{label}</span><strong>{value}</strong><small className={tone === "success" ? "green" : ""}>{detail}</small></section>;
 }
 
-function LevelPanel({ tracking, updateTracking }: { tracking: TrackedState; updateTracking: (next: Partial<TrackedState>) => void }) {
-  function setLevel(value: number) {
-    updateTracking({ playerLevel: Math.max(1, Math.min(60, Number.isFinite(value) ? Math.round(value) : 1)) });
-  }
-
-  return (
-    <section className="panel level-panel">
-      <header className="section-title"><span>My Player Level</span></header>
-      <div className="level-editor">
-        <label>
-          <span>Level</span>
-          <input type="number" min="1" max="60" value={tracking.playerLevel} onChange={(event) => setLevel(Number(event.target.value))} />
-        </label>
-        <input type="range" min="1" max="60" value={tracking.playerLevel} onChange={(event) => setLevel(Number(event.target.value))} aria-label="Player level" />
-      </div>
-      <p>Used for map availability, unlocks, breeding filters, tools, and dashboard recommendations.</p>
-    </section>
-  );
-}
-
-function UpdateTile({ title, detail }: { title: string; detail: string }) {
+function UpdateTile({ title, detail, image }: { title: string; detail: string; image?: string }) {
   return (
     <div className="update-tile">
+      {image ? <img src={image} alt="" /> : null}
       <strong>{title}</strong>
       <span>{detail}</span>
     </div>
+  );
+}
+
+function DashboardMapFilters({ tracking }: { tracking: TrackedState }) {
+  return (
+    <aside className="dashboard-map-filters">
+      <header><strong>Map Filters</strong><button>Hide All</button></header>
+      {mapFilters.slice(0, 13).map(([label, glyph]) => (
+        <div className="map-filter-row" key={label}>
+          <span><b>{glyph}</b>{label}</span>
+          <small>⌄</small>
+        </div>
+      ))}
+      <a href="#/map">Show More</a>
+      <label className="level-filter-check">
+        <input type="checkbox" checked readOnly />
+        <span>Show content available at my level (Lv. {tracking.playerLevel})</span>
+      </label>
+    </aside>
   );
 }
 

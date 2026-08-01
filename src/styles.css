@@ -268,7 +268,7 @@ kbd {
 
 .level-control {
   display: grid;
-  grid-template-columns: auto auto minmax(7rem, 10rem) auto;
+  grid-template-columns: auto auto 3.8rem minmax(7rem, 10rem) auto;
   gap: 0.45rem;
   align-items: center;
   justify-content: end;
@@ -283,6 +283,14 @@ kbd {
   min-height: auto;
   padding: 0;
   accent-color: var(--blue);
+}
+
+.level-control .level-number {
+  min-height: 1.8rem;
+  padding: 0.1rem 0.25rem;
+  color: #fff;
+  font-weight: 900;
+  text-align: center;
 }
 
 .profile-pill {
@@ -336,14 +344,24 @@ main {
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: minmax(24rem, 1.25fr) minmax(22rem, 1fr) minmax(18rem, 0.74fr);
+  grid-template-columns: minmax(11rem, 0.48fr) minmax(13rem, 0.48fr) minmax(24rem, 0.82fr) minmax(18rem, 0.54fr);
+  grid-template-areas:
+    "update update map map"
+    "version events map map"
+    "whats whats map map"
+    "levelnow levelnow map map"
+    "recent faves featured tracker"
+    "goals goals featured links"
+    "tech tech tech tech";
   gap: 0.85rem;
+  align-items: stretch;
 }
 
 .update-panel {
+  grid-area: update;
   position: relative;
   overflow: hidden;
-  min-height: 13.5rem;
+  min-height: 13.2rem;
   background:
     linear-gradient(100deg, rgba(22, 25, 58, 0.98), rgba(13, 43, 70, 0.75)),
     radial-gradient(circle at 90% 20%, rgba(101, 215, 255, 0.28), transparent 18rem);
@@ -369,7 +387,10 @@ main {
 }
 
 .map-preview {
-  grid-row: span 2;
+  grid-area: map;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 29.5rem;
 }
 
 .mini-map,
@@ -382,7 +403,8 @@ main {
 }
 
 .mini-map {
-  aspect-ratio: 1.72;
+  min-height: 100%;
+  aspect-ratio: auto;
 }
 
 .mini-map img,
@@ -446,7 +468,11 @@ main {
 .metric-panel {
   display: grid;
   gap: 0.35rem;
+  min-height: 6.2rem;
 }
+
+.version-panel { grid-area: version; }
+.events-panel { grid-area: events; }
 
 .metric-panel strong {
   font-size: 1.45rem;
@@ -467,78 +493,139 @@ main {
   font-weight: 800;
 }
 
-.update-summary {
+.whats-new {
+  grid-area: whats;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0.4rem;
 }
 
-.update-summary .section-title,
+.whats-new .section-title,
 .level-now .section-title {
   grid-column: 1 / -1;
 }
 
 .update-tile {
   display: grid;
-  gap: 0.25rem;
-  min-height: 5rem;
-  align-content: start;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.2rem 0.45rem;
+  min-height: 3.8rem;
+  align-content: center;
+  align-items: center;
   border: 1px solid var(--line);
   border-radius: 0.35rem;
-  padding: 0.65rem;
+  padding: 0.45rem;
   background: rgba(11, 26, 42, 0.8);
+}
+
+.update-tile img {
+  grid-row: span 2;
+  width: 2.35rem;
+  height: 2.35rem;
+  object-fit: contain;
 }
 
 .update-tile strong {
   color: #dff6ff;
+  font-size: 1.15rem;
 }
 
 .update-tile span {
   color: var(--muted);
-  font-size: 0.84rem;
-  line-height: 1.35;
-}
-
-.level-panel {
-  display: grid;
-  gap: 0.7rem;
-}
-
-.level-editor {
-  display: grid;
-  grid-template-columns: 6rem minmax(0, 1fr);
-  gap: 0.7rem;
-  align-items: end;
-}
-
-.level-editor label {
-  display: grid;
-  gap: 0.25rem;
-}
-
-.level-editor label span {
-  color: var(--muted);
-  font-size: 0.78rem;
-}
-
-.level-editor input[type="number"] {
-  min-height: 3rem;
-  color: #fff;
-  font-size: 1.35rem;
-  font-weight: 900;
-  text-align: center;
-}
-
-.level-editor input[type="range"] {
-  min-height: auto;
-  padding: 0;
-  accent-color: var(--blue);
+  font-size: 0.76rem;
+  line-height: 1.18;
 }
 
 .level-now {
+  grid-area: levelnow;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.8rem;
+}
+
+.dashboard-map-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 12.5rem;
+  min-height: 0;
+}
+
+.dashboard-map-shell .mini-map {
+  border-radius: 0.45rem 0 0 0.45rem;
+}
+
+.dashboard-map-filters {
+  display: grid;
+  align-content: start;
+  gap: 0.32rem;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-left: 0;
+  border-radius: 0 0.45rem 0.45rem 0;
+  padding: 0.65rem;
+  background: rgba(5, 14, 24, 0.82);
+}
+
+.dashboard-map-filters header,
+.map-filter-row {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard-map-filters header {
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+
+.dashboard-map-filters header button {
+  min-height: auto;
+  border: 0;
+  padding: 0;
+  color: var(--blue);
+  background: transparent;
+}
+
+.map-filter-row {
+  min-height: 1.42rem;
+  color: #d7e7f9;
+  font-size: 0.78rem;
+}
+
+.map-filter-row span {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  min-width: 0;
+}
+
+.map-filter-row b {
+  color: var(--cyan);
+}
+
+.dashboard-map-filters a {
+  margin: 0.35rem 0;
+  color: var(--blue);
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+
+.level-filter-check {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.45rem;
+  align-items: start;
+  margin-top: 0.35rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--line);
+  color: #dcecff;
+  font-size: 0.76rem;
+}
+
+.level-filter-check input {
+  width: auto;
+  min-height: auto;
+  accent-color: var(--blue);
 }
 
 .mini-unlocks h3 {
@@ -584,6 +671,11 @@ main {
   display: grid;
   gap: 0.55rem;
 }
+
+.recent-panel { grid-area: recent; }
+.favorites-panel { grid-area: faves; }
+.goals-panel { grid-area: goals; }
+.tracker-summary { grid-area: tracker; }
 
 .mini-pal-row {
   display: grid;
@@ -637,7 +729,7 @@ main {
 .info-list dd { margin: 0; font-weight: 800; }
 
 .featured-pal {
-  grid-column: span 2;
+  grid-area: featured;
 }
 
 .pal-detail {
@@ -717,6 +809,7 @@ main {
 }
 
 .quick-links {
+  grid-area: links;
   grid-template-columns: repeat(2, 1fr);
 }
 
@@ -737,7 +830,7 @@ main {
 }
 
 .tech-strip {
-  grid-column: 1 / -1;
+  grid-area: tech;
   display: flex;
   gap: 0.6rem;
   align-items: center;
@@ -1445,13 +1538,48 @@ hr {
 }
 
 @media (max-width: 1280px) {
-  .dashboard-grid,
   .page-grid,
   .map-layout,
   .pal-layout,
   .items-layout,
   .tech-layout {
     grid-template-columns: 13.5rem minmax(0, 1fr);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "update map"
+      "version map"
+      "events map"
+      "whats whats"
+      "levelnow levelnow"
+      "recent faves"
+      "goals tracker"
+      "featured links"
+      "tech tech";
+  }
+
+  .dashboard-map-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-map-shell .mini-map {
+    min-height: 17rem;
+    border-radius: 0.45rem 0.45rem 0 0;
+  }
+
+  .dashboard-map-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 0;
+    border-left: 1px solid var(--line);
+    border-radius: 0 0 0.45rem 0.45rem;
+  }
+
+  .dashboard-map-filters header,
+  .dashboard-map-filters a,
+  .level-filter-check {
+    grid-column: 1 / -1;
   }
 
   .map-preview,
@@ -1493,7 +1621,6 @@ hr {
     padding-bottom: 6rem;
   }
 
-  .dashboard-grid,
   .page-grid,
   .map-layout,
   .pal-layout,
@@ -1501,6 +1628,30 @@ hr {
   .tech-layout,
   .tool-grid {
     grid-template-columns: 1fr;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "update"
+      "version"
+      "events"
+      "whats"
+      "levelnow"
+      "map"
+      "recent"
+      "faves"
+      "goals"
+      "featured"
+      "tracker"
+      "links"
+      "tech";
+  }
+
+  .level-control {
+    display: grid;
+    grid-column: 1 / -1;
+    justify-content: stretch;
   }
 
   .filters {
@@ -1587,7 +1738,7 @@ hr {
     width: 70%;
   }
 
-  .update-summary,
+  .whats-new,
   .level-now,
   .quick-links,
   .location-rail,
